@@ -1,0 +1,475 @@
+description = "Layout General"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+
+[session]
+security = "all"
+
+[mailSignup]
+list = "01d1d96259"
+==
+<?php
+public function onCheckEmail()
+{
+    return ['isTaken' => Auth::findUserByLogin(post('email')) ? 1 : 0];
+}
+?>
+==
+<?php
+header(
+  "Content-Security-Policy: " .
+  "default-src 'self'; " .
+  "script-src 'self' https://js.stripe.com https://www.googletagmanager.com; " .
+  "connect-src 'self' https://api.stripe.com; " .
+  "frame-src https://js.stripe.com https://hooks.stripe.com https://www.googletagmanager.com; " .
+  "img-src 'self' data: https://*.stripe.com; " .
+  "style-src 'self' 'unsafe-inline' https://js.stripe.com;"
+);
+?>
+
+<!DOCTYPE html>
+<html lang="es-MX">
+  {% set ubi_name= this.param.name %}
+
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  let varaLayer;
+  let objLayer = {};
+</script>    
+
+            <!--<script>
+        window.dataLayer = window.dataLayer || [];
+        let varaLayer;
+        let objLayer ={};
+        </script>-->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WSG8ZPF');</script>
+<!-- End Google Tag Manager -->
+        
+<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11221385621"></script> 
+<script> window.dataLayer = window.dataLayer || []; 
+function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); 
+gtag('config', 'AW-11221385621'); </script>
+<!-- Google tag (gtag.js) -->
+
+
+<!--script type="text/javascript">
+  window.woorankAssistantOptions = window.woorankAssistantOptions || {};
+  window.woorankAssistantOptions.url = 'wandercabins.mx';
+  window.woorankAssistantOptions.assistantPublicKey = '2f32675c9c0c3e442c78375fe1b47d28aaaf8cdb';
+  (function() {
+    var wl = document.createElement('script'); wl.type = 'text/javascript'; wl.async = true;
+    wl.src = 'https://assistant.woorank.com/hydra/assistantLoader.latest.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wl, s);
+  })();
+</script-->
+
+
+
+    <script async type='text/javascript' src='https://static.klaviyo.com/onsite/js/SGrxET/klaviyo.js?company_id=SGrxET'></script>
+    <script type="text/javascript"> 
+              //Initialize Klaviyo object on page load
+       !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}(); 
+    </script>
+
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#0C282A">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Wander Cabins | {% placeholder pagetitle %}</title>
+
+  <meta name="title" content="{% placeholder metatitle %}">
+  <meta name="description" content="{% placeholder metadescription %}">
+  <meta name="author" content="Eduard chi">
+  <!--meta name="robots" content="index, follow"-->
+  <meta name="robots" content="{{ this.page.robot_index }}, {{ this.page.robot_follow }}">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <!--link rel="canonical" href="{{''|page}}"-->
+  
+
+        {% if this.page.canonical_url %}
+            {% if this.param.slug %}
+                <link rel="canonical" href="https://wandercabins.mx{{ this.page.canonical_url | replace({':slug': this.param.slug}) }}">
+            {% else %}
+                <link rel="canonical" href="https://wandercabins.mx{{ this.page.canonical_url }}">
+            {% endif %}
+        {% else %}
+            <link rel="canonical" href="https://wandercabins.mx{{ this.page.url }}">
+        {% endif %}
+        
+        
+  <link rel="icon" type="image/x-icon" href="{{"assets/images/favicon.ico"|theme}}" sizes="48x48" />
+  
+
+  <link rel="apple-touch-icon"  type="image/x-icon" href="{{"assets/images/favicon.ico"|theme}}">
+  <!--link rel="icon" type="image/png" href="https://wandercabins.mx/storage/app/uploads/public/60e/680/73b/60e68073b95e8483929967.png"-->
+  <link rel="shortcut icon" type="image/x-icon" href="{{"assets/images/favicon.png"|theme}}">
+
+    <meta name="keywords" content="wandercabins, wander, cabañas wandercabins, wandercabins cabañas, cabañas wander, cabañas en mexico,cabañas mexico, cabañas en mexico bosque,cabañas cerca de mexico, bosques con cabañas en mexico, 'cabañas en mexico','cabanas valle de bravo','cabanas en valle de bravo','cabañas en malinalco','cabañitas del bosque','cabañas de madera','cabañas cerca de cdmx','cabañas del bosque','cabañas en la marquesa','cabañas del lago','cabañas para parejas','cabañas modernas','las cabañas','cabañitas','cabañas cdmx','cabañas mexico','cabañas pet friendly cerca de cdmx','cabañas en queretaro','cabana queretaro','cabañas cerca de queretaro','cabañas en querétaro para parejas','renta de cabañas en queretaro','tzibanza queretaro cabañas','cabañas pet friendly queretaro','cabañas queretaro lago','cabañas románticas querétaro','cabañas tzibanza queretaro','cabañas queretaro precio isla tzibanza','cabañas en queretaro isla','cabañas en queretaro con lago','cabañas cerca de querétaro','cabanas valle de bravo','cabañas en valle de bravo','cabanas en valle de bravo','renta de cabañas en valle de bravo','cabañas en valle de bravo baratas','cabañas en valle de bravo para parejas','wander valle de bravo','cabañas pet friendly valle de bravo','cabañas romanticas en valle de bravo','valle de bravo cabañas precios','cabañas en valle de bravo pet friendly','cabañas valle de bravo pet friendly','valle de bravo cabañas romanticas','cabañas en valle de bravo en el bosque','renta cabaña en valle de bravo','cabaña renta valle de bravo','romanticas valle de bravo cabañas','cabañas romanticas valle de bravo','valle de bravo cabañas renta','cabanas malinalco','cabañas en malinalco','cabanas en malinalco','renta de cabañas en malinalco','cabañas en malinalco baratas','cabañas en malinalco para parejas','wander malinalco','cabañas pet friendly malinalco','cabañas romanticas en malinalco','malinalco cabañas precios','cabañas en malinalco pet friendly','cabañas malinalco pet friendly','malinalco cabañas romanticas','cabañas en malinalco en el bosque','renta cabaña en malinalco','cabaña renta malinalco','romanticas malinalco cabañas','cabañas romanticas malinalco','malinalco cabañas renta','cabanas mexico','cabañas en mexico','cabanas en mexico','renta de cabañas en mexico','cabañas en mexico baratas','cabañas en mexico para parejas','wander mexico','cabañas pet friendly mexico','cabañas romanticas en mexico','mexico cabañas precios','cabañas en mexico pet friendly','cabañas mexico pet friendly','mexico cabañas romanticas','cabañas en mexico en el bosque','renta cabaña en mexico','cabaña renta mexico','romanticas mexico cabañas','cabañas romanticas mexico','mexico cabañas renta','cabanas cañada','cabañas en cañada','cabanas en cañada','renta de cabañas en cañada','cabañas en cañada baratas','cabañas en cañada para parejas','wander cañada','cabañas pet friendly cañada','cabañas romanticas en cañada','cañada cabañas precios','cabañas en cañada pet friendly','cabañas cañada pet friendly','cañada cabañas romanticas','cabañas en cañada en el bosque','renta cabaña en cañada','cabaña renta cañada','romanticas cañada cabañas','cabañas romanticas cañada','cañada cabañas renta','cabanas monterrey','cabañas en monterrey','cabanas en monterrey','renta de cabañas en monterrey','cabañas en monterrey baratas','cabañas en monterrey para parejas','wander monterrey','cabañas pet friendly monterrey','cabañas romanticas en monterrey','monterrey cabañas precios','cabañas en monterrey pet friendly','cabañas monterrey pet friendly','monterrey cabañas romanticas','cabañas en monterrey en el bosque','renta cabaña en monterrey','cabaña renta monterrey','romanticas monterrey cabañas','cabañas romanticas monterrey','monterrey cabañas renta'" />
+
+    <!-- Start of wandercabins Zendesk Widget script -->
+
+    <meta property="og:title" content="Wander Cabins" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://wandercabins.mx/" />
+    <meta property="og:image" content="https://mcusercontent.com/8a9510dac189d63e6dbedc8bb/images/9e8325ee-1a6f-48d1-daa3-a066c8afb895.png">
+    <meta property="og:site_name" content="WanderCabins" />
+    <meta property="og:description" content="Vive la experiencia Wander en nuestras cabañas en medio de la naturaleza de Valle de Mexico, Malinalco, La Marquesa,Tzibanza Queretaro, Arteaga, Mineral del Chico y Villa Alpina. {% placeholder metadescription %}" />
+
+
+    {% placeholder meta %}  <!-- Asegúrate de agregar esta línea para permitir la inyección de metadatos -->
+
+
+  </script>
+
+ 
+ 
+          <!-- Start of wandercabins pixel script -->
+  
+            <script>
+             document.binflu_thanks =['/reservar/confirmacion/3000', '/reservar/confirmacion/{}']
+            </script>
+            
+            <script type="text/javascript" src="https://pixel-files-for-clients.s3-eu-west-1.amazonaws.com/prod/main.bundle.js" defer="">
+            </script>
+          <!-- End of wandercabins pixel script -->
+
+
+        
+  <!--Styles-->
+  <link rel="stylesheet" type="text/css" href="{{ [
+    'assets/vendor/bootstrap/dist/css/bootstrap.min.css',
+    'assets/css/style.min.css',
+    'assets/css/nprogress.css',
+    'assets/css/vendor/animate.css',
+    'assets/css/vendor/hover-min.css',
+    'assets/vendor/lightbox2/dist/css/lightbox.css',
+    'assets/vendor/gallery/dist/css/lightgallery.css',
+    'assets/vendor/gallery/dist/css/lg-thumbnail.css'
+
+
+  ]|theme }}">
+  {% styles %}
+
+  <!--Main Scripts-->
+  <script type="text/javascript" src="{{ [
+    'assets/vendor/jquery/dist/jquery.min.js',
+    'assets/js/vendor/modernizr-2.8.3.min.js',
+    'assets/vendor/lightbox2/dist/js/lightbox.js',
+        'assets/vendor/gallery/dist/lightgallery.min.js',
+        'assets/vendor/lozad/dist/lozad.min.js'
+
+
+  ]|theme }}"></script>
+
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+<!--script id='pixel-script-poptin' src='https://cdn.popt.in/pixel.js?id=e8f639e385239' async='true'></script-->
+<script>var siteURL = "{{''|page}}";
+    let visitorId;
+</script>
+  <script type="text/javascript" id="default-js-extra">
+    /* <![CDATA[ */
+    // var wandertheme = { "theme_path": siteURL + "/themes/wander", "color": "green", "style": "wander" };
+  /* ]]> */
+  </script>
+
+  {% placeholder scriptmapa %}
+
+    <!-- Google tag (gtag.js) -->
+    <!--script async src="https://www.googletagmanager.com/gtag/js?id=G-11KQBG2KNV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-11KQBG2KNV');
+    </script-->
+
+      <!-- Meta Pixel Code ->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '869430696801216');
+      fbq('track', 'PageView');
+      </script>
+      <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=869430696801216&ev=PageView&noscript=1"
+      /></noscript>
+      <!-- End Meta Pixel Code -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!--script async src="https://www.googletagmanager.com/gtag/js?id=G-0GT78VNMLM"></script>
+    <script>      
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0GT78VNMLM');
+    </script-->
+
+    
+    <!-- Hotjar Tracking Code for https://wandercabins.mx --> 
+    <!--script> (function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:2560664,hjsv:6}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv='); </script-->
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/8a9510dac189d63e6dbedc8bb/2405bd7cb9c0207b92d734b96.js");
+ let device = "desktop";
+  if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+     // console.log("Estás usando un dispositivo móvil!!");
+         device = "movil";
+      
+  }
+  </script>
+
+
+        <style>
+        
+        @font-face {
+            font-family: 'souvenir';
+            src: url('{{"assets/fonts/SouvenirStd-Light.otf"|theme}}') format("opentype");
+            font-display: swap;
+
+        }
+
+        
+        @font-face {
+            font-family: 'acumin';
+            src: url('{{"assets/fonts/Acumin-Variable-Concept.ttf"|theme}}') format('truetype');                        
+            font-display: swap;
+
+        }
+        
+        @font-face {
+            font-family: 'Wanderlust';
+            src: url('{{"assets/fonts/Wanderlust.otf"|theme}}') format("opentype");
+            font-display: swap;
+
+        }
+        
+        </style>
+        
+        
+            <script island="us2" src="https://static1.cloudbeds.com/booking-engine/latest/static/js/immersive-experience/cb-immersive-experience.js" type="text/javascript"></script>
+
+
+</head>
+
+
+
+<body class="content-generic {{ this.page.title }}" style="display: none;">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSG8ZPF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="overProgress fadeX"></div><!-- end.PreloaderDiv -->
+  <!-- Header -->
+{% if this.page.title == 'Inicio' %}
+  {% partial 'site/header' %}
+{% elseif this.page.title == 'Paquetes' %}
+  {% partial 'site/header-ub' %}
+{% elseif this.page.title == 'Ubicacion' %}
+  {% partial 'site/header-ub' %}
+{% elseif this.page.title == 'Ubicaciones' %}
+  {% partial 'site/header-ub' %}
+
+{% elseif this.page.title == 'Paquete' %}
+  {% partial 'site/header' %}
+{% else %}
+  {% partial 'site/header-int' %}
+{% endif %}
+
+  <!-- Content -->
+  <main></main>
+  
+    <div id="primary" class="content-area PageContainer">
+      {% page %}
+    </div>
+  </main>
+
+
+  
+  <!-- Footer -->
+  {% partial 'site/footer' %}
+
+  <!-- WhatsApp Icon --
+{% if this.page.title != 'Comprar Experiencias' %}
+-->
+  <a targe="_blank" href="https://api.whatsapp.com/send?phone=5215568976165" class="btnWha"><i class="fa fa-whatsapp"></i></a>
+<!--{% endif %}
+<!-- fin boton-->
+  
+  <!-- Scripts -->
+  <script type="text/javascript" src="{{ [
+    'assets/js/plugins/nprogress.js',
+    'assets/vendor/popper.js/dist/umd/popper.min.js',
+    'assets/vendor/bootstrap/dist/js/bootstrap.min.js',
+    'assets/js/vendor/jquery.easing.1.3.js',
+    'assets/js/plugins/jquery.cookie.js',
+    'assets/vendor/greensock/dist/TweenMax.js',
+    'assets/js/plugins/jquery.validate.min.js',
+    'assets/js/plugins/additional-methods.min.js',
+    'assets/js/plugins/wow.min.js',
+    'assets/js/plugins/slick.min.js',
+    'assets/js/plugins/mobiscroll.jquery.min.js',
+    'assets/js/plugins/jquery.steps.js',
+    'assets/js/scripts/genericScript.min.js',
+    'assets/js/scripts/formScripts.js',
+  ]|theme }}"></script>
+
+  {% placeholder scriptinicio %}
+  {% placeholder scriptreserva %}
+  <!--{% framework extras %}-->
+  
+<script src="{{ 'modules/system/assets/js/framework.min.js' | app }}"></script>
+<script src="{{ 'modules/system/assets/js/framework.extras.min.js' | app }}"></script>
+
+
+  {% scripts %}
+
+  <script>
+    $('body').show();
+    $('.version').text(NProgress.version);
+    NProgress.start();
+    setTimeout(function () {
+      NProgress.done(); $('.fadeX').addClass('out');
+    }, 1000);
+    
+        $(document).ready(function() {
+        
+        const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+        observer.observe();
+        });
+        
+        
+
+    
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const sourceInfo = {
+        source: urlParams.get('utm_source') || document.referrer || 'direct',
+        medium: urlParams.get('utm_medium') || 'unknown',
+        campaign: urlParams.get('utm_campaign') || 'none',
+        landing: window.location.href,
+        referrer: document.referrer
+    };
+
+
+    if (!localStorage.getItem('visitSource')) {
+        localStorage.setItem('visitSource', JSON.stringify(sourceInfo));
+        document.cookie = "visitSource=" + encodeURIComponent(JSON.stringify(sourceInfo)) + "; path=/";
+    }
+    
+    /*
+    if (!localStorage.getItem('visitSource')) {
+        localStorage.setItem('visitSource', JSON.stringify(sourceInfo));
+        document.cookie = "visitSource=" + encodeURIComponent(JSON.stringify(sourceInfo)) + "; path=/";
+    }*/
+    
+    (async function() {
+    const key = "visitor_id";
+     visitorId = localStorage.getItem(key);
+
+    if (!visitorId) {
+        visitorId = 'v_' + Date.now() + '_' + Math.random().toString(36).substring(2, 10);
+        localStorage.setItem(key, visitorId);
+    }
+
+    // Obtener UTMs de la URL
+    const params = new URLSearchParams(window.location.search);
+const fingerprint = getFingerprintData();
+
+    // Llamar al endpoint
+    await fetch('https://wandercabins.mx/anonymous/register-visitor', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        visitor_id: visitorId,
+        referrer: document.referrer,
+        source: safeParam(document.referrer || 'direct'),
+        utm_source: safeParam(params.get('utm_source')),
+        utm_medium: safeParam(params.get('utm_medium')),
+        utm_campaign: safeParam(params.get('utm_campaign')),
+        utm_id: safeParam(params.get('utm_id')),
+        utm_term: safeParam(params.get('utm_term')),
+        utm_content: safeParam(params.get('utm_content')),
+        gclid: safeParam(params.get('gclid')),
+        dclid: safeParam(params.get('dclid')),
+        gad_source: safeParam(params.get('gad_source')),
+        gad_campaignid: safeParam(params.get('gad_campaignid')),
+        page_url: window.location.href,
+        page_title: document.title,
+        fingerprint: fingerprint
+
+        
+    })
+});
+
+})();
+
+function getFingerprintData() {
+  return {
+    user_agent: navigator.userAgent,
+    language: navigator.language,
+    platform: navigator.platform,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    screen: screen.width + 'x' + screen.height,
+    color_depth: screen.colorDepth,
+    hardware_concurrency: navigator.hardwareConcurrency || null
+  };
+}
+
+         
+function safeParam(value) {
+    return value ? decodeURIComponent(value) : null;
+}
+
+
+
+      
+      document.addEventListener('DOMContentLoaded', function () {
+
+  const key = 'visitor_id';
+  const visitorId = localStorage.getItem(key);
+  if (!visitorId) return;
+
+  const interval = setInterval(function () {
+    const klaviyoForm = document.querySelector(
+      'form[data-testid="klaviyo-form-T3U6cb"]'
+    );
+
+    if (klaviyoForm && window._learnq) {
+      console.log('Klaviyo form detected, pushing identify');
+
+      window._learnq.push([
+        'identify',
+        { wander: visitorId }
+      ]);
+
+      clearInterval(interval);
+    }
+  }, 200); // revisa cada 200ms
+});
+
+      
+      
+    
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,558 @@
+title = "Paquetes"
+url = "/packs"
+layout = "layout"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[builderList sliders]
+modelClass = "Eduard\Slider\Models\Slider"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList ciudadesList]
+modelClass = "Roll\Cabanas\Models\Ciudad"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[paquetes getPaquetes]
+
+[builderList faqsList]
+modelClass = "Eduard\Descuentos\Models\Faqs"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "pregunta"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% put pagetitle %}Escápate con Nuestros Paquetes Todo Incluido en Cabañas{% endput %}
+
+{% put metatitle %}Escápate con Nuestros Paquetes Todo Incluido en Cabañas {% endput %}
+
+{% put metadescription %}Reserva ahora y ahorra hasta un 45% con nuestros paquetes Escapada a menudo. Quédate más tiempo, gasta menos. Excluye ciertas suites.{% endput %}
+
+{% set sliders = sliders.records %}
+{% set paquetes = null %}
+{% set ciudades = ciudadesList.records %}
+{% set preguntas = faqsList.records %}
+
+
+<script src="{{ 'assets/vendor/lozad/dist/lozad.min.js'|theme }}"></script>
+
+
+{% put scriptinicio %}
+
+<script type="text/javascript" src="{{'assets/js/scripts/layoutScripts.min.js'|theme}}"></script>
+
+
+{% endput %}
+<script src="{{'assets/vendor/swipebox/src/js/jquery.swipebox.min.js'| theme}}"></script>
+
+{% put styles %}
+    <link href="{{'assets/vendor/ubis/ubis_style.min.css'|theme}}" rel="stylesheet" />
+        <link href="{{'assets/vendor/swipebox/src/css/swipebox.min.css'|theme}}" rel="stylesheet" />
+
+{% endput %}
+
+<style>
+
+@media (max-width: 768px) {
+    .PackSelectCard__flexColumn_buttons {
+        flex-direction: column;
+    }
+
+    .PackSelectCard__flexColumn_buttons button {
+        width: 100%;
+        min-width: unset;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .PackSelectCard__flexColumn_buttons button:last-child {
+        margin-bottom: 0;
+    }
+}
+
+</style>
+
+<div id="loadingModal" class="loading-modal" style="display: none;">
+  <img src="{{ 'assets/img/logos/wander-full-white.svg'|theme }}" alt="Wander" class="loading-image">
+  <p style="font-family: 'Oswald',sans-serif;font-size:1.5em;color:#ffffff;" class="loading-message">Cargando...</p>
+</div>
+
+
+
+<article class="bg-gen">
+
+
+
+
+        
+    <section class="hero-sec" id="hero-sec">
+
+      <div class="contHeroSlide">
+
+        <div class="slide-principal">
+
+
+          {% for slider in sliders %}
+            {% if slider.nombre == "Principal"%}
+                 {% for image in slider.images %}
+
+                    <div>  
+                        <div class="contHeroSlide__slider" >
+                                                
+                                <picture>
+                                            
+                                     <source class="lozad" media="(min-width: 1200px)"   width="1200" height="675"   alt="{{image.title}}" data-src="{{ image.path | resize(1200)}}">
+                                                
+                                     <source class="lozad" media="(min-width: 768px)"    width="1200" height="675"   alt="{{image.title}}" data-src="{{ image.path | resize(800) }}">
+                                                
+                                     <source class="lozad" media="(min-width: 320px)"    width="1200" height="675"   alt="{{image.title}}" data-src="{{ image.path | resize(400)}}">
+                                                
+                                     <img class="sliderImage"  src="{{ image.path }}" alt="{{image.title}}" width="1200" height="675"   >
+                                                
+                                </picture>
+                                                
+                           </div><!-- end.contHeroSlide__slider -->             
+                        </div><!-- end.itemSlide -->      
+                                                               
+                     {% endfor %}                 
+                {% endif %}
+            {% endfor %}
+        
+
+
+  
+
+
+
+        </div><!-- end.slide-principal -->
+
+        <!-- <button class="btnSlideProd bLeftP" id="prevslideHomeMain"></button>
+
+        <button class="btnSlideProd nRightP" id="nextslideHomeMain"></button> -->
+
+      </div><!-- end.conteHero -->
+
+    </section><!-- end.hero-sec -->
+    
+    <div class="ctFrmSt">
+                
+    
+            <section class="row location contentLoc grayL" id="contFormCal" style="background-color:#FAFAFA!important"><!-- end.hero-sec -->
+            
+            
+                <div class="PackSelection__container__BY+7V">
+                        <h2 class="PackSelection__title__l-e92" style="color:#DF7016!important">Ahorra en tu Escape a la Naturelaza</h2>
+                        <p class="PackSelection__description__DQML3">Pasa más tiempo en la naturaleza, ahorra más en tus escapadas: hasta un <strong>45% de descuento</strong>. Es así de simple con los paquetes Escapada a menudo, nuestros paquetes de varias noches diseñados para ayudarte a quedarte más tiempo por menos. En otras palabras, más tiempo libre para hacer las cosas que más importan. No incluye camarotes clásicos con suites exteriores. 
+                            ¿Preguntas? Consulte nuestras  <a href="#faqsContent" class="PackSelection__faqs__8XutP" style="color:#69745D!important"> preguntas frecuentes </a></p></div>
+        
+            </section><!-- end.hero-sec -->
+             
+     
+            <section class="contentLoc newUbic" id="locaciones">
+
+                <div class="container">
+
+                  <div class="row">
+
+                    <div class="col-12">
+
+                      <div class="titleNewUbi">
+
+
+
+
+                                
+                                                    <h2 class="SelectLocation__header__GWDiC">Elige tu Destino</h2>
+                                <div style="max-width: 600px; margin: 0px auto;">
+                                
+                                            
+                                                   <div class="form-group inputSelect wIn" style="width: 100%!important; border-bottom: 1px solid #272728;" data-input-home>
+                                                      <input type="hidden" name="locacion" id="locacion" value="">       
+                                                      <div class="selectFormContact" style="width: 100%!important;">
+                                                        <a href="#" class="collOpenForm" id="openOpsForms">
+                                                          <span class="labelInp"><i class="fa fa-map-marker"></i> Destino</span>
+                                                          <span id="textChange" class="responseText">Destino</span>
+                                                        </a><!-- end.collOpenForm -->
+                                                        <nav id="navOpcionform">
+                                                          <ul id="locationList">
+                                                            {% for ciudad in ciudades %}
+                                                              <li><p>{{ ciudad.nombre }} </p></li>
+                                                              {% for ubicacion in ciudad.ubicaciones %}
+                                                                <li><a class="btnFormContact" id="ubicacion-{{ubicacion.id}}" href="#" onclick="selectPack('{{ubicacion.id}}')" data-valor="ubicacion-{{ubicacion.id}}">{{ubicacion.nombre}}</a></li>
+                                                              {% endfor %}
+                                                            {% endfor %}
+                                                          </ul>
+                                                        </nav><!-- end.navOpcionform -->
+                                                      </div><!-- end.selectFormContact -->
+                                                    </div><!-- end.selectUbicacion -->
+                                                                    
+             
+                                                
+       
+                            </div>
+
+
+
+                <div id="selPaquetes">
+                
+                {% partial 'paquetes' %}
+                                
+                    </div>
+                        
+
+                      </div><!-- end.titleNewUbi -->
+
+                    </div><!-- end.col-* -->
+
+                  </div><!-- end.row -->
+
+                </div><!-- end.container -->
+              
+
+                  
+
+            </section>
+            
+            <div class="HowPacksWork__container__gFZOM">
+    <section class="HowPacksWork__subContainer__wR+IE">
+        <h2 class="HowPacksWork__title__5QXo0">Cómo funcionan los paquetes</h2>
+        <div class="HowPacksWork__items__ICcNC">
+            <div class="HowPacksWork__item__-AzCM">
+                <h3 class="HowPacksWork__itemTitle__mTWUV">Elige tu paquete</h3>
+                <div class="HowPacksWork__itemDescription__0t3Yg">
+                    <p style="">Selecciona el pack que mejor se adapte a tu horario. Después de la compra, se acreditará en su cuenta el código promocional de su paquete.</p>
+
+                </div>
+            </div>
+            <div class="HowPacksWork__item__-AzCM">
+                <h3 class="HowPacksWork__itemTitle__mTWUV">Reserva cuando quieras</h3>
+                <div class="HowPacksWork__itemDescription__0t3Yg">
+                    <p>Elija las fechas y la cabaña. Al hacer la reserva, su crédito se aplicará automáticamente. Recibirás la información de tu cabaña la semana de tu estancia.</p>
+                </div>
+            </div>
+            <div class="HowPacksWork__item__-AzCM">
+                <h3 class="HowPacksWork__itemTitle__mTWUV">Desconectate</h3>
+                <div class="HowPacksWork__itemDescription__0t3Yg"><p>Aléjate. Disfruta de los beneficios de la naturaleza y de un verdadero descanso. Habla con tus seres queridos o disfruta de la magia del bosque. Repetir.</p></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+         
+         
+                     <section id="faqs" class="faqsCt" style="background-color:#FAFAFA!important">
+
+                <div class="container">
+
+                  <div class="row justify-content-center">
+
+                    <div class="col-12">
+
+                      <div class="faqsCt__desc">
+
+                        <img class="iconWander lozad"  width="100" height="100"   data-src="{{ 'assets/img/logos/icono-wander-green.svg'|theme }}" alt="Wander" loading="lazy">
+
+                        <div class="h2" style="color:#69745D!important">Preguntas Frecuentes</div>
+
+                      </div>
+
+                    </div><!-- end.col-* -->
+
+                    <div class="col-12 col-md-8 col-lg-7">
+            
+
+                      <div class="accordion faqsList" id="faqsContent" >
+
+
+                            {% for pregunta in preguntas %}
+        
+                                <div class="card">
+        
+                                  <div class="card-header" style="background-color:#69745D!important" id="title-faq-{{pregunta.id}}">
+        
+                                    <div class="h2" class="mb-0">
+        
+                                      <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#faq-{{pregunta.id}}"
+        
+                                        aria-expanded="false" aria-controls="faq-{{pregunta.id}}">
+        
+                                        {{pregunta.pregunta}}
+        
+                                      </button>
+        
+                                    </div>
+        
+                                  </div>
+        
+                                  <div id="faq-{{pregunta.id}}" class="collapse" aria-labelledby="title-faq-{{pregunta.id}}" data-parent="#faqsContent">
+        
+                                    <div class="card-body">
+        
+                                      {{pregunta.respuesta}}
+        
+                                    </div>
+        
+                                  </div>
+        
+                                </div><!-- end.card-itemFaq -->
+        
+                            {% endfor %}            
+
+
+                      </div><!-- end.accordion --> 
+
+            
+
+                    </div><!-- end.col-* -->
+
+
+
+                  </div><!-- end.row -->
+
+                </div><!-- end.container -->
+
+            </section><!-- end.faqsCt -->
+            
+            
+    </div><!-- end.ctFrmSs -->
+
+</article>
+
+
+
+<script type="text/javascript">
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Selecciona el primer enlace con la clase .btnFormContact
+    var primerUbicacion = document.querySelector('#locationList .btnFormContact');
+    if (primerUbicacion) {
+       let ubi =  primerUbicacion.id.split("-");
+       let id = ubi[1];
+       console.log(id);
+       
+
+          $.request('getPaquetes::onGetPacks', {
+            data: {
+              id: id
+            },
+            update: {
+              'paquetes': '#selPaquetes'
+            },
+            complete: function() {
+
+
+        var selectedText = document.querySelector('#'+primerUbicacion.id).textContent;
+        document.getElementById('textChange').textContent = selectedText;    
+        
+        document.getElementById("openOpsForms").classList.add("activeRes");
+
+}
+          });
+          
+          
+
+    }
+});
+
+/*
+window.onload = function() {
+    var imgPop = document.querySelector('.img-pop');
+
+  if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+        imgPop.src = 'https://demo.wandercabins.mx/storage/app/media/Hot%20Sale%20Wander%20Pop%20Up%20Vertical.png';
+    }
+};
+*/
+
+
+
+
+
+
+  let navegador = navigator.userAgent;
+
+
+
+
+  let barMovil = document.getElementById('barMovil');
+
+
+
+  if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+     // console.log("Estás usando un dispositivo móvil!!");
+
+     
+      var toHide = document.getElementById('contentForm');
+            if (toHide) {
+                toHide.style.display = 'none'; // O puedes usar 'visibility: hidden;' si deseas mantener el espacio ocupado.
+            }
+            
+      
+  } 
+  
+  window.addEventListener('load', function() {    
+    const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+    observer.observe();
+
+      var formReserva = document.getElementById('contFormCal');
+      var imagen = document.getElementById('hero-sec');
+      var banerCupon = document.getElementById('banerCupon');
+      
+      if (imagen && banerCupon) {          
+                calcularBannerUbicacion();
+        }
+      if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+
+            barMovil.style.display = "none";
+              $('.stickyForm').css('position', 'absolute');
+       }
+        
+
+  
+    });
+
+
+
+
+    function view(){
+     // var elementToHide = document.getElementById('contentForm');
+    //  toHide.style.display = 'block'; // 
+
+
+                  $('.stickyForm').css('position', 'fixed');
+                  
+                  var formResLocationShow = document.getElementById('contFormCal-1');
+                            formResLocationShow.style.display = "block";
+
+
+
+
+        // }
+                 
+      $('.actions').css('display', 'none');
+      console.log('press');
+  
+    }
+
+
+    $(document).ready(function() {
+        
+
+         let  pagina = 'locations'; 
+
+        $(".description-container").each(function() {
+            var description = $(this).find(".expandable-description");
+            var link = $(this).find(".read-more-link");
+    
+            // Si la descripción rebasa la altura máxima, mostrar el enlace
+            if (description[0].scrollHeight > description.innerHeight()+1) {
+                link.show();
+            } else {
+                link.hide();
+            }
+    
+            // Manejar el clic en el enlace
+            link.click(function() {
+                description.toggleClass("expanded");
+                if (description.hasClass("expanded")) {
+                    link.text("Leer menos");
+                } else {
+                    link.text("Leer más");
+                }
+            });
+        });
+        
+          // Variable para rastrear el estado del contenido
+          var contenidoMostrado = false;
+          // Ocultar los elementos después del sexto inicialmente
+         if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+                            
+                $(".InYourCabin__categoryItem__MEPqh:gt(3)").hide();
+
+              }
+             else{
+                $(".InYourCabin__categoryItem__MEPqh:gt(5)").hide();
+
+                 }
+                 
+          var boton = $(".InYourCabin__showMore__YLB8t");
+        //  var textB = $(".InYourCabin__buttonFlex__text");
+
+          // Agregar un controlador de eventos al botón
+          boton.click(function() {
+            if (contenidoMostrado == false) {
+              // Mostrar todos los elementos si no se han mostrado antes
+              $(".InYourCabin__categoryItem__MEPqh").show();
+              contenidoMostrado = true;
+                document.getElementById('textoBoton').textContent = 'Ocultar los servicios de la cabaña';
+                //textB.text("Ocultar los servicios de la cabaña");
+            } else {
+                contenidoMostrado = false;
+
+              // Mostrar u ocultar los elementos después del sexto alternativamente
+                if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+                                    
+                    $(".InYourCabin__categoryItem__MEPqh:gt(3)").hide();
+                }
+                  else{
+                        $(".InYourCabin__categoryItem__MEPqh:gt(5)").hide();
+                }
+                                      // Cambiar el texto del botón
+                   document.getElementById('textoBoton').textContent = 'Ver todos los servicios de la cabaña';
+
+                    textB.text("Ver todos los servicios de la cabaña");
+             }
+          });
+    });
+
+
+
+        
+        
+        function selectPack(id){
+          $('#loadingModal').show();
+          //var selectedValue = $(this).val(); // Obtener el valor seleccionado
+        
+          $.request('getPaquetes::onGetPacks', {
+            data: {
+              id: id
+            },
+            update: {
+              'paquetes': '#selPaquetes'
+            },
+            complete: function() {
+              $('#loadingModal').hide();
+            }
+          });
+      };
+    
+
+        
+        
+</script>
+
+<script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'disableScrolling':true,
+      'fitImagesInViewport':true,
+      'showImageNumberLabel':false
+    })
+</script>

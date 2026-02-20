@@ -1,0 +1,337 @@
+title = "Crear Paquetes"
+url = "/crear-paquetes/:ubicacion?"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[builderList ubicacionesList]
+modelClass = "Roll\Cabanas\Models\Ubicacion"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<style>
+  .PageContainer{
+    background: #f7f5f1 !important;
+    
+  }
+.reservaCt .wizard .steps{
+    background-color:#f7f5f1;
+    }
+    
+.reservaCt .descReservar{
+    background-color:#f7f5f1;
+    }
+  
+.loading-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #818c70cc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-image {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.loading-message {
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+.slick-dots{
+bottom:30px!important;
+}
+
+.boxTool{
+    font-family: "Oswald",sans-serif;
+    margin-right: 10px;
+    font-weight: 500;
+    }
+    
+.cabinPrice p {
+    text-align: right;
+   /* color: #ffffff;*/
+    margin: 0;
+    padding: 0;
+    font-family: "Oswald",sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+  .centeredNav {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Optional: If you want to align the list items horizontally */
+  .centeredNav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .centeredNav li {
+    margin-right: 15px;
+  }
+  .inputSelect.wIn{
+      display: flex;
+    justify-content: center;
+   /* flex-flow: wrap;*/
+    }
+
+.selectFormContact{
+        position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.selectFormContact,.selectFormContact nav{width:250px;}    
+
+@media (min-width: 768px){
+    .selectFormContact{width:95%}
+    .selectFormContact nav{width:100%}    
+}
+
+.selectFormContact .collOpenForm{
+    width: 100%;
+    height: 40px;
+    padding: 5px 10px;
+    margin: 0;
+    background-color: #ffffff;
+    text-align: left;
+    display: block;
+    color: #0c282a;
+    line-height: 40px;
+    border-radius: 4px;
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+        border: 1px solid #0c282a45;
+    }
+
+    .activeLabel {
+        visibility:visible!important;
+    }
+    
+    .selectFormContact .collOpenForm{
+        padding: unset;
+        }
+ 
+    .selectFormContact .collOpenForm .labelInp {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: all 300ms ease,visibility 0s;
+    transition: all 300ms ease,visibility 0s;
+      
+
+
+}
+
+    .labelTitleInp {
+        font-family: "Oswald",sans-serif;
+        text-transform: uppercase;
+        font-size: calc(12px + 2 * ((100vw - 320px) / 880));
+        letter-spacing: 1.2px;
+        margin: 0 0 5px;
+        padding: 0;
+        color: #818C70;
+        font-weight: 400;
+    }
+    .flex-direction-unset
+    {
+    flex-direction:unset!important;
+    position: absolute!important;
+    }
+  
+
+    
+  .selectFormContact .collOpenForm.activeRes .responseText  {
+  
+        font-family: "Oswald",sans-serif;
+        text-transform: uppercase;
+        font-size: calc(14px + 2 * ((100vw - 320px) / 880));
+        margin-left: 10px;
+  }
+  
+  .navOpcionform{
+      z-index:99!important;
+      }
+ </style>
+ 
+
+{% set ubicaciones = ubicacionesList.records %}
+
+<article class="bg-gen">
+  <section class="descFull">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>Crear Paquetes</h2>
+          {% for ubicacion in ubicaciones %}
+              {% if ubicacion.disponible == 1 %}
+                  <a href="{{'reservascion-manual'|page ({ubicacion:ubicacion.id})}}" class="btnpr btnpr__primary btnpr__primary--border nB">{{ubicacion.nombre}}</a>
+              {% endif %}
+          {% endfor %}       
+          
+          
+          {% flash %}
+                <div class="alert alert-warning" style="text-align:center;">
+                    {{ message }}
+                </div>
+            {% endflash %}
+         </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+ 
+    {{ form_ajax('onPaquetes')}}
+                  
+          <section class="descFull">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="row" data-input-home>
+                    <div class="col-12">
+                      <h4>Detalles del Paquete</h4>
+                    </div>
+                    <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+                      <label for="nombre">Nombre</label>
+                      <input type="text"  autocomplete="off"  class="form-control" name="nombre" id="nombre">
+                    </div>
+        
+                    <div class="col-12 col-md-4" style="margin-bottom: 20px;">
+                      <label for="correo">Costo Hospedaje</label>
+                      <input type="number"  autocomplete="off" class="form-control" name="hospedaje" id="hospedaje">
+                    </div>
+        
+                    <div  class="col-4 col-sm-2 col-md-2 col-xl-2">
+                      <label for="inicio">Desde</label>
+                      <input type="date"  autocomplete="off" class="form-control" name="inicio" id="inicio">
+                    </div>
+                                
+                   <div  class="col-4 col-sm-2 col-md-2 col-xl-2">
+                      <label for="fin">Hasta</label>
+                      <input type="date"  autocomplete="off" class="form-control" name="fin" id="fin">
+                    </div>
+                    
+                </div>
+        
+                    <div class="col-12 col-md-4" style="margin-bottom: 20px;">
+                      <label for="Telefono">Teléfono</label>
+                      <input type="text"   autocomplete="off" class="form-control" name="telefono" id="telefono">
+                    </div>
+                    <div class="col-12 " style="margin-bottom: 20px;">
+                        <label for="nacimiento-a">Fecha de nacimiento</label>
+                    </div>
+                    <div class="col-12 col-md-3" style="margin-bottom: 10px;">
+                      <input type="number"  min="1923"  max="2023"  autocomplete="off" class="form-control" name="reserva-a" id="nacimiento-a" placeholder="AAAA">
+                    </div>
+                    <div class="col-12 col-md-3" style="margin-bottom: 10px;">
+                      <input type="number"  min="1"  max="12"   autocomplete="off" class="form-control" name="reserva-m" id="nacimiento-m" placeholder="MM">
+                    </div>
+                    <div class="col-12 col-md-3" style="margin-bottom: 10px;">
+                      <input type="number" min="0"  max="31" autocomplete="off" class="form-control" name="reserva-d" id="nacimiento-d" placeholder="DD">
+                    </div>
+        
+                    <div class="col-6 col-md-4" style="margin-bottom: 10px;">
+                      <label for="metodo_pago">Metodo de Pago</label>
+                      <select class="form-control"  name="metodo_pago" id="metodo_pago" >
+                        <option value="Ninguno">Ninguno</option>
+                        <option value="Transferencia Directa">Transferencia</option>
+                        <option value="Paypal">Paypal</option>
+                        <option value="Airbnb">Airbnb</option>
+                        <option value="Big Box">Big Box</option>
+                        <option value="Tarjeta-Manual">Tarjeta Credito/Debito</option>
+                      </select>
+                    </div>
+        
+                    <div class="col-6 col-md-4" style="margin-bottom: 10px;">
+                      <label for="origen_reserva">Origen de Reserva</label>
+                      <select class="form-control"  name="origen_reserva" id="origen_reserva" >
+                        <option value="">Ninguno</option>
+                        <option value="Email">Email</option>
+                        <option value="Mensaje">Mensaje</option>
+                        <option value="LLamada">LLamada</option>
+                      </select>
+                    </div>
+        
+                    <div class="col-6 col-md-4" style="margin-bottom: 10px;">
+                      <label for="campania">Campaña</label>
+                      <select class="form-control"  name="campania" id="campania" >
+                        <option value="">Ninguno</option>
+                        <option value="Cumpleaños">Cumpleaños</option>
+                        <option value="Loyalty">Loyalty</option>
+                        <option value="Promocion">Promocion</option>
+                      </select>
+                    </div>
+        
+                    <div class="col-6 col-md-4" style="margin-bottom: 10px;">
+                      <label for="tipo_contacto">Tipo de Contacto</label>
+                      <select class="form-control"  name="tipo_contacto" id="tipo_contacto" >
+                        <option value="">Ninguno</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Pasivo">Pasivo</option>
+                      </select>
+                    </div>
+        
+        
+                    <div class="col-6 col-md-4" style="margin-bottom: 10px;">
+                      <label for="total">Total</label>
+                      <input type="number" class="form-control" name="total" id="total" value="{{total}}">
+                    </div>
+                    
+                    <div class="col-12 text-center">
+                      <button type="submit" class="btnpr btnpr__primary btnpr__primary--border nB">Confirmar reservación</button>
+                    </div>
+                  </div><!-- end.row -->
+                </div>
+        
+              </div>
+            </div>
+          </section>
+          
+          
+      
+    {{ form_close() }}
+
+
+
+
+<div id="servicios"></div>
+
+        
+        </div>
+      </div>
+    </div>
+  </section>
+</article>

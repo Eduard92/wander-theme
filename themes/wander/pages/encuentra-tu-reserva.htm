@@ -1,0 +1,76 @@
+title = "Gestion de Reservas"
+url = "reservar/gestion-reserva"
+layout = "layout"
+is_hidden = 1
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[miReserva]
+==
+<h3 style="margin-top: 20px;">Gestion de Reservas</h3>
+
+                      <div class="descBoxCabinsNew">
+                            <div class="titleGeta" >Para encontrar una reserva y ver los detalles ingresa el ID de reserva o correo electrónico del cliente .</div>
+                      </div><!-- end.descBoxCabinsNew -->
+                      
+                      
+    {{ form_ajax('onSearch')}}
+        <div class="row" style="min-width:450px;">
+        
+
+                <div class="col-12" style="margin-bottom: 20px;">
+                  <label for="id_reserva"></label>
+                  <input type="text" class="form-control" name="correo" id="correo" required placeholder="Ingresa tu correo electronico">
+                </div>
+                <div class="col-12" style="margin-bottom: 20px;">
+
+            <button type="submit" id="btnBuscar" class="btnCtaGen__link btnCtaGen__link--rounded" style="width:120px;">Buscar</button>
+
+
+<div id="loaderOverlay" style="
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+">
+  <img src="https://i.gifer.com/ZZ5H.gif" alt="Cargando..." style="width:80px;">
+</div>
+
+
+                        <div id="error"style="margin-top: 20px;"></div>
+
+                </div>
+        </div>
+        
+    {{ form_close() }}
+
+    <div class="row" style="min-width:450px;">
+        
+        
+        <div class="col-12">
+        
+                <div id="result" style="margin-top: 20px;"></div>
+
+    </div>
+    
+    
+<script>
+const btnBuscar = document.getElementById('btnBuscar');
+const loaderOverlay = document.getElementById('loaderOverlay');
+
+document.querySelector('form').addEventListener('submit', function(e) {
+  btnBuscar.style.display = 'none';
+  loaderOverlay.style.display = 'flex';
+  document.getElementById('error').innerHTML = '';
+  document.getElementById('result').innerHTML = '';
+});
+
+$(document).on('ajaxSuccess ajaxError', function() {
+  loaderOverlay.style.display = 'none';
+  btnBuscar.style.display = 'inline-block';
+});
+
+</script>

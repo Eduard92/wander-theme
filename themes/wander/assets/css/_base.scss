@@ -1,0 +1,143 @@
+/* ===========================
+   Base
+   =========================== */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: $white; font-family: $minionr; color: $black; font-weight: 300; overflow-x: hidden; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; padding: 0; margin: 0; line-height: 1.2;
+  &.bloquear {
+    overflow: hidden;
+  }
+}
+*:focus { outline:none !important; box-shadow: none!important; }
+.stripe-loading-indicator .stripe, .stripe-loading-indicator .stripe-loaded {
+  background: $col1 !important;
+}
+::-webkit-selection {
+  color: $white; background: $col1;
+}
+::-moz-selection {
+  color: $white; background: $col1;
+}
+::selection {
+  color: $white; background: $col1;
+}
+
+// Link Item
+a {
+  color: $col2; text-decoration: underline;
+  &:hover {
+    @include transition(all 0.25s); text-decoration: none; color: $c7;
+  }
+}
+
+// Párrafos
+p {
+  @include fluid-type(13px, 16px, 320px, 1200px);
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-family: $acuminbd; font-weight: 400;
+}
+h1 { @include fluid-type(18px, 40px, 320px, 1200px); }
+h2 { @include fluid-type(17px, 32px, 320px, 1200px); }
+h3 { @include fluid-type(16px, 28px, 320px, 1200px); }
+h4 { @include fluid-type(15px, 24px, 320px, 1200px); }
+h5 { @include fluid-type(14px, 20px, 320px, 1200px); }
+h6 { @include fluid-type(13px, 16px, 320px, 1200px); }
+
+// Utilidades
+.wow {
+  visibility: hidden; @include transform-origin(0 50%);
+}
+
+// Modal Estilos
+.overlayGenerico {
+  @extend .overlayClass; background-color: rgba($black,0.50); z-index: 100; @include displayFlex(flex, column, center, center, wrap); opacity: 0; visibility: hidden; overflow: hidden;
+}
+.btnCloseModal {
+  width: 40px; height: 40px; display: block; text-align: center; line-height: 40px; margin: 0; padding: 0; color: $col1; background-color: transparent; @include position(absolute, 0 0 null null); z-index: 4150; font-size: rem(25); border: none; cursor: pointer; border-radius: 0; box-shadow: none;
+}
+.modalAviso {
+  width: 100%; max-width: 300px; height: auto; background-color: $white; border: none; @include box-sizing(border-box); padding: 0; margin: 0; border-radius: 5px; top: -300%; position: relative;
+  .contentInfo {
+    width: 100%; height: auto; overflow-y: auto; overflow-x: hidden; padding: 20px 20px; margin: 0; text-align: center;
+    h3 {
+      color: $col1; vertical-align: middle; @include fluid-type(14px, 18px, 320px, 1200px);
+    }
+    p {
+      color: $black;
+      strong {
+        font-weight: 700;
+      }
+    }
+    &:after {
+      content: ''; width: 100%; height: 40px; @include linear-gradient(rgba($white, 1.0), rgba($white, 0)); @include position(absolute, null null 0 0); z-index: 3; display: none;
+    }
+    & .contentForms {
+      & form {
+        margin: 0;
+        label {
+          display: inherit!important;
+        }
+        & .btnpr {
+          margin: 0;
+        }
+      }
+      & .recuperaCont {
+        margin: 10px 0 20px; text-align: center;
+      }
+      & .loginCont {
+        margin: 20px 0 0; text-align: center;
+      }
+      & p {
+        @include fluid-type(14px, 16px, 320px, 1200px); margin: 0; padding: 0;
+      }
+    }
+  }
+  @media all and (min-width: 480px) {
+    max-width: 400px;
+  }
+  @media all and (min-width: 768px) {
+    // max-width: 600px;
+    .contentInfo {
+      // height: 400px;
+      ul {
+        li {
+          width: 16.666666%;
+        }
+      }
+    }
+  }
+  @media all and (min-width: 1000px) {
+    .contentInfo {
+      height: auto;
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+.no-padding {
+  padding-left: 0!important; padding-right: 0!important;
+}
+.btnWha {
+  width: 50px; height: 50px; margin: 0; padding: 0; border-radius: 50px; display: block; @include position(fixed, null 20px 20px null); background-color: $whats; color: $white; text-align: center; line-height: 49px; border: none; font-size: 33px; z-index: 100000;
+  &:hover,
+  &:active {
+    color: $white;
+  }
+}
+
+// Estilos Pre-Loader
+.fadeX {
+  @include transition(all 300ms linear 700ms); @include transform(translate3d(0,0,0)); opacity: 1;
+  &.out {
+    opacity: 0; z-index: -1;
+  }
+}
+.overProgress {
+  @extend .overlayClass; background-color: rgba($col1, 0.95); z-index: 200;
+}

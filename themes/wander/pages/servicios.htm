@@ -1,0 +1,300 @@
+title = "Servicio"
+url = "/servicios/:id"
+layout = "layout"
+description = "Servicios"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[builderDetails servicio]
+modelClass = "Roll\Cabanas\Models\Servicio"
+identifierValue = "{{ :id }}"
+modelKeyColumn = "id"
+displayColumn = "nombre"
+notFoundMessage = "Registro no encontrado"
+==
+<style>
+/* ==============================================
+   ESTILOS PARA PRESENTACIÓN DE PRODUCTO/SERVICIO
+   ============================================== */
+
+/* Contenedor principal del producto */
+.AddOnCategory__container__SwFF- {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Título de categoría */
+.AddOnCategory__title__9sOvz {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Contenedor de addons/productos */
+.AddOnCategory__addons__WsYXa {
+  display: grid;
+  gap: 20px;
+}
+
+/* Contenedor individual del producto */
+.AddOnPreview__container__A1tp0 {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.AddOnPreview__container__A1tp0:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ==============================================
+   CAROUSEL / SLIDER
+   ============================================== */
+
+.Carousel__slider__IsQJ2 {
+  width: 100%;
+  position: relative;
+  background: #f8f9fa;
+}
+
+.slider {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slider-list {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slider-slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagen del carousel */
+.Carousel__overlayImg__TYhyJ {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.Carousel__overlayImg__TYhyJ:hover {
+  opacity: 0.95;
+}
+
+/* Link de lightbox */
+.slider-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-in;
+}
+
+/* ==============================================
+   INFORMACIÓN DEL PRODUCTO
+   ============================================== */
+
+.AddOnPreview__subContainer__1Wt9u {
+  padding: 24px;
+}
+
+/* Nombre y precio */
+.AddOnPreview__namePriceContainer__YacrY {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.AddOnPreview__name__CoUn6 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  flex: 1;
+}
+
+.AddOnPreview__price__pxc1I {
+  font-size: 24px;
+  font-weight: 700;
+  color: #818c70;
+  white-space: nowrap;
+}
+
+/* ==============================================
+   DESCRIPCIÓN EXPANDIBLE
+   ============================================== */
+
+.AddOnPreview__descriptionContainer__RlNGg {
+  width: 100%;
+}
+
+.description-container {
+  position: relative;
+  min-height: 8em;
+  padding: 0;
+}
+
+.AddOnPreview__description__jOho\+ {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+
+
+/* ==============================================
+   RESPONSIVE
+   ============================================== */
+
+@media (max-width: 768px) {
+  .slider {
+    height: 300px;
+  }
+  
+  .AddOnPreview__subContainer__1Wt9u {
+    padding: 16px;
+  }
+  
+  .AddOnPreview__name__CoUn6 {
+    font-size: 18px;
+  }
+  
+  .AddOnPreview__price__pxc1I {
+    font-size: 20px;
+  }
+  
+  .AddOnPreview__namePriceContainer__YacrY {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider {
+    height: 250px;
+  }
+  
+  .AddOnCategory__container__SwFF- {
+    padding: 12px;
+  }
+}
+</style>
+
+{% set servicio = servicio.record %}
+
+<article class="bg-gen">
+  <div class="reservaCt">
+
+    <section>
+      <div class="extrasCt">
+        <div class="container" style="margin-right:auto; margin-left:auto;">
+          <div class="row justify-content-center">
+            <div class="col-12">
+
+              <div style="position: relative;">
+                <div style="top:-80px; position:absolute;"></div>
+
+                <div class="AddOnCategory__container__SwFF-">
+                  <div class="AddOnCategory__title__9sOvz"></div>
+
+                  <div class="AddOnCategory__addons__WsYXa">
+                    <div class="AddOnPreview__container__A1tp0">
+
+                      <!-- SLIDER -->
+                      <div class="Carousel__slider__IsQJ2">
+                        <section class="slider" aria-label="carousel-slider" role="region" tabindex="0"
+                          style="box-sizing:border-box; display:block; position:relative; width:100%;">
+
+                          <div aria-live="polite" aria-atomic="true" tabindex="-1"
+                            style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">
+                            Slide 1 of 1
+                          </div>
+
+                          <div class="slider-frame"
+                            style="overflow:hidden; position:relative; height:100%;">
+                            <div class="slider-list"
+                              style="position:relative; height:404px;">
+
+                              <div class="slider-slide slide-visible slide-current"
+                                role="group"
+                                style="width:100%;">
+
+                                <a href="{{ servicio.foto.path }}"
+                                   data-lightbox="servicio-{{servicio.slug}}"
+                                   data-title="{{servicio.nombre}}">
+                                  <img
+                                    data-src="{{ servicio.foto.path  | resize(1200)}}"
+                                    alt="{{servicio.nombre}}"
+                                    class="Carousel__overlayImg__TYhyJ lozad"
+                                    loading="lazy">
+                                </a>
+
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                      <!-- /SLIDER -->
+
+                      <!-- INFO -->
+                      <div class="AddOnPreview__subContainer__1Wt9u">
+                        <div class="AddOnPreview__namePriceContainer__YacrY">
+                          <div class="AddOnPreview__name__CoUn6">
+                            {{ servicio.nombre }}
+                          </div>
+                          <div class="AddOnPreview__price__pxc1I">
+                            ${{ servicio.precio_sab }}
+                          </div>
+                        </div>
+
+                        <div style="min-height:200px; width:100%;">
+                          <div class="AddOnPreview__descriptionContainer__RlNGg">
+                            <div class="description-container" style="padding:0;">
+                              <div class="AddOnPreview__description__jOho+ expandable-description">
+                                {{ servicio.descripcion }}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /INFO -->
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</article>

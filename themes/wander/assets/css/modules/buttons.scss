@@ -1,0 +1,205 @@
+/* ==|====================
+   Modules/Buttons
+   ======================= */
+.btnSlideProd {
+  width: 30px; height: 100%; border: none; outline: 0; display: block; padding: 0; margin: 0; cursor: pointer; @include transition(all 0.23s); @include position(absolute, 0 null null null); opacity: 1.0;
+  &:before {
+    content: ''; width: 23px; height: 23px; @include position(absolute, 50% null null 50%); @include transform(translate(-50%, -50%)); background-position: center; background-repeat: no-repeat; background-size: 100%;
+  }
+  &.bLeftP {
+    left: 0; @include linear-gradient(to left, rgba($col1, 0) 0%, rgba($col1, 1.0) 50%);
+  }
+  &.nRightP {
+    right: 0; @include linear-gradient(to right, rgba($col1, 0) 0%, rgba($col1, 1.0) 50%);
+  }
+  &.slick-disabled {
+    display: none; opacity: 0;
+  }
+  @media all and (min-width: 768px) {
+    width: 40px;
+    &.bLeftP {
+      left: 5px;
+    }
+    &.nRightP {
+      right: 5px;
+    }
+  }
+  @media all and (min-width: 1280px) {
+    width: 50px;
+    &:before {
+      width: 30px; height: 30px;
+    }
+    &.bLeftP {
+      left: 5px;
+    }
+    &.nRightP {
+      right: 5px;
+    }
+  }
+  @media all and (min-width: 1366px) {
+    width: 60px;
+    &.bLeftP {
+      left: -10px;
+    }
+    &.nRightP {
+      right: -10px;
+    }
+  }
+}
+.btnSlideRes {
+  width: 25px; height: 50px; border: none; outline: 0; display: block; padding: 0; margin: 0; cursor: pointer; @include transition(all 0.23s); @include position(absolute, 50% null null null); opacity: 1.0; background-color: $col1; @include transform(translateY(-50%));
+  &:before {
+    font-family: 'fontAwesome'; width: 0; height: auto; @include position(absolute, 50% null null null); @include transform(translate(0, -50%)); color: $white; text-align: center;
+  }
+  &.bLeftP {
+    left: 0; border-radius: 0 25px 25px 0;
+    &:before {
+      content: '\f053'; left: 4px;
+    }
+  }
+  &.nRightP {
+    right: 0; border-radius: 25px 0 0 25px;
+    &:before {
+      content: '\f054'; right: 14px;
+    }
+  }
+  &.slick-disabled {
+    display: none; opacity: 0;
+  }
+  @media all and (min-width: 768px) {
+  }
+  @media all and (min-width: 1280px) {
+  }
+  @media all and (min-width: 1366px) {
+  }
+}
+.btnSlideResFull {
+  width: 28px; height: 56px; border: none; outline: 0; display: block; padding: 0; margin: 0; cursor: pointer; @include transition(all 0.23s); @include position(absolute, 50% null null null); opacity: 1.0; background-color: transparent; @include transform(translateY(-50%)); background-position: center; background-repeat: no-repeat; background-size: 28px;
+  &.bLeftP {
+    left: -14px; background-image: url('#{$imgR}imgPrueba/arrow-slider-left.svg');
+  }
+  &.nRightP {
+    right: -14px; background-image: url('#{$imgR}imgPrueba/arrow-slider-right.svg');
+  }
+  &.slick-disabled {
+    opacity: 0.55; cursor: none; pointer-events: none;
+  }
+  @media all and (min-width: 768px) {
+  }
+  @media all and (min-width: 1280px) {
+  }
+  @media all and (min-width: 1366px) {
+  }
+}
+
+#button {
+  display: inline-block; background-color: $c4; width: 35px; height: 35px; text-align: center; border-radius: 35px; position: fixed; bottom: 5px; left: 50%; visibility: hidden; z-index: 1000; @include transform(translateX(-50%)); @include transition(background-color .3s, opacity .5s, visibility .5s); opacity: 0;
+  &:after {
+    content: "\f077"; font-family: 'fontAwesome'; font-weight: normal; font-style: normal; font-size: 1em; line-height: 35px; color: #fff;
+  }
+  &:hover {
+    cursor: pointer; background-color: $col1;
+  }
+  &:active {
+    background-color: $col1;
+  }
+  &.show {
+    opacity: 1; visibility: visible;
+  }
+}
+
+// Animated Social Button
+.btnSocial {
+  display: block; width: 36px; height: 36px; font-size: rem(22px); @include transition(all 0.23s ease); background-color: transparent; line-height: 36px; text-align: center; position: relative; overflow: hidden; margin: 0 12px 0 0; -webkit-box-shadow: 0 0 0 1px $white;box-shadow: 0 0 0 1px $white;
+  &:before, &:after {
+    font-family: 'fontAwesome'; @include position(absolute, 0 null null 0); width: 100%; height: 100%; color: $white; @include transition(transform 300ms ease-in-out, all 0.25s);
+  }
+  &:before { @include transform(translateY(-100%)); }
+  &:after { @include transform(translateY(0)); }
+  &:hover {
+    background-color: $white;
+    &:before, &:after { color: $col3; }
+    &:before { @include transform(translateY(0)); }
+    &:after { @include transform(translateY(100%)); }
+  }
+  &__tni {
+    &--whatsapp { &:before, &:after { content: '\f232'; } }
+    &--facebook { &:before, &:after { content: '\f09a'; } }
+    &--twitter { &:before, &:after { content: '\f099'; } }
+    &--instagram { &:before, &:after { content: '\f16d'; } }
+    &--youtube { &:before, &:after { content: '\f16a'; } }
+    &--vimeo { &:before, &:after { content: '\f27d'; } }
+    &--linkedin { &:before, &:after { content: '\f0e1'; } }
+  }
+  &.rounded {
+    @include border-top-radius(6px); @include border-bottom-radius(6px);
+  }
+  &.circle {
+    @include border-top-radius(50%); @include border-bottom-radius(50%);
+  }
+}
+
+// News buttons
+.btnpr {
+  height: 40px; display: inline-flex; position: relative; overflow: hidden; color: $white; font-size: rem(13px); text-decoration: none; border-radius: .25rem; -webkit-border-radius: .25rem; text-transform: uppercase; @include box-sizing(border-box); box-shadow: 0 4px 10px rgba($black, 0.20); text-align: center; line-height: 42px; padding: 0 30px; margin: 0 0 20px; @include transition(all 300ms); border: 1.4px solid $col1; cursor: pointer;
+  &__primary {
+    width: 200px;
+    span {
+      @include position(absolute, 50% null null 0); @include transform(translate(0, -50%)); width: 100%; height: auto; letter-spacing: 0.85px; margin: 0; padding: 0; @include transition(transform 300ms);
+    }
+    i {
+      width: 30px; height: 20px; z-index: 1; @include position(absolute, 50% null null 5px); @include transform(translate(-100%, -50%)); font-size: rem(20px); @include transition(transform 300ms); line-height: 20px; text-align: center;
+    }
+    &:hover {
+      span {
+        @include transform(translate(10%, -50%));
+      }
+      i {
+        @include transform(translate(0, -50%));
+      }
+    }
+    &--border {
+      background: $white; color: $col1;
+      &:hover {
+        background: $col1; color: $white;
+      }
+    }
+    &--outline {
+      background: transparent; color: $col1;
+      &:hover {
+        background: $col1; color: $white;
+      }
+    }
+  }
+  &.disabled {
+    pointer-events: none!important; opacity: 0.85; cursor: none;
+  }
+}
+
+// Buttons mobiscroll custom
+.Reservar {
+  & .mbsc-segmented-item {
+    background-color: $col1; margin: 0 10px 0 0!important; border-radius: 6px!important; overflow: hidden; position: relative; @include flex(0 0 1); max-width: 230px;
+    &.mbsc-segmented-item-selected {
+      background-color: $ver;
+    }
+    & .mbsc-segmented-button {
+      @include display(flex!important); @include flex-direction(row); @include flex-wrap(wrap);
+      &.mbsc-selected {
+        border-bottom: none!important;
+      }
+    }
+    &:last-child {
+      margin: 0!important;
+    }
+  }
+  .mbsc-range-control-label {
+    color: $white!important; margin-right: 6px;
+  }
+  .mbsc-material.mbsc-range-control-text-empty, .mbsc-material.mbsc-range-control-text-empty.active {
+    color: rgba($white, 0.45)!important;
+  }
+  .mbsc-material.mbsc-range-control-wrapper .mbsc-segmented {
+    width: 100%!important; height: auto; margin-bottom: 10px; display: none!important;
+  }
+}

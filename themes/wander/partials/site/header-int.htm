@@ -1,0 +1,178 @@
+description = "Header Interno"
+
+[viewBag]
+snippetCode = "header-interno"
+snippetName = "Header Interno"
+
+[builderList ciudadesList]
+modelClass = "Roll\Cabanas\Models\Ciudad"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<style>
+    
+    .submenu-content {
+      display: none!important;
+      position: absolute;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      padding: 20px!important;
+      background: #0c282ac9;
+      width: 30%!important;
+    }
+    
+    .submenu-content li {
+      display: block;
+    }
+    
+    .submenu-content a {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #333;
+    }
+    
+    .submenu:hover .submenu-content {
+      display: block!important;
+    }
+    
+    .site{
+        padding:5px!important;
+    }
+    .site a{
+        margin-left:10px!important;
+    }
+    
+    .siteSub{
+        padding:5px!important;
+    }
+    
+    .submenu-content a.submenuIemHover {
+      position: relative;
+      text-decoration: none;
+      /*color: #333;*/
+    }
+    
+    .submenu-content a.submenuIemHover::before,
+    .submenu-content a.submenuIemHover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: #fff; /* Color del subrayado */
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+    
+    .submenu-content a.submenuIemHover::after {
+      transform-origin: bottom left;
+    }
+    
+    .submenu-content a.submenuIemHover:hover::before,
+    .submenu-content a.submenuIemHover:hover::after {
+      transform: scaleX(1);
+    }
+
+  
+
+@media (max-width: 991px) { /* Aplica solo en dispositivos móviles */
+  .submenu-content.active + .menuIemHover {
+    margin-top: 60px; /* Ajusta según sea necesario */
+  }
+  
+      .submenu-content {
+      position: unset!important;
+      /*position: absolute;*/
+      width: 100%!important;
+    }
+        .submenu-content li a, .cont-menu-mobile .mnuContMob ul li a
+    {
+       text-align:left!important;
+    }
+    
+}
+  
+  </style>
+  
+  {% set ciudades = ciudadesList.records %}
+
+
+
+  <header id="headerGeneral" class="gHeader headerInt">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-6 col-md-6 col-lg-1">
+        <div class="logoHead">
+          <a href="{{'inicio'|page}}">
+            <img src="{{'assets/img/logos/wander-full-white.svg'|theme}}" alt="Wander">
+            <h1 class="site-title">Wander</h1>
+          </a>
+        </div><!-- end.logoHead -->
+      </div><!-- end.col-* -->
+      <div class="col-12 col-lg-10 d-none d-lg-block">
+        <div class="menuMain">
+          <nav class="menuDesk">
+            <ul id="md">
+                 <li class="submenu">
+                      <a class="menuIemHover" href="#locaciones">{{ 'Destinos'|_ }} <i class="fa fa-chevron-right"></i></a>
+                          <ul class="submenu-content">
+                             {% for ciudad in ciudades %}
+                                 {% if ciudad.ubicaciones.count > 0  %}
+                                    <li><a href="#">{{ ciudad.nombre }}</a>
+                                        {% for ubicacion in ciudad.ubicaciones %}
+                                                 {% if ubicacion.id != 5  %}
+                                            <li class="site"><a class=" submenuIemHover" href="/ubicacion/{{ubicacion.slug}}">{{ubicacion.nombre}}</a></li>
+                                            {% endif %}                                        {% endfor %}                             
+                                    </li>
+                                  {% endif %}
+                             {% endfor %}
+                          </ul>
+                  </li>     
+                  <li class=""><a class="menuIemHover" href="/packs">{{ 'Paquetes'|_ }}</a></li>
+                  <li class=""><a class="menuIemHover" href="#cabanas">{{ '¿Cómo funciona?'|_ }}</a></li>
+                  <li class=""><a class="menuIemHover" href="#experiencia">{{ 'La experiencia Wander'|_ }} </a></li>
+                  <!--li class=""><a class="menuIemHover" href="#locaciones">Destinos</a></li-->
+                  <li class=""><a class="menuIemHover" href="#actividades">{{ 'Actividades'|_ }}</a></li>
+                  <li class=""><a class="menuIemHover" href="/blog">{{ 'Blog'|_ }}</a></li>
+                  <li class=""><a class="menuIemHover" href="https://grupos.wandercabins.mx/">{{ 'Grupos'|_ }}</a></li>
+
+                  <li class=""><a class="menuIemHover" href="https://app.air.inc/a/boJQiMwHm">{{ 'Prensa'|_ }}</a></li>
+
+
+
+            </ul><!-- end#md -->
+          </nav><!-- end.menuDesk -->
+        </div><!-- end.menuMain -->
+      </div><!-- end.col-* -->
+      <div class="col-6 col-md-6 col-lg-1">
+        <div class="toolsHead">
+          <!-- <a class="toolsHead__link toolsHead__link--acceso" href="#" data-open-modal="">Acceso <span>a miembros</span></a> -->
+          <a class="toolsHead__link toolsHead__link--acceso" href="{{ 'reservar-1'|page }}?from=header" >{{ 'Reservar'|_ }}</a>
+       
+
+          
+          <button type="button" id="openMenuMobile" class="toolsHead__link menu-mobile-btn" onclick="menuMobile()" data-menu-expand="false">
+            <span></span>
+          </button><!-- end.toolsHead__link -->
+        </div><!-- end.toolsHead -->
+      </div><!-- end.col-* -->
+
+    </div><!-- edn.row -->
+  </div><!-- end.container -->
+</header><!-- end.Header -->
+
+<!-- MenuMobile -->
+<div id="mm" class="cont-menu-mobile" data-menu-expand="false">
+  <div id="contListMenu" class="mnuContMob">
+
+  </div>
+</div>
+<!-- end.MenuMobile -->

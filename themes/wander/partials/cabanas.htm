@@ -1,0 +1,158 @@
+description = "cabanas"
+
+[viewBag]
+
+[getCabanas]
+==
+{% component 'getCabanas' %}
+
+  hola
+  {% if estanciaMinima > 0 %}
+         <div class="alert alert-warning" style="text-align:center;">
+            La estancia durante las fechas selccionadas minima en {{ubic1.nombre}} es de {{estanciaMinima}} noches. <strong><a href="/reservar/fechas">Cambia las fechas tu reserva <a></strong> o selecciona otra ubicación.
+         </div> 
+   {% endif %}
+
+
+  {% if ubic1.disponible == 1 %}
+
+   <!--div class="card" style="background: #f7f5f1 !important">
+      <div class="card-header" id="headCollap-state-cdmx">
+        <h5 class="mb-0">
+          <a class="btn btn-link" data-toggle="collapse" data-target="#collap-state-cdmx" aria-expanded="true" aria-controls="collap-state-cdmx">
+            {{ubic1.nombre}}
+                                             <i class="fa fa-chevron-down btnCiudades"></i>
+
+          </a>
+        </h5>
+      </div-->
+  
+      <div id="collap-state-cdmx" class="collapse show" aria-labelledby="headCollap-state-cdmx" data-parent="#accSelCabinState">
+        <div class="card-body">
+
+                        <div class="row" style="justify-content:center">
+          {% if cabanas1 %}
+              {% for cabana in cabanas1 %}
+                <div class="col-xs-8 col-sm-6 col-md-5 col-lg-5 col-xl-5 hack-max" style="margin-bottom:30px; ">
+                            <div class="boxCabanaRes newBoxCabanaRes" style="margin-top: unset !important;flex-direction:column">
+                              <div class="boxCabanaRes__img " >
+                                <div class="boxCabanaRes__tools">
+                                  <!--div class="toolCaja cabinCount">
+                                    <div class="boxTool">
+                                      <i class="fa fa-bed"></i> <span>{{cabana.camas}}</span>
+                                    </div>
+                                    <div class="boxTool">
+                                      <i class="fa fa-user"></i> <span>{{cabana.capacidad}}</span>
+                                    </div>
+                                  </div><!-- end.toolCaja -->
+                                  <div class="toolCaja">
+                                    <div class="cabinPrice">
+                                    <!--p>Estancia de {{noches}} {% if noches > 1 %}noches{% else %}noche{% endif %}<br>${{cabana.total|number_format}}</p-->
+                                    </div><!-- end.cabinPrice -->
+                                  </div><!-- end.toolCaja -->
+                                </div><!-- end.boxCabanaRes__tools -->
+                                <div id="cab-{{cabana.slug}}-{{loop.index}}" data-slider class="sliderRes">
+                        
+                                  {% for foto in cabana.galeria  %}
+                                  <a href="{{ foto.path | resize(1200) }}" data-lightbox="slider-{{cabana.slug}}" data-title="{{cabana.nombre}}">
+                                    <figure class="boxCabanaRes__fig cont-hack">
+                                      <img class="img-hack lozad"  data-src="{{ foto.path | resize(600)}}" alt="{{cabana.nombre}}" loading="lazy">
+
+                                    </figure>
+                                  </a>
+                                  {% endfor %}
+                        
+                                </div>
+                                <!--a class="btnSlideRes bLeftP" href="#" id="prevSlideRes-cab-{{cabana.slug}}-{{loop.index}}"></a>
+                                <a class="btnSlideRes nRightP" href="#" id="nextSlideRes-cab-{{cabana.slug}}-{{loop.index}}"></a-->
+                                <!--h5 class="boxCabanaRes__titleCab">{{cabana.nombre}}</h5-->
+                              </div><!-- end.slideCabanaRes -->
+                              
+                              
+                              <div class="boxCabanaRes__desc boxCabanaRes__desc--getawey min_height">
+                                    <div style="margin-bottom: 10px;">
+    
+                                       
+                                        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                            <div style="display:flex;flex-direction:row">
+                                                <div class="boxTool">
+                                                  <div class="h2">{{cabana.nombre}}</div>
+                                                  <div class="h2">{{cabana.descipcion_corta}}</div>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="cabinPrice">
+                                                <p> {{noches}} {% if noches > 1 %}noches{% else %}noche{% endif %}<br>${{cabana.total|number_format}}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                            <div style="display:flex;flex-direction:row">
+                                                <div class="boxTool">
+                                                  <i class="fa fa-bed"></i> <span>{{cabana.camas}}</span>
+                                                </div>
+                                                <div class="boxTool">
+                                                  <i class="fa fa-user"></i> <span>{{cabana.capacidad}}</span>
+                                                </div>
+                                            </div>
+                                        
+                                            <!--div class="cabinPrice">
+                                                <p>Estancia de {{noches}} {% if noches > 1 %}noches{% else %}noche{% endif %}<br>${{cabana.total|number_format}}</p>
+                                            </div-->
+                                        </div>
+                                        <p style="line-height: 1.6em;">{{cabana.descripcion_larga}}</p>
+                                    </div>
+                                    {% if not estanciaMinima or estanciaMinima == 0 %}
+                                            <input type="radio" data-check-btn class="boxCabanaRes__input" name="cabanaSel" id="cab-{{cabana.slug}}"
+                                        value="{{cabana.id}}" {% if cabanaId==cabana.id %}checked{% endif %} >  
+                                      <label for="cab-{{cabana.slug}}"  onclick="select('{{cabana.nombre}}')" >Seleccionar</label>
+                                    {% endif %}
+                                    
+                              </div><!-- end.descCabana -->
+                            </div><!-- end.boxLoc -->
+                          </div><!-- end.col-* --><!-- end.col-* -->
+              {% endfor %}
+          {% else %}
+            
+            <div style="text-align:center">
+              <img src="{{ 'assets/img/logos/wander-full-green.svg'|theme }}" alt="Wander" class="loading-image">
+              <p style="font-family: 'Oswald',sans-serif;font-size:1.8em;color:#818c70;" claemzss="loading-message">No contamos con cabañas disponibles en esta ubicación.</p>
+            </div>
+
+
+          {% endif %}
+          </div><!-- end.row -->
+  
+        </div><!-- end.card-body -->
+      </div><!-- end.collapse -->
+
+    </div><!-- end.card -->
+                                      <small><blockquote>* Precios sin IVA.</blockuote></small>
+
+    {% endif %}
+    <script type="text/javascript">
+    
+    $('[data-slider]').each(function (key, item) {
+        // console.log('#prevSlideRes-' + item.id);
+        var i = key + 1;
+        $('#'+item.id).slick({
+          fade: true,
+          autoplay: true,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          speed: 800,
+          arrows: true,
+          dots: true,
+        //  prevArrow: $('#prevSlideRes-' + item.id),
+        //  nextArrow: $('#nextSlideRes-' + item.id),
+        });
+      });
+              $(document).ready(function() {
+        
+        const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+        observer.observe();
+        });
+        
+    </script>

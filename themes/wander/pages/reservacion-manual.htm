@@ -1,0 +1,413 @@
+title = "Reservación Manual"
+url = "/reservacion-manual/:ubicacion?/:ciudad?"
+layout = "layout"
+is_hidden = 1
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[builderList ubicacionesList]
+modelClass = "Roll\Cabanas\Models\Ubicacion"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[reservaManual]
+
+[builderList serviciosList]
+modelClass = "Roll\Cabanas\Models\Servicio"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList ciudadesList]
+modelClass = "Roll\Cabanas\Models\Ciudad"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% set servicios = serviciosList.records %}
+<script type="text/javascript">
+  let servicios = '{{ servicios|json_encode|raw }}';
+  servicios = jQuery.parseJSON(servicios);
+
+</script>
+
+<style>
+.reservaCt .wizard .steps{
+    background-color:#f7f5f1;
+    }
+    
+.reservaCt .descReservar{
+    background-color:#f7f5f1;
+    }
+
+
+  .PageContainer{
+    background: #f7f5f1 !important;
+  }
+  .reservaCt .wizard .actions{
+    background-color: #f7f5f1 !important;
+  }
+  .container{text-align: justify;
+   /* max-width :1460px*/} 
+  @media (min-width:1920px){
+    .container{max-width:1900px} 
+  .descripcionAct{font-size: 1.6em;}
+  p{font-size: 1.4em;}}
+
+  
+ /* @import url(//hello.myfonts.net/count/3479cb);*/
+
+
+.checkbox-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+   /* display: flex;*/
+    justify-content: space-between;
+  }
+  
+  .checkbox-container + input {
+    background: #f7f5f1;
+    border-bottom: 1px solid #272728;
+    color: #272728;
+    }
+
+    .checkbox-badge .dateInputCheck[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    }
+
+
+    .checkbox-container .dateInputCheck {
+    -webkit-font-smoothing: antialiased;
+    align-items: center;
+    background: #222919;
+    background: #fff;
+    border: 1px solid #2d3f53;
+    color: #f6f4f2;
+    color: #2d3f53;
+    cursor: pointer;
+    display: inline-block;
+    display: flex;
+    /* font-family: gtwalsheim, Avenir, -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif; */
+    font-size: 16px;
+    font-weight: 700;
+    height: 60px;
+    justify-content: center;
+    letter-spacing: .5px;
+    line-height: 1;
+    padding: 15px 31px;
+    transition: background-color .3s ease-out, border-color .3s ease-out;
+    width: 100%;
+ 
+}
+    .checkbox-container .dateInputCheck[type=checkbox]+label {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    padding: 0;
+    margin: 0 0 10px;
+    cursor: pointer;
+    display: block;
+    color: #222919;
+    text-align: center;
+    background-color: #ffffff;
+    text-transform: uppercase;
+    font-size: calc(10px + 2 * ((100vw - 320px) / 880));
+    letter-spacing: 1.2px;
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
+    line-height: 35px;
+    font-family: "Oswald",sans-serif;
+    font-weight: 500;
+    border: 1px solid #000000;
+    padding: 0 10px;
+}
+
+.checkbox-container .dateInputCheck[type=checkbox]:checked+label {
+    background-color: #222919;
+    color: #ffffff
+}
+
+.checkbox-container .dateInputCheck[type=checkbox]:disabled+label {
+    cursor: auto;
+    opacity: 0.5;
+    pointer-events: none
+}
+.dateInputCheck:not(:disabled):hover {
+    background: #1b2632;
+    border: 1px solid #1b2632;
+    color: #f6f4f2;
+}
+
+  </style>
+  
+  
+
+{% put scriptreserva %}
+<script type="text/javascript" src="{{'assets/js/scripts/scriptReservar.js'|theme}}"></script>
+{% endput %}
+
+
+{% set ubicaciones = ubicacionesList.records %}
+{% set ciudades = ciudadesList.records %}
+
+
+<article class="bg-gen">
+  <section class="descFull">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>
+          <a href="/backend/roll/reservaciones/reservaciones" title="Atras"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+
+            Reservación manual</h2>
+              {% for ubicacion in ubicaciones %}
+                      <a href="{{'reservacion-manual'|page ({ubicacion:ubicacion.id})}}" class="btnpr btnpr__primary btnpr__primary--border nB">{{ubicacion.nombre}}</a>
+              {% endfor %}
+
+
+
+              <br>
+              o
+                            <br>
+                            <br>
+              {% for ciudad in ciudades %}
+                  {% if ciudad.disponible == 1 %}
+                      <a href="{{'reservacion-manual'|page ({ubicacion:0, ciudad:ciudad.id})}}" class="btnpr btnpr__primary btnpr__primary--border nB">{{ciudad.nombre}}</a>
+                  {% endif %}
+              {% endfor %}
+              
+
+
+              
+{% flash %}
+    <div class="alert alert-warning text-center">
+        {% if message.url_aplazo %}
+            <p>{{ message.mensaje }}</p>
+
+            <div class="mt-2 d-flex justify-content-center gap-2">
+                <a href="{{ message.url_aplazo }}" class="btn btn-primary" style="background-color: #7fedfa;">
+                    Completar pago con Aplazo
+                </a>
+                </br>
+                <button type="button" class="btn btn-secondary"  onclick="copiarAplazo('{{ message.url_aplazo }}')">
+                    <i class="fa fa-copy"></i>
+                </button>
+            </div>
+
+           <small id="copiarAviso" class="text-success d-block mt-2" style="display:none;">
+                ¡Enlace copiado al portapapeles!
+            </small>
+        {% else %}
+            <p>{{ message.mensaje ?? message }}</p>
+        {% endif %}
+    </div>
+
+
+{% endflash %}
+
+         </div>
+      </div>
+    </div>
+  </section>
+  
+{% if this.param.ubicacion or this.param.ciudad %}
+    {% put scriptreserva %}
+    <script type="text/javascript" src="{{'assets/js/scripts/scriptReservar.js'|theme}}"></script>
+    {% endput %}
+    <script>
+    
+    var $ciudad =    {{ this.param.ciudad | default('null') }};
+    var $ubicacion = {{ this.param.ubicacion | default('null') }};
+
+     // var $WanderLoc = '/' + {{ this.param.ubicacion }};
+      
+    var $WanderLoc = '/' + ($ciudad !== null ?  'ciudad-' + $ciudad :  'ubicacion-' + $ubicacion);
+
+      var $capacidad = '/' + '2';
+      var $startDate = '';
+      var $endDate = '';
+    </script>
+    {{ form_ajax('onCabanas')}}
+          <div class="content clearfix">
+          
+
+                       
+          <section class="body current">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-9">
+                
+                {% if this.param.ubicacion > 0 %}
+
+                  <div class="inputHuesped">
+                    <h4 class="inputHuesped__title">Grupo</h4>
+                    <div class="inputHuesped__opt">
+                      <input type="radio" class="radioRes" name="grupo" id="individual" value="0" checked>
+                      <label for="individual">NO</label>
+                      <input type="radio" class="radioRes" name="grupo" id="grupo" value="1" >
+                      <label for="grupo">SI</label>
+
+                    </div><!-- end.inputHuesped__opt -->
+                  </div><!-- end.inputHuesped -->
+                  
+                  <div class="inputHuesped" id="adultosGrupos" style="display: none;">
+                      <h4 class="inputHuesped__title">Huespedes</h4>
+                      <input type="number" class="form-control" name="adultos" min="1" value='1' style="width:30%!important" onkeydown="return false;">
+                  </div>
+                {% endif %}
+                  
+                  <div class="inputHuesped" id="adultos">
+                    <h4 class="inputHuesped__title">Adultos</h4>
+                    <div class="inputHuesped__opt">
+                      <input type="radio" class="radioRes" name="adultos" id="adulto-1" value="1" >
+                      <label for="adulto-1">1</label>
+                      <input type="radio" class="radioRes" name="adultos" id="adulto-2" value="2" checked>
+                      <label for="adulto-2">2</label>
+                      <input type="radio" class="radioRes" name="adultos" id="adulto-3" value="3" >
+                      <label for="adulto-3">3</label>
+                      <input type="radio" class="radioRes" name="adultos" id="adulto-4" value="4" >
+                      <label for="adulto-4">4</label>
+                    </div><!-- end.inputHuesped__opt -->
+                  </div><!-- end.inputHuesped -->
+                  <div class="inputHuesped" id="ninos">
+                    <h4 class="inputHuesped__title">Niños</h4>
+                    <div class="inputHuesped__opt">
+                      <input type="radio" class="radioRes" name="ninos" id="nino-0" value="0" checked>
+                      <label for="nino-0">NO</label>
+                      <input type="radio" class="radioRes" name="ninos" id="nino-1" value="1" >
+                      <label for="nino-1">1</label>
+                      <input type="radio" class="radioRes" name="ninos" id="nino-2" value="2" >
+                      <label for="nino-2">2</label>
+                      <input type="radio" class="radioRes" name="ninos" id="nino-3" value="3" >
+                      <label for="nino-3">3</label>
+                      <input type="radio" class="radioRes" name="ninos" id="nino-4" value="4" >
+                      <label for="nino-4">4</label>
+                    </div><!-- end.inputHuesped__opt -->
+                  </div><!-- end.inputHuesped -->
+                  <div class="inputHuesped">
+                    <h4 class="inputHuesped__title">Mascotas</h4>
+                    <div class="inputHuesped__opt">
+                      <label class="switch">
+                        <input type="checkbox" name="mascotas" id="mascotas" {% if mascotas == '1' %}checked{% endif %}>
+                        <span class="sldInp round"></span>
+                      </label>
+                    </div><!-- end.inputHuesped__opt -->
+                  </div><!-- end.inputHuesped -->
+                </div><!-- end.col-* -->
+              </div><!-- end.row -->
+            </div>
+          </section><!-- end.SelectHuesped -->
+        </div><!-- edn.content -->
+      <div class="content clearfix">
+          <section class="body current">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12 col-lg-9">
+                  <input type="hidden" id="rangeDate" name="rangeDate"><!-- recibe los datos del calendario. -->
+                  <div id="rangeDate"></div>
+                <div class="col-12 text-center">
+                  <button type="submit" class="btnpr btnpr__primary btnpr__primary--border nB">Ver Cabañas</button>
+                </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+    {{ form_close() }}
+{% endif %} 
+
+<div id="result"></div>
+<div id="servicios"></div>
+
+<div id="resumen"></div>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+</article>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const grupoRadios = document.querySelectorAll('input[name="grupo"]');
+    
+    const adultosSection = document.getElementById('adultos');
+    const ninosSection = document.getElementById('ninos');
+    const adultosLibreInput = document.getElementById('adultosGrupos');
+    
+    const adultosInputs = adultosSection.querySelectorAll('input, select, textarea');
+    const adultosLibreInputs = adultosLibreInput.querySelectorAll('input, select, textarea');
+
+
+
+
+    function toggleGrupo() {
+      const isGrupo = document.getElementById('grupo').checked;
+
+      if (isGrupo) {
+        adultosSection.style.display = 'none';
+        ninosSection.style.display = 'none';
+        adultosLibreInput.style.display = 'block';
+        
+                // Desactivar inputs de adultos y niños
+        adultosInputs.forEach(input => input.disabled = true);
+
+        // Activar input de grupo
+        adultosLibreInputs.forEach(input => input.disabled = false);
+
+
+        
+      } else {
+        adultosSection.style.display = 'block';
+        ninosSection.style.display = 'block';
+        adultosLibreInput.style.display = 'none';
+        
+                // Activar inputs de adultos y niños
+        adultosInputs.forEach(input => input.disabled = false);
+
+        // Desactivar input de grupo
+        adultosLibreInputs.forEach(input => input.disabled = true);
+        
+      }
+    }
+
+    grupoRadios.forEach(radio => {
+      radio.addEventListener('change', toggleGrupo);
+    });
+
+    toggleGrupo(); // ejecutar al cargar
+    
+    
+
+
+
+  });
+  
+  
+        function copiarAplazo(url) {
+            navigator.clipboard.writeText(url).then(function() {
+                const aviso = document.getElementById('copiarAviso');
+                aviso.style.display = 'block';
+                setTimeout(() => aviso.style.display = 'none', 2000);
+            });
+        }
+
+</script>

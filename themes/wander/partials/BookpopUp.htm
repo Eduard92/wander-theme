@@ -1,0 +1,356 @@
+[viewBag]
+
+[builderList ciudadesList]
+modelClass = "Roll\Cabanas\Models\Ciudad"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% set ciudades = ciudadesList.records %}
+
+
+<style>
+  .popupBooking {
+        display: none;
+        position: absolute;
+        z-index: 9999;
+        border-radius: 5px;
+        width: 400px;
+        max-width: 99%;
+        overflow: hidden;
+        right:30px;
+        top:0px;
+            overflow: visible !important; /* Permitir que los elementos hijos sobresalgan */
+
+        
+    }
+
+    .popupBooking-content {
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .popupBooking-close {
+        font-size: 30px;
+        color: #aaa;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .popupBooking-close:hover {
+        color: black;
+    }
+    
+    .popupBooking-content .contFormCal .stickyForm  {
+        border-radius: 5px;
+    }
+    
+    .popupBooking-content .contFormCal .stickyForm form .form-group {
+        margin-right: unset;
+        width: 100%;
+    }
+
+    .popupBooking-content .contFormCal .stickyForm form .form-group .selectFormContact {
+        width: 100%
+    }
+
+    .popupBooking-content .contFormCal .stickyForm form .form-group  .inputSelect__dateCheck {
+        width: 100%
+    }    
+           
+    .popupBooking-content .contFormCal .stickyForm form .form-group .inputSelect__inputDate {
+    width: 100%;
+    }
+    .popupBooking-content .contFormCal .stickyForm form .form-group .inputSelect__inputDate .mbsc-material.mbsc-label-box-floating.mbsc-ltr{
+    left: unset;
+    width: 100%;
+    text-align: left;
+    }
+
+   .popupBooking-content .contFormCal .stickyForm form .form-group .inputSelect__inputDate.inputSelect__inputDate .mbsc-textfield-inner-box {
+    width: 100%;
+    }
+
+
+   .popupBooking-content .contFormCal .stickyForm form .form-group .inputSelect__inputDate.inputSelect__inputDate .mbsc-material.mbsc-textfield {
+    width: 100% !important;
+    }
+
+
+    .popupBooking-content .contFormCal .stickyForm form .btn-primary {
+    width: 100%;
+    }
+
+
+
+.selectFormContact {
+    position: relative;
+}
+
+#navOpcionform1 {
+    position: absolute;
+    top: 100%; /* Mostrar debajo del botón */
+    right: 0; /* Alinear desde la derecha */
+    z-index: 10000; /* Asegura que esté por encima de otros elementos */
+    max-height: 300px; /* Evitar que el menú se extienda demasiado */
+    background-color: #fff; /* Fondo para que sea visible */
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    width:unset;
+    left:unset;
+}
+
+
+.popupBooking-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffffffd6;
+    color: #222919;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    z-index:9;
+}
+@media screen and (max-width: 480px) {
+    .popupBooking {
+        width: 90%;       /* o 100% si quieres que ocupe todo */
+        right: 5%;        /* centrado con margen */
+        left: 5%;         /* opcional si quieres */
+    }
+}
+
+</style>
+
+
+<div id="popupBooking" class="popupBooking">
+        <div class="popupBooking-content row location contentLoc grayL" id="contFormCal">
+        <button class="popupBooking-close-btn" id="closePopupBtn">✕</button>
+
+            <section class="contFormCal" id="contFormCal">
+
+                <div class="stickyForm">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 margin5">
+                                {{ form_ajax('onDisponibilidad', {class: 'form-inline', id: 'calHome', name: 'calHome'}) }}
+                                    <div class="form-group mb-2 inputSelect wIn" data-input-home1>
+                                        <input type="hidden" name="locacion" id="locacion1" value="">
+                                        
+                                        <div class="selectFormContact">
+                                            <a href="#" class="collOpenForm" id="openOpsForms1">
+                                                <span class="labelInp"><i class="fa fa-map-marker"></i> Destino</span>
+                                                <span id="textChange1" class="responseText">Destino</span>
+                                            </a><!-- end.collOpenForm -->
+
+                                            <nav id="navOpcionform1">
+                                                {% for ciudad in ciudades %}
+                                                    {%if ciudad.ubicaciones.count > 0%}
+                                                        <ul class="col-nav">
+                                                            <li>
+                                                                <a style="color:#707267" class="btnFormContact" id="filtro_ciudad" href="#" data-valor="ciudad-{{ciudad.id}}" onclick="capturarVariable('{{ciudad.nombre}}')">{{ciudad.nombre}} 
+                                                                </a>
+                                                            </li>
+                                                            <ul>
+                                                                <!-- Iterar ubicaciones correspondientes a la ciudad -->
+                                                                {% for ubicacion in ciudad.ubicaciones %}
+                                                                    <li>
+                                                                        <a class="btnFormContact{% if ubicacion.id == 7 or ubicacion.id == 8 %} ubiNew{% endif %}"
+                                                                            href="#"
+                                                                            data-valor="ubicacion-{{ ubicacion.id }}">
+                                                                            {{ ubicacion.nombre }}
+                                                                        </a>
+                                                                    </li>
+                                                                {% endfor %}
+                                                            </ul>
+
+                                                        </ul>
+                                                 {%endif%}
+                                             {% endfor %}
+                                          </nav><!-- end.navOpcionform -->
+                                    </div><!-- end.selectFormContact -->
+                                </div><!-- end.selectUbicacion -->
+
+                                <div class="form-group mb-2 inputSelect wIn">
+                                    <div class="inputSelect__dateCheck">
+                                        <button class="btnSelectOption activeHues" type="button" data-option="huesped1" data-close-ubic>
+                                            <span><i class=" fa fa-user"></i> Huéspedes</span>
+                                            <div id="huesRes1">
+                                                <p>2 Adulto(s)</p>
+                                            </div>
+                                        </button>
+                                        <div id="huesped1" class="modalOption" style="bottom:unset!important" >
+                                             <ul class="boxListHuesped">
+
+                                <li>
+
+                                  <div class="inputHuespedHome">
+
+                                    <h4 class="inputHuespedHome__title">Adultos</h4>
+
+                                    <div class="inputHuespedHome__opt1">
+
+                                      <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-1-1" value="1">
+
+                                      <label for="adulto-1-1">1</label>
+
+                                      <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-2-1" value="2" checked>
+
+                                      <label for="adulto-2-1">2</label>
+
+                                      <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-3-1" value="3">
+
+                                      <label for="adulto-3-1">3</label>
+
+                                      <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-4-1" value="4">
+
+                                      <label for="adulto-4-1">4</label>
+
+                                    </div><!-- end.inputHuesped__opt -->
+
+                                  </div><!-- end.inputHuespedHome -->
+
+                                </li>
+
+                                <li>
+
+                                  <!-- <span class="boxListHuesped__count--nino">1</span> <span class="boxListHuesped__label">Niño(s)</span> <button
+
+                                    type="button" class="btnHuesped nino-plus"><i class="fa fa-plus"></i></button> <button type="button"
+
+                                    class="btnHuesped nino-minus"><i class="fa fa-minus"></i></button> -->
+
+                                  <div class="inputHuespedHome">
+
+                                    <h4 class="inputHuespedHome__title">Niños</h4>
+
+                                    <div class="inputHuespedHome__opt1">
+
+                                      <input type="radio" class="radioRes smallInp" name="ninos" id="nino-0-1" value="0" checked>
+
+                                      <label for="nino-0-1">NO</label>
+
+                                      <input type="radio" class="radioRes smallInp" name="ninos" id="nino-1-1" value="1">
+
+                                      <label for="nino-1-1">1</label>
+
+                                      <input type="radio" class="radioRes smallInp" name="ninos" id="nino-2-1" value="2">
+
+                                      <label for="nino-2-1">2</label>
+
+                                      <input type="radio" class="radioRes smallInp" name="ninos" id="nino-3-1" value="3">
+
+                                      <label for="nino-3-1">3</label>
+
+                                      <input type="radio" class="radioRes smallInp" name="ninos" id="nino-4-1" value="4">
+
+                                      <label for="nino-4-1">4</label>
+
+                                    </div><!-- end.inputHuesped__opt -->
+
+                                  </div><!-- end.inputHuespedHome -->
+
+                                </li>
+
+                                <li>
+
+                                  <div class="inputHuespedHome">
+
+                                    <h4 class="inputHuespedHome__title">Mascotas</h4>
+
+                                    <div class="inputHuespedHome__opt1">
+
+                                      <label class="switch">
+
+                                        <input type="checkbox" name="mascotas" id="mascotas1">
+
+                                        <span class="sldInp round"></span>
+
+                                      </label>
+
+                                    </div><!-- end.inputHuesped__opt -->
+
+                                  </div><!-- end.inputHuespedHome -->
+
+                                </li>
+
+                              </ul>
+
+                                            <div class="closeModCt">
+                                <button type="button" id="close-huesped1">Aceptar</button>
+                                            </div>
+                                        </div><!-- end.modalOption -->
+                                    </div><!-- end.inputSelect__dateCheck -->
+                                </div>
+
+
+                                <div class="form-group mb-2 inputSelect wIn">
+                                    <label class="inputSelect__inputDate" data-input-home1 for="entrada">Fechas
+                                        <!--input type="text" mbsc-input class="form-control inputForm__input" id="entrada" name="entrada" placeholder="Entrada"><!-- mbsc-input -->
+                                        <input id="range" class="form-control inputForm__input" name="range" mbsc-input placeholder="Seleccione CheckIn y Checkout" />
+                                    </label>
+
+                                </div>
+
+
+                                <button type="submit" id="submit-disp2" class="btn btn-primary mb-2">Reservar</button>
+
+
+
+                                {{ form_close() }}
+
+
+
+                            </div><!-- end.col-* -->
+
+                        </div><!-- end.row -->
+
+                    </div><!-- end.container -->
+
+                </div><!-- end.stickyForm -->
+
+            </section><!-- end.contFormCal -->
+
+
+        </div>
+    </div>
+    
+    <script>
+    
+    
+      const openPopupBtn = document.getElementById('openPopupBtn');
+        const popup = document.getElementById('popupBooking');
+        const closePopupBtn = document.getElementById('closePopupBtn');
+
+    
+        // Mostrar el popup debajo del botón cuando se haga clic
+        openPopupBtn.addEventListener('click', () => {
+            popup.style.display = 'block';
+
+        });
+
+        // Cerrar el popup cuando se haga clic en la "X"
+        closePopupBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        // También cerrar el popup si el usuario hace clic fuera de él
+        window.addEventListener('click', (event) => {
+            if (event.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+    </script>

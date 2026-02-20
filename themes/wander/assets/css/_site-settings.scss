@@ -1,0 +1,201 @@
+@charset "UTF-8";
+
+// ----------------------
+// == Site settings
+// ----------------------
+
+// Routes
+$imgR: '../img/';
+$fontR: '../fonts/';
+
+// Fonts
+// @include font-face("acuminB", "#{$fontR}acumin/Acumin-BdPro", $file-formats: woff);
+// @include font-face("minionR", "#{$fontR}minion/MinionPro-Regular", $file-formats: woff);
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&family=Oswald:wght@200;300;400&display=swap');
+$acuminbd: 'Oswald', sans-serif;
+$minionr: 'Lato', sans-serif;
+
+// = Colors
+// -----------------------------
+
+// Graphic chart
+$gray-1: #333333;
+$gray-2: #191919;
+$gray-3: #0e0e0e;
+$gray-4: #363636;
+$gray-5: #959595;
+$gray-6: #ececec;
+$gray-7: #787878;
+$gray-8: #cdcdcd;
+$gray-9: #282e47; 
+$gray-10: #f7f8fb;
+$gray-11: #f3f4f8;
+$col1: #818C70;
+$col2: #707267;
+$col3: #0C282A;
+$col4: #B54E2A;
+$col5: #F1B23F;
+$col6: #20253c;
+$col7: #b5b8c3;
+$col8: #dad7dc;
+$col9: #566df0;
+$col10: #222919;
+$col11: #EA7f26;
+$col12: #ff9b33;
+$col13: #19213a;
+$white: #ffffff;
+$black: #000000;
+$facebook: #1877f2;
+$twitter: #43bfe1;
+$google: #D64131;
+$whats: #25d366;
+$nar: #EA7F26;
+$ver: #222919;
+
+$c1: $gray-1;
+$c2: $gray-2;
+$c3: $gray-3;
+$c4: $gray-4;
+$c5: $gray-5;
+$c6: $gray-6;
+$c7: $gray-7;
+$c8: $gray-8;
+$c9: $gray-9;
+$c10: $gray-10;
+$c11: $gray-11;
+
+// Display Flex
+@mixin displayFlex($disp, $direc, $justify, $items, $wrp) {
+  @include display($disp); @include flex-direction($direc); @include justify-content($justify); @include align-items($items); @include flex-wrap($wrp);
+}
+
+// Extend Clases
+.overlayClass {
+  width: 100%; height: 100%; @include position(fixed, 0 null null 0); margin: 0; padding: 0;
+}
+.overlayClassAbs {
+  width: 100%; height: 100%; @include position(absolute, 0 null null 0); margin: 0; padding: 0;
+}
+.absImg {
+  @include position(absolute, 50% null null 50%); @include transform(translate(-50%, -50%));
+}
+
+// Font Responsive Mixin
+@mixin fluid-type($min-font-size: 12px, $max-font-size: 21px, $lower-range: 420px, $upper-range: 900px) {
+  font-size: calc(#{$min-font-size} + #{(($max-font-size / ($max-font-size * 0 + 1)) - ($min-font-size / ($min-font-size * 0 + 1)))} * ( (100vw - #{$lower-range}) / #{(($upper-range / ($upper-range * 0 + 1)) - ($lower-range / ($lower-range * 0 + 1)))}));
+  @media screen and (max-width: $lower-range) {
+    font-size: $min-font-size;
+  }
+  @media screen and (min-width: $upper-range){
+    font-size: $max-font-size;
+  }
+}
+
+// Mixin Keyframes Button
+@include keyframes(button) {
+  0% {
+    opacity: 0;
+    @include transform(translate(-50px, 0px) skewX(-50deg)); width: 10%;
+  }
+  50% {
+    opacity: 1;
+    @include transform(translate(0, 0px) skewX(-50deg)); width: 100%;
+  }
+  100% {
+    opacity: 0;
+    @include transform(translate(300%, 0px) skewX(-50deg)); width: 50%;
+  }
+}
+
+@include keyframes(fadeInUpSD) {
+  0% {
+    opacity: 0; @include transform(translateY(100px));
+  }
+
+  100% {
+    opacity: 1; @include transform(translateY(0));
+  }
+}
+
+// Grid
+.wrpLoc { // Contenedor General
+  width: 100%; max-width: 1440px; margin: 0 auto; @include padding(0 0 0 0); *zoom: 1;
+  &:after {
+    content: ''; display: block; clear: both;
+  }
+}
+.gridLoc { // Contenedor de columnas
+  @include display(flex); @include flex-wrap(wrap); @include margin(null 0 null 0);
+  // Justificar contenido de columnas
+  &.content-start { @include justify-content(flex-start); }
+  &.content-center { @include justify-content(center); }
+  &.content-end { @include justify-content(flex-end); }
+  // Alinear contenido de columnas
+  &.align-start { @include align-items(flex-start); }
+  &.align-center { @include align-items(center); }
+  &.align-end { @include align-items(flex-end); }
+}
+// Clase General de columnas
+[class^="gf-"] { position: relative; @include padding(nul 0 null 0); width: 100%; }
+// Columnas Mobile
+.gf-m-1 { @include flex(0 0 8.333333%); max-width: 8.333333%; }
+.gf-m-2 { @include flex(0 0 16.666667%); max-width: 16.666667%; }
+.gf-m-3 { @include flex(0 0 25%); max-width: 25%; }
+.gf-m-4 { @include flex(0 0 33.333333%); max-width: 33.333333%; }
+.gf-m-5 { @include flex(0 0 41.666667%); max-width: 41.666667%; }
+.gf-m-6 { @include flex(0 0 50%); max-width: 50%; }
+.gf-m-7 { @include flex(0 0 58.333333%); max-width: 58.333333%; }
+.gf-m-8 { @include flex(0 0 66.666667%); max-width: 66.666667%; }
+.gf-m-9 { @include flex(0 0 75%); max-width: 75%; }
+.gf-m-10 { @include flex(0 0 83.333333%); max-width: 83.333333%; }
+.gf-m-11 { @include flex(0 0 91.666667%); max-width: 91.666667%; }
+.gf-m-12 { @include flex(0 0 100%); max-width: 100%; }
+// Visibilidad Columnas
+.none-gf { display: none; }
+.none-gf-m { display: block; }
+.none-gf-t { display: none; }
+.none-gf-d { display: none; }
+
+@media only screen and (min-width: 768px) {
+  .wrpLoc { // Contenedor General
+    @include padding(0 5px 0 5px);
+  }
+  .gridLoc { // Contenedor de columnas
+    @include margin(null -5px null -5px);
+  }
+  [class^="gf-"] { @include padding(null 5px null 5px); }
+  // Columnas Tablet
+  .gf-t-1 { @include flex(0 0 8.333333%); max-width: 8.333333%; }
+  .gf-t-2 { @include flex(0 0 16.666667%); max-width: 16.666667%; }
+  .gf-t-3 { @include flex(0 0 25%); max-width: 25%; }
+  .gf-t-4 { @include flex(0 0 33.333333%); max-width: 33.333333%; }
+  .gf-t-5 { @include flex(0 0 41.666667%); max-width: 41.666667%; }
+  .gf-t-6 { @include flex(0 0 50%); max-width: 50%; }
+  .gf-t-7 { @include flex(0 0 58.333333%); max-width: 58.333333%; }
+  .gf-t-8 { @include flex(0 0 66.666667%); max-width: 66.666667%; }
+  .gf-t-9 { @include flex(0 0 75%); max-width: 75%; }
+  .gf-t-10 { @include flex(0 0 83.333333%); max-width: 83.333333%; }
+  .gf-t-11 { @include flex(0 0 91.666667%); max-width: 91.666667%; }
+  .gf-t-12 { @include flex(0 0 100%); max-width: 100%; }
+  .none-gf-m { display: none; }
+  .none-gf-t { display: block; }
+  .none-gf-d { display: none; }
+}
+@media only screen and (min-width: 992px) {
+  // Columnas Desktop
+  .gf-d-1 { @include flex(0 0 8.333333%); max-width: 8.333333%; }
+  .gf-d-2 { @include flex(0 0 16.666667%); max-width: 16.666667%; }
+  .gf-d-3 { @include flex(0 0 25%); max-width: 25%; }
+  .gf-d-4 { @include flex(0 0 33.333333%); max-width: 33.333333%; }
+  .gf-d-5 { @include flex(0 0 41.666667%); max-width: 41.666667%; }
+  .gf-d-6 { @include flex(0 0 50%); max-width: 50%; }
+  .gf-d-7 { @include flex(0 0 58.333333%); max-width: 58.333333%; }
+  .gf-d-8 { @include flex(0 0 66.666667%); max-width: 66.666667%; }
+  .gf-d-9 { @include flex(0 0 75%); max-width: 75%; }
+  .gf-d-10 { @include flex(0 0 83.333333%); max-width: 83.333333%; }
+  .gf-d-11 { @include flex(0 0 91.666667%); max-width: 91.666667%; }
+  .gf-d-12 { @include flex(0 0 100%); max-width: 100%; }
+  .none-gf-m { display: none; }
+  .none-gf-t { display: none; }
+  .none-gf-d { display: block; }
+}

@@ -1,0 +1,66 @@
+description = "paquetes"
+
+[viewBag]
+==
+{% if paquetes %}
+
+
+
+                             <div class="PackSelect__packContainer__ftmch ">
+                                     {% for paquete in paquetes %}  
+                
+                                        <section class="PackSelectCard__pack__lkzkd" data-cy="packCard">
+                                        
+                                              <div class="boxCabanaRess" style="padding:unset">
+                                                            <figure class="boxCabanaRes__fig cont-hack">
+                                                                <img class="img-hack" src="{{ paquete.foto.path | resize(800)}}" alt="{{paquete.nombre}}" >
+                                                            </figure>
+                                              </div>
+                                          {{ ubicacionId }}
+
+                                          
+                                          
+                                            <div class="PackSelectCard__flexColumn__hnfPq">
+                                                <div style="display: flex;
+                                                    flex-direction: row;
+                                                    justify-content: space-between;
+                                                    padding-bottom: 15px;
+                                                    align-items: center;"
+                                                    >
+                                                    
+                                                       <h3 class="PackSelectCard__topTitle__Ok1S-">{{paquete.nombre}}</h3>
+
+                                                       <div class="PackSelectCard__price__CZBt7"><strong>${{paquete.total|number_format}} </strong></div>
+
+                                                </div>
+                                                
+                                                <p class="PackSelectCard__flexTitle__g2YqT"><span class="PackSelectCard__header__VYqkW PackSelectCard__title__uKx6M">{{paquete.descripcion}}</span></p>
+                                                
+                                                <!--p class="PackSelectCard__subheader__W72kY">{{paquete.descripcion}}</p-->
+                                            </div>
+                                            
+                                            
+                                            <div class="PackSelectCard__flexColumn_buttons">
+                                                 <button class="PackSelectCard__button__auYmq PackSelectCard_button_W" 
+                                                 onclick="location.href='packs/fechas/{{ paquete.id }}/{{ paquete.general ? ubicacion_id : paquete.ubicacion_id }}';"
+                                                 type="button">Seleccionar</button>
+
+                                                 <button class="PackSelectCard__button__auYmq"  style="background-color:#B55B12!important;" onclick="location.href='https://wandercabins.mx/pack/{{paquete.ubicacion.url}}/{{paquete.slug}}';"  type="button">Leer más</button>
+
+                                            </div>
+                                            
+                                            
+
+                                        </section>
+                                     {% endfor %}            
+                 
+                             </div>
+          {% else %}
+            
+            <div style="text-align:center; padding-top:40px">
+              <img src="{{ 'assets/img/logos/wander-full-green.svg'|theme }}" alt="Wander" class="loading-image">
+              <p style="font-family: 'Oswald',sans-serif;font-size:1.8em;color:#818c70;" claemzss="loading-message">No contamos con paquetes para esta ubicación.</p>
+            </div>
+
+
+          {% endif %}

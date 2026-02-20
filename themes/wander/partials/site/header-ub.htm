@@ -1,0 +1,471 @@
+description = "Header General"
+
+[viewBag]
+snippetCode = "header"
+snippetName = "Header"
+
+[banners]
+
+[builderList ciudadesList]
+modelClass = "Roll\Cabanas\Models\Ciudad"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<style>
+
+.TopBanner__container__eJpQE {
+          align-items: center;
+          background: #818C70;
+          display: flex;
+          justify-content: space-between;
+          min-height: 44px;
+          padding: 10px;
+          width: 100%;
+          z-index: 300;
+      }
+      .TopBanner__container__eJpQE .TopBanner__descriptionContainer__v5g8C {
+      text-align: center;
+      width: 100%;
+      }
+      .TopBanner__container__eJpQE .TopBanner__closeButton__QeTrb {
+      background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxNyIgdmlld0JveD0iMCAwIDE5IDE3Ij48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSI+PHBhdGggZD0iTTAgMTYuOTcgMTYuOTcgME0wIDBsMTYuOTcgMTYuOTciIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEpIi8+PC9nPjwvc3ZnPg==) no-repeat 50%;
+      background-size: contain;
+      border: none;
+      cursor: pointer;
+      float: right;
+      font-size: .7rem;
+      height: 12px;
+      line-height: 1;
+      padding: 0 15px;
+      right: 5px;
+      transition: color .2s ease-out;
+      width: 12px;
+      z-index: 100;
+  }
+  .gHeader {
+    top: auto;
+  }
+  
+      
+  .cont-menu-mobile, .overlayClass, .overlayGenerico, .overProgress {
+    top: auto;
+}
+
+
+    
+    .submenu-content {
+      display: none!important;
+      position: absolute;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      padding: 20px!important;
+      background: #0c282a63;
+      width: 30%!important;
+    }
+    
+    
+    
+    .submenu-content li {
+      display: block;
+    }
+    
+    .submenu-content a {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #333;
+    }
+    
+    .submenu:hover .submenu-content {
+      display: block!important;
+    }
+    
+    .site{
+        padding:5px!important;
+    }
+    .site a{
+        margin-left:10px!important;
+    }
+    
+    .siteSub{
+        padding:5px!important;
+    }
+    
+    .submenu-content a.submenuIemHover {
+      position: relative;
+      text-decoration: none;
+      /*color: #333;*/
+    }
+    
+    .submenu-content a.submenuIemHover::before,
+    .submenu-content a.submenuIemHover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: #fff; /* Color del subrayado */
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+    
+    .submenu-content a.submenuIemHover::after {
+      transform-origin: bottom left;
+    }
+    
+    .submenu-content a.submenuIemHover:hover::before,
+    .submenu-content a.submenuIemHover:hover::after {
+      transform: scaleX(1);
+    }
+
+
+@media (max-width: 991px) { /* Aplica solo en dispositivos móviles */
+  .submenu-content.active + .menuIemHover {
+    margin-top: 60px; /* Ajusta según sea necesario */
+  }
+  
+      .submenu-content {
+      position: unset!important;
+      /*position: absolute;*/
+      width: 100%!important;
+    }
+        .submenu-content li a, .cont-menu-mobile .mnuContMob ul li a
+    {
+       text-align:left!important;
+    }
+    
+}
+    @media (min-width:576px){
+        .toolsHead__link{
+            display:none
+            }
+
+        }
+
+
+/*styles cloudbeds*/
+
+.cloudbeds-button{
+     border:  unset !important;
+
+    width: 100px;
+    height: 40px;
+    display: block;
+    font-size: calc(12px + 2*((100vw - 320px) / 880));
+    color: #ffffff !important;
+    text-decoration: none;
+    background-color: #818C70 !important;
+    line-height: 40px;
+    text-align: center;
+    padding: 0 15px !important;
+    border-radius: 0.25rem !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: "Oswald", sans-serif !important;
+    font-weight: 400 !important;
+}
+
+.d-tosyl3 {
+    display: none!important;
+}
+
+
+
+
+
+@media screen and (max-width: 420px) {
+    .cloudbeds-button{
+        width:85px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .cloudbeds-button {
+        font-size:12px;
+        display: none;
+        width: 60px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cloudbeds-button {
+        font-size:14px
+    }
+}
+
+.cloudbeds-button span {
+    display: none
+}
+
+.cloudbeds-button:hover {
+    color: #ffffff!important;
+    background-color: #707267
+}
+
+.toolsHead__link:last-child {
+    margin: 0
+}
+
+@media (min-width: 576px) {
+    .toolsHead {
+        right:20px
+    }
+
+   .cloudbeds-button span {
+        display: inline-block
+    }
+}
+
+
+
+    
+    .contFormCal .stickyForm  .btn-primary {
+    background-color: #222919!important;
+    border-color: #222919!important;
+    color: #ffffff;
+    font-family: "Oswald", sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    height: 40px;
+    line-height: 1.2;
+    letter-spacing: 1.2px;
+    border-radius: 5px;
+    width: 115px;
+        margin: 0.5rem 0 0;
+    }
+  
+  
+button.cloudbeds-button_link{
+    display: inline-block;
+    width: 270px;
+    height: 40px;
+    padding: 0 10px;
+    margin: 0;
+    background-color: #EA7F26;
+    outline: none;
+    border: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    line-height: 40px;
+    text-align: center;
+    font-size: 0.8125rem;
+    letter-spacing: 1px;
+    font-family: "Oswald", sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+    text-align: center;
+    border-radius:0px;
+    
+}
+
+.cloudbeds-button_link:hover {
+    background-color: #ff9b33;
+    color: #ffffff
+}
+
+@media (min-width: 360px) {
+    .cloudbeds-button_link {
+        font-size:0.875rem;
+        padding: 0 20px
+    }
+}
+
+/*fin styles cloudbeds*/
+  
+  
+
+  </style>
+  
+  {% set slug = this.param.slug %}
+
+
+    {% put scriptinicio %}
+    
+    <script  type="text/javascript">    
+        let slug = "{{ slug }}";
+    </script>
+    
+    
+    
+    {% endput %}
+
+
+{% set ciudades = ciudadesList.records %}
+
+{% component 'banners' %}
+    <section class="layouts__topNotificationsContainer__iU+d4" id="banerCupon" >
+
+            {% if bannerHtml %}
+            
+                
+                 {{bannerHtml|raw}}        
+                
+                  <!--div class="TopBanner__container__eJpQE" id="bannerdiv" >
+                      <div class="TopBanner__descriptionContainer__v5g8C">
+                          <div class="TopBanner__description__kDf" style="color: rgb(45, 63, 83);">
+                              <p style="color:#ffffff; line-height: 1.5; margin-top:.8rem;margin-bottom:.8rem; word-spacing: 2pt;font-size: 18px "> 
+                              
+                                
+                                En esta temporada del amor, quédate 2 noches o más y obtén un <strong style="color:#ffffff;text-decoration: underline; font-weight: 600;">15% de descuento</strong> de Domingo a Viernes, con el código <strong style="color:#ffffff;text-decoration: underline; font-weight: 600;">AMOR</strong>.
+                              </p>
+                          </div>
+                      </div>
+                      <button class="TopBanner__closeButton__QeTrb" type="button" onclick="ocultarBanner()" aria-label="close-top-banner"></button>
+                  </div-->
+            {% endif %}
+    </section>
+<header id="headerGeneral" class="gHeader">
+      <div class="container">
+        <div class="row align-items-center">
+
+          <div class="col-6 col-md-6 col-lg-2">
+            <div class="logoHead">
+              <a href="{{'inicio'|page}}">
+                <img src="{{'assets/img/logos/wander-full-white.svg'|theme}}"  width="108" height="55"  alt="Wander">
+                <h1 class="site-title">Wander</h1>
+              </a>
+            </div><!-- end.logoHead -->
+          </div><!-- end.col-* -->
+          <div class="col-12 col-lg-7 d-none d-lg-block">
+            <div class="menuMain">
+              <nav class="menuDesk">
+                <ul id="md">
+                   <li class="submenu">
+                      <a class="menuIemHover" href="#">{{ 'Destinos'|_ }}</a>
+                          <ul class="submenu-content">
+                             {% for ciudad in ciudades %}
+                             
+                             {% if ciudad.ubicaciones.count > 0  %}
+                                <li><a href="#">{{ ciudad.nombre }}</a>
+                                    
+                                    {% for ubicacion in ciudad.ubicaciones %}
+                                                                                     {% if ubicacion.id != 5  %}
+                                            <li class="site"><a class=" submenuIemHover" href="/ubicacion/{{ubicacion.slug}}">{{ubicacion.nombre}}</a></li>
+                                            {% endif %}
+                                    {% endfor %}
+                                    
+                                   <!-- {% for ubicacion in ciudad.ubicacionesSeinicundarias %}
+                                        <li class="site"><a class=" submenuIemHover" href="/ubicacion/{{ubicacion.slug}}">{{ubicacion.nombre}}</a></li>
+                                    {% endfor %} -->
+                                    
+                                </li>
+                                {% endif %}
+                             {% endfor %}
+                          </ul>
+                  </li>
+                  <li class=""><a class="menuIemHover" href="/packs">{{ 'Paquetes'|_ }}</a></li>
+                  <li class=""><a class="menuIemHover" href="#cabanas">{{ '¿Cómo funciona?'|_ }}</a></li>
+                  <li class=""><a class="menuIemHover" href="#experiencia">{{ 'La experiencia Wander'|_ }} </a></li>
+                  <!--li class=""><a class="menuIemHover" href="#locaciones">Destinos</a></li-->
+
+                    
+                  <li class=""><a class="menuIemHover" href="#actividades">{{ 'Actividades'|_ }}</a></li>
+                  <li class=""><a class="menuIemHover" href="/blog">{{ 'Blog'|_ }}</a></li>
+                  <li class=""><a class="menuIemHover" href="https://grupos.wandercabins.mx/">{{ 'Grupos'|_ }}</a></li>
+
+                  <li class=""><a class="menuIemHover" href="https://app.air.inc/a/boJQiMwHm">{{ 'Prensa'|_ }}</a></li>
+                  
+
+                </ul><!-- end#md --> 
+              </nav><!-- end.menuDesk -->
+            </div><!-- end.menuMain -->
+          </div><!-- end.col-* -->
+          <div class="col-6 col-md-6 col-lg-3">
+            <div class="toolsHead">
+            
+        
+
+                      <a class="toolsHead__link toolsHead__link--acceso" onclick="view()" href="#" >{{ 'Reservar'|_ }}</a>
+                      <button type="button" id="openMenuMobile" class="toolsHead__link menu-mobile-btn" onclick="menuMobile()" data-menu-expand="false"><span></span></button>
+                  
+
+
+   
+              
+              
+            </div><!-- end.toolsHead -->
+          </div><!-- end.col-* -->
+          
+        </div><!-- edn.row -->
+      </div><!-- end.container -->
+    </header><!-- end.Header -->
+    
+    <!-- MenuMobile -->
+    <div id="mm" class="cont-menu-mobile" data-menu-expand="false">
+      <div id="contListMenu" class="mnuContMob">
+    
+      </div>
+    </div>
+    <!-- end.MenuMobile -->
+    
+       <script src="https://us2.cloudbeds.com/widget/load/rF7dzv/immersive"></script>
+
+       <script >
+       function ocultarBanner(){
+                const banner = document.getElementById('banerCupon');
+
+                // Cambiar su estilo para ocultarlo
+                banner.style.display = 'none';
+            
+                const header = document.querySelector('#headerGeneral');
+            
+                // Cambiar su propiedad "top" a 0
+                header.style.top = '0';
+                
+                            
+                const mm = document.getElementById('mm');
+            
+                // Cambiar su propiedad "top" a 0
+                mm.style.top = '0';
+                
+                 var formReserva = document.getElementById('contFormCal');
+              var imagen = document.getElementById('hero-sec');
+              
+              if (formReserva && imagen && banner) {
+                    
+                //  console.log('dom cargado');
+                  
+                        calcularBanner();
+                }
+                else{
+                      var location = document.getElementById('location').clientHeight;
+
+                      if (location && imagen && banner) {
+                            
+                      //    console.log('dom cargado');
+                          
+                                calcularBannerUbicacion();
+                        }
+                    
+                    }
+                
+                
+           }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const submenuItems = document.querySelectorAll('.submenu a.menuIemHover');
+
+  submenuItems.forEach(item => {
+    item.addEventListener('click', function(event) {
+      if (window.innerWidth < 768) { // Solo en dispositivos móviles
+        event.preventDefault(); // Evitar el comportamiento de enlace predeterminado
+        const submenuContent = this.nextElementSibling;
+        submenuContent.style.display = submenuContent.style.display === 'block' ? 'none' : 'block';
+      }
+    });
+  });
+});
+
+
+
+
+    </script>

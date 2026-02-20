@@ -1,0 +1,286 @@
+title = "Reservar 2"
+url = "/reservar/huespedes"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[procesoReserva]
+==
+{% put pagetitle %}Huéspedes{% endput %}
+{% put metatitle %}Conoce nuestras cabañas en renta petfriendly en Valle de Bravo y Malinalco{% endput %}
+{% put metadescription %}Reserva la experiencia Wander en una de nuestras cabañas en medio de la naturaleza. Ingresa a nuestro sitio, elige tu fecha favorita y ¡listo! Alístate junto con tu pareja, familia, amigos y hasta tu mascota, somos pet friendly. ¡Te esperamos!{% endput %}
+
+{% put scriptreserva %}
+<script type="text/javascript" src="{{'assets/js/scripts/scriptReservar.js'|theme}}"></script>
+
+
+{% endput %}
+
+
+
+
+<article class="bg-gen">
+  <div class="reservaCt">
+    <div class="descReservar">
+      <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
+      <h2>Selecciona la cantidad de huéspedes</h2>
+    </div>
+    {{ form_ajax('onHuespedes', {class: 'stepReservaFrm'}) }}
+      <div class="wizard">
+        <div class="steps clearfix">
+          <ul role="tablist">
+            <li role="tab" class="first done" aria-disabled="false" aria-selected="true">
+              <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">Paso 1</a>
+            </li>
+            <li role="tab" class="current" aria-disabled="true">
+              <a id="steps-uid-0-t-1" href="{{''|page}}" aria-controls="steps-uid-0-p-1">Paso 2</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-2" href="#" aria-controls="steps-uid-0-p-2">Paso 3</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-3" href="#" aria-controls="steps-uid-0-p-3">Paso 4</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">Paso 5</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">Paso 6</a>
+            </li>
+            <li role="tab" class="disabled last" aria-disabled="true">
+              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">Paso 7</a>
+            </li>
+          </ul><!-- end.ul -->
+        </div><!-- end.steps -->
+        <div class="content clearfix">
+          <section class="body current">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12 col-lg-9">
+                  <div class="descBoxCabinsNew">
+                    <!--p>Define el <strong>número de huéspedes</strong> y te mostraremos la cabaña ideal para tu visita.<br>
+                    El hospedaje para mascotas tiene un costo adicional por estancia sin importar el número de días.</p-->
+                    
+                    <div class="titleGeta" >Define el <strong>número de huéspedes</strong> y te mostraremos la cabaña ideal para tu visita.<br>
+                    El hospedaje para mascotas tiene un costo adicional por estancia sin importar el número de días.</div>
+                    
+
+                  </div><!-- end.descBoxCabinsNew -->
+
+                  {% flash %}
+                  <div class="alert alert-warning" style="text-align:justify;">
+                      {{ message }}
+                  </div>
+                 {% endflash %}
+                 
+                </div><!-- end.col-* -->
+                <div class="col-12 col-md-6 col-lg-5">
+                  <div class="inputHuesped">
+                    <h4 class="inputHuesped__title">Adultos</h4>
+                    <div class="inputHuesped__opt text-center">
+                      <input type="radio" class="radioRes" name="adultos" id="adulto-1" value="1" {% if adultos == '1' %}checked{% endif %}>
+                      <label onclick="objLayer.adultos ='1';" for="adulto-1">1</label>
+                      <input type="radio" class="radioRes" name="adultos" id="adulto-2" value="2" {% if adultos == '2' or not adultos %}checked{% endif %}>
+                      <label onclick="objLayer.adultos ='2';" for="adulto-2">2</label>
+                      <input type="radio" class="radioRes" name="adultos" id="adulto-3" value="3" {% if adultos == '3' %}checked{% endif %}>
+                      <label onclick="objLayer.adultos ='3';" for="adulto-3">3</label>
+                      <input type="radio" class="radioRes" name="adultos" id="adulto-4" value="4" {% if adultos == '4' %}checked{% endif %}>
+                      <label onclick="objLayer.adultos ='4';" for="adulto-4">4</label>
+                    </div><!-- end.inputHuesped__opt -->
+                  </div><!-- end.inputHuesped -->
+                  <div class="inputHuesped">
+                    <h4 class="inputHuesped__title">Niños
+                      {% if detalleninos.precio_sab > 0 %}| Costo por estancia ${{detalleninos.precio_sab|number_format(2, '.', ',') }}
+                      {% elseif detalleninos.precio_sab == 0 %}| Estancia sin costo extra
+                      {% else %}<small>*Podria aplicar costo extra por estancia</small>
+                      {% endif %}</h4>
+                      <div class="inputHuesped__opt text-center">
+                      <input type="radio" class="radioRes" name="ninos" id="nino-0" value="0" {% if ninos == '0' or not ninos %}checked{% endif %}>
+                      <label onclick="objLayer.ninos ='NO';" for="nino-0">NO</label>
+                      <input type="radio" class="radioRes" name="ninos" id="nino-1" value="1" {% if ninos == '1' %}checked{% endif %}>
+                      <label onclick="objLayer.ninos ='1';" for="nino-1">1</label>
+                      <input type="radio" class="radioRes" name="ninos" id="nino-2" value="2" {% if ninos == '2' %}checked{% endif %}>
+                      <label onclick="objLayer.ninos ='2';" for="nino-2">2</label>
+                      <input type="radio" class="radioRes" name="ninos" id="nino-3" value="3" {% if ninos == '3' %}checked{% endif %}>
+                      <label onclick="objLayer.ninos ='3';" for="nino-3">3</label>
+                      <input type="radio" class="radioRes" name="ninos" id="nino-4" value="4" {% if ninos == '4' %}checked{% endif %}>
+                      <label  onclick="objLayer.ninos ='4';" for="nino-4">4</label>
+                    </div><!-- end.inputHuesped__opt -->
+                  </div><!-- end.inputHuesped -->
+                  <div class="inputHuesped">
+                    <h4 class="inputHuesped__title">Mascotas {% if detallemascotas.precio_sab %}| Costo por estancia ${{detallemascotas.precio_sab|number_format(2, '.', ',') }}{% else %}<small>*Costo extra por estancia</small>{% endif %}</h4>
+                      <div class="inputHuesped__opt text-center">
+                          <input type="radio" class="radioRes" name="mascotas" id="mascotas-0" value="0" {% if mascotas == '0' or not mascotas %}checked{% endif %}>
+                          <label onclick="objLayer.mascota ='NO';"  for="mascotas-0">NO</label>
+                          <input type="radio" class="radioRes" name="mascotas" id="mascotas-1" value="1" {% if mascotas == '1' %}checked{% endif %}>
+                          <label onclick="objLayer.mascota ='SI';" for="mascotas-1">SI</label>
+                      </div><!-- end.inputHuesped__opt -->
+                    <!--div class="inputHuesped__opt">
+                      <label class="switch">
+                        <input type="checkbox" onclick="updateMascota()"  name="mascotas" id="mascotas" {% if mascotas == '1' %}checked{% endif %}>
+                        <span class="sldInp round"></span>
+                      </label>
+                    </div><!-- end.inputHuesped__opt -->
+                  </div><!-- end.inputHuesped -->
+                </div><!-- end.col-* -->
+              </div><!-- end.row -->
+            </div>
+          </section><!-- end.SelectHuesped -->
+        </div><!-- edn.content -->
+        <div class="actions clearfix">
+          <ul role="menu" aria-label="Pagination">
+            <li aria-disabled="false">
+              <a href="{{'reservar-1'|page}}">Atrás</a>
+            </li>
+            <li aria-hidden="false" aria-disabled="false">
+              <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="paso-2"  onclick="dataLayer.push({'wander': null }); dataLayer.push({
+                                                'event': 'Paso_2',
+                                                'wander': {
+                                                    'adultos' : objLayer.adultos,
+                                                    'ninos'   : objLayer.ninos,
+                                                    'mascota' : objLayer.mascota
+                                                }
+                                                });">
+                <i class="fa fa-chevron-right"></i><span>Siguiente</span>
+              </button>
+            </li>
+          </ul><!-- end.ul -->
+        </div><!-- end.actions -->
+      </div><!-- end.wizard -->
+    {{ form_close() }}
+
+  </div><!-- end.reservaCt -->
+</article>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+       let adulto1 = document.getElementById("adulto-1");
+       let adulto2 = document.getElementById("adulto-2");
+       let adulto3 = document.getElementById("adulto-3");
+       let adulto4 = document.getElementById("adulto-4");
+       
+
+        if(adulto1.checked)
+            objLayer.adultos = '1';
+        else if(adulto2.checked)
+            objLayer.adultos = '2';
+        else if(adulto3.checked)
+            objLayer.adultos = '3';
+        else if(adulto4.checked)
+            objLayer.adultos = '4';
+            
+       let ninos0 = document.getElementById("nino-0");
+       let ninos1 = document.getElementById("nino-1");
+       let ninos2 = document.getElementById("nino-2");
+       let ninos3 = document.getElementById("nino-3");
+       let ninos4 = document.getElementById("nino-4");
+       
+        if(ninos0.checked)
+            objLayer.ninos = 'NO';
+        else if(ninos1.checked)
+            objLayer.ninos = '1';
+        else if(ninos2.checked)
+            objLayer.ninos = '2';
+        else if(ninos1.checked)
+            objLayer.ninos = '3';
+        else if(ninos4.checked)
+            objLayer.ninos = '4';
+
+
+
+       let mascota0 = document.getElementById("mascotas-0");
+       let mascota1 = document.getElementById("mascotas-1");
+       
+        if(mascota0.checked)
+            objLayer.mascota = 'NO';
+        else if(mascota1.checked)
+            objLayer.mascota = 'SI';
+       
+      //  updateMascota();
+
+
+
+
+    }
+
+    function updateMascota(){
+        
+       let mascota = document.getElementById("mascotas");
+       
+        if(mascota.checked)
+            objLayer.mascota = 'SI';
+        else
+            objLayer.mascota = 'NO';
+        
+        }
+    
+</script>
+
+
+
+<script>
+
+// 🚦 Flag para saber si la navegación es interna
+window._internalNavigation = false;
+
+// 1️⃣ Detectar clicks en enlaces internos
+document.querySelectorAll('a').forEach(link => {
+    if (link.href.startsWith(window.location.origin)) {
+        link.addEventListener('click', () => {
+            window._internalNavigation = true;
+        });
+    }
+});
+
+// 2️⃣ Detectar envíos de formularios internos
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', () => {
+        if (!window._internalNavigation) {
+            // Por defecto, un submit se considera interno si es tu booking
+            // Opcional: podrías filtrar solo formularios del booking
+            window._internalNavigation = true;
+        }
+    });
+});
+
+// 3️⃣ Detectar clicks en botones "Siguiente" específicos
+document.getElementById('paso-2')?.addEventListener('click', () => {
+    window._internalNavigation = true; // ✅ Marca navegación interna
+});
+
+// 4️⃣ Detectar cierre o abandono de página
+window.addEventListener('beforeunload', function (e) {
+    if (window._internalNavigation) return;
+
+    const visitorId = localStorage.getItem('visitor_id');
+    const data = {
+        event_name: 'Abandon_Browse',
+        wander: visitorId,
+        with_session_tags => true,
+        properties: {
+            abandoned_step: 'Paso 2',
+            page: window.location.pathname
+        }
+    };
+
+    // Opción 1: sendBeacon (la más confiable para beforeunload)
+    if (navigator.sendBeacon) {
+        const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+        navigator.sendBeacon('/klaviyo/event', blob);
+    } else {
+        // Fallback con keepalive
+        fetch('/klaviyo/event', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            keepalive: true,
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }
+});
+
+
+
+</script>

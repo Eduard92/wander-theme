@@ -1,0 +1,86 @@
+title = "Confirmación Servicios Agregados"
+url = "/reservar/servicios/confirmacion/:clave"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[reservaManual]
+==
+{% put pagetitle %}Confirmación Servicios Agregados{% endput %}
+
+{% set reserva = reserva %}
+
+{% put scriptreserva %}
+<script type="text/javascript" src="{{'assets/js/scripts/scriptReservar.js'|theme}}"></script>
+{% endput %}
+
+
+<article class="bg-gen">
+  <div class="reservaCt">
+    <div class="descFullPage">
+      <img src="{{ 'assets/img/logos/logo-wander-black-text.svg'|theme }}" alt="Wander">
+      <h2>CONFIRMACIÓN DE PAGO DE EXPERIENCIAS</h2>
+    </div>
+    <div class="payContent">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 col-lg-6">
+            <div class="payContent__box">
+              <h4>¡Todo listo {{reserva.user.name}}!<br>
+              Tu cabaña {{cabana.nombre}} en {{ubicacion.nombre}} te espera.<br></h4>
+              
+              <p>En breve recibirás un correo de confirmación<br>con los detalles de tu reserva.</p>
+              
+              <p><small>Número de reservación: <b>{{reserva.id}}</b><br>
+              Del {{reserva.inicio}} al {{reserva.fin}}<br/>
+              {{reserva.adultos}} Adulto(s)<br>
+              {% if reserva.ninos > 0 %}
+              {{reserva.ninos}} Niño(s)<br>
+              {% endif %}
+              {% if reserva.mascotas > 0 %}
+              Acceso con mascotas<br>
+              {% endif %}
+              </small>
+                            <small>Total pagado: </small>${{reserva.costo_total|number_format}} <small>MXN.</small><br><br>
+
+</p>
+              <br>
+              <div id="datosOcultos">
+                    <input id="compraReservaId" name="reservaId" type="hidden" value="{{reserva.id}}">
+                    <input id="compraCabana" name="cabana" type="hidden" value="{{cabana.nombre}}">
+                    <input id="compraCabanaId" name="cabanaId" type="hidden" value="{{cabana.id}}">
+                    <input id="compraUbicacion" name="ubicacion" type="hidden" value="{{ubicacion.nombre}}">
+                    <input id="compraInicio" name="inicio" type="hidden" value="{{reserva.inicio}}">
+                    <input id="compraFin" name="fin" type="hidden" value="{{reserva.fin}}">
+                    <input id="compraAdultos" name="adultos" type="hidden" value="{{reserva.adultos}}">
+                    <input id="compraNinos" name="ninos" type="hidden" value="{{reserva.ninos}}">
+                    <input id="compraMascotas" name="mascotas" type="hidden" value="{{reserva.mascotas}}">
+                    <input id="compraCosto" name="costo" type="hidden" value="{{reserva.costo_total|number_format}}">
+
+              </div>
+              <div class="payContent__btn">
+                <a href="{{ '/'|page }}" class="btnpr btnpr__primary btnpr__primary--border">
+                  <i class="fa fa-chevron-left"></i><span>Regresar a Inicio</span>
+                </a>
+              </div>
+              <img src="{{ 'assets/img/logos/logo_gray_wander.svg'|theme }}" alt="Wander">
+            </div><!-- end.payContent_box -->
+          </div><!-- end.col-* -->
+        </div><!-- end.row -->
+      </div><!-- end.container -->
+    </div><!-- end.payContent -->
+  </div><!-- end.reservaCt -->
+</article><!-- end.bg-gen -->
+
+<!--script type="text/javascript">
+
+
+ window.onload = function () {
+     
+       let total = '{{ reserva.costo_total|number_format }}';
+
+    fbq('track', 'Purchase', {currency: "MXN", value: total.replace(/,/g,'')});
+
+ }
+ </script-->

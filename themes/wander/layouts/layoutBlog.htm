@@ -1,0 +1,461 @@
+[builderList categoriaList]
+modelClass = "RainLab\Blog\Models\Category"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "categorias"
+
+[SeoCmsPage]
+==
+<!doctype html>
+<html lang="es-MX">
+   <head>
+      <meta charset="UTF-8">
+      {% component 'SeoCmsPage' %}
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="profile" href="https://gmpg.org/xfn/11">
+      <style>@import url("https://use.typekit.net/iun3cpv.css");</style>
+
+      <!--script type="text/javascript">window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");
+      a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);
+      for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},
+      p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+         heap.load("477856211");
+      </script--> 
+      <link rel="apple-touch-icon" href="https://wandercabins.mx/storage/app/uploads/public/60e/680/73b/60e68073b95e8483929967.png">
+      <link rel="icon" type="image/png" href="https://wandercabins.mx/storage/app/uploads/public/60e/680/73b/60e68073b95e8483929967.png">
+      <link rel="shortcut icon" href="https://wandercabins.mx/storage/app/uploads/public/60e/680/73b/60e68073b95e8483929967.png">
+      
+      <title>Wander Cabins Blog | {% placeholder pagetitle %}</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+      <meta name="author" content="eduard">
+      <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+      <meta name="title" content="{% placeholder metatitle %}">
+      <meta name="description" content="{% placeholder metadescription %}">
+      <meta name="author" content="Eduard chi">
+      <meta name="robots" content="{{ this.page.robot_index }}, {{ this.page.robot_follow }}">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+        {% if this.page.canonical_url %}
+            {% if this.param.slug %}
+                <link rel="canonical" href="https://wandercabins.mx{{ this.page.canonical_url | replace({':slug': this.param.slug}) }}">
+                <meta property="og:url" content="https://wandercabins.mx{{ this.page.canonical_url | replace({':slug': this.param.slug}) }}" />
+            {% else %}
+                <link rel="canonical" href="https://wandercabins.mx{{ this.page.canonical_url }}">
+                 <meta property="og:url" content="https://wandercabins.mx{{ this.page.canonical_url }}" />
+
+            {% endif %}
+        {% else %}
+            <link rel="canonical" href="https://wandercabins.mx{{ this.page.url }}">
+            <meta property="og:url" content="https://wandercabins.mx{{ this.page.url }}" />
+        {% endif %}
+
+
+      <meta property="og:title" content="{% placeholder metatitle %}" />
+      <meta property="og:type" content="website" />
+
+      <meta property="og:site_name" content="Wander Cabins Blog" />
+      <meta property="og:image" content="https://wandercabins.mx/storage/app/uploads/public/643/ef9/3ca/643ef93ca1efb011662729.jpg" />
+      <meta property="og:description" content="{% placeholder metadescription %}" />
+
+
+
+      <!--script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://wandercabins.mx/blog/#website","url":"https://wandercabins.mx/blog/","name":"Wander Journal","description":"","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://journal.getaway.house/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://journal.getaway.house/#primaryimage","inLanguage":"en-US","url":"https://journal.getaway.house/wp-content/uploads/2021/10/journal_social_image3.jpg","contentUrl":"https://journal.getaway.house/wp-content/uploads/2021/10/journal_social_image3.jpg","width":1200,"height":630},{"@type":"WebPage","@id":"https://journal.getaway.house/#webpage","url":"https://journal.getaway.house/","name":"Home - Getaway Journal","isPartOf":{"@id":"https://journal.getaway.house/#website"},"primaryImageOfPage":{"@id":"https://journal.getaway.house/#primaryimage"},"datePublished":"2021-09-21T20:37:32+00:00","dateModified":"2022-07-27T20:58:15+00:00","description":"Welcome to our collection of stories and reflections on the wonder of nature, the joy of free time, and the power of rest. We\u2019re happy you\u2019re here.","breadcrumb":{"@id":"https://journal.getaway.house/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://journal.getaway.house/"]}]},{"@type":"BreadcrumbList","@id":"https://journal.getaway.house/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]}]}</script--> 
+      <!--link rel="alternate" type="application/rss+xml" title="Getaway Journal &raquo; Feed" href="https://journal.getaway.house/feed/" />
+      <link rel="alternate" type="application/rss+xml" title="Getaway Journal &raquo; Comments Feed" href="https://journal.getaway.house/comments/feed/" /-->
+      <!--script>window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/journal.getaway.house\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.1.1"}};
+         /*! This file is auto-generated */
+         !function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+      </script--> 
+      <style>img.wp-smiley,
+         img.emoji {
+         display: inline !important;
+         border: none !important;
+         box-shadow: none !important;
+         height: 1em !important;
+         width: 1em !important;
+         margin: 0 0.07em !important;
+         vertical-align: -0.1em !important;
+         background: none !important;
+         padding: 0 !important;
+         }
+      </style>
+    
+      <link rel='stylesheet' id='wp-block-library-css' href={{ 'assets/blog/css/style.min.css'|theme }} media='all' />
+      <link rel='stylesheet' id='wp-block-library-css' href={{ 'assets/blog/css/classic-themes.min.css'|theme }} media='all' />
+
+
+      <style id='global-styles-inline-css'>body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+         .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+         :where(.wp-block-columns.is-layout-flex){gap: 2em;}
+         .wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+      </style>
+      <link rel='stylesheet' id='molongui-authorship-css' href='https://journal.getaway.house/wp-content/plugins/molongui-authorship/public/css/molongui-authorship-flat.69b0.min.css?ver=4.1.0' media='all' />
+
+      <link rel='stylesheet' id='post-grid-elementor-addon-main-css' href={{ 'assets/blog/autoptimize/css/autoptimize_single_7356c8246f8fb97c8b43539c1fdfad75.css'|theme }} media='all' />
+      <link rel='stylesheet' id='post-grid-elementor-addon-main-css' href={{ 'assets/blog/autoptimize/css/autoptimize_single_18b46a9b0ae17c06c6c10cfcc81aec88.css'|theme }} media='all' />
+
+      <link rel='stylesheet' id='elementor-icons-css' href='https://journal.getaway.house/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.12.0' media='all' />
+      <link rel='stylesheet' id='elementor-frontend-css' href='https://journal.getaway.house/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.4.4' media='all' />
+      <style id='elementor-frontend-inline-css'>@font-face{font-family:eicons;src:url(https://journal.getaway.house/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.eot?5.10.0);src:url(https://journal.getaway.house/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.eot?5.10.0#iefix) format("embedded-opentype"),url(https://journal.getaway.house/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.woff2?5.10.0) format("woff2"),url(https://journal.getaway.house/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.woff?5.10.0) format("woff"),url(https://journal.getaway.house/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.ttf?5.10.0) format("truetype"),url(https://journal.getaway.house/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.svg?5.10.0#eicon) format("svg");font-weight:400;font-style:normal}
+         .elementor-kit-3500{--e-global-color-primary:#B94532;--e-global-color-secondary:#2D3F53;--e-global-color-text:#272728;--e-global-color-accent:#F4F0E8;--e-global-typography-primary-font-family:"Roboto";--e-global-typography-primary-font-weight:600;--e-global-typography-secondary-font-family:"Roboto Slab";--e-global-typography-secondary-font-weight:400;--e-global-typography-text-font-family:"Roboto";--e-global-typography-text-font-weight:400;--e-global-typography-accent-font-family:"Roboto";--e-global-typography-accent-font-weight:500;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:1200px;}.elementor-widget:not(:last-child){margin-bottom:20px;}{}h1.entry-title{display:var(--page-title-display);}@media(max-width:1024px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:1024px;}}@media(max-width:767px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:767px;}}
+         .elementor-bc-flex-widget .elementor-3501 .elementor-element.elementor-element-73004a97.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-3501 .elementor-element.elementor-element-73004a97.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-3501 .elementor-element.elementor-element-6eca91e:not(.elementor-motion-effects-element-type-background), .elementor-3501 .elementor-element.elementor-element-6eca91e > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#E9E2D299;}.elementor-3501 .elementor-element.elementor-element-6eca91e{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;}.elementor-3501 .elementor-element.elementor-element-6eca91e > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-msie .elementor-3501 .elementor-element.elementor-element-8fa6a7a .elementor-portfolio-item{width:calc( 100% / 3 );}.elementor-3501 .elementor-element.elementor-element-8fa6a7a .post-grid-inner{text-align:left;}.elementor-3501 .elementor-element.elementor-element-8fa6a7a .wpcap-grid-container{grid-column-gap:15px;grid-row-gap:30px;}.elementor-3501 .elementor-element.elementor-element-8fa6a7a .wpcap-grid-container .wpcap-post{border-radius:0px;}.elementor-3501 .elementor-element.elementor-element-8fa6a7a .wpcap-grid-container .wpcap-post a.read-more-btn{border-radius:0px;}.elementor-3501 .elementor-element.elementor-element-dba4c9a:not(.elementor-motion-effects-element-type-background), .elementor-3501 .elementor-element.elementor-element-dba4c9a > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#E9E2D299;}.elementor-3501 .elementor-element.elementor-element-dba4c9a{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;}.elementor-3501 .elementor-element.elementor-element-dba4c9a > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-msie .elementor-3501 .elementor-element.elementor-element-c1b734f .elementor-portfolio-item{width:calc( 100% / 3 );}.elementor-3501 .elementor-element.elementor-element-c1b734f .post-grid-inner{text-align:left;}.elementor-3501 .elementor-element.elementor-element-c1b734f .wpcap-grid-container{grid-column-gap:15px;grid-row-gap:30px;}.elementor-3501 .elementor-element.elementor-element-c1b734f .wpcap-grid-container .wpcap-post{border-radius:0px;}.elementor-3501 .elementor-element.elementor-element-c1b734f .wpcap-grid-container .wpcap-post a.read-more-btn{border-radius:0px;}@media(max-width:1024px){.elementor-msie .elementor-3501 .elementor-element.elementor-element-8fa6a7a .elementor-portfolio-item{width:calc( 100% / 2 );}.elementor-msie .elementor-3501 .elementor-element.elementor-element-c1b734f .elementor-portfolio-item{width:calc( 100% / 2 );}}@media(max-width:767px){.elementor-msie .elementor-3501 .elementor-element.elementor-element-8fa6a7a .elementor-portfolio-item{width:calc( 100% / 1 );}.elementor-msie .elementor-3501 .elementor-element.elementor-element-c1b734f .elementor-portfolio-item{width:calc( 100% / 1 );}}
+      </style>
+      <link rel='stylesheet' id='post-grid-elementor-addon-main-css' href={{ 'assets/blog/autoptimize/css/autoptimize_single_7fbcb8945cf2ffcc52eff3468087ab41.css'|theme }} media='all' />
+      
+    
+      <link rel='stylesheet' id='font-awesome-5-all-css' href='https://journal.getaway.house/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=3.4.4' media='all' />
+      <link rel='stylesheet' id='font-awesome-4-shim-css' href='https://journal.getaway.house/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css?ver=3.4.4' media='all' />
+      <link rel='stylesheet' id='__EPYT__style-css' href='https://journal.getaway.house/wp-content/plugins/youtube-embed-plus/styles/ytprefs.min.css?ver=13.2.0.1' media='all' />
+      <style id='__EPYT__style-inline-css'>.epyt-gallery-thumb {
+         width: 33.333%;
+         }
+      </style>
+      <link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=auto&#038;ver=6.1.1' media='all' />
+      
+      
+      <script src='https://journal.getaway.house/wp-includes/js/jquery/jquery.min.js?ver=3.6.1' id='jquery-core-js'></script> 
+      <script id='wpp-json' type="application/json">{"sampling_active":0,"sampling_rate":100,"ajax_url":"https:\/\/journal.getaway.house\/wp-json\/wordpress-popular-posts\/v1\/popular-posts","api_url":"https:\/\/journal.getaway.house\/wp-json\/wordpress-popular-posts","ID":0,"token":"7942b5ecd7","lang":0,"debug":0}</script> 
+      
+      <script id='__ytprefs__-js-extra'>var _EPYT_ = {"ajaxurl":"https:\/\/journal.getaway.house\/wp-admin\/admin-ajax.php","security":"e6742ee3ac","gallery_scrolloffset":"20","eppathtoscripts":"https:\/\/journal.getaway.house\/wp-content\/plugins\/youtube-embed-plus\/scripts\/","eppath":"https:\/\/journal.getaway.house\/wp-content\/plugins\/youtube-embed-plus\/","epresponsiveselector":"[\"iframe.__youtube_prefs_widget__\"]","epdovol":"1","version":"13.2.0.1","evselector":"iframe.__youtube_prefs__[src], iframe[src*=\"youtube.com\/embed\/\"], iframe[src*=\"youtube-nocookie.com\/embed\/\"]","ajax_compat":"","ytapi_load":"light","stopMobileBuffer":"1","vi_active":"","vi_js_posttypes":[]};</script> 
+      
+
+      
+        <script type="text/javascript" src="{{ [
+            'assets/vendor/jquery/dist/jquery.min.js',
+            'assets/js/vendor/modernizr-2.8.3.min.js',
+          ]|theme }}"></script>
+  
+      <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+         ga('create', 'UA-63892242-5', 'auto');
+         ga('send', 'pageview');
+      </script> 
+      <style>@-webkit-keyframes bgslide {
+         from {
+         background-position-x: 0;
+         }
+         to {
+         background-position-x: -200%;
+         }
+         }
+         @keyframes bgslide {
+         from {
+         background-position-x: 0;
+         }
+         to {
+         background-position-x: -200%;
+         }
+         }
+         .wpp-widget-placeholder {
+         margin: 0 auto;
+         width: 60px;
+         height: 3px;
+         background: #818c70;
+         background: -webkit-gradient(linear, left top, right top, from(#818c70), color-stop(10%, #571313), to(#818c70));
+         background: linear-gradient(90deg, #818c70 0%, #571313 10%, #818c70 100%);
+         background-size: 200% auto;
+         border-radius: 3px;
+         -webkit-animation: bgslide 1s infinite linear;
+         animation: bgslide 1s infinite linear;
+         }
+      </style>
+      <style type="text/css">.site-title,
+         .site-description {
+         position: absolute;
+         clip: rect(1px, 1px, 1px, 1px);
+         }
+      </style>
+            
+      <link href="{{'assets/css/laraberg.min.css'|theme }}" rel="stylesheet">
+
+   </head>
+   <body class="home page-template page-template-elementor_header_footer page page-id-3501 no-sidebar elementor-default elementor-template-full-width elementor-kit-3500 elementor-page elementor-page-3501">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" >
+         <defs>
+            <filter id="wp-duotone-dark-grayscale">
+               <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+               <feComponentTransfer color-interpolation-filters="sRGB" >
+                  <feFuncR type="table" tableValues="0 0.498039215686" />
+                  <feFuncG type="table" tableValues="0 0.498039215686" />
+                  <feFuncB type="table" tableValues="0 0.498039215686" />
+                  <feFuncA type="table" tableValues="1 1" />
+               </feComponentTransfer>
+               <feComposite in2="SourceGraphic" operator="in" />
+            </filter>
+         </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" >
+         <defs>
+            <filter id="wp-duotone-grayscale">
+               <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+               <feComponentTransfer color-interpolation-filters="sRGB" >
+                  <feFuncR type="table" tableValues="0 1" />
+                  <feFuncG type="table" tableValues="0 1" />
+                  <feFuncB type="table" tableValues="0 1" />
+                  <feFuncA type="table" tableValues="1 1" />
+               </feComponentTransfer>
+               <feComposite in2="SourceGraphic" operator="in" />
+            </filter>
+         </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" >
+         <defs>
+            <filter id="wp-duotone-purple-yellow">
+               <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+               <feComponentTransfer color-interpolation-filters="sRGB" >
+                  <feFuncR type="table" tableValues="0.549019607843 0.988235294118" />
+                  <feFuncG type="table" tableValues="0 1" />
+                  <feFuncB type="table" tableValues="0.717647058824 0.254901960784" />
+                  <feFuncA type="table" tableValues="1 1" />
+               </feComponentTransfer>
+               <feComposite in2="SourceGraphic" operator="in" />
+            </filter>
+         </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" >
+         <defs>
+            <filter id="wp-duotone-blue-red">
+               <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+               <feComponentTransfer color-interpolation-filters="sRGB" >
+                  <feFuncR type="table" tableValues="0 1" />
+                  <feFuncG type="table" tableValues="0 0.278431372549" />
+                  <feFuncB type="table" tableValues="0.592156862745 0.278431372549" />
+                  <feFuncA type="table" tableValues="1 1" />
+               </feComponentTransfer>
+               <feComposite in2="SourceGraphic" operator="in" />
+            </filter>
+         </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" >
+         <defs>
+            <filter id="wp-duotone-midnight">
+               <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+               <feComponentTransfer color-interpolation-filters="sRGB" >
+                  <feFuncR type="table" tableValues="0 0" />
+                  <feFuncG type="table" tableValues="0 0.647058823529" />
+                  <feFuncB type="table" tableValues="0 1" />
+                  <feFuncA type="table" tableValues="1 1" />
+               </feComponentTransfer>
+               <feComposite in2="SourceGraphic" operator="in" />
+            </filter>
+         </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" >
+         <defs>
+            <filter id="wp-duotone-magenta-yellow">
+               <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+               <feComponentTransfer color-interpolation-filters="sRGB" >
+                  <feFuncR type="table" tableValues="0.780392156863 1" />
+                  <feFuncG type="table" tableValues="0 0.949019607843" />
+                  <feFuncB type="table" tableValues="0.352941176471 0.470588235294" />
+                  <feFuncA type="table" tableValues="1 1" />
+               </feComponentTransfer>
+               <feComposite in2="SourceGraphic" operator="in" />
+            </filter>
+         </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" >
+         <defs>
+            <filter id="wp-duotone-purple-green">
+               <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+               <feComponentTransfer color-interpolation-filters="sRGB" >
+                  <feFuncR type="table" tableValues="0.650980392157 0.403921568627" />
+                  <feFuncG type="table" tableValues="0 1" />
+                  <feFuncB type="table" tableValues="0.447058823529 0.4" />
+                  <feFuncA type="table" tableValues="1 1" />
+               </feComponentTransfer>
+               <feComposite in2="SourceGraphic" operator="in" />
+            </filter>
+         </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" >
+         <defs>
+            <filter id="wp-duotone-blue-orange">
+               <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+               <feComponentTransfer color-interpolation-filters="sRGB" >
+                  <feFuncR type="table" tableValues="0.0980392156863 1" />
+                  <feFuncG type="table" tableValues="0 0.662745098039" />
+                  <feFuncB type="table" tableValues="0.847058823529 0.419607843137" />
+                  <feFuncA type="table" tableValues="1 1" />
+               </feComponentTransfer>
+               <feComposite in2="SourceGraphic" operator="in" />
+            </filter>
+         </defs>
+      </svg>
+      <div id="page" class="site">
+
+         <header id="masthead" class="site-header">
+            <div class="site-header-topbar">
+               <div class="site-header-cta"> <a class="btn btn-primary btn-outline" target="_blank" href="https://wandercabins.mx/reservar/ubicacion?from=blog">RESERVAR AHORA</a></div>
+               <div class="site-branding">
+                  <a class="site-logo" href="https://wandercabins.mx">
+                  <img style="max-width:80% !important;"src="{{'assets/img/logos/wander-full-white.svg'|theme}}" alt="Wander">
+
+                  </a>
+                  <p class="site-title"><a href="https://wandercabins.mx/blog" rel="home">Wander Blog</a></p>
+               </div>
+               <div class="site-header-search">
+                  <div id="block-8" class="widget widget_block widget_search header-search-container">
+                     <!--form role="search" method="get" action="https://journal.getaway.house/" class="wp-block-search__button-outside wp-block-search__text-button site-search wp-block-search">
+                        <label for="wp-block-search__input-1" class="wp-block-search__label" >Search</label>
+                        <div class="wp-block-search__inside-wrapper "  style="width: 100%"><input type="search" id="wp-block-search__input-1" class="wp-block-search__input wp-block-search__input" name="s" value="" placeholder="Search and Discover"  required /><button type="submit" class="wp-block-search__button wp-element-button"  >Search</button></div>
+                     </form-->
+                  </div>
+               </div>
+            </div>
+            <nav id="site-navigation" class="main-navigation">
+               <button class="btn-transparent menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                  <svg width="33" height="21" viewBox="0 0 33 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <line y1="1" x2="33" y2="1" stroke="#E9E2D2" stroke-width="2"/>
+                     <line y1="10" x2="33" y2="10" stroke="#E9E2D2" stroke-width="2"/>
+                     <line y1="20" x2="33" y2="20" stroke="#E9E2D2" stroke-width="2"/>
+                  </svg>
+               </button>
+               <div class="primary-nav-wrapper">
+                  <div class="mobile-nav-header">
+                     <button type="button" class="btn-transparent mobile-nav-close">
+                        <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M0 13H3.9306L7 8.76571L10.0694 13H14L9.05363 6.5L14 0H10.0694L7 4.25286L3.9306 0H0L4.94637 6.5L0 13Z" fill="#F6F4F2"/>
+                        </svg>
+                     </button>
+                     <a class="mobile-logo" href="/blog">
+                                           <img src="{{'assets/img/logos/wander-full-white.svg'|theme}}" alt="Wander">
+
+                     </a>
+                  </div>
+                  <!--div class="site-mobile-search">
+                     <div id="block-8" class="widget widget_block widget_search header-search-container">
+                        <form role="search" method="get" action="https://journal.getaway.house/" class="wp-block-search__button-outside wp-block-search__text-button site-search wp-block-search">
+                           <label for="wp-block-search__input-2" class="wp-block-search__label" >Search</label>
+                           <div class="wp-block-search__inside-wrapper "  style="width: 100%"><input type="search" id="wp-block-search__input-2" class="wp-block-search__input wp-block-search__input" name="s" value="" placeholder="Search and Discover"  required /><button type="submit" class="wp-block-search__button wp-element-button"  >Search</button></div>
+                        </form>
+                     </div>
+                  </div-->
+                <div class="menu-getaway-journal-container">
+
+                           {% component 'blogCategories' %}      
+                  </div>
+
+                  <a class="btn btn-primary btn-outline mobile-book-cta" target="_blank" href="https://wandercabins.mx/reservar/ubicacion?from=blog">RESERVAR AHORA</a>
+               </div>
+            </nav>
+         </header>
+         
+         <!--div class="mobile-marquee-container">
+            <a class="marquee-link" href="https://getaway.house/booking"></a>
+            <div class="scroll-item"> BOOK YOUR ESCAPE</div>
+            <div class="scroll-item" aria-hidden="true"> BOOK YOUR ESCAPE</div>
+            <div class="scroll-item" aria-hidden="true"> BOOK YOUR ESCAPE</div>
+            <div class="scroll-item" aria-hidden="true"> BOOK YOUR ESCAPE</div>
+            <div class="scroll-item" aria-hidden="true"> BOOK YOUR ESCAPE</div>
+            <div class="scroll-item" aria-hidden="true"> BOOK YOUR ESCAPE</div>
+         </div-->
+      {% page %}
+
+         
+         
+
+         <footer id="colophon" class="site-footer">
+            <div class="footer-content">
+               <div class="footer-getaway">
+                  <div class="footer-logo">
+                     <section id="block-6" class="widget widget_block footer-logo-container">
+                          <img style="width:150px !important"  src="{{'assets/img/logos/wander-full-white.svg'|theme}}" alt="Wander">
+                     </section>
+                  </div>
+                  <section id="block-3" class="widget widget_block footer-links-container">
+                     <ul class="nav-links">
+                        <li><a href="https://wandercabins.mx/reservar/ubicacion?from=blog" target="_blank" rel="noreferrer noopener"><strong>Reserva tu cabaña</strong></a></li>
+                        <li><a rel="noreferrer noopener" href="https://wandercabins.mx/" target="_blank">Visita nuestro sitio</a></li>
+                        <li><a rel="noreferrer noopener" href="https://wandercabins.mx/#faqs" target="_blank">Preguntas Frecuentes</a></li>
+                        <!--li><a rel="noreferrer noopener" href="https://getaway.house/contact" target="_blank">Contacto</a></li-->
+                     </ul>
+                  </section>
+               </div>
+               <div class="footer-secondary">
+                  <section id="block-10" class="widget widget_block widget_media_image">
+ 
+                  </section>
+                  <div class="footer-logo-mobile">
+                     <section id="block-6" class="widget widget_block footer-logo-container">
+                          <img style="width:150px !important" src="{{'assets/img/logos/wander-full-white.svg'|theme}}" alt="Wander">
+                     </section>
+                  </div>
+                  <section id="block-7" class="widget widget_block footer-social-container">
+                     <div class="footer-social-links">
+                        <a class="social-icon" href="https://www.instagram.com/cabins.wander" target="_blank" rel="noopener noreferrer" tabindex="0" role="link">
+                           <svg id="icon-instagram" viewBox="0 0 32 32">
+                              <path d="M16 2.881c4.275 0 4.781 0.019 6.462 0.094 1.563 0.069 2.406 0.331 2.969 0.55 0.744 0.288 1.281 0.638 1.837 1.194 0.563 0.563 0.906 1.094 1.2 1.838 0.219 0.563 0.481 1.412 0.55 2.969 0.075 1.688 0.094 2.194 0.094 6.463s-0.019 4.781-0.094 6.463c-0.069 1.563-0.331 2.406-0.55 2.969-0.288 0.744-0.637 1.281-1.194 1.837-0.563 0.563-1.094 0.906-1.837 1.2-0.563 0.219-1.413 0.481-2.969 0.55-1.688 0.075-2.194 0.094-6.463 0.094s-4.781-0.019-6.463-0.094c-1.563-0.069-2.406-0.331-2.969-0.55-0.744-0.288-1.281-0.637-1.838-1.194-0.563-0.563-0.906-1.094-1.2-1.837-0.219-0.563-0.481-1.413-0.55-2.969-0.075-1.688-0.094-2.194-0.094-6.463s0.019-4.781 0.094-6.463c0.069-1.563 0.331-2.406 0.55-2.969 0.288-0.744 0.638-1.281 1.194-1.838 0.563-0.563 1.094-0.906 1.838-1.2 0.563-0.219 1.412-0.481 2.969-0.55 1.681-0.075 2.188-0.094 6.463-0.094zM16 0c-4.344 0-4.887 0.019-6.594 0.094-1.7 0.075-2.869 0.35-3.881 0.744-1.056 0.412-1.95 0.956-2.837 1.85-0.894 0.888-1.438 1.781-1.85 2.831-0.394 1.019-0.669 2.181-0.744 3.881-0.075 1.713-0.094 2.256-0.094 6.6s0.019 4.887 0.094 6.594c0.075 1.7 0.35 2.869 0.744 3.881 0.413 1.056 0.956 1.95 1.85 2.837 0.887 0.887 1.781 1.438 2.831 1.844 1.019 0.394 2.181 0.669 3.881 0.744 1.706 0.075 2.25 0.094 6.594 0.094s4.888-0.019 6.594-0.094c1.7-0.075 2.869-0.35 3.881-0.744 1.050-0.406 1.944-0.956 2.831-1.844s1.438-1.781 1.844-2.831c0.394-1.019 0.669-2.181 0.744-3.881 0.075-1.706 0.094-2.25 0.094-6.594s-0.019-4.887-0.094-6.594c-0.075-1.7-0.35-2.869-0.744-3.881-0.394-1.063-0.938-1.956-1.831-2.844-0.887-0.887-1.781-1.438-2.831-1.844-1.019-0.394-2.181-0.669-3.881-0.744-1.712-0.081-2.256-0.1-6.6-0.1v0z"></path>
+                              <path d="M16 7.781c-4.537 0-8.219 3.681-8.219 8.219s3.681 8.219 8.219 8.219 8.219-3.681 8.219-8.219c0-4.537-3.681-8.219-8.219-8.219zM16 21.331c-2.944 0-5.331-2.387-5.331-5.331s2.387-5.331 5.331-5.331c2.944 0 5.331 2.387 5.331 5.331s-2.387 5.331-5.331 5.331z"></path>
+                              <path d="M26.462 7.456c0 1.060-0.859 1.919-1.919 1.919s-1.919-0.859-1.919-1.919c0-1.060 0.859-1.919 1.919-1.919s1.919 0.859 1.919 1.919z"></path>
+                           </svg>
+                        </a>
+                        <a class="social-icon" href="https://www.facebook.com/CabinsWander-100326041660465/" target="_blank" rel="noopener noreferrer" tabindex="0" role="link">
+                           <svg id="icon-facebook" viewBox="0 0 32 32">
+                              <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"></path>
+                           </svg>
+                        </a>
+
+
+                     </div>
+                  </section>
+               </div>
+            </div>
+         </footer>
+      </div>
+      
+      
+        <!-- Scripts -->
+  <script type="text/javascript" src="{{ [
+    'assets/js/plugins/slick.min.js',
+    'assets/js/scripts/blog.js',
+  ]|theme }}"></script>
+
+
+
+      <script>(function(document, tag) { var script = document.createElement(tag); var element = document.getElementsByTagName('body')[0]; script.src = 'https://acsbap.com/api/app/assets/js/acsb.js'; script.async = true; script.defer = true; (typeof element === 'undefined' ? document.getElementsByTagName('html')[0] : element).appendChild(script); script.onload = function() { acsbJS.init({ statementLink : '', feedbackLink : '', footerHtml : '', hideMobile : false, hideTrigger : false, handleJquery : true, language : 'en', position : 'right', leadColor : '#146FF8', triggerColor : '#146FF8', triggerRadius : '50%', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerIcon : 'default', triggerSize : 'medium', triggerOffsetX : 20, triggerOffsetY : 20, usefulLinks : { }, mobile : { triggerSize : 'small', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerOffsetX : 0, triggerOffsetY : 0, triggerRadius : '0' } }); };}(document, 'script'));</script>
+      <noscript>
+         <style>.lazyload{display:none;}</style>
+      </noscript>
+      <script data-noptimize="1">window.lazySizesConfig=window.lazySizesConfig||{};window.lazySizesConfig.loadMode=1;</script>
+      <script async data-noptimize="1" src='https://journal.getaway.house/wp-content/plugins/autoptimize/classes/external/js/lazysizes.min.js?ao_version=2.9.2'></script>
+      <link rel='stylesheet' id='e-animations-css' href='https://journal.getaway.house/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=3.4.4' media='all' />
+      <script id='molongui-authorship-js-extra'>var molongui_authorship = {"byline_prefix":"","byline_suffix":"","byline_separator":", ","byline_last_separator":" and ","byline_link_title":"View all posts by"};</script> 
+      <script id='elementor-frontend-js-before'>
+         var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},
+         "i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close"},
+         "is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},
+         "responsive":{"breakpoints":{"mobile":{"label":"Mobile","value":767,"default_value":767,"direction":"max","is_enabled":true},
+         "mobile_extra":{"label":"Mobile Extra","value":880,"default_value":880,"direction":"max","is_enabled":false},
+         "tablet":{"label":"Tablet","value":1024,"default_value":1024,"direction":"max","is_enabled":true},
+         "tablet_extra":{"label":"Tablet Extra","value":1200,"default_value":1200,"direction":"max","is_enabled":false},
+         "laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},
+         "widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},
+         "version":"3.4.4","is_static":false,
+         "experimentalFeatures":{"e_dom_optimization":true,"a11y_improvements":true,"e_import_export":true,"additional_custom_breakpoints":true,"landing-pages":true,"elements-color-picker":true,"admin-top-bar":true},
+         "urls":{"assets":"https:\/\/journal.getaway.house\/wp-content\/plugins\/elementor\/assets\/"},
+         "settings":{"page":[],"editorPreferences":[]},
+         "kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],
+         "global_image_lightbox":"yes",
+         "lightbox_enable_counter":"yes",
+         "lightbox_enable_fullscreen":"yes",
+         "lightbox_enable_zoom":"yes",
+         "lightbox_enable_share":"yes",
+         "lightbox_title_src":"title",
+         "lightbox_description_src":"description"},
+         "post":{"id":3501,"title":"Getaway%20Journal","excerpt":"","featuredImage":"https:\/\/journal.getaway.house\/wp-content\/uploads\/2021\/10\/journal_social_image3.jpg"}};
+         </script>
+      <script defer src="https://journal.getaway.house/wp-content/cache/autoptimize/js/autoptimize_75db12ab24f8bb65adf1e2ed27245b28.js"></script>
+   </body>
+</html>

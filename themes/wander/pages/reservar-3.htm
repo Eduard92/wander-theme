@@ -1,0 +1,285 @@
+title = "Reservar 3"
+url = "/reservar/fechas"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[procesoReserva]
+==
+{% put pagetitle %}Fechas{% endput %}
+{% put metatitle %}Conoce nuestras cabañas en renta petfriendly en Valle de Bravo y Malinalco{% endput %}
+{% put metadescription %}Reserva la experiencia Wander en una de nuestras cabañas en medio de la naturaleza. Ingresa a nuestro sitio, elige tu fecha favorita y ¡listo! Alístate junto con tu pareja, familia, amigos y hasta tu mascota, somos pet friendly. ¡Te esperamos!{% endput %}
+
+{% put scriptreserva %}
+<script type="text/javascript" src="{{'assets/js/scripts/scriptReservar.js'|theme}}"></script>
+{% endput %}
+
+<script>
+// function getPrices(d, callback) {
+//   var invalid = [],
+//     labels = [];
+
+//   mobiscroll.util.http.getJson('/fechas/'+ d.getFullYear() +'/'+ d.getMonth() +'/'+ {{ubicacion.id}}, function (bookings) {
+//     for (var i = 0; i < bookings.length; ++i) {
+//       var booking = bookings[i],
+//         d = new Date(booking.d);
+
+//       if (booking.price > 0) {
+//         labels.push({
+//           start: d,
+//           title: '$' + booking.price,
+//           textColor: '#818C70',
+//         });
+//       } else {
+//         invalid.push(d);
+//       }
+//     }
+//     callback({ labels: labels, invalid: invalid });
+//   }, 'jsonp');
+// }
+</script>
+
+
+<article class="bg-gen">
+  <div class="reservaCt">
+    <div class="descReservar">
+      <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
+      <h2>Selecciona las fechas</h2>
+    </div>
+    {{ form_ajax('onFechas', {class: 'stepReservaFrm'}) }}
+      <div class="wizard">
+        <div class="steps clearfix">
+          <ul role="tablist">
+            <li role="tab" class="first done" aria-disabled="false" aria-selected="true">
+              <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">Paso 1</a>
+            </li>
+            <li role="tab" class="done" aria-disabled="true">
+              <a id="steps-uid-0-t-1" href="{{'reservar-2'|page}}" aria-controls="steps-uid-0-p-1">Paso 2</a>
+            </li>
+            <li role="tab" class="current" aria-disabled="true">
+              <a id="steps-uid-0-t-2" href="{{''|page}}" aria-controls="steps-uid-0-p-2">Paso 3</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-3" href="#" aria-controls="steps-uid-0-p-3">Paso 4</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">Paso 5</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">Paso 6</a>
+            </li>
+            <li role="tab" class="disabled last" aria-disabled="true">
+              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">Paso 7</a>
+            </li>
+          </ul><!-- end.ul -->
+        </div><!-- end.steps -->
+        <div class="content clearfix">
+          <section class="body current">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12 col-lg-9">
+                  <div class="descBoxCabinsNew">
+                    <!--p>Selecciona tu <strong>fecha de llegada (check-in)</strong> y la de partida <strong>(check-out)</strong>.<br>
+                    Si no encuentras disponibilidad, te recomendamos probar con otro destino.</p-->
+                    <div class="titleGeta" >Selecciona tu <strong>fecha de llegada (check-in)</strong> y la de partida <strong>(check-out)</strong>.<br>
+                    Si no encuentras disponibilidad, te recomendamos probar con otro destino.</div>
+                    
+                    
+                  </div><!-- end.descBoxCabinsNew -->
+                </div><!-- end.col-* -->
+                <div class="col-12 col-lg-9">
+                        {% flash %}
+                        <div class="alert alert-warning" style="text-align:center;">
+                            <strong>{{ message }}</strong>
+                        </div>
+                       {% endflash %}
+                  <!--<div class="boxMessageCabins">
+                    <p>NO TENEMOS CABAÑAS DISPONIBLES EN VALLE DE BRAVO PARA ESA FECHA, PERO TENEMOS ESTAS ALTERNATIVAS CERCANAS PARA ESAS MISMAS FECHAS</p>
+                    <div class="boxMessageCabins__ct">
+                      <div class="slide-dates">
+
+                        <div>
+                          <div class="boxCabinsDate">
+                            <div class="boxCabinsDate__img">
+                              <div id="cabin-1" data-slider-cabins class="sliderRes">
+                                <div>
+                                  <figure class="boxCabinsDate__fig">
+                                    <img src="{{ 'assets/img/imgPrueba/port_marquesa_410x310.jpg'|theme }}" alt="Malinalco">
+                                  </figure>
+                                </div>                          
+                                <div>
+                                  <figure class="boxCabinsDate__fig">
+                                    <img src="{{ 'assets/img/imgPrueba/port_valle_410x310.jpg'|theme }}" alt="Malinalco">
+                                  </figure>
+                                </div>                          
+                              </div>
+                              <a class="btnSlideRes bLeftP" href="#" id="prevCabinDate-1"></a>
+                              <a class="btnSlideRes nRightP" href="#" id="nextCabinDate-1"></a>
+                              <h5 class="boxCabinsDate__titleCab">Malinalco</h5>
+                              <a href="#" class="boxCabinsDate__link">Ver Cabina</a>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <a class="btnSlideResFull bLeftP" href="#" id="prevSlideDate"></a>
+                      <a class="btnSlideResFull nRightP" href="#" id="nextSlideDate"></a>
+                    </div>
+                  </div>
+                  -->
+                  <div class="boxMessageRes">
+                    <h4>{{seleccionado}}</h4>
+                  </div><!-- end.boxMessageRes -->
+                  <div class="boxGridReservar">
+                    <div class="boxGridReservar__item boxGridReservar__item--input">
+                      <label for="start-input">Check-in</label>
+                      <input id="start-input" name="start-input" type="text" readonly placeholder="Check-In">
+                    </div><!-- enc.boxGridReservar__item -->
+                    <div class="boxGridReservar__item boxGridReservar__item--input">
+                      <label for="end-input">Check-out</label>
+                      <input id="end-input" name="end-input" type="text" readonly placeholder="Check-Out">
+                    </div><!-- enc.boxGridReservar__item -->
+                    <div class="boxGridReservar__item boxGridReservar__item--btn">
+                      <button id="limpiar" type="button">Borrar Fechas</button>
+                    </div><!-- enc.boxGridReservar__item -->
+                  </div><!-- end.boxGridReservar -->
+                  <input type="hidden" id="rangeDate" name="rangeDate"><!-- recibe los datos del calendario. -->
+                  <div class="calCustom" id="rangeDate"></div>
+                  <small><blockquote>* Precios sin IVA.</blockuote></small>
+                  <small><blockquote>** Se muestra el costo de la cabaña más ecónomica por día.</blockuote></small>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+        <div class="actions clearfix">
+
+          <ul role="menu" aria-label="Pagination">
+            <li aria-disabled="false">
+              <a href="{{'reservar-2'|page}}">Atrás</a>
+            </li>
+            <li aria-hidden="false" aria-disabled="false">
+              <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="ubicacion"  onclick="send()">
+                <i class="fa fa-chevron-right"></i><span>Siguiente</span>
+              </button>
+            </li>
+          </ul><!-- end.ul -->
+        </div><!-- end.actions -->
+      </div><!-- end.wizard -->
+    {{ form_close() }}
+  </div><!-- end.reservaCt -->
+</article><!-- end.bg-gen -->
+<script>
+  var $WanderLoc = '/{% if grupo =='ubicacion' %}ubicacion-{{ubicacion_id}}{% elseif grupo == 'ciudad' %}ciudad-{{ubicacion_id}}{% endif %}';
+  var $capacidad = '/{{ adultos }}';
+  
+      function send(){
+        
+       let inicio = document.getElementById("start-input");
+       let fin = document.getElementById("end-input");
+       
+  
+        objLayer.start = inicio.value;
+        objLayer.end = fin.value;
+        
+        console.log(objLayer);
+        
+        if(objLayer.start != '' && objLayer.end != ''){
+        
+            dataLayer.push({'wander': null }); 
+            dataLayer.push({'event': 'Paso_3',
+                                'wander': {
+                                    'start' : objLayer.start,
+                                    'end'   : objLayer.end,
+                                    }
+                        });
+        }
+        
+                                                
+                                                
+      }
+        
+        
+</script>
+{% if start and end %}
+<script>
+  var $startDate = '{{start}}';
+  var $endDate = '{{end}}';
+</script>
+{% else %}
+<script>
+  var $startDate = '';
+  var $endDate = '';
+</script>
+{% endif %}
+
+
+
+
+
+
+<script>
+
+// 🚦 Flag para saber si la navegación es interna
+window._internalNavigation = false;
+
+// 1️⃣ Detectar clicks en enlaces internos
+document.querySelectorAll('a').forEach(link => {
+    if (link.href.startsWith(window.location.origin)) {
+        link.addEventListener('click', () => {
+            window._internalNavigation = true;
+        });
+    }
+});
+
+// 2️⃣ Detectar envíos de formularios internos
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', () => {
+        if (!window._internalNavigation) {
+            // Por defecto, un submit se considera interno si es tu booking
+            // Opcional: podrías filtrar solo formularios del booking
+            window._internalNavigation = true;
+        }
+    });
+});
+
+// 3️⃣ Detectar clicks en botones "Siguiente" específicos
+document.getElementById('ubicacion')?.addEventListener('click', () => {
+    window._internalNavigation = true; // ✅ Marca navegación interna
+});
+
+// 4️⃣ Detectar cierre o abandono de página
+window.addEventListener('beforeunload', function (e) {
+    if (window._internalNavigation) return;
+
+    const visitorId = localStorage.getItem('visitor_id');
+    const data = {
+        event_name: 'Abandon_Browse',
+        wander: visitorId,
+        with_session_tags => true,
+        properties: {
+            abandoned_step: 'Paso 3',
+            page: window.location.pathname
+        }
+    };
+
+    // Opción 1: sendBeacon (la más confiable para beforeunload)
+    if (navigator.sendBeacon) {
+        const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+        navigator.sendBeacon('/klaviyo/event', blob);
+    } else {
+        // Fallback con keepalive
+        fetch('/klaviyo/event', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            keepalive: true,
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }
+});
+
+
+
+</script>

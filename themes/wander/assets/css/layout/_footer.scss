@@ -1,0 +1,122 @@
+/* ==|====================
+   Layout/Footer
+   ======================= */
+
+.g-footer {
+  width: 100%; height: auto; @include position(relative, null null null null); padding: 40px 0 40px 0; margin: auto 0 0 0; z-index: 3; background-color: $col3;
+}
+.listFooter {
+  width: 100%; height: auto; padding: 0; margin: 0 0 20px; list-style-type: none;
+  & .title_Footer {
+    color: $white; @include fluid-type(14px, 17px, 320px, 1200px); margin: 0 0 10px; padding: 0; letter-spacing: 1px;
+  }
+  &__newsletter {
+    width: 100%; height: auto; margin: 0; padding: 0; @include box-sizing(border-box);
+    & p {
+      color: $white; text-align: left; margin: 0 0 10px 0; @include fluid-type(12px, 14px, 320px, 1200px);
+    }
+    & form {
+      margin: 0; padding: 0;
+      & input[type="email"] {
+        display: block; width: 100%; height: 30px; line-height: 30px; padding: 0 10px; margin: 0 0 10px; @include box-sizing(border-box); color: $black; outline: none; border: none; border-radius: 4px; background-color: $white; font-size: rem(14px);
+      }
+      & input[type="submit"] {
+        display: block; width: 100%; height: 30px; line-height: 30px; padding: 0; margin: 0; @include box-sizing(border-box); color: $white; outline: none; border: none; border-radius: 4px; background-color: $nar; text-align: center; font-size: rem(14px); cursor: pointer;
+      }
+    }
+  }
+  &__box {
+    width: 100%; height: auto; margin: 0; padding: 0; @include box-sizing(border-box);
+    &--brand {
+      text-align: center;
+      a {
+        display: block; width: 100%; height: auto; margin: 0 0 15px 0; padding: 0 0;
+        img {
+          display: block; width: 100%; max-width: 100px; height: auto; margin: 0 auto; padding: 0; object-fit: contain; font-family: "object-fit: contain";
+        }
+        .site-title {
+          font-size: 0; text-indent: -9999px; color: $white; opacity: 0; margin: 0; padding: 0;
+        }
+      }
+      @media all and (min-width: 992px) {
+        a {
+          margin: 0;
+          img {
+            margin: 0; max-width: 150px;
+          }
+        }
+      }
+    }
+    &--socFoot {
+      list-style-type: none; @include displayFlex(flex, column, flex-start, flex-start, wrap);
+      li {
+        list-style-type: none; margin-bottom: 6px;
+        a {
+          color: $white; text-decoration: none; @include fluid-type(12px, 14px, 320px, 1200px);
+          & i {
+            font-size: rem(12px); margin-right: 5px;
+          }
+          &:hover {
+            color: $col4;
+          }
+        }
+        &:last-child {
+          margin-bottom: 0;
+          a {
+            margin: 0;
+          }
+        }
+      }
+    }
+    &--copyright {
+      margin-top: 30px;
+      p {
+        color: $white; text-align: center; margin: 0 0 15px 0; font-size: rem(12px);
+        a {
+          color: $white; text-decoration: none;
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+      @media all and (min-width: 576px) {
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+  @media all and (min-width: 768px) {
+    margin: 0;
+  }
+}
+
+.listSociales {
+  width: 100%; height: auto; padding: 0; margin: 20px 0 0; @include box-sizing(border-box);
+  &__box {
+    width: 100%; height: auto; padding: 0; margin: 0; @include displayFlex(flex, row, flex-start, center, wrap); list-style-type: none;
+    li {
+      list-style-type: none;
+      // a {
+      //   display: block; width: 30px; height: 30px; font-size: rem(15px); @include transition(all 0.23s ease); background-color: $white; @include border-top-radius(50%); @include border-bottom-radius(50%); line-height: 30px; text-align: center; position: relative; overflow: hidden; margin: 0 4px 4px 0;
+      //   &:before, &:after {
+      //     font-family: 'fontAwesome'; @include position(absolute, 0 null null 0); width: 100%; height: 100%; color: $c4; @include transition(transform 300ms ease-in-out, all 0.25s);
+      //   }
+      //   &:before { @include transform(translateY(-100%)); }
+      //   &:after { @include transform(translateY(0)); }
+      //   //Clases
+      //   &.tyi-whatsapp { &:before, &:after { content: '\f232'; } }
+      //   &.tyi-facebook { &:before, &:after { content: '\f09a'; } }
+      //   &.tyi-twitter { &:before, &:after { content: '\f099'; } }
+      //   &.tyi-instagram { &:before, &:after { content: '\f16d'; } }
+      //   &.tyi-youtube { &:before, &:after { content: '\f16a'; } }
+      //   //Fin-Clases
+      //   &:hover {
+      //     &:before, &:after { color: $col1; }
+      //     &:before { @include transform(translateY(0)); }
+      //     &:after { @include transform(translateY(100%)); }
+      //   }
+      // }
+    }
+  }    
+}

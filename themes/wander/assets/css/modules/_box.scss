@@ -1,0 +1,801 @@
+/* ==|====================
+   Module/Box
+   ======================= */
+
+.figSlide {
+  width: auto; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+  &__img {
+    display: block; width: auto; height: 230px; margin: 0; padding: 0; border: none;
+  }
+  &:after {
+    content: ''; width: 100%; height: 100%; @include position(absolute, 0 null null 0); background-color: rgba($black, 0.05); z-index: 1; @include transition(all 300ms ease-in-out);
+  }
+  @media all and (min-width: 768px) {
+    &__img {
+      height: 300px;
+    }
+  }
+}
+   
+.figContent {
+  width: 100%; height: auto; padding: 0; margin: 0 0 20px; position: relative; @include box-sizing(border-box);
+  &__img {
+    display: block; width: auto; height: 150px; margin: 0 auto; padding: 0; border: none;
+  }
+  & figcaption {
+    width: 100%; height: auto; padding: 0 10px; margin: 0; position: relative; @include box-sizing(border-box);
+  }
+  &__step {
+    font-family: $acuminbd; font-weight: 400; color: $col1; @include fluid-type(16px, 18px, 320px, 1200px); margin: 0 0 10px; padding: 0; text-align: left; letter-spacing: 1.2px; text-transform: uppercase; display: inline-block;
+  }
+  &__title {
+    @include fluid-type(16px, 20px, 320px, 1200px); margin: 0 0 10px; padding: 0; text-align: left; letter-spacing: 1.2px; text-transform: uppercase;
+    &--green {
+      color: $col1;
+    }
+  }
+  &__desc {
+    @include fluid-type(13px, 16px, 320px, 1200px); margin: 0; padding: 0; text-align: left;
+  }
+  &__list {
+    width: 100%; height: auto; padding: 0; margin: 0;
+    & ul {
+      list-style-type: none; padding: 0; margin: 0;
+      & li {
+        padding: 0 0 0 10px; margin: 0 0 3px; @include fluid-type(13px, 15px, 320px, 1200px); text-align: left; position: relative;
+        &:before {
+          content: ''; width: 5px; height: 5px; @include position(absolute, 7px null null 0); background-color: $col1; border-radius: 50%;
+        }
+      }
+    }
+  }
+  @media all and (min-width: 576px) {
+    &__list {
+      & ul {
+        columns: 2; -webkit-columns: 2; -moz-columns: 2;
+      }
+    }
+  }
+  @media all and (min-width: 768px) {
+    &__img {
+      height: 140px; 
+    }
+    &.dividerFig {
+      &:after {
+        content: ''; width: 1px; height: 100%; @include position(absolute, 0 -15px null null); background-color: $c8;
+      }
+    }
+  }
+  @media all and (min-width: 992px) {
+    &__img {
+      height: 150px; 
+    }
+  }
+}
+
+.figTest {
+  width: 100%; height: auto; padding: 0 20px 20px; margin: 0 0 20px; position: relative; @include box-sizing(border-box);
+  &__img {
+    display: block; width: 180px; height: 180px; margin: 0 auto 30px; padding: 0; position: relative; border-radius: 50%; overflow: hidden;
+    & img {
+      width: 100%; height: 100%; margin: 0; padding: 0; display: block; border: none; @include position(absolute, 0 null nul 0); object-fit: cover; font-family: "object-fit: cover";
+    }
+  }
+  & figcaption {
+    width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+  }
+  &__title {
+    @include fluid-type(16px, 20px, 320px, 1200px); margin: 0 0 5px; padding: 0; text-align: center; letter-spacing: 1.2px; text-transform: uppercase; color: $col1;
+  }
+  &__desc {
+    @include fluid-type(13px, 16px, 320px, 1200px); margin: 0; padding: 0; text-align: center;
+  }
+  &.dividerFig {
+    &:after {
+      content: ''; width: 1px; height: 100%; @include position(absolute, 0 0 null null); background-color: $c8;
+    }
+  }
+  @media all and (min-width: 768px) {
+    height: 330px;
+  }
+  @media all and (min-width: 992px) {
+    height: 340px;
+  }
+  @media all and (min-width: 1200px) {
+    height: 370px;
+  }
+}
+
+// Slick active Tools
+.slick-active {
+  & .figSlide {
+    &:after {
+      background-color: rgba($black, 0);
+    }
+  }
+}
+
+// Box locaciones
+.boxLoc {
+  width: 100%; height: auto; padding: 0; margin: 0 0 10px; position: relative; @include box-sizing(border-box);
+  &__title {
+    width: 100%; height: auto; padding: 20px 0; margin: 0; @include box-sizing(border-box); text-align: center;
+    & a {
+      text-decoration: none;
+    }
+    & i {
+      color: $col1; margin: 0 0 10px; font-size: rem(18px);
+    }
+    & h3 {
+      text-align: center; @include fluid-type(13px, 18px, 320px, 1200px); letter-spacing: 1.2px; margin: 0; padding: 0; color: $col1; text-transform: uppercase;
+    }
+  }
+  &__img {
+    width: 100%; height: 240px; padding: 0; margin: 0 0 10px; position: relative; overflow: hidden;
+    & img {
+      display: block; width: 100%; height: 100%; padding: 0; margin: 0; object-fit: cover; font-family: "object-fit: cover"; position: relative; @include transform(scale(1.0)); @include transition(transform 900ms ease-in-out);
+    }
+    &:after {
+      content: ''; width: 100%; height: 100%; @include position(absolute, 0 null null 0); z-index: 1; background-color: rgba($black, 0.20); opacity: 0; @include transition(opacity 300ms ease-in-out);
+    }
+    &:hover {
+      & img {
+        @include transform(scale(1.10));
+      }
+      &:after {
+        opacity: 1;
+      }
+    }
+    @media all and (min-width: 576px) {
+      height: 250px;
+    }
+    @media all and (min-width: 640px) {
+      height: 260px;
+    }
+    @media all and (min-width: 768px) {
+      height: 280px;
+    }
+    @media all and (min-width: 800px) {
+      height: 290px;
+    }
+    @media all and (min-width: 992px) {
+      height: 310px;
+    }
+  }
+  &__btn {
+    display: block; width: 100%; height: 37px; padding: 0; margin: 0; background-color: $col10; outline: none; border: none; color: $white; text-transform: uppercase; line-height: 37px; text-align: center; font-size: rem(14px); letter-spacing: 1px; font-family: $acuminbd; font-weight: 500; text-decoration: none;
+    &--disabled {
+      cursor: none; pointer-events: none; opacity: 0.50;
+    }
+    &--newUbic {
+      max-width: 150px; background-color: $nar; margin: 0 auto; border-radius: 5px;
+    }
+    &:hover {
+      background-color: $nar; color: $white;
+      &.boxLoc__btn--newUbic {
+        background-color: $col5!important; color: $white!important;
+      }
+    }
+  }
+}
+
+.btnCtaGen {
+  width: 100%; height: auto; padding: 0; margin: 20px 0 30px; @include box-sizing(border-box); text-align: center;
+  &__link {
+    display: inline-block; width: 270px; height: 36px; padding: 0 10px; margin: 0; background-color: $nar; outline: none; border: none; color: $white; text-transform: uppercase; line-height: 36px; text-align: center; font-size: rem(13px); letter-spacing: 1px; font-family: $acuminbd; font-weight: 500; text-decoration: none; @include transition(all 300ms ease); text-align: center;
+    &--rounded {
+      border-radius: 5px;
+    }
+    &:hover {
+      background-color: $col12; color: $white;
+    }
+    @media all and (min-width: 360px) {
+      font-size: rem(14px); padding: 0 20px;
+    }
+  }
+}
+
+.boxAct {
+  width: 100%; height: 160px; padding: 0; margin: 0; position: relative; @include box-sizing(border-box); overflow: hidden;
+  & img {
+    @include position(absolute, 0 null null 0); display: block; width: 100%; height: 100%; padding: 0; margin: 0; object-fit: cover; font-family: "object-fit: cover"; @include transform(scale(1.0)); @include transition(transform 900ms ease-in-out); z-index: 1;
+  }
+  &__capt {
+    @include position(absolute, 0 null null 0); width: 100%; height: 100%; padding: 0; margin: 0; z-index: 3; @include box-sizing(border-box);
+    & h4 {
+      @include position(absolute, 50% null null 0); @include transform(translateY(-50%)); text-align: center; @include fluid-type(15px, 18px, 320px, 1200px); letter-spacing: 1.4px; margin: 0; padding: 0 20px; color: $white; text-transform: uppercase; @include box-sizing(border-box); display: block; width: 100%; height: auto; visibility: visible; opacity: 1; @include transition(opacity 300ms ease, visibility 0s);
+    }
+    & p {
+      @include position(absolute, 50% null null 0); @include transform(translateY(-50%)); text-align: center; @include fluid-type(13px, 16px, 320px, 1200px); margin: 0; padding: 0 30px; color: $white; @include box-sizing(border-box); display: block; width: 100%; height: auto; visibility: hidden; opacity: 0; font-weight: 500; @include transition(opacity 300ms ease 0.5s, visibility 0s);
+    }
+  }
+  &:after {
+    content: ''; width: 100%; height: 100%; @include position(absolute, 0 null null 0); z-index: 2; background-color: rgba($black, 0.20);
+  }
+  &:hover {
+    & img {
+      @include transform(scale(1.07));
+    }
+    & .boxAct__capt {
+      & h4 {
+        visibility: hidden; opacity: 0;
+      }
+      & p {
+        visibility: visible; opacity: 1;
+      }
+    }
+  }
+  @media all and (min-width: 576px) {
+    height: 180px;
+  }
+  @media all and (min-width: 768px) {
+    height: 200px; margin: 0 0 10px;
+  }
+  @media all and (min-width: 992px) {
+    height: 310px;
+  }
+}
+
+// Figure Blog Noticias
+.figBlog {
+  width: 100%; height: auto; padding: 0; margin: 0 0 10px; position: relative; @include box-sizing(border-box);
+  & figcaption {
+    width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+  }
+  &__title {
+    text-align: left; @include fluid-type(14px, 16px, 320px, 1200px); letter-spacing: 1.2px; margin: 0 0 5px; padding: 0; color: $col1; text-transform: uppercase;
+  }
+  &__desc {
+    @include fluid-type(13px, 15px, 320px, 1200px); margin: 0 0 5px; padding: 0; text-align: left;
+  }
+  &__img {
+    width: 100%; height: 200px; padding: 0; margin: 0 0 20px; position: relative; overflow: hidden;
+    & img {
+      display: block; width: 100%; height: 100%; padding: 0; margin: 0; object-fit: cover; font-family: "object-fit: cover"; position: relative; @include transform(scale(1.0)); @include transition(transform 900ms ease-in-out);
+    }
+    & a {
+      @include position(absolute, 0 null null 0); z-index: 2; width: 100%; height: 100%; margin: 0; padding: 0; text-indent: -9999px; font-size: 0;
+    }
+    &:after {
+      content: ''; width: 100%; height: 100%; @include position(absolute, 0 null null 0); z-index: 1; background-color: rgba($black, 0.20); opacity: 0; @include transition(opacity 300ms ease-in-out);
+    }
+    &:hover {
+      & img {
+        @include transform(scale(1.05));
+      }
+      &:after {
+        opacity: 1;
+      }
+    }
+    @media all and (min-width: 576px) {
+      height: 228px;
+    }
+    @media all and (min-width: 640px) {
+      height: 238px;
+    }
+    @media all and (min-width: 768px) {
+      height: 248px;
+    }
+    @media all and (min-width: 800px) {
+      height: 258px;
+    }
+    @media all and (min-width: 992px) {
+      height: 268px;
+    }
+  }
+  &__link {
+    color: $col1; margin: 0; padding: 0; @include fluid-type(14px, 16px, 320px, 1200px); font-family: $acuminbd; font-weight: 500;
+  }
+}
+
+// Faqs Content
+.faqsList {
+  & .card {
+    border: 0;
+  }
+  & .card-header {
+    padding: 5px; background-color: $col1; border-bottom: 1px solid rgba($white,.10);
+    & h2 {
+      padding: 0;
+      & button {
+        padding: 0 0 0 30px; margin: 0; border: 0; color: $white; text-transform: uppercase; text-decoration: none; position: relative; @include fluid-type(13px, 16px, 320px, 1200px); white-space: normal;
+        &:before {
+          content: '\f067'; font-family: 'fontAwesome'; @include position(absolute, 2px null null 0); width: 16px; height: 16px; margin: 0; padding: 0; background-color: rgba($white, 0.25); color: $white; line-height: 16px; font-size: rem(10px); text-align: center; border-radius: 50%; display: block;
+        }
+      }
+    }
+  }
+  .card-body {
+    padding: 20px 10px; @include fluid-type(13px, 16px, 320px, 1200px);
+  }
+}
+
+// img Slider Reservar
+.boxCabanaRes {
+  width: 100%; height: auto; padding: 0; margin: 0 0 10px; position: relative; @include box-sizing(border-box);
+  &.slideCabin {
+    padding: 0 10px;
+    & .boxCabanaRes__desc {
+      & h2 {
+        text-align: center!important;
+      }
+      & p {
+        text-align: center!important;
+      }
+    }
+  }
+  &.slideCabinInside {
+    padding: 0 10px;
+    & .boxCabanaRes__img {
+      width: 100%; height: auto; padding: 0; margin: 0 0 10px; position: relative; overflow: hidden;
+      & .slick-dots {
+        display: none!important;
+      }
+      &:before {
+        content: ''; width: 100%; height: 83px; @include position(absolute, 0 null null 0); z-index: 1; background: rgb(12,40,42); background: linear-gradient(0deg, rgba(12,40,42,0) 0%, rgba(12,40,42,1) 100%);
+      }
+      &:after {
+        content: ''; width: 100%; height: 83px; @include position(absolute, null null 0 0); z-index: 1; background: rgb(12,40,42); background: linear-gradient(0deg, rgba(12,40,42,1) 0%, rgba(12,40,42,0) 100%);
+      }
+    }
+  }
+  &__img {
+    width: 100%; height: auto; padding: 0; margin: 0 0 10px; position: relative; overflow: hidden;
+    & .slick-dots {
+      display: none!important;
+    }
+  }
+  &__tools {
+    @include position(absolute, 10px null null 0); z-index: 2; margin: 0; padding: 0 10px; width: 100%; @include box-sizing(border-box); @include displayFlex(flex, row, space-between, flex-start, wrap);
+    & .toolCaja {
+      margin: 0; padding: 0;
+    }
+    & .cabinCount {
+      @include displayFlex(flex, row, flex-start, center, wrap);
+    }
+    & .cabinPrice {
+      margin: 0; padding: 0; text-align: right;
+      & p {
+        text-align: right; color: $white; margin: 0; padding: 0; color: $white; font-family: $acuminbd; font-weight: 500; text-transform: uppercase;
+      }
+    }
+    & .boxTool {
+      margin-right: 10px; color: $white;
+      span {
+        color: $white; font-family: $acuminbd; font-weight: 500;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &__fig {
+    width: 100%; height: 328px; padding: 0; margin: 0; position: relative;
+    & img {
+      display: block; width: 100%; height: 100%; padding: 0; margin: 0; object-fit: cover; font-family: "object-fit: cover"; position: relative; @include transform(scale(1.0)); @include transition(transform 900ms ease-in-out);
+    }
+    &:before {
+      content: ''; width: 100%; height: 83px; @include position(absolute, 0 null null 0); z-index: 1; background: rgb(12,40,42); background: linear-gradient(0deg, rgba(12,40,42,0) 0%, rgba(12,40,42,1) 100%);
+    }
+    &:after {
+      content: ''; width: 100%; height: 83px; @include position(absolute, null null 0 0); z-index: 1; background: rgb(12,40,42); background: linear-gradient(0deg, rgba(12,40,42,1) 0%, rgba(12,40,42,0) 100%);
+    }
+    @media all and (min-width: 768px) {
+      height: 358px;
+    }
+    @media all and (min-width: 992px) {
+      height: 378px;
+    }
+  }
+  &__titleCab {
+    @include position(absolute, null null 20px 0); z-index: 2; margin: 0; padding: 0; color: $white; text-align: center; display: block; width: 100%; text-transform: uppercase; @include fluid-type(20px, 26px, 320px, 1200px); letter-spacing: 1.2px;
+  }
+  &__desc {
+    width: 100%; height: auto; padding: 0; margin: 0; position: relative;
+    & h2 {
+      text-align: left; @include fluid-type(16px, 18px, 320px, 1200px); letter-spacing: 1.2px; margin: 0 0 5px; padding: 0; color: $col1; text-transform: uppercase;
+    }
+    & p {
+      @include fluid-type(14px, 16px, 320px, 1200px); margin: 0; padding: 0; text-align: left;
+    }
+    &--newUbic {
+      height: 100%; min-height: 100px; @include displayFlex(flex, column, center, center, wrap); margin: 0 0 20px;
+      & h2 {
+        color: $col3;
+        span, strong {
+          color: $nar;
+        }
+      }
+    }
+  }
+  &__input {
+    &[type="checkbox"] {
+      position: absolute; opacity: 0;
+      & + label {
+        position: relative; width: 100%; height: 35px; padding: 0; margin: 0 0 10px; cursor: pointer; display: block; color: $white; text-align: center; background-color: $ver; text-transform: uppercase; @include fluid-type(16px, 18px, 320px, 1200px); letter-spacing: 1.2px; @include transition(all 300ms); line-height: 35px; font-family: $acuminbd; font-weight: 500;
+      }
+      &:checked + label {
+        background-color: $nar; color: $white;
+      }
+      &:disabled + label {
+        cursor: auto; opacity: 0.50; pointer-events: none;
+      }
+    }
+    &[type="radio"] {
+      position: absolute; opacity: 0;
+      & + label {
+        position: relative; width: 100%; height: 35px; padding: 0; margin: 0 0 10px; cursor: pointer; display: block; color: $white; text-align: center; background-color: $ver; text-transform: uppercase; @include fluid-type(16px, 18px, 320px, 1200px); letter-spacing: 1.2px; @include transition(all 300ms); line-height: 35px; font-family: $acuminbd; font-weight: 500;
+      }
+      &:checked + label {
+        background-color: $nar; color: $white;
+      }
+      &:disabled + label {
+        cursor: auto; opacity: 0.50; pointer-events: none;
+      }
+    }
+  }
+}
+.boxCabinsDate {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+  &__img {
+    width: 100%; height: auto; padding: 0; margin: 0; position: relative; overflow: hidden;
+    & .slick-dots {
+      display: none!important;
+    }
+  }
+  &__fig {
+    width: 100%; height: 140px; padding: 0; margin: 0; position: relative;
+    & img {
+      display: block; width: 100%; height: 100%; padding: 0; margin: 0; object-fit: cover; font-family: "object-fit: cover"; position: relative; @include transform(scale(1.0)); @include transition(transform 900ms ease-in-out);
+    }
+    &:before {
+      content: ''; width: 100%; height: 40px; @include position(absolute, 0 null null 0); z-index: 1; background: rgb(12,40,42); background: linear-gradient(0deg, rgba(12,40,42,0) 0%, rgba(12,40,42,1) 100%);
+    }
+    &:after {
+      content: ''; width: 100%; height: 53px; @include position(absolute, null null 0 0); z-index: 1; background: rgb(12,40,42); background: linear-gradient(0deg, rgba(12,40,42,1) 0%, rgba(12,40,42,0) 100%);
+    }
+    @media all and (min-width: 768px) {
+      height: 150px;
+    }
+    @media all and (min-width: 992px) {
+      height: 200px;
+    }
+  }
+  &__titleCab {
+    @include position(absolute, null null 20px 0); z-index: 2; margin: 0; padding: 0; color: $white; text-align: center; display: block; width: 100%; text-transform: uppercase; @include fluid-type(16px, 20px, 320px, 1200px); letter-spacing: 1.2px;
+  }
+  &__link {
+    @include position(absolute, 0 null null 0); z-index: 3; margin: 0; padding: 0; display: block; width: 100%; height: 100%; cursor: pointer; text-indent: -9999px; font-size: 0;
+  }
+  & .btnSlideRes {
+    z-index: 4;
+  }
+}
+.inputHuesped {
+  width: 100%; height: auto; padding: 0 0 10px; margin: 0 0 10px; position: relative; @include box-sizing(border-box); border-bottom: 1px solid $black;
+  &__title {
+    text-align: left; @include fluid-type(16px, 18px, 320px, 1200px); letter-spacing: 1.2px; margin: 0 0 10px; padding: 0;
+  }
+  &__opt {
+    width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+    & label {
+      margin: 0 11px 0 0 !important;
+    }
+    @media all and (min-width: 480px) {
+      & label {
+        margin: 0 15px 0 0 !important;
+      }
+    }
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+}
+.inpInc {
+  width: 100%; height: auto; margin: 0; padding: 0; position: relative; @include displayFlex(flex, column, flex-start, flex-start, wrap);
+  &__inputs {
+    @include display(flex); @include flex-direction(row); margin: 0 0 10px;
+    & button {
+      display: inline-block; width: 18px; height: 18px; border: 0; background-color: $col1; margin: 0; padding: 0; color: $white; line-height: 18px; font-size: rem(10px); cursor: pointer;
+      &.disabled {
+        cursor: none; pointer-events: none; opacity: 0.50;
+      }
+    }
+    & .inpText {
+      color: $black; font-size: rem(16px); margin: 0 5px; height: 18px;
+      & input {
+        display: inline-block; border: 0; padding: 0; margin: 0; font-size: rem(16px); width: 15px; height: auto; font-family: $minionr; font-weight: 300;
+      }
+    }
+    &:last-child {
+      margin: 0;
+    }
+  }
+  @media all and (min-width: 400px) {
+    @include displayFlex(flex, row, flex-start, center, wrap);
+    &__inputs {
+       margin: 0 10px 0 0;
+    }
+  }
+  @media all and (min-width: 768px) {
+    &__inputs {
+       margin: 0 0 10px 0;
+    }
+  }
+  @media all and (min-width: 992px) {
+    &__inputs {
+       margin: 0 10px 0 0;
+    }
+  }
+}
+
+.detailBox {
+  width: 100%; height: auto; padding: 0; margin: 0 0 30px; position: relative; @include box-sizing(border-box);
+  & .dateDetail {
+    width: 290px; height: 100px; margin: 0 auto 10px; background-color: $col8; padding: 20px 0 0; position: relative; @include box-sizing(border-box); text-align: center; border-radius: 50px;
+    & h3 {
+      margin: 0 0 5px; padding: 0; color: $col1; font-size: rem(25px);
+    }
+    & p {
+      margin: 0; padding: 0; font-size: rem(16px); font-weight: 500;
+    }
+  }
+  & .precioFinal {
+    @include fluid-type(20px, 26px, 320px, 1200px); text-align: center; margin: 0; padding: 0; font-weight: 500;
+  }
+}
+.detBox {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box); @include displayFlex(flex, row, center, center, wrap);
+  & .precioFinal {
+    @include fluid-type(20px, 26px, 320px, 1200px); text-align: center; margin: 0; padding: 0;
+  }
+  &__item {
+    width: 50%; height: auto; padding: 0; margin: 0 0 10px; @include box-sizing(border-box); position: relative;
+    & .figBoxDet {
+      width: 100%; height: 180px; padding: 0 5px; margin: 0; position: relative; overflow: hidden; @include box-sizing(border-box);
+      & img {
+        display: block; width: 100%; height: 100%; padding: 0; margin: 0; object-fit: cover; font-family: "object-fit: cover"; position: relative;
+      }
+    }
+  }
+  &__list {
+    width: 100%; height: auto; padding: 0 5px; margin: 0 0 20px; @include box-sizing(border-box); position: relative;
+    & ul {
+      list-style-type: none; columns: 2; -webkit-columns: 2; -moz-columns: 2; vertical-align: middle; padding: 0; margin: 0;
+      & li {
+        list-style-type: none; margin-bottom: 10px; @include fluid-type(13px, 16px, 320px, 1200px);
+        & img {
+          display: inline-block; vertical-align: middle; width: 20px; height: auto; margin: 0 10px 0 0; padding: 0;
+        }
+      }
+    }
+    @media all and (min-width: 480px) {
+      padding: 0 10px;
+    }
+    @media all and (min-width: 768px) {
+      padding: 0 20px;
+    }
+  }
+}
+
+.accInputList {
+  & .card {
+    border: 0;
+  }
+  & .card-header {
+    padding: 7px 5px 5px; background-color: $col1; border-bottom: 1px solid rgba($white, 0.10); border-radius: 0!important;
+    & h2 {
+      padding: 0 10px; margin: 0; border: 0; color: $white; text-transform: uppercase; text-decoration: none; position: relative; @include fluid-type(13px, 16px, 320px, 1200px); white-space: normal;
+       & .btnResAcc {
+        padding: 0 30px 0 0; margin: 0; border: 0; color: $white; text-transform: uppercase; text-decoration: none; position: relative; @include fluid-type(13px, 16px, 320px, 1200px); white-space: normal;
+        &:before {
+          content: '\f078'; font-family: 'fontAwesome'; @include position(absolute, 1px 0 null null); width: 16px; height: 16px; margin: 0; padding: 0; background-color: transparent; color: $white; line-height: 16px; font-size: rem(10px); text-align: center; border-radius: 50%; display: block;
+        }
+      }
+    }
+  }
+  & .card-body,
+  & .panel-body {
+    padding: 20px 10px; @include fluid-type(13px, 16px, 320px, 1200px);
+  }
+  & .ctBtnAcc {
+    width: 100%; height: auto; padding: 0; margin: 15px 0 0; @include box-sizing(border-box); position: relative; text-align: right;
+    & .btn {
+      font-size: rem(14px); text-transform: uppercase; letter-spacing: 1.4px; text-decoration: none; font-family: $acuminbd; margin-right: 6px;
+      &.BtnNext {
+        background-color: $col5; color: $white; border: solid 1px $col5;
+      }
+      &.BtnBack {
+        background-color: $col8; color: $col1; border: solid 1px $col1;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.contPolicy {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative;
+  & ul {
+    list-style-type: none; padding: 0; margin: 0; @include display(flex); @include flex-direction(column); @include flex-wrap(wrap);
+    & li {
+      list-style-type: none; padding: 0 0 5px; margin: 0 0 5px; border-bottom: 1px solid #C4C4C4;
+      & p {
+        display: inline-block; margin: 0; padding: 0;
+      }
+      & span {
+        float: right; font-family: $acuminbd; font-weight: 500;
+      }
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+  & fieldset {
+    margin: 15px 0 0; padding: 0; text-align: left;
+    & label {
+      font-size: rem(13px);
+      &:before {
+        margin-right: 8px;
+      }
+    }
+  }
+  @media all and (min-width: 480px) {
+    & fieldset {
+      text-align: center;
+    }
+  }
+}
+
+.boxLoginUser {
+  @include position(absolute, null 0 null null); min-width: 180px; text-align: left; border-radius: 0; background-color: $white; border: 1px solid #d8dce1; padding: 20px 15px; margin-top: 9px; z-index: -1; width: 100%; @include box-sizing(border-box); visibility: hidden; opacity: 0; @include transform(translateY(-40px)); @include transition(transform 300ms ease-in-out, opacity 300ms ease, visibility 0s, z-index 0s);
+  & a.listBtns {
+    display: block; width: 100%; height: auto; margin: 0 0 4px; padding: 0 0 4px; @include box-sizing(border-box); font-family: $acuminbd; font-weight: 400; border-bottom: 1px solid #ececec; text-align: left; text-transform: uppercase; @include fluid-type(12px, 14px, 320px, 1200px); text-decoration: none;
+  }
+  &.isShow {
+    z-index: 2; @include transform(translateY(0)); visibility: visible; opacity: 1;
+  }
+}
+
+.huesCont {
+  &__box {
+    & input[type="number"] {
+      width: 30%;
+    }
+  }
+}
+
+.inputHuespedHome {
+  width: 100%; height: auto; padding: 0; margin: 0 0 10px; position: relative; @include box-sizing(border-box);
+  &__title {
+    text-align: left; @include fluid-type(13px, 16px, 320px, 1200px); letter-spacing: 1.2px; margin: 0 0 10px; padding: 0;
+  }
+  &__opt {
+    width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+    & label {
+      margin: 0 7px 0 0 !important;
+    }
+  }
+}
+
+.payContent {
+  width: 100%; height: auto; padding: 50px 0; margin: 0; background-color: $white; @include box-sizing(border-box);
+  &__box {
+    width: 100%; height: 480px; padding: 20px; margin: 0 0 30px; background-image: url('#{$imgR}bgs/bg_rectangulo.png'); background-repeat: no-repeat; background-position: center; background-size: cover; @include box-sizing(border-box); @include displayFlex(flex, column, center, center, wrap);
+    & h4 {
+      text-align: center; font-family: $minionr; color: $white; margin: 0 0 20px; padding: 0; @include fluid-type(16px, 24px, 320px, 1200px);
+    }
+    & p {
+      text-align: center; font-family: $minionr; color: $white; margin: 0 0 8px; padding: 0; @include fluid-type(16px, 24px, 320px, 1200px);
+    }
+    & img {
+      display: block; width: 100%; max-width: 130px; height: auto; margin: 0 auto; padding: 0; border: 0;
+    }
+  }
+  &__btn {
+    width: 100%; height: auto; padding: 0; margin: 0; @include box-sizing(border-box); text-align: center;
+  }
+}
+.boxGridReservar {
+  width: 100%; height: auto; padding: 0; margin: 0 0 15px; position: relative; @include box-sizing(border-box); @include displayFlex(flex, row, center, center, wrap);
+  &__item {
+    width: 100%; height: auto; min-height: 1px; position: relative; margin: 0; padding: 0 15px 0; @include box-sizing(border-box);
+    &:last-child {
+      margin: 0;
+    }
+    &--input {
+      @include display(flex); @include align-items(center); @include justify-content(center); max-width: 50%; @include flex(0 0 50%); margin-bottom: 15px;
+      & label {
+        letter-spacing: 1.5px; font-family: $acuminbd; font-weight: 500; padding: 0; margin: 0 10px 0 0; @include fluid-type(14px, 18px, 320px, 1200px); text-transform: uppercase; display: none;
+      }
+      & input[type="text"] {
+        width: 140px; height: 39px; border: 1px solid $col2; border-radius: 5px; box-shadow: 0px 2px 4px rgba($black, 0.25); margin: 0; padding: 0; line-height: 35px; font-size: rem(15px); text-align: center; color: $col2; background-color: $white; font-family: $acuminbd; font-weight: 500;
+        @include placeholder {
+          color: rgba($col2, 1);
+        }
+      }
+      @media all and (min-width: 480px) {
+        & input[type="text"] {
+          width: 200px;
+        }
+      }
+      @media all and (min-width: 768px) {
+        margin-bottom: 0; max-width: 33.333333%; @include flex(0 0 33.333333%);
+        & input[type="text"] {
+          width: 200px;
+        }
+      }
+      @media all and (min-width: 1200px) {
+        & label {
+          display: inherit;
+        }
+        & input[type="text"] {
+          width: 140px;
+          @include placeholder {
+            color: rgba($col2, 0);
+          }
+        }
+      }
+    }
+    &--btn {
+      width: 100%; height: auto; padding: 0; margin: 0; @include box-sizing(border-box);
+      & button[type="button"] {
+        width: 220px; height: 39px; padding: 0; margin: 0 auto; text-transform: uppercase; text-align: center; color: $white; display: block; border: 1px solid $col2; @include box-sizing(border-box); line-height: 38px; font-size: rem(16px); cursor: pointer; position: relative; overflow: hidden; border-radius: 5px; background-color: $col1; @include transition(all 0.23s); box-shadow: 0 2px 4px rgba($black, 0.25); font-family: $acuminbd; font-weight: 500; letter-spacing: 1.5px;
+        &:hover {
+          background-color: $col2; color: $white; border: 1px solid $col2;
+        }
+      }
+      @media all and (min-width: 768px) {
+        & button[type="button"] {
+          width: 100%; margin: 0;
+        }
+        max-width: 33.333333%; @include flex(0 0 33.333333%);
+      }
+    }
+  }
+  @media all and (min-width: 768px) {
+    @include displayFlex(flex, row, flex-start, center, wrap);
+  }
+}
+.boxMessageRes {
+  display: block; width: 100%; height: 39px; border: none; border-radius: 5px; background-color: $col5; margin: 0 0 20px; padding: 0; box-shadow: 0px 2px 4px rgba($black, 0.25);
+  & h4 {
+    padding: 0; margin: 0; @include fluid-type(14px, 20px, 320px, 1200px); text-transform: uppercase; letter-spacing: 2px; color: $white; text-align: center; line-height: 39px;
+  }
+}
+// Mapa Personalizado
+#map { position:absolute; top:0; bottom:0; width:100%; height: 550px; }
+.boxMap {
+  width: 100%; height: 550px; padding: 0; margin: 0; box-sizing: border-box;
+}
+.map-content {
+  width: 100%; margin-left: auto; margin-right: auto;
+}
+.inner-map {
+  width: 100%; height: 550px; margin-left: auto; margin-right: auto;
+}
+.locTabs {
+  width: 100%; height: auto; margin: 0; padding: 0; position: relative; @include box-sizing(border-box);
+  & .nav-tabs {
+    border-bottom: 1px solid $col1;
+    & .nav-item {
+      // &.show {}
+      & .nav-link {
+        border-top-left-radius: 5px; border-top-right-radius: 5px; color: $col1; text-transform: uppercase; text-decoration: none; position: relative; white-space: normal; text-align: center; @include fluid-type(14px, 20px, 320px, 1200px); letter-spacing: 2px; font-family: $acuminbd; font-weight: 400; cursor: pointer;
+        &:hover,
+        &:focus {
+          border-color: rgba($col1, 0.30) rgba($col1, 0.30) rgba($col1, 0.30);
+        }
+        &.active {
+          color: $white; background-color:$col1; border-color: $col1 $col1 $col1;
+        }
+      }
+    }
+  }
+  & .tab-content {
+    & .tab-pane {
+      width: 100%; height: auto; padding: 20px 0; margin: 0; position: relative; @include box-sizing(border-box);
+    }
+  }
+}

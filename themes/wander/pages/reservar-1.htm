@@ -1,0 +1,435 @@
+title = "Reservar 1"
+url = "/reservar/ubicacion/:ubicacion?"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[builderList ubicacionesList]
+modelClass = "Roll\Cabanas\Models\Ubicacion"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[procesoReserva]
+
+[builderList ciudadesList]
+modelClass = "Roll\Cabanas\Models\Ciudad"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% put pagetitle %}Ubicaciones{% endput %}
+{% put metatitle %}Wander | Conoce nuestras cabañas en renta petfriendly en Valle de Bravo, Malinalco y La Marquesa{% endput %}
+{% put metadescription %}Reserva la experiencia Wander en una de nuestras cabañas en medio de la naturaleza. Ingresa a nuestro sitio, elige tu fecha favorita y ¡listo! Alístate junto con tu pareja, familia, amigos y hasta tu mascota, somos pet friendly. ¡Te esperamos!{% endput %}
+
+{% put scriptreserva %}
+<script type="text/javascript" src="{{'assets/js/scripts/scriptReservar.js'|theme}}"></script>
+{% endput %}
+
+{% set ubicaciones = ubicacionesList.records %}
+{% set ciudades = ciudadesList.records %}
+<style>
+.reservaCt .wizard .steps{
+    background-color:#f7f5f1;
+    }
+    
+.reservaCt .descReservar{
+    background-color:#f7f5f1;
+    }
+    
+    .boxCabanaRes__desc--newUbic h2, .boxCabanaRes__desc--newUbic .h2 {
+    color: #0C282A;
+    }
+    
+    
+    .expandable-description {
+        max-height: 3.6em; /* Establece la altura máxima para mostrar una descripción truncada */
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+    }
+    
+    
+    .expandable-description.expanded {
+        max-height: none; /* Al expandirse, se muestra todo el contenido */
+    }
+    
+    .read-more-link {
+       text-decoration: underline;
+        cursor: pointer;
+        margin-top: 10px;
+        color: #707267!important;
+    }
+    
+    .read-more-link:focus {
+        outline: none;
+    }
+    /*
+    .description-container{
+        padding: 0px 0;
+        MIN-HEIGHT:5em;
+        }
+    */
+
+
+
+
+</style>
+    <article class="bg-gen" style="background: #f7f5f1; !important">
+  <div class="reservaCt">
+    <div class="descReservar">
+      <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
+      <h2>Selecciona una ubicación</h2>
+      
+    </div>
+    {{ form_ajax('onUbicacion', {class: 'stepReservaFrm'}) }}
+      <div class="wizard">
+        <div class="steps clearfix">
+          <ul role="tablist">
+            <li role="tab" class="first current" aria-disabled="false" aria-selected="true">
+              <a id="steps-uid-0-t-0" href="#steps-uid-0-h-0" aria-controls="steps-uid-0-p-0">Paso 1</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-1" href="#steps-uid-0-h-1" aria-controls="steps-uid-0-p-1">Paso 2</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-2" href="#steps-uid-0-h-2" aria-controls="steps-uid-0-p-2">Paso 3</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-3" href="#steps-uid-0-h-3" aria-controls="steps-uid-0-p-3">Paso 4</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-4" href="#steps-uid-0-h-4" aria-controls="steps-uid-0-p-4">Paso 5</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-5" href="#steps-uid-0-h-5" aria-controls="steps-uid-0-p-5">Paso 6</a>
+            </li>
+            <li role="tab" class="disabled last" aria-disabled="true">
+              <a id="steps-uid-0-t-6" href="#steps-uid-0-h-6" aria-controls="steps-uid-0-p-6">Paso 7</a>
+            </li>
+          </ul><!-- end.ul -->
+        </div><!-- end.steps -->
+        <div class="content clearfix">
+          <section class="body current">
+            <div class="container">
+              <div class="row justify-content-center">
+          
+                <div class="col-12">
+                                        {% flash %}
+                        <div class="alert alert-warning" style="text-align:center;">
+                            {{ message }}
+                        </div>
+                       {% endflash %}
+                       
+                  <div class="descBoxCabinsNew">
+                    <!-- p>Elige <strong>ciudades</strong> si quieres conocer la disponibilidad de todos nuestros destinos alrededor de una misma región<br> o elige <strong>destinos</strong> para ver las cabañas disponibles en un destino específico.<br><br>Si deseas ver las cabañas disponibles en todos nuestros destinos, haz clic en <strong>ver todos nuestros destinos disponibles</strong>.<br></p-->
+                        <div class="titleGeta"  >Elige <strong>ciudades</strong> si quieres conocer la disponibilidad de todos nuestros destinos alrededor de una misma región o elige <strong>destinos</strong> para ver las cabañas disponibles en un destino específico.
+                    </div>
+                    <div class="titleGeta" >Si deseas ver las cabañas disponibles en <strong>todos</strong> nuestros destinos, selecciona  <strong> ver todos nuestros destinos disponibles</strong>.<br>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-10 col-lg-8 text-center">
+                  <div class="checkBoxCus">
+                    <input type="checkbox" class="CheckStyle" name="ubicacion-todas" id="todas" value="todas-0" {% if sitio=='todas' %}checked{% endif %}>
+                    <label for="todas">ver todos nuestros destinos disponibles</label>
+                    <!-- <div class="checkBtnCustom">
+                      <input type="radio" name="ubicacion" id="todas" value="todas-0" {% if sitio=='todas' %}checked{% endif %}>
+                      <label for="todas">Todas las ubicaciones</label>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="col-12" id="formDataRes1" data-reservations="false">
+                  <div class="locTabs">
+                    <ul class="nav nav-tabs 2x nav-justified" id="ctLocTabs" role="tablist">
+                       <li class="nav-item">
+                        <a class="nav-link  active" id="ciudades-tab" data-toggle="tab" href="#ciudades" role="tab" aria-controls="ciudades" aria-selected="false">Ciudades</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="ubicaciones-tab" data-toggle="tab" href="#ubicaciones" role="tab" aria-controls="ubicaciones" aria-selected="true">Destinos</a>
+                      </li>
+
+
+                    </ul><!-- end.nav-tabs -->
+                    <div class="tab-content" id="contentLocacions">
+                      <div class="tab-pane fade active show " id="ciudades" role="tabpanel" aria-labelledby="ciudades-tab">
+                        <div class="row justify-content-center">
+                        {% for ciudad in ciudades %}
+                        <div class="col-xs-8 col-sm-6 col-md-5 col-lg-5 col-xl-5 hack-max" style="margin-bottom:30px; ">
+                            <div class="boxCabanaRes slideCabin">
+                              <div class="boxCabanaRes__img">
+                                <div id="cab-{{ciudad.slug}}-{{loop.index}}" data-slider class="sliderRes">
+                                       <a href="{{ ciudad.foto.path }}" data-lightbox="slider-{{ciudad.slug}}" data-title="{{ciudad.nombre}}">
+                                        <figure class="boxCabanaRes__fig cont-hack">
+                                          <img class="img-hack lozad" data-src="{{ ciudad.foto.path | resize(600)}}" alt="{{ciudad.nombre}}">
+                                        </figure>
+                                      </a>
+                                      
+                                </div>
+
+                                <!--h5 class="boxCabanaRes__titleCab">{{ciudad.nombre}}</h5-->
+                              </div>
+                          
+                              <div class=" boxCabanaRes__desc boxCabanaRes__desc--newUbic boxCabanaRes__desc--getawey" style="min-height:unset!important">
+                                <div class="h2"><span style="font-size: 1.2em;margin-top:20px">{{ciudad.nombre}}</span></div>
+                                <!--<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In soluta dignissimos impedit</p>-->
+                              </div>
+                              
+                              {% if ciudad.disponible %}
+                              <input type="radio" data-check-btn class="boxCabanaRes__input" name="ubicacion" id="{{ciudad.slug}}"
+                                value="ciudad-{{ciudad.id}}" {% if ciudad.slug==sitio %}checked{% endif %}>
+                              <label for="{{ciudad.slug}}" onclick="varaLayer = '{{ ciudad.nombre}}';" >Seleccionar</label>
+                              {% else %}
+                              <input type="radio" class="boxCabanaRes__input" name="ubicacion" id="{{ciudad.slug}}" value="ciudad-{{ciudad.id}}"
+                                disabled>
+                              <label for="{{ciudad.slug}}">Próximamente</label>
+                              {% endif %}
+
+                            </div>
+                          </div><!-- end.col-* -->
+                        {% endfor %}
+                        </div><!-- end.row -->
+                      </div><!-- end.tab-pane -->
+                      <div class="tab-pane fade " id="ubicaciones" role="tabpanel" aria-labelledby="ubicaciones-tab">
+                        <div class="row justify-content-center">
+                         {% for ubicacion in ubicaciones%}
+                            <div class="col-xs-8 col-sm-6 col-md-5 col-lg-5 col-xl-5 hack-max" style="margin-bottom:30px; ">
+                                <div class="boxCabanaRes slideCabin newBoxCabanaRes" style="flex-direction:column">
+                                  <div class="boxCabanaRes__img">
+                                    <div id="cab-{{ubicacion.slug}}-{{loop.index}}" data-slider class="sliderRes">
+                                      {% for foto in ubicacion.galeria|slice(0,6)  %}
+                                      <a href="{{ foto.path }}"class="lightbox"  data-lightbox="slider-{{ubicacion.slug}}" data-title="{{ubicacion.nombre}}">
+                                        <figure class="boxCabanaRes__fig cont-hack">
+                                          <img class="img-hack lozad" data-src="{{ foto.path | resize(600)}}" alt="{{ubicacion.nombre}}">
+                                        </figure>
+                                      </a>
+                                      {% endfor %}
+                                    </div>
+                                    <!--a class="btnSlideRes bLeftP" href="#" id="prevSlideRes-cab-{{ubicacion.slug}}-{{loop.index}}"></a>
+                                    <a class="btnSlideRes nRightP" href="#" id="nextSlideRes-cab-{{ubicacion.slug}}-{{loop.index}}"></a-->
+                                    <!--h5 class="boxCabanaRes__titleCab">{{ubicacion.nombre}}</h5-->
+                                  </div>
+                                  <div class=" boxCabanaRes__desc boxCabanaRes__desc--newUbic boxCabanaRes__desc--getawey" >
+                                    <div style="margin-bottom: 10px;">
+                                      <div class="h2"><span style="font-size: 1.2em;margin-top:20px">{{ubicacion.nombre}}</span></div>
+                                      <div class="h2"><span style="font-size: .9em;margin-top:20px">{{ubicacion.distancia}} desde {{ubicacion.ciudad.nombre}}</span></div>
+                                    <!--p style="line-height: 1.6em;">{{ubicacion.descripcion}}</p-->
+                                    
+                                     
+                                     <div class="description-container"  style="padding: 0px 0;MIN-HEIGHT:5em;">
+                                  
+                                            <p class="expandable-description" style="line-height: 1.6em; " >{{ubicacion.descripcion}}</p>
+             
+                                            
+                                            <p><a style="margin-top:5px;" class="read-more-link">Leer más</a></p>
+                                      </div>  
+                                      
+                          
+                      
+                                    </div>
+                      
+                                    {% if ubicacion.disponible == true %}
+                                    <div class="btnRsv newBtnRsv">
+            
+        
+                                    </div>
+                                    <div class="boxCabanaRes__input" style="width: 100%;                                ">
+                                      <input type="radio" data-check-btn class="boxCabanaRes__input" name="ubicacion" id="{{ubicacion.slug}}"
+                                      value="ubicacion-{{ubicacion.id}}" {% if ubicacion.slug==sitio %}checked{% endif %}>
+                                    <label onclick="varaLayer = '{{ ubicacion.nombre}}';"  for="{{ubicacion.slug}}">Seleccionar</label>
+                                      </div>
+                                    {% elseif ubicacion.id == 6 %}
+                                    
+                                                            <div class="btnRsv newBtnRsv">
+            
+        
+                                    </div>
+                                    <div class="boxCabanaRes__input" style="width: 100%;                                ">
+                                    
+                                                                                <a  style=" text-decoration:none;"    
+    
+    href="/ubicacion/{{ubicacion.slug}}"><label  style="    position: relative;
+    width: 100%;
+    height: 40px;
+    padding: 0;
+    margin: 0 0 10px;
+    cursor: pointer;
+    display: block;
+    color: #222919;
+    text-align: center;
+    background-color: #f7f5f1;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
+    line-height: 40px;
+    font-weight: 500;
+    text-decoration:none;
+    border: 1px solid #222919;"  
+    href="ubicacion/{{ubicacion.slug}} " >Seleccionar</label></a>
+
+                                      </div>
+                                      
+           
+                                    {% elseif ubicacion.disponible == false %}
+                                    <span class="boxLoc__btn boxLoc__btn--disabled">Próximamente</span>
+                                    {% endif %}
+                      
+                                  </div>
+                                </div>
+                              </div><!--end.col-->
+                          {% endfor %}
+
+                        </div><!-- end.row -->
+                      </div><!-- end.tab-pane -->
+                    </div><!-- end.tab-content -->
+                  </div><!-- end.locTabs -->
+                  
+                </div><!-- end.col-* -->
+          
+              </div><!-- end.row -->
+            </div><!-- end.container -->
+          </section><!-- end.selectLocation -->
+          
+        </div><!-- end.content -->
+        <div class="actions clearfix" style="background: #f7f5f1; !important">
+          <ul role="menu" aria-label="Pagination">
+            <li class="disabled" aria-disabled="true">
+              <a href="#0">Atrás</a>
+            </li>
+            <li aria-hidden="false" aria-disabled="false">
+              <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="ubicacion" onclick="                              window.dataLayer.push({'wander': null }); window.dataLayer.push({
+                                                'event': 'Paso_1',
+                                                'wander': {
+                                                'sitio': varaLayer,
+                                                }
+                                                });">
+                <i class="fa fa-chevron-right"></i><span>Siguiente</span>
+              </button>
+            </li>
+          </ul><!-- end.ul -->
+        </div><!-- end.actions -->
+      </div><!-- end.wizard -->
+    {{ form_close() }}
+
+  </div><!-- end.reservaCt -->
+</article>
+
+{% if sitio=='todas' %}
+<script >
+  $(function() {
+    $('#formDataRes1').addClass('disabledContent');
+    $('#formDataRes1').attr('data-reservations', true);
+  });
+  
+        
+</script>
+{% endif %}
+
+
+<script type="text/javascript">
+
+   $(document).ready(function() {
+
+
+
+        $(".description-container").each(function() {
+            var description = $(this).find(".expandable-description");
+            var link = $(this).find(".read-more-link");
+    
+            // Si la descripción rebasa la altura máxima, mostrar el enlace
+            if (description[0].scrollHeight > description.innerHeight()+1) {
+                link.show();
+            } else {
+                link.hide();
+            }
+    
+            // Manejar el clic en el enlace
+            link.click(function() {
+                description.toggleClass("expanded");
+                if (description.hasClass("expanded")) {
+                    link.text("Leer menos");
+                } else {
+                    link.text("Leer más");
+                }
+            });
+        });
+        
+    });
+    
+        
+        
+</script>
+
+
+<script>
+
+// 🚦 Flag para saber si la navegación es interna
+window._internalNavigation = false;
+
+// 1️⃣ Detectar clicks en enlaces internos
+document.querySelectorAll('a').forEach(link => {
+    if (link.href.startsWith(window.location.origin)) {
+        link.addEventListener('click', () => {
+            window._internalNavigation = true;
+        });
+    }
+});
+
+// 2️⃣ Detectar envíos de formularios internos
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', () => {
+        if (!window._internalNavigation) {
+            // Por defecto, un submit se considera interno si es tu booking
+            // Opcional: podrías filtrar solo formularios del booking
+            window._internalNavigation = true;
+        }
+    });
+});
+
+// 3️⃣ Detectar clicks en botones "Siguiente" específicos
+document.getElementById('ubicacion')?.addEventListener('click', () => {
+    window._internalNavigation = true; // ✅ Marca navegación interna
+});
+
+// 4️⃣ Detectar cierre o abandono de página
+window.addEventListener('beforeunload', function (e) {
+    if (window._internalNavigation) return;
+
+    const visitorId = localStorage.getItem('visitor_id');
+    const data = {
+        event_name: 'Abandon_Browse',
+        wander: visitorId,
+        with_session_tags => true,
+        properties: {
+            abandoned_step: 'Paso 1',
+            page: window.location.pathname
+        }
+    };
+
+    // Opción 1: sendBeacon (la más confiable para beforeunload)
+    if (navigator.sendBeacon) {
+        const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+        navigator.sendBeacon('/klaviyo/event', blob);
+    } else {
+        // Fallback con keepalive
+        fetch('/klaviyo/event', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            keepalive: true,
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }
+});
+
+
+
+</script>

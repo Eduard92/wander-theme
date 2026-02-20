@@ -1,0 +1,178 @@
+title = "Reserva confirmada"
+url = "/reservar/confirmacion/:rsrv"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[procesaPago]
+==
+{% put pagetitle %}Confirmación{% endput %}
+{% set reserva = reserva %}
+
+
+{% put pagetitle %}Confirmación{% endput %}
+{% put scriptreserva %}
+<script type="text/javascript" src="{{'assets/js/scripts/scriptReservar.js'|theme}}"></script>
+{% endput %}
+
+            
+            {% put scripts %}
+              {% if ubicacion.id ==  8 %}
+                <!-- Event snippet for Villa Alpina Reserva conversion page -->
+                <script> gtag('event', 'conversion', { 'send_to': 'AW-11221385621/ZYfbCPar-vEZEJWD4-Yp', 'value': {{reserva.costo_total}}, 'currency': 'MXN', 'transaction_id': '{{reserva.id}}' }); </script> 
+              {% endif %}
+              
+              {% if ubicacion.id ==  7 %}
+                <!-- Event snippet for Reserva CHICO 2 conversion page --> 
+                <script> gtag('event', 'conversion', { 'send_to': 'AW-11221385621/ila0CPyJj-gZEJWD4-Yp', 'value': {{reserva.costo_total}}, 'currency': 'MXN', 'transaction_id': '{{reserva.id}}' }); </script> 
+              {% endif %}
+              
+              {% if ubicacion.id ==  4 %}
+                <!-- Event snippet for Reserva DEHE conversion page --> 
+                <script> gtag('event', 'conversion', { 'send_to': 'AW-11221385621/L3oqCKqcnKkZEJWD4-Yp', 'value': {{reserva.costo_total}}, 'currency': 'MXN', 'transaction_id': '{{reserva.id}}' }); </script> 
+              {% endif %}
+              
+              {% if ubicacion.id ==  6 %}
+                <!-- Event snippet for Reserva DEHE conversion page --> 
+                <script> gtag('event', 'conversion', { 'send_to': 'AW-11221385621/jtm5CJ_P0c4ZEJWD4-Yp', 'value': {{reserva.costo_total}}, 'currency': 'MXN', 'transaction_id': '{{reserva.id}}' }); </script> 
+              {% endif %}
+              
+             {% if ubicacion.id ==  2 %}
+                <!-- Event snippet for Reserva MArquesa conversion page --> 
+                <script> gtag('event', 'conversion', { 'send_to': 'AW-11221385621/3D1YCN75uPgZEJWD4-Yp', 'value': {{reserva.costo_total}}, 'currency': 'MXN', 'transaction_id': '{{reserva.id}}' }); </script> 
+              {% endif %}
+                            
+             {% if ubicacion.id ==  3 %}
+                <!-- Event snippet for Reserva Valle conversion page --> 
+                <script> gtag('event', 'conversion', { 'send_to': 'AW-11221385621/6d6pCNj5uPgZEJWD4-Yp', 'value': {{reserva.costo_total}}, 'currency': 'MXN', 'transaction_id': '{{reserva.id}}' }); </script> 
+              {% endif %}
+              
+              
+             {% if ubicacion.id in [2,5] %}
+                <!-- Event snippet for Reserva Wander conversion page --> 
+                    <script>
+                      gtag('event', 'conversion', {'send_to': 'AW-11221385621/gHVeCNv5uPgZEJWD4-Yp', 'value': {{reserva.costo_total}}, 'currency': 'MXN', 'transaction_id': '{{reserva.id}}' });
+                    </script>             
+               {% endif %}
+            {% endput %}
+            
+<article class="bg-gen">
+  <div class="reservaCt">
+    <div class="descFullPage">
+      <img src="{{ 'assets/img/logos/logo-wander-black-text.svg'|theme }}" alt="Wander">
+      <h2>CONFIRMACIÓN DE PAGO</h2>
+    </div>
+    <div class="payContent">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 col-lg-6">
+            <div class="payContent__box">
+              <h4>¡Todo listo {{user.name}}!<br>
+              Tu cabaña {{cabana.nombre}} en {{ubicacion.nombre}} te espera.<br></h4>
+              
+              <p>En breve recibirás un correo de confirmación<br>con los detalles de tu reserva.</p>
+              
+              <p><small>Número de reservación: <b>{{reserva.id}}</b><br>
+              Del {{reserva.inicio}} al {{reserva.fin}}<br/>
+              {{reserva.adultos}} Adulto(s)<br>
+              {% if reserva.ninos > 0 %}
+              {{reserva.ninos}} Niño(s)<br>
+              {% endif %}
+              {% if reserva.mascotas > 0 %}
+              Acceso con mascotas<br>
+              {% endif %}
+              </small>
+                            <small>Total pagado: </small>${{reserva.costo_total|number_format}} <small>MXN.</small><br><br>
+
+</p>
+              <br>
+              <div id="datosOcultos">
+              {% set guest = reserva.adultos + reserva.ninos %}
+
+
+
+                    <input id="compraReservaId" name="reservaId" type="hidden" value="{{reserva.id}}">
+                    <input id="compraCabana" name="cabana" type="hidden" value="{{cabana.nombre}}">
+                    <input id="compraCabanaId" name="cabanaId" type="hidden" value="{{cabana.id}}">
+                    <input id="compraUbicacion" name="ubicacion" type="hidden" value="{{ ubicacion.nombre }}">
+                    <input id="compraInicio" name="inicio" type="hidden" value="{{reserva.inicio}}">
+                    <input id="compraFin" name="fin" type="hidden" value="{{reserva.fin}}">
+                    <input id="compraAdultos" name="adultos" type="hidden" value="{{reserva.adultos}}">
+                    <input id="compraNinos" name="ninos" type="hidden" value="{{reserva.ninos}}">
+                    <input id="compraGuests" name="guests" type="hidden" value="{{ guest }}">
+                    <input id="compraMascotas" name="mascotas" type="hidden" value="{{reserva.mascotas}}">
+                    <input id="compraNoches" name="noches" type="hidden" value="{{reserva.noches}}">
+                    <input id="compraCosto" name="costo" type="hidden" value="{{reserva.costo_total|number_format}}">
+
+              </div>
+              <div class="payContent__btn">
+                <a href="{{ '/'|page }}" class="btnpr btnpr__primary btnpr__primary--border">
+                  <i class="fa fa-chevron-left"></i><span>Regresar a Inicio</span>
+                </a>
+              </div>
+              <img src="{{ 'assets/img/logos/logo_gray_wander.svg'|theme }}" alt="Wander">
+            </div><!-- end.payContent_box -->
+          </div><!-- end.col-* -->
+        </div><!-- end.row -->
+      </div><!-- end.container -->
+    </div><!-- end.payContent -->
+  </div><!-- end.reservaCt -->
+</article><!-- end.bg-gen -->
+
+<!--script type="text/javascript">
+
+
+ window.onload = function () {
+     
+       let total = '{{ reserva.costo_total|number_format }}';
+
+    fbq('track', 'Purchase', {currency: "MXN", value: total.replace(/,/g,'')});
+
+ }
+ </script-->
+ 
+ 
+ <script>
+
+  {% if reserva.paquete is not empty %}
+
+      // Si tiene método de pago → Paquete comprado
+      klaviyo.track("Purchased_Package", {
+        "package_name": '{{ reserva.paquete }}',
+        "value":        '{{ reserva.costo_total }}',
+        "guests":       '{{ reserva.adultos }}',
+        "checkin_date":  '{{ reserva.inicio }}', 
+        "checkout_date": '{{ reserva.fin }}', 
+        "$value":        {{ reserva.costo_total }}, 
+        "payment_method":'{{ reserva.metodo_pago }}', 
+        "nights":       '{{ reserva.noches }}',
+        "location":     '{{ reserva.ubicacion.nombre }}',
+        "currency": 'MXN'
+
+      });
+
+  {% else %}
+                 {% set guest = (reserva.adultos ?? 0) + (ninos ?? 0) %}
+    var klaviyoTags = {{ klaviyo_tags | raw }};
+
+
+    klaviyo.track("Reserva Confirmada", Object.assign({
+        "cabin_name":      '{{ reserva.cabana.nombre }}',
+        "nights":          '{{ reserva.noches }}',
+        "guests":          '{{ guest }}',
+        "checkin_date":    '{{ reserva.inicio }}',
+        "checkout_date":   '{{ reserva.fin }}',
+        "location":        '{{ reserva.ubicacion.nombre }}',
+        "$value":           {{ reserva.costo_total }},
+        "payment_method":  '{{ reserva.metodo_pago }}',
+        "value_currency":  'MXN',
+        "adultos":         '{{ reserva.adultos }}',
+        "ninos":           '{{ reserva.ninos }}',
+        "mascota":         '{{ reserva.mascota }}'
+    }, klaviyoTags));
+   
+  {% endif %}
+  
+  
+</script>

@@ -1,0 +1,63 @@
+title = "Bitácora de Reserva"
+url = "/bitacora-de-reserva"
+layout = "layout"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[bitacora]
+==
+<style>
+
+        .log-list {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .log-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .log-item:last-child {
+            border-bottom: none;
+        }
+        .log-item span {
+            font-size: 14px;
+        }
+        
+</style>
+          <h2> <a href="/backend/roll/reservaciones/reservaciones" title="Atras"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+
+
+<h3 style="margin-top: 20px;">Bitacora por reserva</h3>
+    {{ form_ajax('onSearchBitacora')}}
+        <div class="row" style="min-width:450px;">
+        
+        
+                <div class="col-12" style="margin-bottom: 20px;">
+                  <label for="id_reserva"></label>
+                  <input type="text" class="form-control" name="id_reserva" id="id_reserva" placeholder="Ingrese el ID de la reserva">
+                </div>
+                <div class="col-12" style="margin-bottom: 20px;">
+
+                    <button type="submit" class="btnCtaGen__link btnCtaGen__link--rounded" style="width:120px;">Buscar</button>
+                
+                        <div id="error"style="margin-top: 20px;"></div>
+
+                </div>
+        </div>
+        
+    {{ form_close() }}
+
+    <div class="row" style="min-width:450px;">
+        
+        
+        <div class="col-12">
+        
+                <div id="result" style="margin-top: 20px;"></div>
+
+    </div>

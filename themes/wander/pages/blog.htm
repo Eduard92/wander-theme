@@ -1,0 +1,241 @@
+title = "Blog"
+url = "/blog"
+layout = "layoutBlog"
+meta_title = "Home Blog | Wander Cabins"
+meta_description = "Bienvenido a nuestra colección de historias y reflexiones sobre la maravilla de la naturaleza, la alegría del tiempo libre y el poder del descanso."
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+use_in_sitemap = 1
+priority = 1
+changefreq = "always"
+
+[builderList postsList]
+modelClass = "RainLab\Blog\Models\Post"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% set posts = postsList.records %}
+
+<div data-elementor-type="wp-page" data-elementor-id="3501" class="elementor elementor-3501" data-elementor-settings="[]">
+            <div class="elementor-section-wrap">
+               
+               <section class="elementor-section elementor-top-section elementor-element elementor-element-212194a4 hero-section-container elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="212194a4" data-element_type="section">
+                  <div class="elementor-container elementor-column-gap-default">
+                     <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-73004a97 hero-content" data-id="73004a97" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                           <div class="elementor-element elementor-element-1ce87b48 hero-title elementor-widget elementor-widget-heading" data-id="1ce87b48" data-element_type="widget" data-widget_type="heading.default">
+                              <div class="elementor-widget-container">
+                                 <h2 class="elementor-heading-title elementor-size-default">Wander Blog</h2>
+                              </div>
+                           </div>
+                           <div class="elementor-element elementor-element-4cdb58a6 hero-description elementor-widget elementor-widget-text-editor" data-id="4cdb58a6" data-element_type="widget" data-widget_type="text-editor.default">
+                              <div class="elementor-widget-container">
+                                 <p>Bienvenido a nuestra colección de historias y reflexiones sobre la maravilla de la naturaleza, la alegría del tiempo libre y el poder del descanso. Estamos felices de que estés aquí..</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-31beb9c3 hero-media" data-id="31beb9c3" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                           <div class="elementor-element elementor-element-2d5daca1 hero-image elementor-widget elementor-widget-image" data-id="2d5daca1" data-element_type="widget" data-widget_type="image.default">
+                              <div class="elementor-widget-container">
+                                 <noscript><img decoding="async" width="900" height="839" src="{{ 'assets/blog/img/wander_blog.png'|theme }}" class="attachment-full size-full" alt="" srcset="{{ 'assets/blog/img/wander_blog.png'|theme }} 900w, {{ 'assets/blog/img/wander_blog.png'|theme }} 800w, {{ 'assets/blog/img/wander_blog.png'|theme }} 768w" sizes="(max-width: 900px) 100vw, 900px" /></noscript>
+                                 <img decoding="async" width="900" height="839" src='{{ 'assets/blog/img/wander_blog.png'|theme }}' data-src="{{ 'assets/blog/img/wander_blog.png'|theme }}" class="lazyload attachment-full size-full" alt="" data-srcset="{{ 'assets/blog/img/wander_blog.png'|theme }} 900w, {{ 'assets/blog/img/wander_blog.png'|theme }} 800w, {{ 'assets/blog/img/wander_blog.png'|theme }} 768w" data-sizes="(max-width: 900px) 100vw, 900px" />
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+               
+               <section class="elementor-section elementor-top-section elementor-element elementor-element-6eca91e featured-posts-container elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="6eca91e" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                  <div class="elementor-container elementor-column-gap-default">
+                     <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4209274 featured-posts-list" data-id="4209274" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                           <div class="elementor-element elementor-element-8fa6a7a elementor-grid-3 elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-widget elementor-widget-elementor-blog-posts" data-id="8fa6a7a" data-element_type="widget" data-settings="{&quot;columns&quot;:&quot;3&quot;,&quot;columns_tablet&quot;:&quot;2&quot;,&quot;columns_mobile&quot;:&quot;1&quot;}" data-widget_type="elementor-blog-posts.default">
+                              <div class="elementor-widget-container">
+                                 <div class="wpcap-grid">
+                                    <div class="wpcap-grid-container elementor-grid wpcap-grid-desktop-3 wpcap-grid-tablet-2 wpcap-grid-mobile-1 blog">
+                                    
+            
+                                    {% for post in posts %}
+                                    
+                                       <article id="{{post.slug}}-{{loop.index}}" class="wpcap-post post-1057 post type-post status-publish format-standard has-post-thumbnail hentry category-how-to-getaway tag-answers tag-guests tag-questions" style="margin:0 5px">
+                                          <div class="post-grid-inner">
+                                             <div class="post-grid-thumbnail">
+                                                   {% for image in post.featured_images|slice(0,1) %}
+                                                            <!--a href="https://journal.getaway.house/your-questions-answered/"-->
+
+                                                   <noscript>
+
+                                                  <img width="480" height="480" src="{{ image.path }}" alt="{{a}}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" decoding="async" >
+                     
+                                                   </noscript>
+                                                   <img width="480" height="480" data-src="{{ image.path }}"
+                                                   src="{{ image.path }}" alt="{{a}}"
+                                                   class="lazyload attachment-thumbnail size-thumbnail wp-post-image" alt="" decoding="async" 
+                                                  data-sizes="(max-width: 480px) 100vw, 480px" /> 
+                                                                                                  </a>
+
+                                                                          {% endfor %}
+
+                                             </div>
+                                             <div class="post-grid-text-wrap">
+                                                <h3 class="title"> <a href="/blog/post/{{ post.slug}}">{{post.title}}</a></h3>
+                                                <div class="post-grid-excerpt">
+                                                   <p>{{post.excerpt}}</p>
+                                                </div>
+                                                <a class="read-more-btn" href="/blog/post/{{ post.slug}}">Ver</a>
+                                             </div>
+                                          </div>
+                                       </article>
+                                    {% endfor %}
+
+                                       <!--article id="post-1221" class="wpcap-post post-1221 post type-post status-publish format-standard has-post-thumbnail hentry category-faq category-how-to-getaway tag-answers tag-faq tag-questions">
+                                          <div class="post-grid-inner">
+                                             <div class="post-grid-thumbnail">
+                                                <a href="https://journal.getaway.house/you-asked-we-answered/">
+                                                   <noscript><img width="480" height="480" src="https://journal.getaway.house/wp-content/uploads/2019/05/GetawayHouse-1-of-18-480x480.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Your Questions, Answered" decoding="async" loading="lazy" /></noscript>
+                                                   <img width="480" height="480" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20480%20480%22%3E%3C/svg%3E' data-src="https://journal.getaway.house/wp-content/uploads/2019/05/GetawayHouse-1-of-18-480x480.jpg" class="lazyload attachment-thumbnail size-thumbnail wp-post-image" alt="Your Questions, Answered" decoding="async" loading="lazy" /> 
+                                                </a>
+                                             </div>
+                                             <div class="post-grid-text-wrap">
+                                                <h3 class="title"> <a href="https://journal.getaway.house/you-asked-we-answered/">You Asked, We&nbsp;Answered</a></h3>
+                                                <div class="post-grid-excerpt">
+                                                   <p>We know our guests usually have a lot of questions about Getaway. To make sure you&#8217;re as prepared as possible, we&#8217;ve put together a list&hellip;</p>
+                                                </div>
+                                                <a class="read-more-btn" href="https://journal.getaway.house/you-asked-we-answered/">Read More</a>
+                                             </div>
+                                          </div>
+                                       </article-->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+               <!--section class="elementor-section elementor-top-section elementor-element elementor-element-bd1c0c3 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="bd1c0c3" data-element_type="section">
+                  <div class="elementor-container elementor-column-gap-default">
+                     <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-cf1b897" data-id="cf1b897" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                           <div class="elementor-element elementor-element-874ad5e elementor-widget elementor-widget-shortcode" data-id="874ad5e" data-element_type="widget" data-widget_type="shortcode.default">
+                              <div class="elementor-widget-container">
+                                 <div class="elementor-shortcode">
+                                    <div class="featured-post-container featured-post-secondary">
+                                       <div class="featured-content-container">
+                                          <div class="featured-post-content">
+                                             <h2 class="featured-post-title">Prepárate para una escapada aún mejor</h2>
+                                             <div class="featured-post-excerpt">
+                                                <p>Este verano, Getaway se está asociando con Walmart para brindar a los huéspedes experiencias y acceso que le permitirán disfrutar de #morefreetime en la naturaleza.</p>
+                                             </div>
+                                             <!--a class="read-more-btn" href="#" rel="nofollow">Read More</a->
+                                          </div>
+                                       </div>
+                                       <div class="featured-post-thumbnail">
+                                          <noscript><img width="2656" height="1295" src="https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1.png" class="attachment-full size-full" alt="" decoding="async" srcset="https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1.png 2656w, https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1-800x390.png 800w, https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1-1440x702.png 1440w, https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1-768x374.png 768w, https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1-1536x749.png 1536w, https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1-2048x999.png 2048w" sizes="(max-width: 2656px) 100vw, 2656px" /></noscript>
+                                          <img width="2656" height="1295" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%202656%201295%22%3E%3C/svg%3E' data-src="https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1.png" class="lazyload attachment-full size-full" alt="" decoding="async" data-srcset="https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1.png 2656w, https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1-800x390.png 800w, https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1-1440x702.png 1440w, https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1-768x374.png 768w, https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1-1536x749.png 1536w, https://journal.getaway.house/wp-content/uploads/2021/10/CabinPlot_journal-1-2048x999.png 2048w" data-sizes="(max-width: 2656px) 100vw, 2656px" />
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section-->
+               <!--section class="elementor-section elementor-top-section elementor-element elementor-element-dba4c9a featured-posts-container elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="dba4c9a" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                  <div class="elementor-container elementor-column-gap-default">
+                     <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ab32852" data-id="ab32852" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                           <div class="elementor-element elementor-element-c1b734f featured-posts-list elementor-grid-3 elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-widget elementor-widget-elementor-blog-posts" data-id="c1b734f" data-element_type="widget" data-settings="{&quot;columns&quot;:&quot;3&quot;,&quot;columns_tablet&quot;:&quot;2&quot;,&quot;columns_mobile&quot;:&quot;1&quot;}" data-widget_type="elementor-blog-posts.default">
+                              <div class="elementor-widget-container">
+                                 <div class="wpcap-grid">
+                                    <div class="wpcap-grid-container elementor-grid wpcap-grid-desktop-3 wpcap-grid-tablet-2 wpcap-grid-mobile-1 blog">
+                                     
+                                      {% for post in posts %}
+
+                                       <article id="{{post.id}}" class="wpcap-post post-{{post.id}} post type-post status-publish format-standard has-post-thumbnail hentry category-campfire-cooking">
+                                          <div class="post-grid-inner">
+                                             <div class="post-grid-thumbnail">
+                                                {% for image in post.featured_images|slice(0,1) %}
+                                                    <a href="/blog/post/{{post.slug}}">
+                                                       <noscript><img width="480" height="480" src="{{image.path}}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="{{image.path}} 480w, {{image.path}} 150w, {{image.path}} 70w" sizes="(max-width: 480px) 100vw, 480px" /></noscript>
+                                                       <img width="480" height="480" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20480%20480%22%3E%3C/svg%3E' data-src="{{image.path}}" class="lazyload attachment-thumbnail size-thumbnail wp-post-image" alt="{{a}}" decoding="async" loading="lazy" data-srcset="{{image.path}} 480w, {{image.path}} 150w, {{image.path}} 70w" data-sizes="(max-width: 480px) 100vw, 480px" /> 
+                                                    </a>
+                                                {% endfor %}
+                                             </div>
+                                             <div class="post-grid-text-wrap">
+                                                <h3 class="title"> <a href="/blog/post/{{ post.slug}}">{{post.title}}</a></h3>
+                                                <div class="post-grid-excerpt">
+                                                   <p>{{post.excerpt}}</p>
+                                                </div>
+                                                <a class="read-more-btn" href="/blog/post/{{ post.slug}}">Leer más</a>
+                                             </div>
+                                          </div>
+                                       </article>
+                                    {% endfor %}
+                
+
+                                       <!--article id="post-7631" class="wpcap-post post-7631 post type-post status-publish format-standard has-post-thumbnail hentry category-campfire-cooking category-features">
+                                          <div class="post-grid-inner">
+                                             <div class="post-grid-thumbnail">
+                                                <a href="https://journal.getaway.house/a-getaway-friendsgiving/">
+                                                   <noscript><img width="480" height="480" src="https://journal.getaway.house/wp-content/uploads/2022/11/Getaway_Friendsgiving_221107_Tarnowski_1115-480x480.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://journal.getaway.house/wp-content/uploads/2022/11/Getaway_Friendsgiving_221107_Tarnowski_1115-480x480.jpg 480w, https://journal.getaway.house/wp-content/uploads/2022/11/Getaway_Friendsgiving_221107_Tarnowski_1115-150x150.jpg 150w, https://journal.getaway.house/wp-content/uploads/2022/11/Getaway_Friendsgiving_221107_Tarnowski_1115-70x70.jpg 70w" sizes="(max-width: 480px) 100vw, 480px" /></noscript>
+                                                   <img width="480" height="480" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20480%20480%22%3E%3C/svg%3E' data-src="https://journal.getaway.house/wp-content/uploads/2022/11/Getaway_Friendsgiving_221107_Tarnowski_1115-480x480.jpg" class="lazyload attachment-thumbnail size-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" data-srcset="https://journal.getaway.house/wp-content/uploads/2022/11/Getaway_Friendsgiving_221107_Tarnowski_1115-480x480.jpg 480w, https://journal.getaway.house/wp-content/uploads/2022/11/Getaway_Friendsgiving_221107_Tarnowski_1115-150x150.jpg 150w, https://journal.getaway.house/wp-content/uploads/2022/11/Getaway_Friendsgiving_221107_Tarnowski_1115-70x70.jpg 70w" data-sizes="(max-width: 480px) 100vw, 480px" /> 
+                                                </a>
+                                             </div>
+                                             <div class="post-grid-text-wrap">
+                                                <h3 class="title"> <a href="https://journal.getaway.house/a-getaway-friendsgiving/">A Friendsgiving at&nbsp;Getaway</a></h3>
+                                                <div class="post-grid-excerpt">
+                                                   <p>Meet Kaitlin Guerin, a pastry chef and owner of Lagniappe Baking, a pop-up style bakehouse in New Orleans. We hosted her and a group of&hellip;</p>
+                                                </div>
+                                                <a class="read-more-btn" href="https://journal.getaway.house/a-getaway-friendsgiving/">Read More</a>
+                                             </div>
+                                          </div>
+                                       </article->
+
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section-->
+               <!--section class="elementor-section elementor-top-section elementor-element elementor-element-c19edd9 popular-posts elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="c19edd9" data-element_type="section">
+                  <div class="elementor-container elementor-column-gap-default">
+                     <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-a587cdf" data-id="a587cdf" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                           <div class="elementor-element elementor-element-8381d48 elementor-widget elementor-widget-heading" data-id="8381d48" data-element_type="widget" data-widget_type="heading.default">
+                              <div class="elementor-widget-container">
+                                 <h2 class="elementor-heading-title elementor-size-default">La gente está leyendo</h2>
+                              </div>
+                           </div>
+                           <div class="elementor-element elementor-element-d629e72 popular-posts-list elementor-widget elementor-widget-shortcode" data-id="d629e72" data-element_type="widget" data-widget_type="shortcode.default">
+                              <div class="elementor-widget-container">
+                                 <div class="elementor-shortcode">
+                                    <ul class="wpp-list">
+                                       <li> <a href="/" class="wpp-post-title" target="_self">¿Qué hay dentro de nuestras cabañas?</a> <span class="wpp-meta post-stats"></span></li>
+                                       <li> <a href="/" class="wpp-post-title" target="_self">Empacar&nbsp;Up</a> <span class="wpp-meta post-stats"></span></li>
+                                       <li> <a href="/" class="wpp-post-title" target="_self">La mejor lista de empaque para escapadas</a> <span class="wpp-meta post-stats"></span></li>
+                                       <li> <a href="/" class="wpp-post-title" target="_self">Explora Wander </a> <span class="wpp-meta post-stats"></span></li>
+                                       <li> <a href="/" class="wpp-post-title" target="_self">Disposiciones para escapadas</a> <span class="wpp-meta post-stats"></span></li>
+                                       <li> <a href="/" class="wpp-post-title" target="_self">Sus preguntas, respondidas</a> <span class="wpp-meta post-stats"></span></li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section-->
+            </div>
+         </div>

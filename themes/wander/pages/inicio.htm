@@ -1,0 +1,1542 @@
+title = "Inicio"
+url = "/"
+layout = "layout"
+description = "Vive la experiencia Wander en nuestras cabañas en medio de la naturaleza de Valle de Mexico, Malinalco, La Cañana, Tzibanza Queretaro y Monterrey"
+is_hidden = 0
+[builderList ubicacionesList]
+modelClass = "Roll\Cabanas\Models\Ubicacion"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+sortColumn = "id"
+sortDirection = "desc"
+[builderList opinionesList]
+modelClass = "Roll\Contenido\Models\Opinion"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+sortColumn = "orden"
+[builderList preguntasList]
+modelClass = "Roll\Contenido\Models\Preguntas"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "pregunta"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+sortColumn = "orden"
+sortDirection = "asc"
+[reservaRapida]
+[builderList ciudadesList]
+modelClass = "Roll\Cabanas\Models\Ciudad"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+[builderList postsList]
+modelClass = "RainLab\Blog\Models\Post"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+[builderList sliders]
+modelClass = "Eduard\Slider\Models\Slider"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% put pagetitle %}Cabañas en la Naturaleza para Escapadas Únicas{% endput %}
+{% put metatitle %}Wander | Conoce nuestras cabañas en renta petfriendly en Valle de Bravo, Malinalco y La Cañada{% endput %}
+{% put metadescription %}Vive la experiencia Wander en nuestras cabañas en medio de la naturaleza de Valle de Mexico, Malinalco, La Cañana, Tzibanza Queretaro y Monterrey.{% endput %}
+{% put scriptinicio %}
+<script type="text/javascript" src="{{ 'assets/js/scripts/layoutScripts.js'|theme }}?v={{ 'now'|date('U') }}"></script>
+{% endput %}
+{% set sliders = sliders.records %}
+{% set ubicaciones = ubicacionesList.records %}
+{% set opiniones = opinionesList.records %}
+{% set preguntas = preguntasList.records %}
+{% set ciudades = ciudadesList.records %}
+{% set posts = postsList.records %}
+<style>
+.actions{
+    position:fixed;
+    bottom:0;
+    left:0;
+    z-index:10;
+    background-color:#818C70 !important;
+    display:block;
+    margin:0;
+    padding:10px 20px;
+    width:100%;
+    height:auto;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box
+  }
+    .actions ul{display:-webkit-box;
+        display:-moz-box;
+        display:box;
+        display:-moz-flex;
+        display:-ms-flexbox;
+        display:flex;
+        -webkit-box-orient:horizontal;
+        box-orient:horizontal;
+        -webkit-box-direction:normal;
+        box-direction:normal;
+        -moz-flex-direction:row;
+        flex-direction:row;
+        -ms-flex-direction:row;
+        -webkit-box-pack:center;
+        box-pack:center;
+        -moz-justify-content:center;
+        -ms-justify-content:center;
+        -o-justify-content:center;
+        justify-content:center;
+        -ms-flex-pack:center;
+        -webkit-box-align:center;
+        box-align:center;
+        -moz-align-items:center;
+        -ms-align-items:center;
+        -o-align-items:center;
+        align-items:center;
+        -ms-flex-align:center;
+        -webkit-box-lines:multiple;
+        -moz-box-lines:multiple;
+        box-lines:multiple;
+        -ms-flex-wrap:wrap;
+        flex-wrap:wrap;
+        list-style-type:none;
+        padding:0;
+        margin:0}
+        .actions ul li{margin:0 10px 0 0;
+        padding:0}
+        .actions ul li a,.actions ul li button{display:block;
+        width:130px;
+        height:40px;
+        line-height:40px;
+        padding:0;
+        margin:0;
+        -webkit-box-sizing:border-box;
+        box-sizing:border-box;
+        outline:none;
+        border-radius:0.25rem;
+        text-align:center;
+        font-size:1rem;
+        cursor:pointer;
+        text-transform:uppercase;
+        text-decoration:none;
+        font-family:"Oswald",sans-serif;
+        font-weight:500;
+        letter-spacing:1.2px}
+        .actions ul li a.nB,.actions ul li button.nB{display:none}
+        .actions ul li a.show,.actions ul li button.show{display:block!important}
+        .actions ul li a[disabled=disabled],.actions ul li button[disabled=disabled]{cursor:none;
+        opacity:0.5;
+        pointer-events:none}
+        .actions ul li.netxBtn a,.actions ul li.netxBtn button{background-color:#F1B23F!important;
+        border:solid 1px #F1B23F!important;
+        color:#ffffff!important}
+        .actions ul li.disabled a,.actions ul li.disabled button{cursor:none;
+        opacity:0.5;
+        pointer-events:none}
+        .actions ul li:first-child a,.actions ul li:first-child button{background-color:#222919;
+        border:solid 1px #222919;
+        color:#ffffff;
+        display:block}
+        .actions ul li:nth-child(2) a,.actions ul li:nth-child(2) button{background-color:#F1B23F;
+        border:solid 1px #222919;
+        color:#ffffff}
+        .actions ul li:nth-child(3) a,.actions ul li:nth-child(3) button{background-color:#0C282A;
+        border:solid 1px #222919;
+        color:#ffffff}
+        .actions ul li:last-child{margin:0}
+        @media (min-width:768px){.actions{position:absolute;
+        top:102px;
+        bottom:inherit}
+    }
+        .GuestStories__storyQuote__NPWJL {
+            text-align: center;
+            }
+        .GuestStories__storyQuote__NPWJL:before {
+            content: "“";
+            }
+        .GuestStories__storyQuote__NPWJL:after {
+            content: "”";
+        }
+        .GuestStories__storyQuote__NPWJL:after, .GuestStories__storyQuote__NPWJL:before {
+            color: #818c70;
+            font-family: souvenir,Times New Roman,serif;
+            display:block;
+            font-size: 90px;
+            height: 30px;
+            left: 0;
+            line-height: 1;
+            width: 100%;
+        }
+        .GuestStories__storyQuote__NPWJL:after, .GuestStories__storyQuote__NPWJL:before {
+            color: #818c70;
+            display:block;
+            font-family: souvenir,Times New Roman,serif;
+            font-size: 90px;
+            height: 30px;
+            left: 0;
+            line-height: 1;
+            width: 100%;
+        }
+        .figTest__desc{
+            font-family: souvenir,Times New Roman,serif;
+            }
+        .cont-hack{
+             position: relative!important;    
+             /*padding-bottom: 100%!important; /* 16:9 ratio */    
+            padding-bottom: 75%!important; /* 16:9 ratio */    
+             height: 0!important;    
+             overflow: hidden!important;
+             }
+        .img-hack{
+             position: absolute!important;
+             top: 0!important; left:
+             0!important; 
+             width: 100%!important; 
+             height: 100%!important;
+             }
+            @media (min-width:480px){
+          .cont-hack{
+             position: relative!important;    
+            /* padding-bottom: 56.25%!important; /* 16:9 ratio */    
+             padding-bottom: 66.66%!important; /* 16:9 ratio */    
+             height: 0!important;    
+             overflow: hidden!important;
+             }
+            }
+         @media (min-width:1200px){
+        .hack-max{
+            max-width:600px;
+            }
+         }
+         .min-margin-45{
+                 margin-right: -45px;
+    margin-left: -45px;
+    }
+    @media (max-width:576px){
+        .boxCabanaRes__desc p , .figBlog figcaption{
+          padding:10px;
+        }
+        margin5{
+            padding-right: 5px!important;
+            padding-left: 5px!important;
+            }
+        .slick-dots li button:before{
+           border: 1px solid #818c704f!important;
+            }
+          /*  .xd{
+                 padding-right: unset!important;
+                 padding-left: unset!important
+                }*/
+            .slick-center {
+                  opacity: 1;
+                }
+            .slick-slide {
+                  transition: opacity 0.3s ease-in-out;
+                }
+             .slick-slide:not(.slick-center) {
+                  opacity: 0.5; /* Puedes ajustar este valor según tus preferencias */
+                }
+            .inputSelect.wIn{width:28%}
+            .inputSelect.wIn span {
+                font-size:.7rem!important;
+                }
+                .selectFormContact .collOpenForm .labelInp{
+                font-size:.7rem!important;
+                }
+                .inputSelect__inputDate .mbsc-material.mbsc-textfield-box-floating{
+                                    font-size:.7rem!important;
+                    }
+.inputSelect__dateCheck .btnSelectOption{
+    padding:5px 5PX}
+                .inputSelect__dateCheck .activeHues {
+    padding: 15px 5px 5px;
+}
+.inputSelect__dateCheck .activeHues p {
+    font-size: 0.7rem;
+}                
+                .boxCabanaIntExt{
+                    margin:unset;
+                    }
+                .btnCtaGen{
+                    margin:unset;
+                    }
+            .contFormCal .stickyForm{
+                    padding: 10px 0px;
+                }
+            .container-fluid{
+                padding-right: 5px;
+                padding-left: 5px;
+    }
+    .inputSelect__inputDate .mbsc-material.mbsc-label-box-floating.mbsc-ltr, .inputSelect__inputDate .mbsc-material.mbsc-label-outline-floating.mbsc-ltr {
+    padding-top: .3em;
+    }}
+          @media (max-width:380px){
+            .inputSelect.wIn span {
+                font-size:.6rem!important;
+                }
+                .selectFormContact .collOpenForm .labelInp{
+                font-size:.6rem!important;
+                }
+                .inputSelect__inputDate .mbsc-material.mbsc-textfield-box-floating{
+                                    font-size:.6rem!important;
+                }
+                   .inputSelect__inputDate .mbsc-material.mbsc-label-box-floating.mbsc-ltr, .inputSelect__inputDate .mbsc-material.mbsc-label-outline-floating.mbsc-ltr {
+    padding-top: .3em;
+                   }
+.inputSelect__dateCheck .btnSelectOption{
+    padding:5px 5PX}
+                .inputSelect__dateCheck .activeHues {
+    padding: 15px 5px 5px;
+}
+.inputSelect__dateCheck .activeHues p {
+    font-size: 0.6rem;
+}  
+                   }
+    .expandable-description {
+        max-height: 3.6em; /* Establece la altura máxima para mostrar una descripción truncada */
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+    }
+    .expandable-description.expanded {
+        max-height: none; /* Al expandirse, se muestra todo el contenido */
+    }
+    .read-more-link {
+       text-decoration: underline;
+        cursor: pointer;
+        margin-top: 10px;
+        color: #707267!important;
+    }
+    .read-more-link:focus {
+        outline: none;
+    }
+    /*para pop up */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .content {
+        background-color: #fefefe;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 5px;
+        border: 1px solid #888;
+        width: 50%; /* Tamaño del popup */
+    }
+    /* Media query para dispositivos con un ancho máximo de 768px (típicamente dispositivos móviles) */
+@media (max-width: 768px) {
+    .content {
+        width: 75%; /* Tamaño del popup para dispositivos móviles */
+    }
+}
+    .content h1 {
+        color: green;
+    }
+        .content img {
+        max-width: 100%; /* Ajusta el ancho máximo de la imagen al 100% del contenedor */
+        height: auto; /* Ajusta automáticamente la altura para mantener la proporción */
+    }
+/* Estilos para el botón de cerrar */
+.close {
+    position: absolute;
+    top: -15px; /* Ajusta según la posición deseada */
+    right: -15px; /* Ajusta según la posición deseada */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 30px;
+    z-index: 1; /* Asegura que esté encima del banner */
+}
+/* Estilos para el contenedor */
+.content {
+    position: relative;
+}
+    .col-nav{
+    list-style: none!important; /* Eliminar viñetas de la lista */
+    padding: 0!important; /* Eliminar el padding por defecto */
+    margin: 0!important; /* Eliminar el margen por defecto */
+    justify-content: center!important; /* Opcional: Centrar horizontalmente los elementos */
+    display: table-cell !important;
+    min-width: 180px!important;
+}
+@media (max-width: 575px) {
+    .col-nav{
+    display: flex!important;
+}
+}
+      .modalOption.isShow {
+                bottom:110%;
+                }
+                     .modalOption {
+                bottom:110%;
+                }
+         .selectFormContact nav {
+                bottom: 110%;
+                top: unset;
+         }
+.video-slide {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.video-slide .sliderVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  max-width: none;
+}
+/* Corrección para móviles */
+@media screen and (max-width: 768px) {
+  .video-slide {
+    height: 100dvh; /* usa 100dvh en vez de 100vh en móviles modernos */
+  }
+  .video-slide .sliderVideo {
+    height: 100dvh;
+    width: auto;
+    object-fit: cover;
+  }
+}
+</style>
+<article class="bg-gen">
+    <!--div id="popup-box" class="modal">
+        <div class="content">
+                    <img class="img-pop "  alt="popup hotsale" src="https://wandercabins.mx/storage/app/media/popups/PopUp_Xmas_H.webp">
+            <a href="#" class="close">&times;</a>
+        </div>
+    </div-->
+    <section class="hero-sec" id="hero-sec">
+      <div class="contHeroSlide">
+        <div class="slide-principal">
+          {% for slider in sliders %}
+            {% if slider.nombre == "Principal"%}
+             {% if slider.video == 1 %}
+                {% for video in slider.videos %}
+                    <div>  
+                        <div class="contHeroSlide__slider video-slide" >
+                                        <video id="sliderVideo"  class="sliderVideo lozad"   autoplay playsinline muted loop  preload="auto">
+                                            <source data-src="{{video.path}}">
+                                            Tu navegador no admite la reproducción de video.
+                                          </video>
+                           </div><!-- end.contHeroSlide__slider -->             
+                        </div><!-- end.itemSlide -->      
+                     {% endfor %}    
+                {% endif %}
+                 {% if slider.only_video != 1 %}
+                 {% for image in slider.images %}
+                    <div>  
+                        <div class="contHeroSlide__slider" >
+                                        <picture>
+                                             <source class="lozad" media="(min-width: 1200px)"  alt="{{image.title}}" data-src="{{ image.path | resize(1200)}}" width="1200" height="675" >
+                                             <source class="lozad" media="(min-width: 768px)"   alt="{{image.title}}" data-src="{{ image.path | resize(800) }}" width="1200" height="675">
+                                             <source class="lozad" media="(min-width: 320px)"   alt="{{image.title}}" data-src="{{ image.path | resize(400)}}" width="1200" height="675">
+                                             <img class="sliderImage"  src="{{image.path}}"   alt="{{image.title}}"  width="1200" height="675"  >
+                                        </picture>
+                           </div><!-- end.contHeroSlide__slider -->             
+                        </div><!-- end.itemSlide -->      
+                     {% endfor %}     
+                 {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div><!-- end.slide-principal -->
+        <!-- <button class="btnSlideProd bLeftP" id="prevslideHomeMain"></button>
+        <button class="btnSlideProd nRightP" id="nextslideHomeMain"></button> -->
+      </div><!-- end.conteHero -->
+    </section><!-- end.hero-sec -->
+    <div class="ctFrmSt">
+            <section class="contFormCal" id="contFormCal">
+              <div class="stickyForm">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-12 margin5">
+                      <!--<form action="{{ 'reservar'|page }}" method="POST" name="calHome" id="calHome" class="form-inline">-->
+                      {{ form_ajax('onDisponibilidad', {class: 'form-inline', id: 'calHome', name: 'calHome'}) }}
+                        <input type="hidden" id="picker" name="picker"><!-- recibe los datos del calendario. -->
+                        <div id="picker"></div>
+                        <div class="form-group mb-2 inputSelect wIn"  data-input-home>
+                          <!-- <select class="inputSelect__selectCus custom-select" name="locacion" id="locacion" style="display:none;">
+                            <option value="" selected>Locación</option>
+                            {% for ubicacion in ubicaciones %}
+                            {% if ubicacion.disponible == true %}
+                            <option value="{{ubicacion.id}}">{{ubicacion.nombre}}</option>
+                            {% endif %}
+                            {% endfor %}
+                          </select> -->
+                          <input type="hidden" name="locacion" id="locacion" value="">
+                          <div class="selectFormContact">
+                            <a href="#" class="collOpenForm" id="openOpsForms">
+                              <span class="labelInp"><i class="fa fa-map-marker"></i> {{ 'Destino'|_ }} </span>
+                              <span id="textChange" class="responseText">{{ 'Destino'|_ }}</span>
+                            </a><!-- end.collOpenForm -->
+                            <nav id="navOpcionform">
+                                {% for ciudad in ciudades %}
+                                {%if ciudad.ubicaciones.count > 0%}
+                                <ul class="col-nav">
+                                <li><a style="color:#707267" class="btnFormContact" id="filtro_ciudad" href="#" data-valor="ciudad-{{ciudad.id}}" onclick="capturarVariable('{{ciudad.nombre}}')">{{ciudad.nombre}} </a></li>
+                                               <ul >
+                                            <!-- Iterar ubicaciones correspondientes a la ciudad -->
+                                            {% for ubicacion in ciudad.ubicaciones %}
+                                            <li>
+                                                <a class="btnFormContact{% if ubicacion.id == 7 or ubicacion.id == 8 %} ubiNew{% endif %}" 
+                                                   href="#" 
+                                                   data-valor="ubicacion-{{ ubicacion.id }}">
+                                                   {{ ubicacion.nombre }}
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                 </ul>
+                                 {%endif%}
+                                {% endfor %}
+                            </nav><!-- end.navOpcionform -->
+                            <!-- nav id="navOpcionform">
+                              <ul>
+                                <li><a class="btnFormContact" href="#" data-valor="todas">Todos los destinos</a></li>
+                                <li><p>Ciudades</p></li>
+                                {% for ciudad in ciudades %}
+                                <li><a class="btnFormContact" id="filtro_ciudad" href="#" data-valor="ciudad-{{ciudad.id}}" onclick="capturarVariable('{{ciudad.nombre}}')">{{ciudad.nombre}}</a></li>
+                                {% endfor %}
+                                <li><p>Destinos</p></li>
+                                {% for ubicacion in ubicaciones %}
+                                <li><a class="btnFormContact{% if ubicacion.id == 7 or ubicacion.id == 8%} ubiNew{% endif %}" href="#" data-valor="ubicacion-{{ubicacion.id}}">{{ubicacion.nombre}}</a></li>
+                                {% endfor %}
+                              </ul>
+                            </nav><-- end.navOpcionform -->
+                          </div><!-- end.selectFormContact -->
+                        </div><!-- end.selectUbicacion -->
+                        <div class="form-group mb-2 inputSelect wIn" >
+                          <div class="inputSelect__dateCheck">
+                            <button class="btnSelectOption activeHues" type="button" data-option="huesped" data-close-ubic>
+                              <span><i class=" fa fa-user"></i> {{ 'Huéspedes'|_ }}</span>
+                              <div id="huesRes">
+                              <p>2 {{ 'Adulto'|_ }}(s)</p>
+                              </div>
+                            </button>
+                            <div id="huesped" class="modalOption">
+                              <!-- <input type="hidden" name="select_adulto" id="select_adulto" min="1" max="4" value="1"> -->
+                              <!-- <input type="hidden" name="select_nino" id="select_nino" min="1" max="4" value="1"> -->
+                              <ul class="boxListHuesped">
+                                <li>
+                                  <!-- <span class="boxListHuesped__count--adulto">1</span> <span class="boxListHuesped__label">Adulto(s)</span>
+                                  <button type="button" class="btnHuesped adult-plus"><i class="fa fa-plus"></i></button> <button type="button"
+                                    class="btnHuesped adult-minus"><i class="fa fa-minus"></i></button> -->
+                                  <div class="inputHuespedHome">
+                                    <h4 class="inputHuespedHome__title">{{ 'Adultos'|_ }}</h4>
+                                    <div class="inputHuespedHome__opt">
+                                      <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-1" value="1">
+                                      <label for="adulto-1">1</label>
+                                      <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-2" value="2" checked>
+                                      <label for="adulto-2">2</label>
+                                      <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-3" value="3">
+                                      <label for="adulto-3">3</label>
+                                      <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-4" value="4">
+                                      <label for="adulto-4">4</label>
+                                    </div><!-- end.inputHuesped__opt -->
+                                  </div><!-- end.inputHuespedHome -->
+                                </li>
+                                <li>
+                                  <!-- <span class="boxListHuesped__count--nino">1</span> <span class="boxListHuesped__label">Niño(s)</span> <button
+                                    type="button" class="btnHuesped nino-plus"><i class="fa fa-plus"></i></button> <button type="button"
+                                    class="btnHuesped nino-minus"><i class="fa fa-minus"></i></button> -->
+                                  <div class="inputHuespedHome">
+                                    <h4 class="inputHuespedHome__title">{{ 'Niños'|_ }}</h4>
+                                    <div class="inputHuespedHome__opt">
+                                      <input type="radio" class="radioRes smallInp" name="ninos" id="nino-0" value="0" checked>
+                                      <label for="nino-0">{{ 'Niños'|_ }}</label>
+                                      <input type="radio" class="radioRes smallInp" name="ninos" id="nino-1" value="1">
+                                      <label for="nino-1">1</label>
+                                      <input type="radio" class="radioRes smallInp" name="ninos" id="nino-2" value="2">
+                                      <label for="nino-2">2</label>
+                                      <input type="radio" class="radioRes smallInp" name="ninos" id="nino-3" value="3">
+                                      <label for="nino-3">3</label>
+                                      <input type="radio" class="radioRes smallInp" name="ninos" id="nino-4" value="4">
+                                      <label for="nino-4">4</label>
+                                    </div><!-- end.inputHuesped__opt -->
+                                  </div><!-- end.inputHuespedHome -->
+                                </li>
+                                <li>
+                                  <!-- <input class="CheckStyle" type="checkbox" name="mascota" id="mascota" value="Si">
+                                  <label for="mascota">Mascotas</label> -->
+                                  <div class="inputHuespedHome">
+                                    <h4 class="inputHuespedHome__title">{{ 'Mascotas'|_ }}</h4>
+                                    <div class="inputHuespedHome__opt">
+                                      <label class="switch">
+                                        <input type="checkbox" name="mascotas" id="mascotas">
+                                        <span class="sldInp round"></span>
+                                      </label>
+                                    </div><!-- end.inputHuesped__opt -->
+                                  </div><!-- end.inputHuespedHome -->
+                                </li>
+                              </ul>
+                              <div class="closeModCt">
+                                <button type="button" id="close-huesped">{{ 'Aceptar'|_ }}</button>
+                              </div>
+                            </div><!-- end.modalOption -->
+                          </div><!-- end.inputSelect__dateCheck -->
+                        </div>
+                         <div class="form-group mb-2 inputSelect wIn">
+                                    <label class="inputSelect__inputDate" data-input-home1 for="entrada">{{ 'Fechas'|_ }}
+                                        <!--input type="text" mbsc-input class="form-control inputForm__input" id="entrada" name="entrada" placeholder="Entrada"><!-- mbsc-input -->
+                                        <input id="range1" class="form-control inputForm__input" name="range" mbsc-input placeholder="Seleccione CheckIn y Checkout" />
+                                    </label>
+                        </div>
+                        <!--div class="form-group mb-2 inputSelect wIn">
+                          <label class="inputSelect__inputDate" data-input-home for="entrada">
+                            Entrada
+                            <input type="text" mbsc-input class="form-control inputForm__input" id="entrada" name="entrada" placeholder="Entrada">
+                          </label>
+                        </div>
+                        <div class="form-group mb-2 inputSelect wIn">
+                          <label class="inputSelect__inputDate" data-input-home for="salida">
+                            Salida
+                            <input type="text" mbsc-input class="form-control inputForm__input" id="salida" name="salida" placeholder="Salida">
+                          </label>
+                        </div-->
+                        <!--<div class="form-group mb-2 inputSelect">
+                          <div class="inputSelect__dateCheck">
+                            <button class="btnSelectOption" type="button" data-option="rooms">
+                              <span><i class="fa fa-bed"></i> Camas</span>
+                            </button>
+                            <div id="rooms" class="modalOption">
+                              <h5 class="titleModal">No. de Camas</h5>
+                              <div class="radioStyle">
+                                <input type="radio" name="bedroom" id="1-bedroom" checked>
+                                <label for="1-bedroom">1 Cama</label>
+                                <input type="radio" name="bedroom" id="2-bedroom">
+                                <label for="2-bedroom">2 Camas</label>
+                              </div>
+                              <div class="closeModCt">
+                                <button type="button" id="close-rooms">Cerrar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>-->
+                        <button type="submit" id="submit-disp" class="btn btn-primary mb-2">{{ 'Reservar'|_ }}</button>
+                      {{ form_close() }}
+                    </div><!-- end.col-* -->
+                  </div><!-- end.row -->
+                </div><!-- end.container -->
+              </div><!-- end.stickyForm -->
+            </section><!-- end.contFormCal -->
+            <!-- {% flash %}
+                <div class="alert alert-warning" style="text-align:center;">
+                    {{ message }}
+                </div>
+            {% endflash %}-->
+            <section class="covidBanner">
+              <div class="covidBanner__container">
+                <div class="h4">{{ 'covidBanner__containerH4'|_ }}</div>
+                <p>{{ 'covidBanner__containerp1'|_ }} <strong>WANDER</strong>. {{ 'covidBanner__containerp2'|_ }} </p>
+              </div>
+                <div class="cabanasContent cabanasContent__slide">
+                </div><!-- end.cabanasContent__slide -->
+                <div id="covid" class="cabanasContent__descbox" style="margin:unset;">
+                  <div class="container" id="covidDesktop">
+                    <div class="row align-items-start justify-content-center ">
+                      <!--div class="col-12">
+                        <h3 class="cabanasContent__title">¿Cómo funciona?</h3>
+                      </div><!- end.titleFunciona-->
+                      <div class="col-4 col-md-3 col-lg-2">
+                        <figure class="figContent">
+                          <img class="figContent__img lozad" style="height:100px;" data-src="{{ 'assets/img/covid/cerradura.webp'|theme }}" alt="cerradura" loading="lazy">
+                          <figcaption style="margin-top: 10px;">
+                            <!--span class="figContent__step">Sin verificación en recepción.</span>
+                            <h3 class="figContent__title">Elige tu cabañana y la fecha</h3-->
+                            <p class="figContent__desc text-center">{{ 'covidBanner__item1'|_ }}</p>
+                          </figcaption>
+                        </figure><!-- edn.cabanasContent__box -->
+                      </div><!-- end.col-* -->
+                      <div class="col-4 col-md-3 col-lg-2">
+                        <figure class="figContent">
+                          <img class="figContent__img lozad" style="height:100px;" data-src="{{ 'assets/img/covid/limpieza.webp'|theme }}" alt="limpieza" loading="lazy">
+                          <figcaption style="margin-top: 10px;">
+                            <p class="figContent__desc text-center">{{ 'covidBanner__item2'|_ }}</p>
+                          </figcaption>
+                        </figure><!-- edn.cabanasContent__box -->
+                      </div><!-- end.col-* -->
+                      <div class="col-4 col-md-3 col-lg-2">
+                        <figure style="margin-top: 10px;">
+                          <img class="figContent__img lozad" style="height:100px;" data-src="{{ 'assets/img/covid/distancia.webp'|theme }}" alt="distancia" loading="lazy">
+                          <figcaption>
+                            <p class="figContent__desc text-center">{{ 'covidBanner__item3'|_ }} </p>
+                          </figcaption>
+                        </figure><!-- edn.cabanasContent__box -->
+                      </div><!-- end.col-* -->
+                      <div class="col-4 col-md-3 col-lg-2">
+                        <figure style="margin-top: 10px;">
+                          <img class="figContent__img lozad" style="height:100px;" data-src="{{ 'assets/img/covid/comunicacion.webp'|theme }}" alt="comunicacion" loading="lazy">
+                          <figcaption>
+                            <p class="figContent__desc text-center">   {{ 'covidBanner__item4'|_ }}     </p>
+                          </figcaption>
+                        </figure><!-- edn.cabanasContent__box -->
+                      </div><!-- end.col-* -->
+                      <div class="col-4 col-md-3 col-lg-2">
+                        <figure class="figContent">
+                          <img class="figContent__img lozad" style="height:100px;" data-src="{{ 'assets/img/covid/fogata.webp'|theme }}" alt="fogata" loading="lazy">
+                          <figcaption style="margin-top: 10px;">
+                            <p class="figContent__desc text-center">{{ 'covidBanner__item5'|_ }} </p>
+                          </figcaption>
+                        </figure><!-- edn.cabanasContent__box -->
+                      </div><!-- end.col-* -->
+                    </div><!-- end.row -->
+                  </div><!-- end.container -->
+                  <div class="container" id="covidMovil" style="display:none;">
+                    <div class="row slidenPasos ">
+                        <!--div class="col-12">
+                          <h3 class="cabanasContent__title">¿Cómo funciona?</h3>
+                        </div><!- end.titleFunciona-->
+                        <div class="col-4 col-md-3 col-lg-2">
+                          <figure class="figContent">
+                            <img class="figContent__img lozad" data-src="{{ 'assets/img/covid/cerradura.webp'|theme }}" alt="cerradura" loading="lazy">
+                            <figcaption>
+                              <!--span class="figContent__step">Sin verificación en recepción.</span>
+                              <h3 class="figContent__title">Elige tu cabañana y la fecha</h3-->
+                              <p class="figContent__desc text-center">{{ 'covidBanner__item1'|_ }}</p>
+                            </figcaption>
+                          </figure><!-- edn.cabanasContent__box -->
+                        </div><!-- end.col-* -->
+                        <div class="col-4 col-md-3 col-lg-2">
+                          <figure class="figContent">
+                            <img class="figContent__img lozad" data-src="{{ 'assets/img/covid/limpieza.webp'|theme }}" alt="limpieza" loading="lazy">
+                            <figcaption>
+                              <p class="figContent__desc text-center">{{ 'covidBanner__item2'|_ }}</p>
+                            </figcaption>
+                          </figure><!-- edn.cabanasContent__box -->
+                        </div><!-- end.col-* -->
+                        <div class="col-4 col-md-3 col-lg-2">
+                          <figure >
+                            <img class="figContent__img lozad" data-src="{{ 'assets/img/covid/distancia.webp'|theme }}" alt="distancia" loading="lazy">
+                            <figcaption>
+                              <p class="figContent__desc text-center">{{ 'covidBanner__item3'|_ }}
+                                </p>
+                            </figcaption>
+                          </figure><!-- edn.cabanasContent__box -->
+                        </div><!-- end.col-* -->
+                        <div class="col-4 col-md-3 col-lg-2">
+                          <figure >
+                            <img class="figContent__img lozad" data-src="{{ 'assets/img/covid/comunicacion.webp'|theme }}" alt="comunicacion" loading="lazy">
+                            <figcaption>
+                              <p class="figContent__desc text-center">            {{ 'covidBanner__item4'|_ }}
+                                </p>
+                            </figcaption>
+                          </figure><!-- edn.cabanasContent__box -->
+                        </div><!-- end.col-* -->
+                        <div class="col-4 col-md-3 col-lg-2">
+                          <figure class="figContent">
+                            <img class="figContent__img lozad" data-src="{{ 'assets/img/covid/fogata.webp'|theme }}" alt="fogata" loading="lazy">
+                            <figcaption >
+                              <p class="figContent__desc text-center">      {{ 'covidBanner__item5'|_ }}    </p>
+                            </figcaption>
+                          </figure><!-- edn.cabanasContent__box -->
+                        </div><!-- end.col-* -->  
+                    </div><!-- end.row -->
+                  </div><!-- end.container -->
+                </div><!-- end.cabanasContent__descbox -->
+              <div class="btnCtaGen" style="margin:0px 0 0px;">
+                <a class="btnCtaGen__link " href="{{ 'reservar-1'|page }}?from=contactless"> {{ 'Realiza tu reserva contactless'|_ }}</a>
+              </div><!-- end.btnCtaGen btnCtaGen__link--rounded-->
+            </section><!-- end.covidBanner -->
+            <section class="cabanasContent" id="slideCenterDesktop">
+              <div class="cabanasContent__slide">
+                <div class="slideCenterCabins">
+                 {% for slider in sliders %}
+                            {% if slider.nombre == "Segundo"%}
+                                 {% for image in slider.images %}        
+                                      <div>
+                                        <figure class="figSlide">
+                                          <img class="figSlide__img lozad" data-src="{{ image.path | resize(800)}}" alt="{{image.name}}" loading="lazy">
+                                        </figure>
+                                      </div><!-- end.itemSlider -->
+                                 {% endfor %}                 
+                            {% endif %}
+                 {% endfor %}
+                </div><!-- end.slideCenterCabins -->
+              </div><!-- end.cabanasContent__slide -->
+            </section>
+             <section class="cabanasContent" id="slideCenterMovil" style="display:none;">
+              <div class="cabanasContent__slide">
+                <div class="slideCenterCabins">
+                 {% for slider in sliders %}
+                            {% if slider.nombre == "Segundo"%}
+                                 {% for image in slider.images %}        
+                                      <div class="col-12 col-md-6 col-lg-4 xd " style="margin-bottom:0px">
+                                        <div class="boxCabanaRess" style="padding:unset">
+                                                <figure class="figSlide cont-hack">
+                                                  <img class="figSlide__img img-hack lozad" data-src="{{ image.path | resize(800)}}" alt="{{image.name}}" loading="lazy">
+                                                </figure>
+                                        </div>                   
+                                      </div><!-- end.col-* -->
+                                 {% endfor %}                 
+                            {% endif %}
+                 {% endfor %}
+                </div><!-- end.slideCenterCabins -->
+              </div><!-- end.cabanasContent__slide -->
+            </section>
+            <section class="cabanasContent" id="cabanas">
+              <div class="cabanasContent__descbox">
+                <div class="container" id="pasosDesktop">
+                  <div class="row align-items-start ">
+                  <div class="titleNewUbi">
+                    <div class="h2"> {{ '¿Cómo funciona?'|_ }}</div>
+                  </div><!-- end.titleNewUbi -->
+                    <div class="col-12 col-md-4 col-lg-4">
+                      <figure class="figContent">
+                        <img class="figContent__img lozad" data-src="{{ 'assets/img/imgPrueba/wander iconos_cabana.png'|theme }}" alt="paso1" loading="lazy">
+                        <figcaption>
+                          <span class="figContent__step">{{ 'Paso-1-title'|_ }}</span>
+                          <div class=" h3 figContent__title">{{ 'Paso-1-txt1'|_ }}</div>
+                          <p class="figContent__desc">{{ 'Paso-1-txt2'|_ }}</p>
+                        </figcaption>
+                      </figure><!-- edn.cabanasContent__box -->
+                    </div><!-- end.col-* -->
+                    <div class="col-12 col-md-4 col-lg-4">
+                      <figure class="figContent">
+                        <img class="figContent__img lozad" data-src="{{ 'assets/img/imgPrueba/Wander_iconos_cama.png'|theme }}" alt="paso2" loading="lazy">
+                        <figcaption>
+                   <span class="figContent__step">{{ 'Paso-2-title'|_ }}</span>
+                          <div class=" h3 figContent__title">{{ 'Paso-2-txt1'|_ }}</div>
+                          <p class="figContent__desc">{{ 'Paso-2-txt2'|_ }} </p>
+                        </figcaption>
+                      </figure><!-- edn.cabanasContent__box -->
+                    </div><!-- end.col-* -->
+                    <div class="col-12 col-md-4 col-lg-4">
+                      <figure class="figContent">
+                        <img class="figContent__img lozad" data-src="{{ 'assets/img/imgPrueba/wander iconos_connecta copy 2.png'|theme }}" alt="paso3" loading="lazy">
+                        <figcaption>
+                          <span class="figContent__step">{{ 'Paso-3-title'|_ }}</span>
+                          <div class="h3 figContent__title">{{ 'Paso-3-txt1'|_ }}</div>
+                          <p class="figContent__desc">{{ 'Paso-3-txt2'|_ }} </p>
+                        </figcaption>
+                      </figure><!-- edn.cabanasContent__box -->
+                    </div><!-- end.col-* -->
+                    <div class="col-12">
+                      <div class="btnCtaGen">
+                        <a class="btnCtaGen__link " href="{{ 'reservar-1'|page }}?from=como_funciona"> {{ 'Vive la Experiencia'|_ }}</a>
+                      </div><!-- end.btnCtaGen btnCtaGen__link--rounded -->
+                    </div><!-- end.col-* -->
+                  </div><!-- end.row -->
+                </div><!-- end.container -->
+                <div class="container" id="pasosMovil" style="display:none;">
+                  <!-- <div class="col-12">
+                    <div class="h3 cabanasContent__title">¿Cómo funciona?</div>
+                  </div>end.titleFunciona-->
+                  <div class="titleNewUbi">
+                    <div class="h2">{{ '¿Cómo funciona?'|_ }}  </div>
+                  </div><!-- end.titleNewUbi -->
+                  <div class="row align-items-start slidenPasos ">
+                    <div class="col-12 col-md-4 col-lg-4">
+                      <figure class="figContent">
+                        <img class="figContent__img lozad" data-src="{{ 'assets/img/imgPrueba/wander iconos_cabana.png'|theme }}" alt="paso1" loading="lazy">
+                        <figcaption>
+                          <span class="figContent__step">{{ 'Paso-1-title'|_ }}</span>
+                          <div class=" h3 figContent__title">{{ 'Paso-1-txt1'|_ }}</div>
+                          <p class="figContent__desc" style="line-height: 1.6em; text-align: justify; ">{{ 'Paso-1-txt2'|_ }}</p>
+                        </figcaption>
+                      </figure><!-- edn.cabanasContent__box -->
+                    </div><!-- end.col-* -->
+                    <div class="col-12 col-md-4 col-lg-4">
+                      <figure class="figContent">
+                        <img class="figContent__img lozad" data-src="{{ 'assets/img/imgPrueba/Wander_iconos_cama.png'|theme }}" alt="paso2" loading="lazy">
+                        <figcaption>
+                          <span class="figContent__step">{{ 'Paso-2-title'|_ }}</span>
+                          <div class="h3 figContent__title">{{ 'Paso-2-txt1'|_ }}</div>
+                          <p class="figContent__desc" style="line-height: 1.6em; text-align: justify; ">{{ 'Paso-2-txt2'|_ }}</p>
+                        </figcaption>
+                      </figure><!-- edn.cabanasContent__box -->
+                    </div><!-- end.col-* -->
+                    <div class="col-12 col-md-4 col-lg-4">
+                      <figure class="figContent">
+                        <img class="figContent__img lozad" data-src="{{ 'assets/img/imgPrueba/wander iconos_connecta copy 2.png'|theme }}" alt="paso3" loading="lazy">
+                        <figcaption>
+                          <span class="figContent__step">{{ 'Paso-3-title'|_ }}</span>
+                          <div class="h3 figContent__title">{{ 'Paso-3-txt1'|_ }}</div>
+                          <p class="figContent__desc" style="line-height: 1.6em; text-align: justify; ">{{ 'Paso-3-txt2'|_ }}</p>
+                        </figcaption>
+                      </figure><!-- edn.cabanasContent__box -->
+                    </div><!-- end.col-* -->
+                  </div><!-- end.row -->
+                  <div class="col-12">
+                    <div class="btnCtaGen">
+                      <a class="btnCtaGen__link " href="{{ 'reservar-1'|page }}?from=como_funciona">{{ 'Vive la Experiencia'|_ }}</a>
+                    </div><!-- end.btnCtaGen btnCtaGen__link--rounded-->
+                  </div><!-- end.col-* -->
+                </div><!-- end.container -->
+              </div><!-- end.cabanasContent__descbox -->
+            </section><!-- end.cabanasContent -->
+            <section class="contentLoc newUbic" id="experiencia">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="titleNewUbi">
+                      <div class="h2">{{ 'experienciaTitle'|_ }}  </div>
+                    </div><!-- end.titleNewUbi -->
+                  </div><!-- end.col-* -->
+                </div><!-- end.row -->
+              </div><!-- end.container -->
+              <div class="containerCabanas" id="containerInstalaciones">
+                <div class="row slideninstalaciones" style="margin-top: 0px;">
+                  <div class="col-12 col-md-6 col-lg-4 xd " style="margin-bottom:0px;justify-content:center;">
+                    <div class="boxCabanaRess" style="padding:unset">
+                      <div class="boxCabanaRes__img">
+                        <div id="cab-banio">
+                            <figure class="boxCabanaRes__fig cont-hack">
+                              <img class="img-hack lozad" data-src="{{ 'assets/img/2022/Sliders/instalaciones/Wander Baño.webp'|theme  | resize(800)}}" alt="Wander Cabaña Baño" loading="lazy">
+                            </figure>
+                        </div>
+                      </div>
+                      <div class="boxCabanaRes__desc boxCabanaIntExt">
+                        <div class="h2">{{ 'experienciaItem1'|_ }} </div>
+                        <p style="line-height: 1.6em; text-align: justify; ">{{ 'experienciaItem1Desc'|_ }}  </p>
+                      </div>
+                    </div>
+                  </div><!-- end.col-* -->
+                  <div class="col-12 col-md-6 col-lg-4 xd " style="margin-bottom:0px">
+                    <div class="boxCabanaRess" style="padding:unset">
+                      <div class="boxCabanaRes__img">
+                        <div id="cab-banio">
+                            <figure class="boxCabanaRes__fig cont-hack">
+                              <img class="img-hack lozad" data-src="{{ 'assets/img/2022/Sliders/instalaciones/Wander Cabins - Asador.webp'|theme | resize(800)}}" alt="Wander Cabaña Asador" loading="lazy">
+                            </figure>
+                        </div> 
+                      </div>
+                      <div class="boxCabanaRes__desc boxCabanaIntExt">
+                        <div class="h2">{{ 'experienciaItem2'|_ }}</div>
+                        <p style="line-height: 1.6em; text-align: justify; ">{{ 'experienciaItem2Desc'|_ }}</p>
+                      </div>
+                    </div>
+                  </div><!-- end.col-* -->
+                  <div class="col-12 col-md-6 col-lg-4 xd " style="margin-bottom:0px">
+                    <div class="boxCabanaRess" style="padding:unset">
+                      <div class="boxCabanaRes__img">
+                        <div id="cab-banio">
+                            <figure class="boxCabanaRes__fig cont-hack">
+                              <img class="img-hack lozad" data-src="{{ 'assets/img/2022/Sliders/instalaciones/Wander Cabins - Cama.webp'|theme | resize(800)}}" alt="Wander Cabaña Cama" loading="lazy">
+                            </figure>
+                        </div>
+                      </div>
+                      <div class="boxCabanaRes__desc boxCabanaIntExt">
+                        <div class="h2">{{ 'experienciaItem3'|_ }}</div>
+                        <p style="line-height: 1.6em; text-align: justify; " > {{ 'experienciaItem3Desc'|_ }} </p>
+                      </div>
+                    </div>
+                  </div><!-- end.col-* -->
+                  <div class="col-12 col-md-6 col-lg-4 xd " style="margin-bottom:0px">
+                    <div class="boxCabanaRess" style="padding:unset">
+                      <div class="boxCabanaRes__img">
+                        <div id="cab-banio">
+                            <figure class="boxCabanaRes__fig cont-hack">
+                              <img class="img-hack lozad" data-src="{{ 'assets/img/2022/Sliders/instalaciones/Wander Cocina.webp'|theme | resize(800) }}" alt="Wander Cabaña Cocina" loading="lazy">
+                            </figure>
+                        </div>
+                      </div>
+                      <div class="boxCabanaRes__desc boxCabanaIntExt">
+                       <div class="h2">{{ 'experienciaItem4'|_ }} </div>
+                        <p style="line-height: 1.6em; text-align: justify; " > {{ 'experienciaItem4Desc'|_ }}</p>
+                      </div>
+                    </div>
+                  </div><!-- end.col-* -->
+                </div><!-- end.gridLoc -->
+              </div><!-- end.wrpLoc -->
+                    <div class="col-12">
+                      <div class="btnCtaGen">
+                        <a class="btnCtaGen__link " href="{{ 'reservar-1'|page }}?from=experiencia">{{ 'Reserva una Cabaña'|_ }}</a>
+                      </div><!-- end.btnCtaGen btnCtaGen__link--rounded-->
+                    </div><!-- end.col-* -->
+                  <!--/div><!-- end.row -->
+                <!--/div><!-- end.container -->
+              <!--/div><!-- end.experienceContent__descbox -->
+            </section><!-- end.experienceContent -->
+            <section class="contentLoc newUbicW" id="locaciones" style="padding-bottom:0px" >
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="titleNewUbi">
+                        <div class="h2">{{ 'Conoce nuestros destinos'|_ }}  </div>
+                      </div><!-- end.titleNewUbi -->
+                    </div><!-- end.col-* -->
+                  </div><!-- end.row -->
+                </div><!-- end.container -->
+                <!--section class="mapaLocaciones" id="mapaDesktop"-->
+                  {% partial 'site/mapa' ubicaciones = ubicaciones%}
+                <!--/section>
+                <section class="mapaLocaciones" id="mapaMovil"  style="display:none;" >
+                <figure class="boxCabanaRes__fig cont-hack" >
+                              <img class="img-hack mapa lozad" style="width:100%" data-src="{{ 'assets/img/map/mapa.png'|theme }}" alt="Mapa" loading="lazy">
+                </figure>
+                  </section-->
+            </section>
+            <section class="contentLoc newUbicW">
+              <div class="containerCabanas" id="containerCabanas">
+                <div class="row justify-content-center min-margin-45" id="ubicacionDesktop" >
+                  {% for ubicacion in ubicaciones %}
+                <div class="col-xs-8 col-sm-6 col-md-5 col-lg-5 col-xl-5 hack-max" style="margin-bottom:30px; ">
+                    <div class="boxCabanaRes slideCabin newBoxCabanaRes" style="flex-direction:column">
+                      <div class="boxCabanaRes__img ">
+                        <div id="cab-{{ubicacion.slug}}-{{loop.index}}" data-slider class="sliderRes">
+                          {% for foto in ubicacion.galeria|slice(0,6) %}
+                          <a href="{{ foto.path }}" class="lightbox" data-lightbox="ubicacion-{{ubicacion.slug}}">
+                            <figure class="boxCabanaRes__fig cont-hack" >
+                              <img class="img-hack lozad" data-src="{{ foto.path | resize(600)  }}" alt="{{ubicacion.nombre}}" class="attachment-thumbnail size-thumbnail wp-post-image" loading="lazy">
+                            </figure>
+                          </a>
+                          {% endfor %}
+                        </div>
+                        <!--a class="btnSlideRes bLeftP" href="#" id="prevSlideRes-cab-{{ubicacion.slug}}-{{loop.index}}"></a>
+                        <a class="btnSlideRes nRightP" href="#" id="nextSlideRes-cab-{{ubicacion.slug}}-{{loop.index}}"></a-->
+                        <!--h5 class="boxCabanaRes__titleCab">{{ubicacion.nombre}}</h5-->
+                      </div>
+               <div class="boxCabanaRes__desc boxCabanaRes__desc--newUbic boxCabanaRes__desc--getawey">
+              <div style="margin-bottom: 10px;">
+                  <div class="h2"><span style="font-size: 1.2em;">{{ubicacion.nombre}}</span></div>
+                  <div class="h2"><span style="font-size: .8em;margin-top:20px">{{ubicacion.distancia}} desde {{ubicacion.ciudad.nombre}}</span></div>
+                          <div class="description-container"  style="padding: 0px 0;MIN-HEIGHT:5em">
+                                <p class="expandable-description" style="line-height: 1.6em; text-align: justify; " >{{ubicacion.descripcion}}</p>
+                                <p><a style="margin-top:5px;" class="read-more-link">Leer más</a></p>
+                          </div>                  
+              </div>
+              {% if ubicacion.disponible == true %}
+              <div class="btnRsv newBtnRsv">
+              <!--<a href="{{'reservar-1'|page ({ubicacion:ubicacion.slug})}}" class="boxLoc__btn boxLoc__btn--newUbic">Reservar ahora</a-->
+              </div>
+              <div class="boxCabanaRes__input" style="width: 100%;text-align:center;">
+                <a  href="ubicacion/{{ubicacion.slug}}"><label style="width:80%;display:inline-block;"  href="ubicacion/{{ubicacion.slug}} " >{{ 'Reservar ahora'|_ }}  </label></a>
+              </div>
+              {% elseif ubicacion.id == 6 %}
+                  <div class="btnRsv newBtnRsv">
+                      <!--<a href="{{'reservar-1'|page ({ubicacion:ubicacion.slug})}}" class="boxLoc__btn boxLoc__btn--newUbic">Reservar ahora</a-->
+                      </div>
+                      <div class="boxCabanaRes__input" style="width: 100%;text-align:center;">
+                        <a  href="ubicacion/{{ubicacion.slug}}"><label style="width:80%;display:inline-block;"  href="ubicacion/{{ubicacion.slug}} " >{{ 'Reservar ahora'|_ }}</label></a>
+                      </div>
+              {% elseif ubicacion.disponible == false %}
+              <span class="boxLoc__btn boxLoc__btn--disabled">{{ 'proximamente'|_ }}</span>
+              {% endif %}
+            </div>
+                    </div>
+                  </div><!--end.col-->
+                  {% endfor %}
+                </div><!-- end.gridLoc -->
+                  <div class="row slidenewCabanas" style="margin-top: 0px; display:none;" id="ubicacionMovil" >
+                    {% for ubicacion in ubicaciones %}
+                    <div class="col-12 col-md-6 col-lg-6 col-xl-4 xd" style="margin-bottom:0px">
+                      <div class="boxCabanaRess">
+                        <div class="boxCabanaRes__img">
+                          <div id="cab-{{ubicacion.slug}}-{{loop.index}}" data-slider >
+                              <figure class="boxCabanaRes__fig cont-hack "   >
+                                <img data-src="{{ ubicacion.imagen.path | resize(600)}}" alt="{{ubicacion.nombre}}" class=" img-hack attachment-thumbnail size-thumbnail wp-post-image lozad" loading="lazy">
+                              </figure>
+                          </div>
+                          <!--h5 class="boxCabanaRes__titleCab">{{ubicacion.nombre}}</h5-->
+                        </div>
+                        <div class="boxCabanaRes__desc boxCabanaRes__desc--newUbic" style="margin:0px">
+                          <div class="h2"><span style="font-size: 1.2em;">{{ubicacion.nombre}}</span></div>
+                          <div class="h2"><span style="font-size: .8em;margin-top:20px">{{ubicacion.distancia}} {{ 'desde'|_ }} {{ubicacion.ciudad.nombre}}</span></div>
+                          <div class="description-container"  style="padding: 0px 0;">
+                                <p class="expandable-description" style="line-height: 1.6em; text-align: justify; " >{{ubicacion.descripcion}}</p>
+                                <p><a style="margin-top:5px;" class="read-more-link">{{ 'leer-mas'|_ }}</a></p>
+                          </div>
+                        </div>
+                        {% if ubicacion.disponible == true %}
+                        <div class="btnRsv" style="margin-bottom:0px">
+                        <!--a href="{{'reservar-1'|page ({ubicacion:ubicacion.slug})}}" class="boxLoc__btn boxLoc__btn--newUbic">Reservar ahora</a-->
+                        <a href="ubicacion/{{ubicacion.slug}}" class="boxLoc__btn boxLoc__btn--newUbic">{{ 'Reservar ahora'|_ }}</a>
+                        </div>
+                         {% elseif ubicacion.id == 6 %}
+                            <div class="btnRsv" style="margin-bottom:0px">
+                            <!--a href="{{'reservar-1'|page ({ubicacion:ubicacion.slug})}}" class="boxLoc__btn boxLoc__btn--newUbic">Reservar ahora</a-->
+                            <a href="ubicacion/{{ubicacion.slug}}" class="boxLoc__btn boxLoc__btn--newUbic">{{ 'Reservar ahora'|_ }}</a>
+                            </div>
+                        {% elseif ubicacion.disponible == false %}
+                        <span class="boxLoc__btn boxLoc__btn--disabled">{{ 'proximamente'|_ }}</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div><!-- end.gridLoc -->
+              </div><!-- end.wrpLoc -->
+            </section><!-- end.contentLoc -->
+            <section class="contentLoc newUbicW" id="paquetes-container">
+                <div class="titleNewUbi">
+                    <div class="h2">{{ 'titlePaquetes'|_ }} </div>
+                </div><!-- end.titleNewUbi -->
+                <div class="containerPacks" id="containerPacks">
+                        <p>Cargando paquetes...</p>
+                </div>
+            </section>
+            <section class="contentLoc newUbic" id="actividades">
+                  <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="titleNewUbi">
+                      <div class="h2">{{ 'titleActividades'|_ }} </div>
+                    </div><!-- end.titleNewUbi -->
+                  </div><!-- end.col-* -->
+                </div><!-- end.row -->
+              </div><!-- end.container -->
+              <div class="">
+                <div class="gridLoc content-center slideActividades">
+                  <div class="gf-m-6 gf-t-3 gf-d-3 xd ">
+                    <figure class="boxAct cont-hack">
+                      <img class="img-hack lozad" data-src="{{ 'assets/img/imgPrueba/mos_caballo-375x314.jpg'|theme | resize(600) }}" alt="Paseo a caballo" loading="lazy">
+                      <figcaption class="boxAct__capt">
+                        <div class="title_acti_slid">{{ 'itemActividades1'|_ }}</div>
+                        <p style="line-height: 1.6em; text-align: center; ">{{ 'itemActividades1Desc'|_ }} <br> {{ 'itemActividades1Desc2'|_ }} </p>
+                      </figcaption>
+                    </figure><!-- end.boxAct -->
+                  </div><!-- end.gf-* -->
+                  <div class="gf-m-6 gf-t-3 gf-d-3 xd ">
+                    <figure class="boxAct cont-hack">
+                      <img class="img-hack lozad" data-src="{{ 'assets/img/imgPrueba/mos_nature-375x314.jpg'|theme | resize(600)}}" alt="Disfruta de la Naturaleza" loading="lazy">
+                      <figcaption class="boxAct__capt">
+                        <div class="title_acti_slid"> {{ 'itemActividades2'|_ }}</div>
+                        <p style="line-height: 1.6em; text-align: center; ">{{ 'itemActividades2Desc'|_ }}</p>
+                      </figcaption>
+                    </figure><!-- end.boxAct -->
+                  </div><!-- end.gf-* -->
+                  <div class="gf-m-6 gf-t-3 gf-d-3 xd ">
+                    <figure class="boxAct cont-hack">
+                      <img class="img-hack lozad" data-src="{{ 'assets/img/imgPrueba/mos_sende-375x314.jpg'|theme | resize(600)}}" alt="Senderismo" loading="lazy">
+                      <figcaption class="boxAct__capt">
+                        <div class="title_acti_slid"> {{ 'itemActividades3'|_ }} </div>
+                        <p style="line-height: 1.6em; text-align: center; ">{{ 'itemActividades3Desc'|_ }} </p>
+                      </figcaption>
+                    </figure><!-- end.boxAct -->
+                  </div><!-- end.gf-* -->
+                  <div class="gf-m-6 gf-t-3 gf-d-3 xd ">
+                    <figure class="boxAct cont-hack">
+                      <img class="img-hack lozad" data-src="{{ 'assets/img/imgPrueba/mos_bici-375x314.webp'|theme | resize(600)}}" alt="Wandercabins Paseo en bici" loading="lazy">
+                      <figcaption class="boxAct__capt">
+                        <div class="title_acti_slid"> {{ 'itemActividades4'|_ }} </div>
+                        <p style="line-height: 1.6em; text-align: center; ">{{ 'itemActividades4Desc'|_ }} <br> {{ 'itemActividades4Desc2'|_ }} </p>
+                      </figcaption>
+                    </figure><!-- end.boxAct -->
+                  </div><!-- end.gf-* -->
+                  <div class="gf-m-6 gf-t-3 gf-d-3 xd ">
+                    <figure class="boxAct cont-hack">
+                      <img class="img-hack lozad" data-src="{{ 'assets/img/2022/actividades/wandercabins actividades masajes.jpg'|theme | resize(600)}}" alt="Wandercabins Masajes relajantes" loading="lazy">
+                      <figcaption class="boxAct__capt">
+                        <div class="title_acti_slid"> {{ 'itemActividades5'|_ }} </div>
+                        <!--p style="line-height: 1.6em; text-align: center; ">Equilibra tu energía rodando por los senderos de la zona.<br>Tú eliges la aventura.</p-->
+                      </figcaption>
+                    </figure><!-- end.boxAct -->
+                  </div><!-- end.gf-* -->
+                  <div class="gf-m-6 gf-t-3 gf-d-3 xd ">
+                    <figure class="boxAct cont-hack">
+                      <img class="img-hack lozad" data-src="{{ 'assets/img/2022/actividades/wandercabins actividades  downhill bici.jpg'|theme  | resize(600)}}" alt="Wandercabins downhill bici" loading="lazy">
+                      <figcaption class="boxAct__capt">
+                        <div class="title_acti_slid"> {{ 'itemActividades6'|_ }}  </div>
+                        <!--p style="line-height: 1.6em; text-align: center; ">Equilibra tu energía rodando por los senderos de la zona.<br>Tú eliges la aventura.</p-->
+                      </figcaption>
+                    </figure><!-- end.boxAct -->
+                  </div><!-- end.gf-* -->
+                  <div class="gf-m-6 gf-t-3 gf-d-3 xd ">
+                    <figure class="boxAct cont-hack">
+                      <img class="img-hack lozad" data-src="{{ 'assets/img/2022/actividades/wandercabins actividades Kayaks.jpg'|theme | resize(600)}}" alt="Wandercabins Kayaks" loading="lazy">
+                      <figcaption class="boxAct__capt">
+                        <div class="title_acti_slid"> {{ 'itemActividades7'|_ }} </div>
+                        <!--p style="line-height: 1.6em; text-align: center; ">Equilibra tu energía rodando por los senderos de la zona.<br>Tú eliges la aventura.</p-->
+                      </figcaption>
+                    </figure><!-- end.boxAct -->
+                  </div><!-- end.gf-* -->
+                </div><!-- end.gridLoc -->
+              </div><!-- end.wrpLoc -->
+            </section><!-- end.contentLoc -->
+            <section class="testimonialsCt" style="background-color: #ffffff !important;">
+              <div class="container">
+                <div class="row">
+                  <div class="titleNewUbi">
+                    <div class="h2"> {{ 'titleOpinion'|_ }} </div>
+                  </div><!-- end.titleNewUbi -->
+                  <div class="col-12">
+                    <div class="slideTestimonials">
+                            {% for opinion in opiniones %}
+                              <div>
+                                <div  class="figTest dividerFig" style="align-item:center;justify-content:space-between;display: flex;display:flex;flex-direction:column;margin:unset;justify-content:space-between;">
+                                  <!--div class="figTest__img">
+                                    <img src="{{ opinion.foto.thumb('150','150','crop') }}" alt="{{opinion.nombre}}">
+                                  </div-->
+                                  <figcaption>
+                                      <blockquote class="GuestStories__storyQuote__NPWJL">
+                                            <p class="figTest__desc" style="line-height: 1.6em; text-align: justify; ">{{opinion.descripcion}}</p>
+                                    </blockquote>        
+                                  </figcaption>
+                                      <div class="h4 figTest__title">{{opinion.nombre}}
+                                          {% if opinion.ubicacion%}
+                                              <br> <div style="font-size:0.8em; margin-top:10px;">{{opinion.ubicacion.ciudad.nombre}} - {{opinion.ubicacion.nombre}}</div>
+                                          {%endif%}
+                                    </div>
+                                </div> <!-- edn.figTest -->
+                              </div><!-- end.itemDiv -->
+                          {% endfor %}    
+                    </div><!-- end.slideTestimonials -->
+                  </div><!-- end.col-* -->
+                  <div class="col-12">
+                    <div class="btnCtaGen">
+                      <a class="btnCtaGen__link " href="{{ 'reservar-1'|page }}?from=huespedes"> {{ 'titleOpinionButton'|_ }} </a>
+                    </div><!-- end.btnCtaGen btnCtaGen__link--rounded -->
+                  </div><!-- end.col-* -->
+                </div><!-- end.row -->
+              </div><!-- end.container -->
+            </section><!-- end.testimonialsContent -->
+            <section id="comunidad" class="titleSecGen" style="background-image: url({{ 'assets/img/bgs/bg_comunidad.webp'|theme }});display: none;">
+              <div class="titleSecGen__desc">
+                <img class="iconWander lozad" data-src="{{ 'assets/img/logos/icono-wander.svg'|theme }}" alt="Wander" loading="lazy">
+                <div class="h2">Comunidad Wander</div>
+              </div>
+            </section><!-- end#comunidad -->
+            </hr>
+            <section id="news" class="blogContent" style="display:block;background:#f7f5f1 !important">
+                <div class="blogList">
+                  <div >
+                    <div class="row align-items-start containerBlog" id="containerBlog"style =" margin-left: 0px; margin-right: 0px; ">
+                      <div class="titleNewUbi">
+                        <div class="h2">  {{ 'Blog'|_ }}  </div>
+                      </div><!-- end.titleNewUbi -->
+                    <div class="col-12 slideBlog" style="padding:0 0 0px 0">
+                          {% for post in posts %}
+                              <div class="col-12 col-md-6  col-lg-5 col-xl-4 xd ">
+                                <figure class="figBlog">
+                                  <div class="figBlog__img cont-hack">
+                                                                    {% for image in post.featured_images|slice(0,1) %}
+                                    <img class="img-hack lozad" data-src="{{ image.path | resize(600)}}" alt="{{a}}" class="attachment-thumbnail size-thumbnail wp-post-image"  alt="{{ post.title|escape }}"  decoding="async"  loading="lazy">
+                                                                                            {% endfor %}
+                                    <a href="/blog/post/{{ post.slug}}" >  {{ 'ver-mas'|_ }}  </a>
+                                  </div>
+                                  <figcaption>
+                                    <div class="figBlog__title" > <a style="text-decoration:unset" href="/blog/post/{{ post.slug}}">{{post.title}}</a></div>
+                                    <!--h3 class="title"> <a href="/blog/post/{{ post.slug}}">{{post.title}}</a></h3-->
+                                    <p class="figBlog__desc" style="line-height: 1.6em; text-align: justify;" >{{post.excerpt}}</p>
+                                    <a href="/blog/post/{{ post.slug}}" class="figBlog__link">{{ 'ver-mas'|_ }}</a>
+                                  </figcaption>
+                                </figure><!-- edn.figBlog -->
+                              </div><!-- end.col-* -->
+                          {% endfor %}
+                      </div>
+                      <div class="col-12">
+                        <div class="blogList__btn">
+                          <a href="/blog" class="blogList__link">{{ 'ver-mas-notas'|_ }}</a>
+                        </div><!-- end.blogList__btn -->
+                      </div><!-- end.col-* -->
+                    </div><!-- end.row -->
+                  </div><!-- end.container -->
+                </div><!-- end.blogList -->
+            </section><!-- end.blogContent -->
+            <section id="faqs" class="faqsCt">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-12">
+                      <div class="faqsCt__desc">
+                        <img class="iconWander lozad" data-src="{{ 'assets/img/logos/icono-wander-green.svg'|theme }}" alt="Wander" loading="lazy">
+                        <div class="h2">{{ 'titleFAQ'|_ }}</div>
+                      </div>
+                    </div><!-- end.col-* -->
+                    <div class="col-12 col-md-8 col-lg-7">
+                      <div class="accordion faqsList" id="faqsContent">
+                    {% for pregunta in preguntas %}
+                        <div class="card">
+                          <div class="card-header" id="title-faq-{{pregunta.id}}">
+                            <div class="h2" class="mb-0">
+                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#faq-{{pregunta.id}}"
+                                aria-expanded="false" aria-controls="faq-{{pregunta.id}}">
+                                {{pregunta.pregunta}}
+                              </button>
+                            </div>
+                          </div>
+                          <div id="faq-{{pregunta.id}}" class="collapse" aria-labelledby="title-faq-{{pregunta.id}}" data-parent="#faqsContent">
+                            <div class="card-body">
+                              {{pregunta.respuesta}}
+                            </div>
+                          </div>
+                        </div><!-- end.card-itemFaq -->
+                    {% endfor %}            
+                        <!--<div class="card">
+                          <div class="card-header" id="title-faq-2">
+                            <h2 class="mb-0">
+                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#faq-2"
+                                aria-expanded="false" aria-controls="faq-2">
+                                2. ¿Qué debo llevar para mi estancia?
+                              </button>
+                            </h2>
+                          </div>
+                          <div id="faq-2" class="collapse" aria-labelledby="title-faq-2" data-parent="#faqsContent">
+                            <div class="card-body">
+                              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque doloribus corporis voluptas repudiandae debitis, praesentium soluta necessitatibus error quidem quasi perspiciatis exercitationem ratione, facilis molestiae! Consequatur repellendus expedita ab ipsa?
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-header" id="title-faq-3">
+                            <h2 class="mb-0">
+                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#faq-3"
+                                aria-expanded="false" aria-controls="faq-3">
+                                3. Aún no llega el correo de confirmación ¿Qué hago?
+                              </button>
+                            </h2>
+                          </div>
+                          <div id="faq-3" class="collapse" aria-labelledby="title-faq-3" data-parent="#faqsContent">
+                            <div class="card-body">
+                              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam nisi consequuntur pariatur voluptatem modi, quos veritatis doloremque, nemo quod vitae tenetur, sunt obcaecati. Placeat, error obcaecati magnam repellendus odit eius.
+                            </div>
+                          </div>
+                        </div>-->
+                      </div><!-- end.accordion --> 
+                    </div><!-- end.col-* -->
+                    <div class="col-12">
+                      <div class="btnCtaGen">
+                        <a class="btnCtaGen__link " href="{{ 'reservar-1'|page }}?from=preguntas_frecuentes">{{ 'Reservar ahora'|_ }}</a>
+                      </div><!-- end.btnCtaGen btnCtaGen__link--rounded -->
+                    </div><!-- end.col-* -->
+                  </div><!-- end.row -->
+                </div><!-- end.container -->
+            </section><!-- end.faqsCt -->
+            <div class="actions clearfix" style="display:none;" id="barMovil">
+                <ul role="menu" aria-label="Pagination">
+                  <li>
+                    <button href="#" onclick="view()" style="background-color:#222919;">{{ 'Reservar'|_ }}</button>
+                  </li>
+                </ul><!-- end.ul -->
+            </div>
+    </div><!-- end.ctFrmSs -->
+        {% partial 'BookpopUp' %}
+</article>
+<script type="text/javascript">
+/*
+//comentado pora PopUp
+document.addEventListener('DOMContentLoaded', function() {
+    var popupBox = document.getElementById('popup-box');
+    popupBox.style.display = 'block';
+        var closeButton = document.querySelector('.close');
+    closeButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+        popupBox.style.display = 'none'; // Ocultar el popup al hacer clic en el enlace de cierre
+    });
+});
+window.onload = function() {
+    var imgPop = document.querySelector('.img-pop');
+  if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+        imgPop.src = 'https://wandercabins.mx/storage/app/media/BFIN25/WANDER_MAIN_BANNER_R3_V.webp';
+    }
+};
+*/
+  let navegador = navigator.userAgent;
+  let slideCenterDesktop = document.getElementById('slideCenterDesktop');
+  let slideCenterMovil= document.getElementById('slideCenterMovil');
+  let ubiMovil = document.getElementById('ubicacionMovil');
+  let ubiDesktop= document.getElementById('ubicacionDesktop');
+  let pasosMovil = document.getElementById('pasosMovil');
+  let pasosDesktop= document.getElementById('pasosDesktop');
+  let containerCabanas= document.getElementById('containerCabanas');
+  let containerInstalaciones= document.getElementById('containerInstalaciones');
+  let containerBlog= document.getElementById('containerBlog');
+  let = covidMovil = document.getElementById('covidMovil');
+  let = covidDesktop= document.getElementById('covidDesktop');
+  let = mapaMovil = document.getElementById('mapaMovil');
+  let = mapaDesktop= document.getElementById('mapaDesktop');
+  let barMovil = document.getElementById('barMovil');
+  if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+     // console.log("Estás usando un dispositivo móvil!!");
+      ubiDesktop.style.display = "none";
+      ubiMovil.style.display = "block";
+      pasosDesktop.style.display = "none";
+      pasosMovil.style.display = "block";
+      containerCabanas.className ='containerCabanasMovil';
+      containerInstalaciones.className ='containerCabanasMovil';
+      containerBlog.className ='containerBlogMovil';
+      covidDesktop.style.display = "none";
+      covidMovil.style.display = "block";
+     mapaDesktop.style.display = "none";
+     mapaMovil.style.display = "block";
+     slideCenterDesktop.style.display = "none";
+     slideCenterMovil.style.display = "block";
+  } /*else {
+      console.log("No estás usando un móvil");
+  }*/
+  window.addEventListener('load', function() {
+      var formReserva = document.getElementById('contFormCal');
+      var imagen = document.getElementById('hero-sec');
+      var banerCupon = document.getElementById('banerCupon');
+      if (formReserva && imagen && banerCupon) {
+          console.log('dom cargado');
+                calcularBanner();
+        }
+});
+         function view(){
+          $('.stickyForm').css('position', 'fixed');
+          $('.actions').css('display', 'none');
+        }
+    $(document).ready(function() {
+        $(".description-container").each(function() {
+            var description = $(this).find(".expandable-description");
+            var link = $(this).find(".read-more-link");
+            // Si la descripción rebasa la altura máxima, mostrar el enlace
+            if (description[0].scrollHeight > description.innerHeight()+1) {
+                link.show();
+            } else {
+                link.hide();
+            }
+            // Manejar el clic en el enlace
+            link.click(function() {
+                description.toggleClass("expanded");
+                if (description.hasClass("expanded")) {
+                    link.text("Leer menos");
+                } else {
+                    link.text("Leer más");
+                }
+            });
+        });
+    });
+    /*
+    document.addEventListener('DOMContentLoaded', function() {
+        var closeButton = document.querySelector('.close');
+        var popupBox = document.getElementById('popup-box');
+        closeButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            popupBox.style.display = 'none';
+        });
+    });
+    window.onload = function() {
+        // Mostrar popup SOLAMENTE cuando ya terminó de cargar CSS e imágenes
+        var popupBox = document.getElementById('popup-box');
+        popupBox.style.display = 'block';
+        var slug = "{{ ubicacion.nombre }}";
+        var imgPop = document.querySelector('.img-pop');
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent)) {
+                imgPop.src = 'https://wandercabins.mx/storage/app/media/popups/PopUp_Xmas_V.webp';
+        }
+    };*/
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var container = document.getElementById('containerPacks');
+    var loaded = false;
+    var observer = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting && !loaded) {
+            loaded = true;
+            $.request('onCargarPaquetes', {
+                update: { 'pack_home': '#containerPacks' },
+                success: function(data) {
+                    this.success(data);
+                    var imgObserver = lozad('.lozad');
+                    imgObserver.observe();
+                    // Inicializar Slick después de que el partial se cargó
+                    $('#sliderPaquetes').slick({
+                        dots: false,
+                        autoplay: true,
+                        infinite: true,
+                        speed: 300,
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        responsive: [
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    slidesToShow: 2,
+                                    slidesToScroll: 1
+                                }
+                            },
+                            {
+                                breakpoint: 576,
+                                settings: {
+                                    centerMode: true,
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    arrows: false,
+                                    centerPadding: '15px'
+                                }
+                            }
+                        ]
+                    });
+                    // Refrescar lozad en cada cambio de slide
+                    $('#sliderPaquetes').on('afterChange', function(event, slick, currentSlide) {
+                        imgObserver.observe();
+                    });
+                }
+            });
+            observer.disconnect();
+        }
+    }, {
+        rootMargin: '300px'
+    });
+    observer.observe(container);
+    // Selecciona todos los formularios que quieres trackear
+    const forms = document.querySelectorAll('#calHome, #contFormCal form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Detener envío inmediato
+            // Función para enviar el formulario normalmente usando form_ajax
+            const enviarFormulario = () => {
+                // Si estás usando OctoberCMS form_ajax, disparar el submit original
+                form.submit();
+            };
+            // Preparar datos según el formulario
+            let data = {};
+            if (form.id === 'calHome') {
+                data = {
+                    "destino": document.getElementById('locacion1')?.value || 'no seleccionado',
+                    "fecha": document.getElementById('range1')?.value || 'no seleccionada',
+                    "adultos": document.querySelector('#calHome input[name="adultos"]:checked')?.value || 2,
+                    "ninos": document.querySelector('#calHome input[name="ninos"]:checked')?.value || 0,
+                    "mascotas": document.getElementById('mascotas')?.checked ? 'Sí' : 'No'
+                };
+            } else if (form.closest('#contFormCal')) {
+                data = {
+                    "destino": document.getElementById('locacion1')?.value || 'no seleccionado',
+                    "fecha": document.getElementById('range')?.value || 'no seleccionada',
+                    "adultos": document.querySelector('#contFormCal input[name="adultos"]:checked')?.value || 2,
+                    "ninos": document.querySelector('#contFormCal input[name="ninos"]:checked')?.value || 0,
+                    "mascotas": document.getElementById('mascotas1')?.checked ? 'Sí' : 'No'
+                };
+            }
+            // Disparar evento Klaviyo si está disponible
+            if (typeof klaviyo !== 'undefined') {
+                klaviyo.track("Started_Browse", data);
+                // Espera un poco antes de enviar
+                setTimeout(enviarFormulario, 300);
+            } else {
+                enviarFormulario();
+            }
+        });
+    });
+});
+</script>

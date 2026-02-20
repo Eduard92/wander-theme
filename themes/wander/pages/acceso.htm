@@ -1,0 +1,28 @@
+title = "Reestablecer contraseña"
+url = "/acceso/:code?"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[resetPassword]
+paramCode = "code"
+==
+<article class="bg-gen">
+  <section class="frmGeneric">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+          <div id="formLogin" data-frm>
+            <h3>Reestablecer contraseña</h3>
+            <div class="contentForms">
+          
+              {% component 'resetPassword' %}
+          
+            </div><!-- end.contentForms -->
+          </div><!-- end.formLogin -->
+        </div><!-- end.col-* -->
+      </div><!-- end.row -->
+    </div><!-- end.container -->
+  </section><!-- end.frmGeneric -->
+</article><!-- end.bg-gen -->

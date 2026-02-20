@@ -1,0 +1,28 @@
+title = "Aplazo"
+url = "reservar/checkout/aplazo/:code"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[procesoReserva]
+==
+<script>
+
+const reserva = '{{reserva}}';
+
+
+//fetch('https://demo.wandercabins.mx/aplazo/create', {
+fetch('/aplazo/create', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ reserva })
+})
+.then(res => res.json())
+.then(data => {
+    console.log(data);
+    if (data.url) {
+        window.location.href = data.url;
+    }
+})
+.catch(err => console.error('Error:', err));
+</script>

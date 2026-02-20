@@ -1,0 +1,151 @@
+[viewBag]
+snippetCode = "mapa"
+snippetName = "Mapa"
+==
+{% put scriptmapa %}
+
+  
+
+{% endput %}
+
+                <section class="mapaLocaciones" id="mapaDesktop">
+                    <div id="mapLoaderDesktop" class="loader">Cargando mapa...</div>
+                    <div id="mapDesktop" class="boxMap" style="display: none;"></div>
+                </section>
+                
+                <section class="mapaLocaciones" id="mapaMovil" style="display:none;">
+                    <figure class="boxCabanaRes__fig cont-hack">
+                        <img class="img-hack mapa lozad" style="width:100%" data-src="{{ 'assets/img/map/mapa.png'|theme }}" alt="Mapa" loading="lazy">
+                    </figure>
+                </section>
+                
+                
+
+
+
+
+<script type="text/javascript">
+
+    let ubicaciones = '{{ ubicaciones|json_encode|raw }}';
+    let ciudades ='{{ciudadesList.records|json_encode|raw}}'
+
+
+  var urlPath = "{{ 'assets'|theme }}/img/";
+  var urlWeb = "{{ url('/') }}";
+  var map;
+    let mapDesktopLoaded = false;
+
+
+    
+    // Función para cargar los recursos de Mapbox
+    function loadMapResources(callback) {
+        // Evita cargar los recursos múltiples veces
+        if (document.querySelector('script[src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"]')) {
+            callback();
+            return;
+        }
+
+        // Cargar el script de Mapbox
+        let script = document.createElement('script');
+        script.src = 'https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js';
+        script.onload = callback;
+        document.head.appendChild(script);
+
+        // Cargar el CSS de Mapbox
+        let link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css';
+        document.head.appendChild(link);
+    }
+
+    // Función para inicializar el mapa en la sección desktop
+    function initializeMapDesktop() {
+        if (mapDesktopLoaded) return;
+        mapDesktopLoaded = true;
+
+        // Ocultar loader y mostrar mapa
+        document.getElementById('mapLoaderDesktop').style.display = 'none';
+        document.getElementById('mapDesktop').style.display = 'block';
+
+        mapboxgl.accessToken = '{{ this.theme.mapbox_token }}';
+        var map = new mapboxgl.Map({
+            container: 'mapDesktop',
+            style: 'mapbox://styles/soulnessnet/ckz4pawjz001014la9z0pa03y',
+            center: [-99.875, 19.411],
+            zoom: 6.11
+        });
+
+        map.addControl(new mapboxgl.NavigationControl());
+
+
+        ubicaciones = jQuery.parseJSON(ubicaciones);
+        ciudades = jQuery.parseJSON(ciudades);
+        
+          cd = []
+          ciudades.forEach(c => {
+            x = {};
+            x.id = c.id;
+            x.ciudad = c.nombre;
+            cd[c.id] = x;
+        
+            //cd.push(x);
+          });
+          data= [];
+          ubicaciones.forEach(ubicacion => {
+           console.log(ubicacion.galeria);
+            dataUbi= {};
+            ub= {};
+            pro={};
+            geo={};
+            ub.type = 'Feature';
+            pro.title = ubicacion.nombre;
+            pro.description ='<strong><span>'+ubicacion.distancia+'</span> desde '+ cd[ubicacion.ciudad_id].ciudad+'</strong><p>'+ ubicacion.descripcion +'</p>';
+            pro.image = urlPath+ 'map/'+ubicacion.slug+'.jpg';
+            pro.url = urlWeb+  '/reservar/ubicacion/'+ubicacion.slug;
+            ub.properties = pro;
+            geo.coordinates = [ubicacion.longitud, ubicacion.latitud]
+            geo.type = 'Point';
+            ub.geometry = geo;
+        
+            dataUbi = ub;
+            data.push(dataUbi);
+        
+          });
+          
+      
+        // Ejemplo: agregar marcadores (puedes usar datos de `ubicaciones` si es necesario)
+        const geojson = {
+            'type': 'FeatureCollection',
+            'features': data
+        };
+
+        for (const feature of geojson.features) {
+            const el = document.createElement('div');
+            el.className = 'marker';
+
+            new mapboxgl.Marker(el)
+                .setLngLat(feature.geometry.coordinates)
+                .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(
+              `<div class="modalMpaInfo"><div class="modalMpaInfo__img"><img src='${feature.properties.image}'><h3>${feature.properties.title}</h3></div><div class="modalMpaInfo__desc"><p>${feature.properties.description}</p><a class="modalMpaInfo__btn" href="${feature.properties.url}">Reservar ahora</a></div></div>`
+            )                )
+                .addTo(map);
+        }
+    }
+
+    // Lazy Loading con Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.id === 'mapaDesktop') {
+                    loadMapResources(initializeMapDesktop);
+                }
+                observer.unobserve(entry.target); // Dejar de observar después de cargar
+            }
+        });
+    });
+
+    // Observa las secciones
+    observer.observe(document.getElementById('mapaDesktop'));
+</script>

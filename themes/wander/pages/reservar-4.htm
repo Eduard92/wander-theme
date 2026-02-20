@@ -1,0 +1,798 @@
+title = "Reservar 4"
+url = "/reservar/cabanas"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[getCabanas]
+
+[procesoReserva]
+
+[builderList ciudadesList]
+modelClass = "Roll\Cabanas\Models\Ciudad"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% put pagetitle %}Cabañas{% endput %}
+{% put metatitle %}Conoce nuestras cabañas en renta petfriendly en Valle de Bravo y Malinalco{% endput %}
+{% put metadescription %}Reserva la experiencia Wander en una de nuestras cabañas en medio de la naturaleza. Ingresa a
+nuestro sitio, elige tu fecha favorita y ¡listo! Alístate junto con tu pareja, familia, amigos y hasta tu mascota, somos
+pet friendly. ¡Te esperamos!{% endput %}
+
+{% put scriptreserva %}
+<script type="text/javascript" src="{{'assets/js/scripts/scriptReservar.js'|theme}}"></script>
+
+{% endput %}
+<script type="text/javascript">
+
+  if (device == "movil")
+    location.hash = "#focus";
+</script>
+
+
+<style>
+  .PageContainer {
+    background: #f7f5f1 !important;
+
+  }
+
+  .reservaCt .wizard .steps {
+    background-color: #f7f5f1;
+  }
+
+  .reservaCt .descReservar {
+    background-color: #f7f5f1;
+  }
+
+  .loading-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #818c70cc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .loading-image {
+    max-width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .loading-message {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .slick-dots {
+    bottom: 30px !important;
+  }
+
+  .boxTool {
+    font-family: "Oswald", sans-serif;
+    margin-right: 10px;
+    font-weight: 500;
+  }
+
+  .cabinPrice p {
+    text-align: right;
+    /* color: #ffffff;*/
+    margin: 0;
+    padding: 0;
+    font-family: "Oswald", sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .centeredNav {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Optional: If you want to align the list items horizontally */
+  .centeredNav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .centeredNav li {
+    margin-right: 15px;
+  }
+
+  .inputSelect.wIn {
+    display: flex;
+    justify-content: center;
+    /* flex-flow: wrap;*/
+  }
+
+  .selectFormContact {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .selectFormContact,
+  .selectFormContact nav {
+    width: 250px;
+  }
+
+  @media (min-width: 768px) {
+    .selectFormContact {
+      width: 95%
+    }
+
+    .selectFormContact nav {
+      width: 100%
+    }
+  }
+
+  .selectFormContact .collOpenForm {
+    width: 100%;
+    height: 40px;
+    padding: 5px 10px;
+    margin: 0;
+    background-color: #ffffff;
+    text-align: left;
+    display: block;
+    color: #0c282a;
+    line-height: 40px;
+    border-radius: 4px;
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: 1px solid #0c282a45;
+  }
+
+  .activeLabel {
+    visibility: visible !important;
+  }
+
+  .selectFormContact .collOpenForm {
+    padding: unset;
+  }
+
+  .selectFormContact .collOpenForm .labelInp {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: all 300ms ease, visibility 0s;
+    transition: all 300ms ease, visibility 0s;
+
+
+
+  }
+
+  .labelTitleInp {
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+    font-size: calc(12px + 2 * ((100vw - 320px) / 880));
+    letter-spacing: 1.2px;
+    margin: 0 0 5px;
+    padding: 0;
+    color: #818C70;
+    font-weight: 400;
+  }
+
+  .flex-direction-unset {
+    flex-direction: unset !important;
+    position: absolute !important;
+  }
+
+
+
+  .selectFormContact .collOpenForm.activeRes .responseText {
+
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+    font-size: calc(14px + 2 * ((100vw - 320px) / 880));
+    margin-left: 10px;
+  }
+
+  .navOpcionform {
+    z-index: 99 !important;
+  }
+</style>
+{% set ciudades = ciudadesList.records %}
+
+
+<div id="loadingModal" class="loading-modal" style="display: none;">
+  <img src="{{ 'assets/img/logos/wander-full-white.svg'|theme }}" alt="Wander" class="loading-image">
+  <p style="font-family: 'Oswald',sans-serif;font-size:1.5em;color:#ffffff;" claemzss="loading-message">Cargando...</p>
+</div>
+
+
+<article class="bg-gen" style="background: #f7f5f1 !important">
+  <div class="reservaCt">
+    <div class="descReservar" id="focus">
+      <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
+      <h2>Selecciona una cabaña</h2>
+    </div>
+    {{ form_ajax('onCabanas', {class: 'stepReservaFrm'}) }}
+    <div class="wizard">
+      <div class="steps clearfix">
+        <ul role="tablist">
+          <li role="tab" class="first done" aria-disabled="false" aria-selected="true">
+            <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">Paso 1</a>
+          </li>
+          <li role="tab" class="done" aria-disabled="true">
+            <a id="steps-uid-0-t-1" href="{{'reservar-2'|page}}" aria-controls="steps-uid-0-p-1">Paso 2</a>
+          </li>
+          <li role="tab" class="done" aria-disabled="true">
+            <a id="steps-uid-0-t-2" href="{{'reservar-3'|page}}" aria-controls="steps-uid-0-p-2">Paso 3</a>
+          </li>
+          <li role="tab" class="current" aria-disabled="true">
+            <a id="steps-uid-0-t-3" href="{{''|page}}" aria-controls="steps-uid-0-p-3">Paso 4</a>
+          </li>
+          <li role="tab" class="disabled" aria-disabled="true">
+            <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">Paso 5</a>
+          </li>
+          <li role="tab" class="disabled" aria-disabled="true">
+            <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">Paso 6</a>
+          </li>
+          <li role="tab" class="disabled last" aria-disabled="true">
+            <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">Paso 7</a>
+          </li>
+        </ul><!-- end.ul -->
+      </div><!-- end.steps -->
+      <div class="content clearfix" style="overflow: unset;">
+        <section>
+          <div class="container">
+            <div class="row justify-content-center;">
+              <div class="col-12">
+
+
+
+
+                {% if guesty == true %}
+                <div id="accSelCabinState" class="accSlideCabins">
+                  <div class="card" style="background: #f7f5f1 !important">
+                    <div class="card-header" id="headCollap-state-cdmx">
+                      <h5 class="mb-0">
+                        <a class="btn btn-link" data-toggle="collapse" data-target="#collap-state-cdmx"
+                          aria-expanded="true" aria-controls="collap-state-cdmx">
+                          {{seleccionado}}
+                          <i class="fa fa-chevron-down btnCiudades"></i>
+
+                        </a>
+                      </h5>
+                    </div>
+
+                    <div id="collap-state-cdmx" class="collapse show" aria-labelledby="headCollap-state-cdmx"
+                      data-parent="#accSelCabinState">
+                      <div class="card-body">
+
+                        <div class="row" style="justify-content:center">
+                          {% if cabanas %}
+                          {% for cabana in cabanas %}
+                          <div class="col-xs-8 col-sm-6 col-md-5 col-lg-5 col-xl-5 hack-max"
+                            style="margin-bottom:30px; ">
+                            <div class="boxCabanaRes newBoxCabanaRes"
+                              style="margin-top: unset !important;flex-direction:column">
+                              <div class="boxCabanaRes__img ">
+                                <div class="boxCabanaRes__tools">
+                                  <!--div class="toolCaja cabinCount">
+                                    <div class="boxTool">
+                                      <i class="fa fa-bed"></i> <span>{{cabana.camas}}</span>
+                                    </div>
+                                    <div class="boxTool">
+                                      <i class="fa fa-user"></i> <span>{{cabana.capacidad}}</span>
+                                    </div>
+                                  </div><!-- end.toolCaja -->
+                                  <div class="toolCaja">
+                                    <div class="cabinPrice">
+                                      <!--p>Estancia de {{noches}} {% if noches > 1 %}noches{% else %}noche{% endif %}<br>${{cabana.total|number_format}}</p-->
+                                    </div><!-- end.cabinPrice -->
+                                  </div><!-- end.toolCaja -->
+                                </div><!-- end.boxCabanaRes__tools -->
+                                <div id="cab-{{cabana.wander.slug}}-{{loop.index}}" data-slider class="sliderRes">
+
+                                  {% for foto in cabana.wander.galeria %}
+                                  <a href="{{ foto.path | resize(1200) }}" data-lightbox="slider-{{cabana.wander.slug}}"
+                                    data-title="{{cabana.wander.nombre}}">
+                                    <figure class="boxCabanaRes__fig cont-hack">
+                                      <img class="img-hack lozad" data-src="{{ foto.path | resize(600)}}"
+                                        alt="{{cabana.wander.nombre}}" loading="lazy">
+                                    </figure>
+                                  </a>
+                                  {% endfor %}
+
+                                </div>
+                                <!--a class="btnSlideRes bLeftP" href="#" id="prevSlideRes-cab-{{cabana.slug}}-{{loop.index}}"></a>
+                                <a class="btnSlideRes nRightP" href="#" id="nextSlideRes-cab-{{cabana.slug}}-{{loop.index}}"></a-->
+                                <!--h5 class="boxCabanaRes__titleCab">{{cabana.nombre}}</h5-->
+                              </div><!-- end.slideCabanaRes -->
+
+
+                              <div class="boxCabanaRes__desc boxCabanaRes__desc--getawey min_height">
+                                <div style="margin-bottom: 10px;">
+
+
+                                  <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                    <div style="display:flex;flex-direction:row;max-width: 60%;">
+                                      <div class="boxTool">
+                                        <div class="h2">{{cabana.wander.nombre}}</div>
+                                        <div class="h2">{{cabana.wander.descipcion_corta}}</div>
+                                      </div>
+                                    </div>
+
+                                    <div class="cabinPrice">
+                                      <p>{{noches}} {% if noches > 1 %}noches{% else %}noche{% endif
+                                        %}<br>${{cabana.total|number_format}}</p>
+                                    </div>
+                                  </div>
+
+
+                                  <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                    <div style="display:flex;flex-direction:row">
+                                      <div class="boxTool">
+                                        <i class="fa fa-bed"></i> <span>{{cabana.wander.camas}}</span>
+                                      </div>
+                                      <div class="boxTool">
+                                        <i class="fa fa-user"></i> <span>{{cabana.wander.capacidad}}</span>
+                                      </div>
+                                    </div>
+
+                                    <!--div class="cabinPrice">
+                                                <p>Estancia de {{noches}} {% if noches > 1 %}noches{% else %}noche{% endif %}<br>${{cabana.total|number_format}}</p>
+                                            </div-->
+                                  </div>
+                                  <p style="line-height: 1.6em;">{{cabana.wander.descripcion_larga}}</p>
+                                </div>
+                                <input type="radio" data-check-btn class="boxCabanaRes__input" name="cabanaSel"
+                                  id="cab-{{cabana.wander.slug}}" value="{{cabana.wander.id}}" {% if
+                                  cabanaId==cabana.wander.id %}checked{% endif %}>
+                                <label for="cab-{{cabana.wander.slug}}"
+                                  onclick="select('{{cabana.wander.nombre}}')">Seleccionar</label>
+
+
+                              </div><!-- end.descCabana -->
+                            </div><!-- end.boxLoc -->
+                          </div><!-- end.col-* -->
+                          {% endfor %}
+                          {% else %}
+                          <div class="col-12 col-md-4">No contamos con cabañas disponibles en esta ubicación.</div>
+                          {% endif %}
+                        </div><!-- end.row -->
+
+                      </div><!-- end.card-body -->
+                    </div><!-- end.collapse -->
+                  </div><!-- end.card -->
+                </div><!-- end#accSelCabin -->
+                <small>
+                  <blockquote>* Precios sin IVA.</blockuote>
+                </small>
+
+                {% elseif grupo == 'todas' %}
+
+
+                <div class="" id="contFormCal">
+                  <div class="stickyForm">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-12">
+                          <input type="hidden" id="picker" name="picker"><!-- recibe los datos del calendario. -->
+                          <div id="picker"></div>
+                          <div style="text-align:center;margin-bottom: 10px;">
+                            <span class="labelTitleInp" id="labelSel1">Seleccione un destino</span>
+                          </div>
+                          <div class="form-group mb-2 inputSelect wIn" data-input-home>
+                            <input type="hidden" name="locacion" id="locacion" value="">
+
+                            <div class="selectFormContact">
+
+                              <a href="#" class="collOpenForm" id="openOpsForms">
+
+                                <span class="labelInp"><i class="fa fa-map-marker"></i> Destino</span>
+
+                                <span id="textChange" class="responseText">Destino</span>
+
+                              </a><!-- end.collOpenForm -->
+
+
+                              <nav id="navOpcionform">
+
+                                <ul>
+
+                                  {% for ciudad in ciudades %}
+                                  <li>
+                                    <p>{{ ciudad.nombre }} </p>
+                                  </li>
+
+                                  {% for ubicacion in ciudad.ubicaciones %}
+                                  <li><a class="btnFormContact" href="#" onclick="selectSiteNavBar('{{ubicacion.id}}')"
+                                      data-valor="ubicacion-{{ubicacion.id}}">{{ubicacion.nombre}}</a></li>
+                                  {% endfor %}
+
+                                  {% for ubicacion in ciudad.ubicacionesSecundarias %}
+                                  <li><a class="btnFormContact" href="#" onclick="selectSiteNavBar('{{ubicacion.id}}')"
+                                      data-valor="ubicacion-{{ubicacion.id}}">{{ubicacion.nombre}}</a></li>
+                                  {% endfor %}
+
+                                  {% endfor %}
+
+                                </ul>
+
+                              </nav><!-- end.navOpcionform -->
+
+                            </div><!-- end.selectFormContact -->
+                          </div><!-- end.selectUbicacion -->
+                        </div><!-- end.col-* -->
+                      </div><!-- end.row -->
+                    </div><!-- end.container -->
+                  </div><!-- end.stickyForm -->
+                </div><!-- end.contFormCal -->
+
+                <div id="accSelCabinState" class="accSlideCabins">
+
+                  {% partial 'cabanas' %}
+
+                </div>
+
+
+                {% elseif grupo == 'ciudad' %}
+
+                <div class="" id="contFormCal">
+                  <div class="stickyForm">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-12">
+                          <input type="hidden" id="picker" name="picker"><!-- recibe los datos del calendario. -->
+                          <div id="picker"></div>
+                          <div style="text-align:center;margin-bottom: 10px;">
+                            <span class="labelTitleInp" id="labelSel1">Seleccione un destino</span>
+                          </div>
+                          <div class="form-group mb-2 inputSelect wIn" data-input-home>
+                            <input type="hidden" name="locacion" id="locacion" value="">
+
+                            <div class="selectFormContact">
+
+                              <a href="#" class="collOpenForm" id="openOpsForms">
+
+                                <span class="labelInp"><i class="fa fa-map-marker"></i> Destino</span>
+
+                                <span id="textChange" class="responseText">Destino</span>
+
+                              </a><!-- end.collOpenForm -->
+
+
+                              <nav id="navOpcionform">
+
+                                <ul>
+
+                                  <li>
+                                    <p>{{ ciudad.nombre }} </p>
+                                  </li>
+
+                                  {% for ubicacion in ciudad.ubicaciones %}
+                                  {% if ubicacion.disponible == true %}
+                                  <li><a class="btnFormContact" href="#" onclick="selectSiteNavBar('{{ubicacion.id}}')"
+                                      data-valor="ubicacion-{{ubicacion.id}}">{{ubicacion.nombre}}</a></li>
+                                  {% endif %}
+                                  {% endfor %}
+
+                                  {% for ubicacionS in ciudad.ubicacionesSecundarias %}
+                                  {% if ubicacionS.disponible == true %}
+                                  <li><a class="btnFormContact" href="#" onclick="selectSiteNavBar('{{ubicacionS.id}}')"
+                                      data-valor="ubicacion-{{ubicacionS.id}}">{{ubicacionS.nombre}}</a></li>
+                                  {% endif %}
+                                  {% endfor %}
+
+                                </ul>
+
+                              </nav><!-- end.navOpcionform -->
+
+                            </div><!-- end.selectFormContact -->
+                          </div><!-- end.selectUbicacion -->
+                        </div><!-- end.col-* -->
+                      </div><!-- end.row -->
+                    </div><!-- end.container -->
+                  </div><!-- end.stickyForm -->
+                </div><!-- end.contFormCal -->
+                <div id="accSelCabinState" class="accSlideCabins">
+
+                  {% partial 'cabanas' %}
+
+                </div>
+
+                {% elseif grupo == 'ubicacion' %}
+
+                <div id="accSelCabinState" class="accSlideCabins">
+                  <div class="card" style="background: #f7f5f1 !important">
+                    <div class="card-header" id="headCollap-state-cdmx">
+                      <h5 class="mb-0">
+                        <a class="btn btn-link" data-toggle="collapse" data-target="#collap-state-cdmx"
+                          aria-expanded="true" aria-controls="collap-state-cdmx">
+                          {{seleccionado}}
+                          <i class="fa fa-chevron-down btnCiudades"></i>
+
+                        </a>
+                      </h5>
+                    </div>
+
+                    <div id="collap-state-cdmx" class="collapse show" aria-labelledby="headCollap-state-cdmx"
+                      data-parent="#accSelCabinState">
+                      <div class="card-body">
+
+                        <div class="row" style="justify-content:center">
+                          {% if cabanas %}
+                          {% for cabana in cabanas %}
+                          <div class="col-xs-8 col-sm-6 col-md-5 col-lg-5 col-xl-5 hack-max"
+                            style="margin-bottom:30px; ">
+                            <div class="boxCabanaRes newBoxCabanaRes"
+                              style="margin-top: unset !important;flex-direction:column">
+                              <div class="boxCabanaRes__img ">
+                                <div class="boxCabanaRes__tools">
+                                  <!--div class="toolCaja cabinCount">
+                                    <div class="boxTool">
+                                      <i class="fa fa-bed"></i> <span>{{cabana.camas}}</span>
+                                    </div>
+                                    <div class="boxTool">
+                                      <i class="fa fa-user"></i> <span>{{cabana.capacidad}}</span>
+                                    </div>
+                                  </div><!-- end.toolCaja -->
+                                  <div class="toolCaja">
+                                    <div class="cabinPrice">
+                                      <!--p>Estancia de {{noches}} {% if noches > 1 %}noches{% else %}noche{% endif %}<br>${{cabana.total|number_format}}</p-->
+                                    </div><!-- end.cabinPrice -->
+                                  </div><!-- end.toolCaja -->
+                                </div><!-- end.boxCabanaRes__tools -->
+                                <div id="cab-{{cabana.slug}}-{{loop.index}}" data-slider class="sliderRes">
+
+                                  {% for foto in cabana.galeria %}
+                                  <a href="{{ foto.path | resize(1200) }}" data-lightbox="slider-{{cabana.slug}}"
+                                    data-title="{{cabana.nombre}}">
+                                    <figure class="boxCabanaRes__fig cont-hack">
+                                      <img class="img-hack lozad" data-src="{{ foto.path | resize(600)}}"
+                                        alt="{{cabana.nombre}}" loading="lazy">
+                                    </figure>
+                                  </a>
+                                  {% endfor %}
+
+                                </div>
+                                <!--a class="btnSlideRes bLeftP" href="#" id="prevSlideRes-cab-{{cabana.slug}}-{{loop.index}}"></a>
+                                <a class="btnSlideRes nRightP" href="#" id="nextSlideRes-cab-{{cabana.slug}}-{{loop.index}}"></a-->
+                                <!--h5 class="boxCabanaRes__titleCab">{{cabana.nombre}}</h5-->
+                              </div><!-- end.slideCabanaRes -->
+
+
+                              <div class="boxCabanaRes__desc boxCabanaRes__desc--getawey min_height">
+                                <div style="margin-bottom: 10px;">
+
+
+                                  <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                    <div style="display:flex;flex-direction:row;max-width: 60%;">
+                                      <div class="boxTool">
+                                        <div class="h2">{{cabana.nombre}}</div>
+                                        <div class="h2">{{cabana.descipcion_corta}}</div>
+                                      </div>
+                                    </div>
+
+                                    <div class="cabinPrice">
+                                      <p>{{noches}} {% if noches > 1 %}noches{% else %}noche{% endif
+                                        %}<br>${{cabana.total|number_format}}</p>
+                                    </div>
+                                  </div>
+
+
+                                  <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                    <div style="display:flex;flex-direction:row">
+                                      <div class="boxTool">
+                                        <i class="fa fa-bed"></i> <span>{{cabana.camas}}</span>
+                                      </div>
+                                      <div class="boxTool">
+                                        <i class="fa fa-user"></i> <span>{{cabana.capacidad}}</span>
+                                      </div>
+                                    </div>
+
+                                    <!--div class="cabinPrice">
+                                                <p>Estancia de {{noches}} {% if noches > 1 %}noches{% else %}noche{% endif %}<br>${{cabana.total|number_format}}</p>
+                                            </div-->
+                                  </div>
+                                  <p style="line-height: 1.6em;">{{cabana.descripcion_larga}}</p>
+                                </div>
+                                <input type="radio" data-check-btn class="boxCabanaRes__input" name="cabanaSel"
+                                  id="cab-{{cabana.slug}}" value="{{cabana.id}}" {% if cabanaId==cabana.id %}checked{%
+                                  endif %}>
+                                <label for="cab-{{cabana.slug}}"
+                                  onclick="select('{{cabana.nombre}}')">Seleccionar</label>
+
+
+                              </div><!-- end.descCabana -->
+                            </div><!-- end.boxLoc -->
+                          </div><!-- end.col-* -->
+                          {% endfor %}
+                          {% else %}
+                          <div class="col-12 col-md-4">No contamos con cabañas disponibles en esta ubicación.</div>
+                          {% endif %}
+                        </div><!-- end.row -->
+
+                      </div><!-- end.card-body -->
+                    </div><!-- end.collapse -->
+                  </div><!-- end.card -->
+                </div><!-- end#accSelCabin -->
+                <small>
+                  <blockquote>* Precios sin IVA.</blockuote>
+                </small>
+
+
+                {% endif %}
+              </div><!-- end.col-* -->
+            </div><!-- end.row -->
+          </div>
+
+        </section>
+      </div>
+      <div class="actions clearfix" style="background: #f7f5f1 !important">
+        <ul role="menu" aria-label="Pagination">
+          <li aria-disabled="false">
+            <a href="{{'reservar-3'|page}}">Atrás</a>
+          </li>
+          <li aria-hidden="false" aria-disabled="false">
+            <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="ubicacion" onclick="send(1)">
+              <i class="fa fa-chevron-right"></i><span>Siguiente</span>
+            </button>
+          </li>
+        </ul><!-- end.ul -->
+      </div><!-- end.actions -->
+    </div><!-- end.wizard -->
+    {{ form_close() }}
+  </div><!-- end.reservaCt -->
+</article><!-- end.bg-gen -->
+
+<script>
+
+  objLayer.cabana = "";
+  function select(cabana) {
+
+
+    objLayer.cabana = cabana;
+    //  objLayer.ubicacion = ubicacion.nombre;
+    console.log(cabana);
+    console.log(objLayer);
+
+
+  }
+  /*
+function send(send){
+  
+      if(objLayer.cabana != ''){
+  
+      dataLayer.push({'wander': null }); 
+      dataLayer.push({ 'wander': {
+                              'cabana' : objLayer.cabana
+                              }
+                  });
+  }
+  
+                                          
+}
+*/
+
+  function send(send) {
+
+    if (objLayer.cabana != '') {
+
+      dataLayer.push({ 'wander': null });
+      dataLayer.push({
+        'event': 'Paso_4',
+        'wander': {
+          'cabana': objLayer.cabana
+        }
+      });
+    }
+
+
+  }
+
+
+
+  $(document).ready(function () {
+    $('#sel1').change(function () {
+      $('#loadingModal').show();
+      var selectedValue = $(this).val(); // Obtener el valor seleccionado
+
+      $.request('getCabanas::onCabanasBooking', {
+        data: {
+          id: selectedValue
+        },
+        update: {
+          'cabanas': '#accSelCabinState'
+        },
+        complete: function () {
+          $('#loadingModal').hide();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+<script>
+
+// 🚦 Flag para saber si la navegación es interna
+window._internalNavigation = false;
+
+// 1️⃣ Detectar clicks en enlaces internos
+document.querySelectorAll('a').forEach(link => {
+    if (link.href.startsWith(window.location.origin)) {
+        link.addEventListener('click', () => {
+            window._internalNavigation = true;
+        });
+    }
+});
+
+// 2️⃣ Detectar envíos de formularios internos
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', () => {
+        if (!window._internalNavigation) {
+            // Por defecto, un submit se considera interno si es tu booking
+            // Opcional: podrías filtrar solo formularios del booking
+            window._internalNavigation = true;
+        }
+    });
+});
+
+// 3️⃣ Detectar clicks en botones "Siguiente" específicos
+document.getElementById('ubicacion')?.addEventListener('click', () => {
+    window._internalNavigation = true; // ✅ Marca navegación interna
+});
+
+// 4️⃣ Detectar cierre o abandono de página
+window.addEventListener('beforeunload', function (e) {
+    if (window._internalNavigation) return;
+
+    const visitorId = localStorage.getItem('visitor_id');
+    const data = {
+        event_name: 'Abandon_Browse',
+        wander: visitorId,
+        with_session_tags => true,
+        properties: {
+            abandoned_step: 'Paso 4',
+            page: window.location.pathname
+        }
+    };
+
+    // Opción 1: sendBeacon (la más confiable para beforeunload)
+    if (navigator.sendBeacon) {
+        const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+        navigator.sendBeacon('/klaviyo/event', blob);
+    } else {
+        // Fallback con keepalive
+        fetch('/klaviyo/event', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            keepalive: true,
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }
+});
+
+
+
+</script>

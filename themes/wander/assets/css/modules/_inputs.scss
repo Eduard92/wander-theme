@@ -1,0 +1,460 @@
+/* ==|====================
+   Modules/Inputs
+   ======================= */
+
+  form {
+    @include margin(30px null 20px null);
+    label {
+      font-size: rem(14px); color: $black;
+      a {
+        color: $col1; text-decoration: none;
+        &:hover {
+          color: $col2;
+        }
+      }
+    }
+    fieldset {
+      position: relative;
+    }
+    & .animatedField {
+      position: relative; width: 100%; height: 44px; line-height: 44px;
+      & label {
+        @include position(absolute, 0 null null 0); width: 100%; color: $black; cursor: text; @include transition(0.2s all); margin: 0; padding: 0; text-align: left; font-weight: 400;
+      }
+     & input[type="text"],
+     & input[type="email"],
+     & input[type="password"] {
+        width: 100%; border: 0; outline: 0; padding: 12px 0 7px; border-bottom: 1px solid $col8; box-shadow: none; background-color: $white!important; border-radius: 0!important; @include fluid-type(13px, 15px, 320px, 1200px);
+        &:invalid {
+          outline: 0;
+        }
+        &:focus,
+        &:valid,
+        &.error-line {
+          border-color: $col1;
+        }
+        &:focus ~ label,
+        &:valid ~ label,
+        &.error-line ~ label {
+          font-size: rem(11px); top: -18px; color: $col1;
+        }
+      }
+    }
+    // input[type="text"], input[type="email"] {
+    //   background-color: $white!important; border: 1px solid $white!important; border-radius: 0!important; box-shadow: 0 0 5px rgba($black, 0.55);
+    //   &:focus {
+    //     border-color: $col1; outline: 0; box-shadow: 0 0 0 0.2rem rgba(147, 71, 21, 0.15);
+    //   }
+    //   &.error-line {
+    //     border-color: red!important; outline: 0; box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.15);
+    //   }
+    //   @include placeholder {
+    //     color: $c5;
+    //   }
+    // }
+    // textarea {
+    //   background-color: $white!important; border: 1px solid $white!important; border-radius: 20px!important; box-shadow: 0 0 5px rgba($black, 0.20); width: 100%; height: auto; @include box-sizing(border-box); padding: 20px;
+    //   &:focus {
+    //     border-color: $col2!important; outline: 0; box-shadow: 0 0 0 0.2rem rgba(238, 116, 34, 0.15)!important;
+    //   }
+    //   &.error-line {
+    //     border-color: red!important; outline: 0; box-shadow: 0 0 0 0.2rem rgba(238, 116, 34, 0.15)!important;
+    //   }
+    //   @include placeholder {
+    //     color: $c7; font-size: rem(24px); font-weight: 900;
+    //   }
+    // }
+    // button[type="submit"], input[type="submit"] {
+    //   width: auto; height: 40px; padding: 0 30px; margin: 0 0 0 0; text-transform: uppercase; text-align: center; color: $white; display: inline-block; border: 1px solid $col2; @include box-sizing(border-box); line-height: 38px; font-size: rem(16px); cursor: pointer; position: relative; overflow: hidden; border-radius: 20px; background-color: $col2; @include transition(all 0.23s); box-shadow: 0 0 5px rgba($black, 0.25);
+    //   &:hover {
+    //     background-color: $col3; color: $white; border: 1px solid $col3;
+    //   }
+    // }
+    .loadBtn {
+      pointer-events: none; background-color: rgba(238, 116, 34, 0.377)!important; @include transition(all 0.25s ease 0s);
+      &:after {
+        content: ''; @include position(absolute, 50% null null 50%); width: 32px; height: 32px; margin: 0; padding: 0; background-image: url('#{$imgR}3.svg'); background-position: center; background-size: 100%; background-repeat: no-repeat; @include transform(translate(-50%, -50%));
+      }
+    }
+    div.error-line {
+      width: 15px; height: 15px; line-height: 15px; background-color: red; color: $white; font-size: rem(8px); padding: 0; margin: 0; @include position(absolute, -6px 0 null null); z-index: 3; border-radius: 50%; text-align: center;
+      &.valid {
+        background-color: $col1;
+      }
+    }
+  }
+//   .btnClose {
+//     padding: 0; margin: 0; border: none; @include box-sizing(border-box); line-height: 1; font-size: rem(18px); cursor: pointer; position: relative; border-radius: 0; background-color: transparent; @include transition(all 0.23s);
+//     &:hover {
+//        background-color: transparent; color: $col1;
+//     }
+//   }
+//   // Checbox Custom
+//   .CheckStyle {
+//     position: absolute; opacity: 0;
+//     & ~ label {
+//       position: relative; cursor: pointer; padding: 0; color: $col6; @include fluid-type(11px, 13px, 320px, 1200px);
+//     }
+//     & ~ label:before {
+//       content: ''; margin-right: 10px; display: inline-block; vertical-align: text-top; width: 15px; height: 15px; background: transparent; border: solid $white 1px; @include box-sizing(border-box); @include transition(all 0.25s ease); border-radius: 50%; box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.12);
+//     }
+//     &:hover ~ label:before {
+//       background: rgba($col6, 0.35);
+//     }
+//     &:focus ~ label:before {
+//       box-shadow: 0 0 0 3px rgba($col6, 0.12);
+//     }
+//     &:checked ~ label:before {
+//       background: rgba($col6, 0.10);
+//     }
+//     &:disabled ~ label {
+//       color: #b8b8b8;
+//       cursor: auto;
+//     }
+//     &:disabled ~ label:before {
+//       box-shadow: none;
+//       background: #ddd;
+//     }
+//     &:checked ~ label:after {
+//       content: ''; background: $col1; width: 15px; height: 15px; border-radius: 50%; @include position(absolute, 1px null null 0); box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+//     }
+//   }
+//   // Checbox Custom IMAGE
+//   .checkImg {
+//     position: absolute; opacity: 0;
+//     & ~ label {
+//       position: relative; padding: 0; margin: 0; cursor: pointer; display: block; color: $col6; text-align: center;
+//       & span {
+//         color: $col5!important; font-size: rem(10px);
+//       }
+//     }
+//     & ~ label:before {
+//       width: 50px; height: 50px; border: none; border-radius: 50%; display: block; margin: 0 auto 10px; line-height: 50px; text-align: center; box-shadow: 0 2px 4px rgba($black, 0.35); font-size: rem(30px); @include transition(all 300ms); color: $col1;
+//     }
+//     &:checked ~ label:before {
+//       background-color: $col1; color: $white;
+//     }
+//     &:disabled ~ label {
+//       color: #b8b8b8; cursor: auto;
+//     }
+//     &:disabled ~ label:before {
+//       background-color: $white; color: $col1;
+//     }
+//   }
+// // Radio buttons Cusotm Img
+// .radioCustom:checked,
+// .radioCustom:not(:checked) {
+//   position: absolute; left: -9999px;
+// }
+// .radioCustom:checked + label,
+// .radioCustom:not(:checked) + label {
+//   position: relative; padding: 0; margin: 0; cursor: pointer; display: block; color: $col6; @include fluid-type(12px, 13px, 320px, 1200px);
+// }
+// .radioCustom:checked + label:before,
+// .radioCustom:not(:checked) + label:before {
+//   width: 50px; height: 50px; border: none; border-radius: 50%; display: block; margin: 0 auto 10px; line-height: 50px; text-align: center; box-shadow: 0 2px 4px rgba($black, 0.35); font-size: rem(30px); @include transition(all 300ms);
+// }
+// .radioCustom:not(:checked) + label:before {
+//   background-color: $white; color: $col1;
+// }
+// .radioCustom:checked + label:before {
+//   background-color: $col1; color: $white;
+// }
+
+// .inpLay {
+//   position: relative;
+//   div.error-inp {
+//     width: auto; height: auto; background-color: red; color: $white; @include position(absolute, 0 null null null); @include transform(translateX(100%));
+//   }
+// }
+// .inputIcon {
+//   position: relative; width: 100%; height: auto; margin: 0; padding: 0;
+//   input[type="text"], input[type="email"], input[type="password"] {
+//     padding-left: 30px; border-radius: 0; border: none;
+//   }
+//   textarea {
+//     padding-left: 30px;
+//   }
+//   i {
+//     @include position(absolute, 50% null null 10px); @include transform(translateY(-50%)); color: $c5;
+//   }
+// }
+
+// .g-recaptcha {
+//   @include transform(scale(0.74)); @include transform-origin(0 0); margin: 10px auto 10px auto; display: inline; position: relative;
+//   & > div {
+//     margin: 0 auto;
+//   }
+//  }
+
+// Switch Slide
+.switch {
+  position: relative; display: inline-block; width: 74px; height: 21px;
+  & input[type="checkbox"] {
+    opacity: 0; width: 0; height: 0;
+    & + .sldInp {
+      @include position(absolute, 0 0 0 0); cursor: pointer; background-color: #ccc; @include transition(all .4s);
+      &:before {
+        content: ''; @include position(absolute, null null 0 0); @include transition(all .4s); height: 21px; width: 35px; background-color: $col1;
+      }
+      &.round {
+        border-radius: 34px;
+        &:before {
+          border-radius: 10px;
+        }
+      }
+    }
+    &:checked {
+      & + .sldInp {
+        background-color: #828C70;
+        &:before {
+          @include transform(translateX(39px)); background-color: #222919;
+        }
+      }
+    }
+    &:focus {
+      & + .sldInp {
+        box-shadow: 0 0 1px #828C70;
+      }
+    }
+  }
+}
+
+// Radio BTN custom Circle
+.radioRes {
+  &:checked,
+  &:not(:checked) {
+    @include position(absolute, null null null -9999px);
+    & + label {
+      position: relative; padding: 0; margin: 0; cursor: pointer; display: inline-block; color: $ver; @include fluid-type(13px, 15px, 320px, 1200px); width: 44px; height: 44px; border: 2px solid $ver; border-radius: 50%; line-height: 40px; text-align: center; @include transition(all 300ms); font-family: $acuminbd; font-weight: 500;
+    }
+  }
+  &:not(:checked) {
+    & + label {
+      background-color: $white; color: $ver; border-color: $ver;
+      &:hover {
+        background-color: rgba($ver, 0.20);
+      }
+    }
+  }
+  &:checked {
+    & + label {
+      background-color: $nar; color: $white; border-color: $nar;
+    }
+  }
+  &.smallInp {
+    &:checked,
+    &:not(:checked) {
+      & + label {
+        @include fluid-type(12px, 14px, 320px, 1200px); width: 34px; height: 34px; line-height: 30px;
+      }
+    }
+  }
+}
+
+// Form Home Reservas
+.inputSelect {
+  position: relative;
+  &__dateCheck {
+    margin: 0; padding: 0;
+    & .btnSelectOption {
+      height: 40px; width: 100%; margin: 10px 0; position: relative; background: #f6f4f2; color: $black; display: flex; padding: 5px 10px; align-items: center; border: none; margin: 0; letter-spacing: .5px; border-radius: 4px; @include transition(all 300ms ease);
+      & span {
+        font-size: rem(14px); position: relative; @include transition(all 300ms ease);
+      }
+    }
+    & .activeHues {
+      padding: 15px 10px 5px;
+      & span {
+        font-size: rem(11px); @include position(absolute, 1px null null 10px);
+      }
+      & p {
+        font-size: rem(14px); margin: 0; padding: 0;
+      }
+    }
+  }
+  &__selectCus {
+    height: 40px; color: $black; border: none; margin: 0; font-size: rem(14px); border-radius: 4px;
+  }
+  &__inputDate {
+    margin: 0!important;
+    & input[type="text"] {
+      height: 40px; color: $black; border-radius: 4px!important; border-bottom: none!important;
+      &:focus {
+        box-shadow: none; border: none!important;
+      }
+    }
+    & .mbsc-material.mbsc-textfield-ripple {
+      background-color: transparent!important;
+    }
+    & .mbsc-material.mbsc-textfield {
+      font-size: rem(14px)!important; width: 115px!important;
+    }
+    & .mbsc-textfield-inner-box {
+      border-radius: 4px!important; background: $white!important;
+    }
+    & .mbsc-material.mbsc-textfield-box {
+      padding: 0 10px!important;
+    }
+    & .mbsc-label-box-floating {
+      color: $black!important; font-size: 14px!important; top: 9px!important;
+      &:before {
+        content: '\f073'; font-family: 'fontAwesome'; margin-right: 6px;
+      }
+    }
+    & .mbsc-material.mbsc-textfield-box-floating, & .mbsc-material.mbsc-textfield-box-stacked {
+      padding-top: 8px!important;
+    }
+    & .mbsc-material.mbsc-label-box-floating.mbsc-ltr, & .mbsc-material.mbsc-label-outline-floating.mbsc-ltr {
+      left: 10px!important;
+    }
+  }
+  &__modal {
+    height: 56px; width: 100%; position: relative; background: $white; color: $black; display: flex; padding: 5px 15px; align-items: center; border: 1px #272728 solid; margin: 0; letter-spacing: .5px;
+  }
+  &__label {
+    color: $black; font-size: 14px;
+  }
+  &__title {
+    font-size: rem(14px); font-weight: 500;
+  }
+  &.wIn {
+    width: 100%;
+  }
+  &.w50In {
+    width: 50%;
+  }
+  @media all and (min-width: 576px) {
+    &.wIn {
+      width: inherit;
+    }
+    &.w50In {
+      width: inherit;
+    }
+  }
+}
+.inputBtn {
+  width: 100%; margin: 10px 0 0; position: relative; height: auto; padding: 0; display: flex; align-items: center;
+  & button {
+    width: 100%; height: 40px; display: block; cursor: pointer; line-height: 1; border: 1px solid $col1; font-size: 16px; padding: 0; margin: 0; text-align: center; color: white; background-color: $col1; border: none; border-radius: 4px; line-height: 56px; font-weight: 500; text-transform: uppercase;
+  }
+}
+.modalOption {
+  @include position(absolute, null null null null); min-width: 250px; text-align: left; border-radius: 0; background-color: $white; border: 1px solid #d8dce1; padding: 20px 15px; margin-top: 9px; z-index: -1; width: 100%; @include box-sizing(border-box); visibility: hidden; opacity: 0; @include transform(translateY(-40px)); @include transition(transform 300ms ease-in-out, opacity 300ms ease, visibility 0s, z-index 0s);
+  & .titleModal {
+    font-size: rem(16px); margin-bottom: 10px;
+  }
+  &.isShow {
+    z-index: 2; @include transform(translateY(0)); visibility: visible; opacity: 1;
+  }
+}
+.boxListHuesped {
+  width: 100%; height: auto; padding: 0; margin: 0; @include display(flex); @include flex-direction(column); list-style-type: none;
+  & li {
+    list-style-type: none; padding: 0; margin: 0 0 10px;
+    & .btnHuesped {
+      display: inline-block; width: 35px; height: 35px; line-height: 35px; padding: 0; margin: 0; font-size: rem(15px); border: 1px solid $col1; background-color: $white; color: $col1; border-radius: 50%; float: right; @include transition(all 300ms ease); outline: none;
+      &.adult-plus {
+      }
+      &.adult-minus {
+        margin-right: 6px;
+      }
+      &.nino-plus {
+      }
+      &.nino-minus {
+        margin-right: 6px;
+      }
+      &:hover {
+        background-color: $col1; color: #ffffff;
+      }
+    }
+  }
+  &__count {
+    &--adulto {
+      font-size: rem(16px); display: inline-block; width: 32px; height: 44px; line-height: 44px;
+    }
+    &--nino {
+      font-size: rem(16px); display: inline-block; width: 32px; height: 44px; line-height: 44px;
+    }
+  }
+  &__label {
+    font-size: rem(14px);
+  }
+}
+.CheckStyle {
+  position: absolute; opacity: 0;
+  & ~ label {
+    position: relative; cursor: pointer; padding: 0; color: $col1; font-size: rem(14px); margin: 0 auto 0 0; display: inline-block; text-align: left; font-family: $acuminbd; font-weight: 400; cursor: pointer;
+    &:before {
+      content: ''; margin-right: 15px; display: inline-block; vertical-align: text-top; width: 15px; height: 15px; background: transparent; border: none; @include box-sizing(border-box); @include transition(all 0.25s ease); border-radius: 50%; box-shadow: 0 0 0 2px rgba($black, 0.25);
+    }
+  }
+  &:hover {
+    & ~ label:before {
+      background: rgba($black, 0.15);
+    }
+  }
+  &:focus {
+    & ~ label:before {
+      box-shadow: 0 0 0 2px rgba($black, 0.25);
+    }
+  }
+  &:checked {
+    & ~ label:before {
+      background: rgba(#eaeaea, 0.10);
+    }
+    & ~ label:after {
+      content: ''; background: $col1; width: 15px; height: 15px; border-radius: 50%; @include position(absolute, 0 null null 0);
+    }
+  }
+  &:disabled {
+    & ~ label {
+      color: #b8b8b8; cursor: auto;
+      &:before {
+        box-shadow: none; background: #ddd;
+      }
+    }
+  }
+}
+.radioStyle {
+  margin: 0 0 15px; box-sizing: border-box; font-size: 0; @include display(flex); @include flex-flow(row nowrap); @include justify-content(flex-start); @include align-items(center);
+  & input {
+    width: 0; height: 0; position: absolute; left: -9999px;
+    & + label {
+      margin: 0; padding: .75rem 25px; box-sizing: border-box; position: relative; display: inline-block; border: solid 1px #DDD; background-color: $white; font-size: 1rem; line-height: 140%; font-weight: 500; text-align: center; box-shadow: 0 0 0 rgba(255,255,255,0); @include transition(border-color .15s ease-out, color .25s ease-out, background-color .15s ease-out, box-shadow .15s ease-out); cursor: pointer; color: $black;
+    }
+    &:hover + label {
+      border-color: $col1; color: $col1;
+    }
+    &:checked + label {
+      background-color: $col1; color: $white; box-shadow: 0 0 0 rgba($white,0.30); border-color: $col1; z-index: 1;
+    }
+    &:focus + label {
+      box-shadow: 0 0 0 rgba($white,0.15);
+    }
+  }
+}
+.checkBtnCustom {
+  margin: 0 0 15px; box-sizing: border-box; font-size: 0; @include display(flex); @include flex-flow(row nowrap); @include justify-content(flex-start); @include align-items(center);
+  & input {
+    width: 0; height: 0; position: absolute; left: -9999px;
+    & + label {
+      display: block; width: 100%; height: 39px; line-height: 39px; border: none; border-radius: 5px; background-color: $col1; color: $white; text-align: center; @include fluid-type(14px, 20px, 320px, 1200px); margin: 0 0 15px; padding: 0; text-transform: uppercase; letter-spacing: 2px; font-family: $acuminbd; font-weight: 400; cursor: pointer;
+    }
+    &:hover + label {
+      border-color: $col1; color: $white;
+    }
+    &:checked + label {
+      background-color: $col11; color: $white; border-color: $col11; z-index: 1;
+    }
+    &:focus + label {
+      box-shadow: 0 0 0 rgba($col11,0.15);
+    }
+  }
+}
+.closeModCt {
+  margin: 0; padding: 10px 0 0; box-sizing: border-box; @include display(flex); @include flex-flow(row nowrap); @include justify-content(flex-end); @include align-items(center); border-top: 1px solid #eaeaea; @include box-sizing(border-box);
+  & button {
+    background-color: transparent; padding: 0; border: none; margin: 0; color: $col3; text-decoration: underline; font-size: rem(16px); font-weight: 600;
+  }
+}

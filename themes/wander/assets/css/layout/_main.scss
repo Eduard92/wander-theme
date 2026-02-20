@@ -1,0 +1,920 @@
+/* ==|====================
+   Layout/Main
+   ======================= */
+main {
+  width: 100%; height: auto; position: relative; padding: 0; margin: 0; z-index: 4;
+}
+article {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative;
+}
+body.Inicio .mbsc-calendar-picker-main {
+  &:after {
+    content: '* Precios sin IVA. \A ** Se muestra el costo de la cabaña más ecónomica por día. '; margin: 10px 0 0; padding: 0 10px 10px; @include box-sizing(border-box); font-size: rem(12px); white-space: pre; /* or pre-wrap */ width: 100%; display: block;
+  }
+}
+.PageContainer {
+  min-height: 100vh; @include displayFlex(flex, column, flex-start, center, wrap); background-color: $white;
+}
+.descGen {
+  width: 100%; height: auto; padding: 20px 25px; margin: 0;
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0; position: relative; display: inline-block; color: $col2;
+    strong { font-weight: 900; display: block; }
+    span {
+      white-space: nowrap; @include position(absolute, 20px null null 40%); color: rgba($black, 0.25); z-index: -1; font-size: rem(40px);
+    }
+  }
+  .title_page {
+    margin-bottom: 20px;
+  }
+  p { text-align: left; margin: 0 0 0 0; }
+}
+.titleGen {
+  width: 100%; height: auto; padding: 20px 25px; margin: 0;
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0; position: relative; display: inline-block; color: $col6;
+    span {
+      white-space: nowrap; @include position(absolute, 20px null null 40%); color: rgba($black, 0.25); z-index: -1; font-size: rem(40px);
+    }
+  }
+}
+
+// Hero Principal
+.hero-sec {
+  width: 100%; height: auto; @include position(relative, null null null null); padding: 0; margin: 0; z-index: 1;
+  .contHeroSlide {
+    width: 100%; height: auto; padding: 0; margin: 0; position: relative; overflow: hidden;
+    &__slider {
+      width: 100%; height: 450px; padding: 0; margin: 0; position: relative; overflow: hidden; @include box-sizing(border-box);
+      & img {
+        display: block; width: 100%; height: 100%; padding: 0; margin: 0; object-fit: cover; font-family: "object-fit: cover"; position: relative; @include transform(scale(1.25));
+      }
+      & .img-hero {
+        width: 100%; height: 100%; display: block; margin: 0 0; object-fit: cover; font-family: "object-fit: cover"; @include position(absolute, 0 null null 0); z-index: 1;
+      }
+      & .figSlider {
+        width: 100%; height: auto; padding: 0 30px; margin: 0 auto; @include position(absolute, 50% null null 0); @include transform(translate(0, -50%)); z-index: 3; display: block; @include box-sizing(border-box);
+        h1, h2, h3, h4, h5, h6 {
+          margin: 0 0 20px 0; padding: 0; text-align: center; color: $col3;
+        }
+        p {
+          text-align: center; margin: 0; padding: 0; color: $white;
+        }
+        @media all and (min-width: 800px) {
+          width: 720px; padding: 0; left: 50%; @include transform(translate(-50%, -50%));
+        }
+      }
+      &.overlayHero {
+        @extend .overlayClassAbs; @include background(linear-gradient(rgba($col6, 0.0), rgba($col6, 0.50)) top repeat); z-index: 2;
+      }
+      & .linkSlide {
+        @extend .overlayClassAbs; text-indent: -9999px; font-size: 0; border: none; z-index: 4; display: block;
+      }
+      @media all and (min-width: 576px) {
+        height: 500px;
+      }
+      @media all and (min-width: 768px) {
+        height: 600px;
+      }
+      @media all and (min-width: 992px) {
+        height: 700px;
+      }
+      @media all and (min-width: 1366px) {
+        height: 100vh;
+      }
+    }
+    & .slick-active {
+      & .contHeroSlide__slider {
+        & img {
+          @include transform(scale(1.0)); @include transition(transform 550ms ease-in-out);
+        }
+      }
+    }
+  }
+  & .slick-active {
+    & .figSlider {
+      animation-name: fadeInUpSD;
+      animation-duration: 1s;
+      opacity: 1;
+    }
+  }
+  & .fadeInUpSD {
+    -webkit-animation-name: fadeInUpSD;
+    animation-name: fadeInUpSD;
+  }
+}
+
+.contFormCal {
+  width: 100%; height: auto; position: relative; padding: 0; margin: 0 0 6px; z-index: 4;
+  & .stickyForm {
+    width: 100%; height: auto; top: 0; left: 0; padding: 10px; margin: 0; z-index: 1000; @include box-sizing(border-box); background-color: $col1;
+    & form {
+      margin: 0.5rem 0 0; @include justify-content(center);
+      & .btn-primary {
+        background-color: $col10; border-color: $col10; color: $white; font-family: $acuminbd; font-weight: 500; font-size: rem(14px); text-transform: uppercase; height: 40px; line-height: 1.2; letter-spacing: 1.2px; border-radius: 5px; width: 115px;
+        &:focus {
+          background-color: $col3; border-color: $col3; color: $white; 
+        }
+        &:active {
+          background-color: $col10; border-color: $col10; color: $white; 
+        }
+        &.disabled, &[disabled] {
+          cursor: none!important; pointer-events: none!important;
+        }
+      }
+      & .form-group {
+        margin-right: 0.5rem;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      @media all and (min-width: 576px) {
+      }
+    }
+  }
+}
+
+.slideExp {
+  width: 100%; height: auto; padding: 0; margin: 0 0 30px; position: relative; overflow: hidden;
+  &__item {
+    width: 100%; height: 400px; padding: 0; margin: 0; position: relative; overflow: hidden; @include box-sizing(border-box);
+    & .slideImgExp {
+      display: block; width: 100%; height: 100%; padding: 0; margin: 0; object-fit: cover; font-family: "object-fit: cover"; position: relative;
+    }
+    & .descSlide {
+      width: 100%; height: auto; padding: 0 30px; margin: 0 auto; @include position(absolute, 50% null null 0); @include transform(translate(0, -50%)); z-index: 3; display: block; @include box-sizing(border-box);
+      & .iconWanderExp {
+        display: block; width: 100%; max-width: 83px; margin: 0 auto 20px; padding: 0; opacity: 0; @include transition(opacity 300ms ease-in-out 0.5s);
+      }
+      & h2 {
+        margin: 0; padding: 0; color: $white; text-align: center; text-transform: uppercase; @include fluid-type(16px, 20px, 320px, 1200px); letter-spacing: 1.5px; opacity: 0; @include transition(opacity 300ms ease-in-out 1s);
+      }
+      & .descExp {
+        width: 100%; max-width: 500px; height: auto; padding: 0 15px; margin: 50px auto 0; position: relative; @include box-sizing(box-sizing); opacity: 0;
+        h4 {
+          margin: 0 0 6px; padding: 0; text-align: center; color: $white; text-transform: uppercase; @include fluid-type(14px, 18px, 320px, 1200px); letter-spacing: 1.4px;
+        }
+        p {
+          text-align: center; margin: 0; padding: 0; color: $white; @include fluid-type(13px, 16px, 320px, 1200px); font-weight: 500;
+        }
+      }
+    }
+    & .descItem {
+      width: 100%; max-width: 600px; height: auto; padding: 0 30px; margin: 0; @include position(absolute, 50% null null 50%); @include transform(translate(-50%, -50%)); z-index: 2; @include box-sizing(border-box);
+      & h4 {
+        text-align: left; @include fluid-type(16px, 40px, 320px, 1200px); margin: 0; padding: 0; color: $white;
+      }
+    }
+    & .linkExt {
+      @extend .overlayClassAbs; z-index: 3; font-size: 0; text-indent: -9999px;
+    }
+    @media all and (min-width: 576px) {
+      height: 450px;
+    }
+    @media all and (min-width: 768px) {
+      height: 550px;
+      & .descItem {
+        padding: 0;
+        & h4 {
+          text-align: center;
+        }
+      }
+    }
+    @media all and (min-width: 992px) {
+      height: 600px;
+    }
+  }
+  & .slick-active {
+    & .slideExp__item {
+      & .descSlide {
+        & .iconWanderExp {
+          opacity: 1;
+        }
+        & h2 {
+          opacity: 1;
+        }
+        & .descExp {
+          animation-name: fadeInUpSD;
+          animation-duration: 1s;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.titleSecGen {
+  width: 100%; height: 400px; padding: 0; margin: 0 0 6px; position: relative; @include box-sizing(border-box); background-position: center center; background-repeat: no-repeat; background-size: cover; @include displayFlex(flex, column, center, center, wrap);
+  &__desc {
+    width: 100%; height: auto; padding: 0; margin: 0;
+    & .iconWander {
+      display: block; width: 100%; max-width: 83px; margin: 0 auto 20px; padding: 0;
+    }
+    & h1, & h2, & h3, & h4, & h5, & h6 {
+      margin: 0; padding: 0; color: $white; text-align: center; text-transform: uppercase; @include fluid-type(16px, 20px, 320px, 1200px); letter-spacing: 1.4px;
+    }
+    & p { text-align: center; margin: 0; color: $white; }
+  }
+  &.nomarginbottom {
+    margin: 0;
+  }
+  @media all and (min-width: 576px) {
+    height: 450px;
+  }
+  @media all and (min-width: 768px) {
+    height: 550px;
+  }
+  @media all and (min-width: 992px) {
+    height: 600px;
+  }
+}
+
+.cabanasContent {
+  width: 100%; height: auto; padding: 0; margin: 0 0 6px; position: relative; @include box-sizing(border-box);
+  &__slide {
+    width: 100%; height: auto; position: relative; margin: 0 0 30px; padding: 0; @include box-sizing(border-box); overflow: hidden;
+  }
+  &__title {
+    color: $col1; padding: 0; margin: 0 0 20px; text-align: center; letter-spacing: 2px; text-transform: uppercase;
+  }
+  &__descbox {
+    width: 100%; height: auto; position: relative; margin: 0 0 20px; padding: 0; @include box-sizing(border-box);
+  }
+}
+
+.experienceContent {
+  width: 100%; height: auto; position: relative; margin: 0 0 20px; padding: 0; @include box-sizing(border-box);
+}
+// Grid System
+.contentLoc {
+  width: 100%; height: auto; position: relative; margin: 10px 0 10px; padding: 0; @include box-sizing(border-box);
+  &.nomargin {
+    margin: 10px 0 0;
+  }
+  &.locSec {
+    padding: 0 0 40px;
+  }
+  &.newUbic {
+    padding: 30px 0;
+  }
+  @media all and (min-width: 576px) {
+    margin: 0; padding-top: 10px;
+    &.locSec {
+      padding: 0 0 60px;
+    }
+    &.newUbic {
+      padding: 60px 0;
+    }
+  }
+  &.bgGreen {
+    background-color: $col1;
+  }
+}
+
+.titleNewUbi {
+  width: 100%; height: auto; padding: 0; margin: 0 0 26px; position: relative; @include box-sizing(border-box);
+  & h2 {
+    color: $col1; padding: 0; margin: 0; text-align: center; letter-spacing: 2px; text-transform: uppercase; @include fluid-type(18px, 28px, 320px, 1200px);
+  }
+}
+
+// Slider
+.slideAct {
+  width: 100%; height: auto; padding: 0; margin: 0 0 30px; position: relative; overflow: hidden;
+}
+
+// Testimoniales
+.testimonialsCt {
+  width: 100%; height: auto; padding: 0 0 40px; margin: 0; position: relative; overflow: hidden;
+  &__title {
+    color: $col1; padding: 0; margin: 0 0 40px; text-align: center; letter-spacing: 2px; text-transform: uppercase;
+  }
+  & .slideTestimonials {
+    margin-bottom: 30px!important;
+    & .slick-dots {
+      bottom: -10px;
+      & li {
+        & button {
+          &:before {
+            background-color: transparent; opacity: 1; border: 1px solid $col1;
+          }
+        }
+        &.slick-active {
+          & button {
+            &:before {
+              background-color: $col1; border: 1px solid $col1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Noticias
+.blogContent {
+  width: 100%; height: auto; padding: 35px 0; margin: 0; position: relative;
+}
+.blogList {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative; overflow: hidden;
+  &__title {
+    color: $col1; padding: 0; margin: 0 0 40px; text-align: center; letter-spacing: 2px; text-transform: uppercase;
+  }
+  &__btn {
+    width: 100%; height: auto; padding: 0; margin: 30px 0 0; text-align: center;
+  }
+  &__link {
+    color: $col1; margin: 0; padding: 0; @include fluid-type(16px, 18px, 320px, 1200px); font-family: $acuminbd; font-weight: 500; text-transform: uppercase;
+  }
+}
+
+// Preguntas frecuentes
+.faqsCt {
+  width: 100%; height: auto; padding: 40px 0; margin: 0; position: relative; @include box-sizing(border-box); background-color: $c6;
+  &__desc {
+    width: 100%; height: auto; padding: 0; margin: 0 0 30px;
+    & .iconWander {
+      display: block; width: 100%; max-width: 83px; margin: 0 auto 20px; padding: 0;
+    }
+    & h1, & h2, & h3, & h4, & h5, & h6 {
+      margin: 0; padding: 0; color: $col1; text-align: center; text-transform: uppercase; @include fluid-type(16px, 20px, 320px, 1200px); letter-spacing: 1.4px;
+    }
+  }
+  & .btnCtaGen {
+    margin-top: 60px;
+  }
+}
+
+// Pagina Reservar
+.reservaCt {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+  & .stepReservaFrm {
+    width: 100%; height: auto; padding: 0 ; margin: 0; position: relative;
+  }
+  & .descReservar {
+    width: 100%; height: auto; padding: 60px 0 0; margin: 0; position: relative; background-color: $ver;
+    & img {
+      width: 100%; max-width: 120px; display: block; margin: 0 auto 23px; padding: 0; border: 0;
+    }
+    & h2 {
+      margin: 0; padding: 0; color: $white; text-align: center; text-transform: uppercase; @include fluid-type(20px, 26px, 320px, 1200px); letter-spacing: 1.4px;
+    }
+  }
+  & .wizard {
+    & .steps {
+      width: 100%; height: auto; padding: 26px 0; position: relative; margin: 0; background-color: $ver; @include box-sizing(border-box);
+      & ul {
+        @include display(flex); @include flex-direction(row); @include flex-wrap(wrap); list-style-type: none; margin: 0; padding: 0; @include justify-content(center);
+        & li {
+          @include box-sizing(border-box); list-style: none; margin-right: 12px; position: relative;
+          &:before {
+            content: ''; width: 12px; height: 1px; background-color: $white; @include position(absolute, 50% -12px null null); @include transform(translateY(-50%));
+          }
+          & a {
+            text-indent: -9999px; @include box-sizing(border-box); display: block; font-size: 0;
+            &:after {
+              content: ''; width: 30px; height: 30px; background-position: center center; background-size: 14px; background-repeat: no-repeat; border-radius: 50%; border: solid 1px $white; display: block;
+            }
+          }
+          &.current,
+          &.done {
+            & a {
+              &:after {
+                background-color: $nar;
+              }
+            }
+          }
+          &.disabled {
+            cursor: none; pointer-events: none;
+          }
+          &:last-child {
+            margin-right: 0;
+            &:before {
+              display: none;
+            }
+          }
+          &:nth-child(1) {
+            & a {
+              &:after {
+                background-image: url('#{$imgR}imgPrueba/pin_icon.svg');
+              }
+            }
+          }
+          &:nth-child(2) {
+            & a {
+              &:after {
+                background-image: url('#{$imgR}imgPrueba/Group 42.svg');
+              }
+            }
+          }
+          &:nth-child(3) {
+            & a {
+              &:after {
+                background-image: url('#{$imgR}imgPrueba/calendar_icon.svg');
+              }
+            }
+          }
+          &:nth-child(4) {
+            & a {
+              &:after {
+                background-image: url('#{$imgR}imgPrueba/w_icon.svg');
+              }
+            }
+          }
+          &:nth-child(5) {
+            & a {
+              &:after {
+                background-image: url('#{$imgR}imgPrueba/botella_icon.svg'); background-size: 5px;
+              }
+            }
+          }
+          &:nth-child(6) {
+            & a {
+              &:after {
+                background-image: url('#{$imgR}imgPrueba/check_icon.svg');
+              }
+            }
+          }
+          &:nth-child(7) {
+            & a {
+              &:after {
+                background-image: url('#{$imgR}imgPrueba/go_icon.svg');
+              }
+            }
+          }
+          @media all and (min-width: 480px) {
+            margin-right: 16px;
+            &:before {
+              width: 16px; right: -16px;
+            }
+            & a {
+              &:after {
+                width: 40px; height: 40px; background-size: 18px;
+              }
+            }
+            &:nth-child(5) {
+              & a {
+                &:after {
+                  background-size: 9px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & .content  {
+      display: block; margin: 0; padding: 40px 0 90px; overflow: hidden; position: relative; width: auto; @include box-sizing(border-box);
+      // & .body {
+      //   float: left; position: absolute; width: 100%; padding: 0; height: 100%;
+      // }
+      & h3.title {
+        text-indent: -9999px; font-size: 0; margin: 0; padding: 0;
+      }
+      @media all and (min-width: 768px) {
+        padding: 90px 0 40px;
+      }
+    }
+
+    & .actions  {
+      @include position(fixed, null null 0 0); z-index: 10; background-color: $white; display: block; margin: 0; padding: 10px 20px; width: 100%; height: auto; @include box-sizing(border-box);
+      & ul {
+        @include displayFlex(flex, row, center, center, wrap); list-style-type: none; padding: 0; margin: 0;
+        & li {
+          margin: 0 10px 0 0; padding: 0;
+          & a,
+          & button {
+            display: block; width: 130px; height: 40px; line-height: 40px; padding: 0; margin: 0; @include box-sizing(border-box); outline: none; border-radius: .25rem; text-align: center; font-size: rem(16px); cursor: pointer; text-transform: uppercase; text-decoration: none; font-family: $acuminbd; font-weight: 500; letter-spacing: 1.2px;
+            &.nB {
+              display: none;
+            }
+            &.show {
+              display: block!important;
+            }
+            &[disabled="disabled"] {
+              cursor: none; opacity: 0.50; pointer-events: none;
+            }
+          }
+          &.netxBtn {
+            & a,
+            & button {
+              background-color: $col5!important; border: solid 1px $col5!important; color: $white!important;
+            }
+          }
+          &.disabled {
+            & a,
+            & button {
+              cursor: none; opacity: 0.50; pointer-events: none;
+            }
+          }
+          &:nth-child(1) {
+            & a,
+            & button {
+              background-color: $c6; border: solid 1px $col1; color: $col1; display: block;
+            }
+          }
+          &:nth-child(2) {
+            & a,
+            & button {
+              background-color: $col5; border: solid 1px $col5; color: $white;
+            }
+          }
+          &:nth-child(3) {
+            & a,
+            & button {
+              background-color: $col3; border: solid 1px $col3; color: $white;
+            }
+          }
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+      @media all and (min-width: 768px) {
+        position: absolute; top: 102px; bottom: inherit;
+        & ul {
+          // @include justify-content(flex-end);
+        }
+      }
+    }
+  }
+}
+
+.extrasCt {
+  width: 100%; height: auto; position: relative; padding: 0; margin: 0;
+  &__box {
+    width: 100%; height: auto; padding: 0; margin: 0 0 10px; @include display(flex); @include flex-wrap(wrap); @include box-sizing(border-box);
+  }
+  &__icon {
+    width: 92px; height: 92px; margin: 0 10px 0 0; padding: 0; background-color: rgba(130, 140, 112, 0.3); @include displayFlex(flex, column, center, center, wrap);
+    & img {
+      width: 100%; max-width: 40px; height: auto; padding: 0; margin: 0 auto; border: none; display: block;
+    }
+  }
+  &__desc {
+    margin: 0 0 12px; padding: 0; @include box-sizing(border-box); flex: 1 0 0;
+    & .titleExtras {
+      margin: 0 0 8px; padding: 0; @include box-sizing(border-box);
+      h3 {
+        margin: 0; padding: 0; text-align: left; @include fluid-type(14px, 16px, 320px, 1200px); display: inline-block;
+      }
+      & .precio {
+        float: right; color: $col1; font-family: $acuminbd; font-weight: 500; @include fluid-type(14px, 16px, 320px, 1200px);
+      }
+    }
+  }
+}
+
+.contAccordionBox {
+  width: 100%; height: auto; position: relative; padding: 0; margin: 0;
+}
+
+.extrasInp {
+  &__box {
+    width: 100%; height: auto; padding: 0 0 10px; margin: 0 0 10px; @include display(flex); @include flex-wrap(wrap); @include box-sizing(border-box); border-bottom: 1px solid #C4C4C4; @include align-items(flex-start);
+    &:last-child {
+      border-bottom: none!important;
+    }
+  }
+  &__icon {
+    width: 30px; height: auto; margin: 0 10px 0 0; padding: 0; background-color: transparent; @include displayFlex(flex, column, center, center, wrap);
+    & img {
+      width: 100%; max-width: 20px; height: auto; padding: 0; margin: 0 auto; border: none; display: block;
+    }
+  }
+  &__desc {
+    margin: 0; padding: 0; @include box-sizing(border-box); flex: 1 0 0;
+    & h3 {
+      margin: 0 0 10px; padding: 0; text-align: left; @include fluid-type(14px, 16px, 320px, 1200px);
+    }
+    & .descExtrasInp {
+      margin: 0 0 5px; padding: 0; @include box-sizing(border-box); width: 100%; height: auto;
+      & p {
+        display: inline-block; @include fluid-type(13px, 15px, 320px, 1200px); padding: 0; margin: 0;
+      }
+      & .precio {
+        float: right; color: $col1; font-family: $acuminbd; font-weight: 500; @include fluid-type(13px, 15px, 320px, 1200px);
+      }
+    }
+  }
+  & .precioFinal {
+    @include fluid-type(20px, 26px, 320px, 1200px); text-align: center; margin: 20px 0 0; padding: 0;
+  }
+}
+
+.frmGeneric {
+  width: 100%; height: auto; position: relative; padding: 50px 0; margin: 0; @include box-sizing(border-box);
+}
+#formLogin {
+  width: 100%; height: auto; position: relative; padding: 0; margin: 0; @include box-sizing(border-box);
+  & h3 {
+    text-align: center; color: $col1; margin: 0 0 20px; padding: 0;
+  }
+  & .contentForms {
+    width: 100%; height: auto; position: relative; padding: 0; margin: 0; @include box-sizing(border-box); text-align: center;
+    & .lead {
+      @include fluid-type(13px, 16px, 320px, 1200px); margin: 0 0 20px;
+    }
+    & form {
+      margin: 0; padding: 0;
+      & input[type="email"] {
+        border-radius: 0;
+        &:focus {
+          border-color: $col1;
+        }
+      }
+      & button {
+        background-color: $col1; color: $white; text-transform: uppercase; font-weight: 500; font-family: $acuminbd; letter-spacing: 1.2px;
+      }
+      label {
+        display: none;
+      }
+    }
+  }
+}
+
+.covidBanner {
+  width: 100%; height: auto; padding: 44px 30px 0; margin: 0 0 10px; background-color: $c6; @include displayFlex(flex, column, center, center, wrap); @include box-sizing(border-box);
+  &__container {
+    text-align: center; padding: 0; @include box-sizing(border-box); max-width: 100%;
+    & h4 {
+      @include fluid-type(18px, 20px, 320px, 1200px); margin: 0 0 10px; font-weight: 500; letter-spacing: .5px; padding: 0; color: $col1; text-transform: uppercase;
+    }
+    & p {
+      @include fluid-type(13px, 16px, 320px, 1200px); margin: 0 0 20px; letter-spacing: .5px; padding: 0;
+    }
+    @media all and (min-width: 480px) {
+      padding: 0 40px;
+    }
+  }
+  &__listGrid {
+    @include display(flex); @include flex-wrap(wrap); @include justify-content(center); width: 100%; list-style-type: none; padding: 0; margin: 0; max-width: 780px;
+    @media all and (min-width: 480px) {
+      @include flex-wrap(nowrap); @include justify-content(space-between);
+    }
+  }
+  &__item {
+    text-align: center; font-size: 14px; line-height: 1.2; margin: 0 0 35px; padding: 0; @include box-sizing(border-box); width: 33.333333%;
+    & span {
+      @include fluid-type(10px, 14px, 320px, 1200px); width: auto;
+    }
+  }
+  &__icon {
+    margin-bottom: 6px; @include transform(scale(0.8)); height: 60px; @include display(flex); @include justify-content(center); @include align-items(center);
+    @media all and (min-width: 480px) {
+      @include transform(none);
+    }
+  }
+  & .btnCtaGen {
+    margin-bottom: 55px;
+  }
+}
+
+.descFullPage {
+  width: 100%; height: auto; padding: 30px 0; margin: 0; position: relative; background-color: $ver;
+  & img {
+    width: 100%; max-width: 120px; display: block; margin: 0 auto 23px; padding: 0; border: 0;
+  }
+  & h2 {
+    margin: 0; padding: 0; color: $white; text-align: center; text-transform: uppercase; @include fluid-type(20px, 26px, 320px, 1200px); letter-spacing: 1.4px;
+  }
+}
+.descFull {
+  width: 100%; height: auto; padding: 50px 0; margin: 0; background-color: $white; @include box-sizing(border-box);
+}
+.mapaLocaciones {
+  width: 100%; height: auto; padding: 0; margin: 0 0 6px; background-color: $white; @include box-sizing(border-box); position: relative; overflow: hidden;
+}
+.accSlideCabins {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+  & .card {
+    border: none; @include box-sizing(border-box);
+    & .card-body {
+      padding: 10px 10px 20px; position: relative; border: none;
+      @media all and (min-width: 768px) {
+        padding: 10px 25px 25px;
+      }
+    }
+    & .card-header {
+      border-radius: 0!important; background-color: transparent; border: none; padding: 0;
+      & h5 {
+        padding: 0; margin: 0;
+      }
+      & a {
+        display: block; width: 100%; height: 39px; line-height: 39px; border: none; border-radius: 5px; background-color: $col1; color: $white; text-align: center; @include fluid-type(14px, 20px, 320px, 1200px); margin: 0 0 15px; padding: 0; text-transform: uppercase; letter-spacing: 2px; box-shadow: 0px 2px 4px rgba($black, 0.25);
+        &[aria-expanded="true"] {
+          background-color: $col5;
+        }
+      }
+    }
+  }
+}
+.accSlideCabinsGroup {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+  & .panel {
+    @include box-sizing(border-box); @include display(flex); @include flex-direction(column); position: relative; min-width: 0; word-wrap: break-word; background-color: #fff; background-clip: border-box; border: none; border-radius: 0;
+    & .panel-inner {
+      padding: 10px 0 20px; position: relative; border: none; @include flex(1 1 auto); margin: 0;
+      @media all and (min-width: 768px) {
+        padding: 10px 0 25px;
+      }
+    }
+    & .panel-heading {
+      border-radius: 0!important; background-color: transparent; border: none; padding: 0;
+      & .panel-title {
+        padding: 0; margin: 0;
+      }
+      & a {
+        display: block; width: 100%; height: 39px; line-height: 39px; border: none; border-radius: 5px; background-color: $col8; color: $col1; text-align: center; @include fluid-type(14px, 20px, 320px, 1200px); margin: 0 0 15px; padding: 0; text-transform: uppercase; letter-spacing: 2px; box-shadow: 0px 2px 4px rgba($black, 0.25); cursor: pointer;
+        &[aria-expanded="true"] {
+          background-color: $col1; color: $white
+        }
+      }
+    }
+  }
+}
+.btnViewAllCabins {
+  display: block; width: 100%; height: 39px; line-height: 39px; border: none; border-radius: 5px; background-color: $col1; color: $white; text-align: center; @include fluid-type(14px, 20px, 320px, 1200px); margin: 0 0 15px; padding: 0; text-transform: uppercase; letter-spacing: 2px; font-family: $acuminbd; font-weight: 400; cursor: pointer;
+}
+.descBoxCabins {
+  width: 100%; height: auto; padding: 0; margin: 10px 0 0; position: relative; @include box-sizing(border-box);
+  & p {
+    @include fluid-type(13px, 16px, 320px, 1200px); margin: 0; padding: 0; text-align: center;
+  }
+}
+.descBoxCabinsNew {
+  width: 100%; height: auto; padding: 0; margin: 10px 0 20px; position: relative; @include box-sizing(border-box);
+  & p {
+    @include fluid-type(13px, 16px, 320px, 1200px); margin: 0; padding: 0; text-align: center;
+  }
+}
+.boxMessageCabins {
+  width: 100%; height: auto; padding: 10px 15px; margin: 0 0 20px; position: relative; @include box-sizing(border-box); background-color: rgba($col5, 0.51); border-radius: 5px;
+  & p {
+    @include fluid-type(13px, 16px, 320px, 1200px); margin: 0 0 15px; padding: 0; text-align: center;
+  }
+  &__ct {
+    width: 100%; height: auto; padding: 0; margin: 0; @include box-sizing(border-box); position: relative; overflow: hidden;
+  }
+}
+
+// Selector personalizado
+.selectFormContact {
+  position: relative; width: 100%; height: auto; padding: 0; margin: 0; @include box-sizing(border-box);
+    .collOpenForm {
+      width: 100%; height: 40px; padding: 5px 10px; margin: 0; background-color: $white; text-align: left; display: block; color: $black; line-height: 40px; border-radius: 4px; position: relative; text-decoration: none; letter-spacing: 0; @include box-sizing(border-box); overflow: hidden;
+      & .labelInp {
+        @include position(absolute, 0 null null 10px); font-size: rem(14px); font-weight: 400; opacity: 1; visibility: visible; @include transition(all 300ms ease, visibility 0s);
+        & i {
+          color: $black; margin-right: 2px;
+        }
+      }
+      & .responseText {
+        @include position(absolute, 0 null null 10px); font-size: rem(14px); font-weight: 400; opacity: 0; visibility: hidden; @include transition(all 300ms ease, visibility 0s);
+      }
+      &.activeRes {
+        & .labelInp {
+          top: -12px; font-size: rem(11px);
+        }
+        & .responseText {
+          opacity: 1; visibility: visible; top: 5px;
+        }
+      }
+    }
+    & nav {
+      width: 180px; height: auto; padding: 0; margin: 0; @include box-sizing(border-box); @include position(absolute, calc(100% + 9px) null null 0); visibility: hidden;
+      & ul {
+        width: 100%; height: auto; padding: 0; margin: 0; list-style-type: none; @include displayFlex(flex, column, center, center, wrap); background-color: $white;
+        & li {
+          list-style-type: none; padding: 0; margin: 0; visibility: hidden; width: 100%; border-bottom: 1px solid $white; @include box-sizing(border-box);
+          & a {
+            color: $black; font-size: rem(11px); position: relative; text-transform: uppercase; padding: 10px 10px 10px 20px; margin: 0; display: block; background-color: transparent; @include transition(all 300ms ease); width: 100%; height: auto; text-align: left; text-decoration: none; @include box-sizing(border-box); font-weight: 600;
+            &:hover, &:active {
+              background-color: $col1; color: $white;
+            }
+            &.titleLoc {
+              font-weight: 600; color: $col1; padding: 10px;
+              &:hover, &:active {
+                color: $white;
+              }
+            }
+            &.ubiNew {
+              font-weight: 600; background-color: $col5; color: $white;
+              &:hover, &:active {
+                color: $white;
+              }
+              &:after {
+                content: 'Nuevo'; width: auto; height: auto; padding: 0 5px; margin: 0; @include position(absolute, 50% 5px null null); font-size: rem(10px); font-weight: 400; @include transform(translateY(-50%));
+              }
+            }
+          }
+          &:last-child {
+            margin: 0; border-bottom: none;
+          }
+        }
+        & p {
+          color: $black; font-size: rem(11px); position: relative; text-transform: uppercase; padding: 10px; margin: 0; display: block; background-color: transparent; width: 100%; height: auto; text-align: left; @include box-sizing(border-box); font-weight: 600; color: $col1;
+        }
+      }
+    }
+  @media all and (min-width: 576px) {
+    width: 110px;
+  }
+}
+// .messUbi {
+//   & .btnMAp {
+//     background-color: $col5; color: $white;
+//     &:hover, &:active {
+//       background-color: $col12; color: $white;
+//     }
+//   }
+// }
+.titleMAp {
+  margin: 0 0 5px; padding: 0; @include fluid-type(12px, 16px, 320px, 1200px); text-align: center;
+}
+.titleUbicNew {
+  margin: 0 0 5px; padding: 0; @include fluid-type(9px, 12px, 320px, 1200px); text-align: center; background-color: $col5; color: $white; display: block; @include box-sizing(border-box); padding: 0 8px
+}
+.btnMAp {
+  @include transition(all 300ms);width: 80px; height: 27px; line-height: 27px; display: block; margin: 0 auto; padding: 0; text-align: center; border-radius: 5px; background-color: $col1; color: $white; text-decoration: none; text-transform: uppercase; font-size: rem(12px); letter-spacing: 0.8px; cursor: pointer; border: none; outline: 0;
+  &:hover, &:active {
+    background-color: $col2; color: $white;
+  }
+}
+.collapse:not(.show)  {
+  display: block !important; height: 0px; visibility: hidden; z-index: -1; @include transition(height 100ms ease, visibility 0s);
+}
+.marker {
+  background-image: url('#{$imgR}map/pointer-green.png'); background-size: cover; width: 59px; height: 98px; border-radius: 0; cursor: pointer;
+}
+.mapboxgl-popup {
+  width: 200px;
+}
+.mapboxgl-popup-content {
+  text-align: center; padding: 0!important;
+}
+.modalMpaInfo {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative; overflow: hidden;
+  &__img {
+    width: 100%; height: 120px; position: relative; padding: 0; margin: 0; overflow: hidden;
+    & img {
+      width: 100%; height: 100%; margin: 0; padding: 0; display: block; border: none; @include position(absolute, 0 null nul 0); object-fit: cover; font-family: "object-fit: cover";
+    }
+    & h3 {
+      @include position(absolute, null null 8px 0); width: 100%; height: auto; @include fluid-type(16px, 20px, 320px, 1200px); margin: 0 0 5px; padding: 0; text-align: center; letter-spacing: 1.2px; text-transform: uppercase; color: $white; display: block; z-index: 1;
+    }
+  }
+  &__desc {
+    width: 100%; height: auto; position: relative; padding: 10px; margin: 0; @include box-sizing(border-box);
+    & p {
+      font-size: rem(12px); font-family: $minionr; font-weight: 400;
+      & strong {
+        font-size: rem(13px); font-family: $acuminbd; font-weight: 400;
+        & span {
+          color: $col11;
+        }
+      }
+      &:first-child {
+        margin: 0;
+      }
+    }
+  }
+  &__btn {
+    position: relative; width: 100%; height: 35px; padding: 0; margin: 0; cursor: pointer; display: block; color: $white; text-align: center; background-color: $nar; text-transform: uppercase; font-size: rem(13px); letter-spacing: 1.2px; @include transition(all 300ms); line-height: 35px; font-family: $acuminbd; font-weight: 400; text-decoration: none; border-radius: 5px;
+    &:hover {
+      background-color: $col5; color: $white;
+    }
+  }
+}
+.mapboxgl-popup-close-button {
+  background-color: rgba($white, 0.76)!important;
+}
+.disabledContent {
+  &[data-reservations="true"] {
+    opacity: 0.65;
+    & a,
+    & input[type="radio"] {
+      pointer-events: none!important;
+    }
+    & label {
+      pointer-events: none!important;
+    }
+  }
+}
+.checkBoxCus {
+  width: 100%; height: auto; padding: 0; margin: 0 0 30px; position: relative;
+  & .CheckStyle {
+    & ~ label {
+      text-transform: uppercase; @include fluid-type(15px, 20px, 320px, 1200px); line-height: 1;
+      &:before {
+        vertical-align: middle; width: 21px; height: 21px; margin-top: -4px;
+      }
+    }
+    &:checked {
+      & ~ label:after {
+        width: 21px; height: 21px; top: 1px;
+      }
+    }
+  }
+}

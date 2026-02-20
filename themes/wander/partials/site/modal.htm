@@ -1,0 +1,128 @@
+description = "Modal Login"
+
+[viewBag]
+snippetCode = "modal"
+snippetName = "Modal"
+==
+<div id="modalGen" class="modalAviso">
+            <button id="closeModalAvisoDos" class="btnCloseModal" data-close-modal=""><i class="fa fa-times"></i></button>
+            <div class="contentInfo">
+              <div id="formLogin" data-frm>
+                <h3>Acceso a Miembros</h3>
+                <div class="contentForms">
+                  <!--<form action="" id="frmLogin" name="frmLogin" method="POST">-->
+                  
+                <div id="message-log" class="alert alert-danger" style="display:none;"></div>
+                           
+                  {{ form_ajax('onSignin') }}
+                
+                    <div class="animatedField form-group">
+                      <input name="login" type="text" class="form-control" id="userSigninLogin" required />
+                      <label for="userSigninLogin">Correo electrónico</label>
+                    </div>
+                    <div class="animatedField form-group">
+                      <input name="password" type="password" class="form-control" id="userSigninPassword" required />
+                      <label for="userSigninPassword">Contraseña</label>
+                    </div>
+                    
+                    {% if rememberLoginMode == 'ask' %}
+                        <fieldset class="form-group">
+                          <input type="checkbox" class="CheckStyle" id="recordarLogin" name="remember" value="1">
+                          <label for="recordarLogin">Mantener sesión iniciada</label>
+                        </fieldset>
+                    {% endif %}
+                    
+                    <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="submit-log">
+                      <i class="fa fa-sign-in"></i><span>Entrar</span>
+                    </button>
+                  {{ form_close() }}
+                  <div class="recuperaCont">
+                    <p>¿Olvidaste tu contraseña? <a href="{{ 'acceso'|page }}">Recupérala aquí</a></p>
+                  </div>
+                  <div class="text-center">
+                    <p>¿No tienes cuenta? <a href="#0" data-btn-frm="#formReg" id="link-reg">Regístrate</a></p>
+                  </div>
+                </div><!-- end.contentForms -->
+              </div><!-- end.formlogin -->
+              
+              <div id="formReg" data-frm style="display: none;">
+              
+              {% if canRegister %}
+              
+                <h3>Registro de miembros</h3>
+                <div class="contentForms">
+                
+                <div id="message-reg" class="alert alert-danger" style="display:none;"></div>
+                
+                  {{ form_ajax('onRegister') }}
+                  
+                  <div class="animatedField form-group">
+                    <input name="name" type="text" class="form-control" id="registerName" required />
+                    <label for="registerName">Nombre completo</label>
+                  </div>
+                  <div class="animatedField form-group">
+                    <input name="email" type="email" class="form-control" id="registerEmail" required data-request="onCheckEmail" data-request-success="$('#loginTaken').toggle(!!data.isTaken)" data-track-input/>
+                    <label for="registerEmail">Correo electrónico</label>
+                  </div>
+
+                  <div id="loginTaken" class="alert alert-danger" style="display: none">
+                      Este correo ya se encuentra registrado
+                  </div>
+                  
+                  <div class="animatedField form-group">
+                    <input name="password" type="password" class="form-control" id="registerPassword" required />
+                    <label for="registerPassword">Contraseña</label>
+                  </div>
+                  <fieldset class="form-group">
+                    <input type="checkbox" class="CheckStyle" id="regAcepto" name="regAcepto" value="1" required>
+                    <label for="regAcepto">Acepto <a href="{{ 'aviso-de-privacidad'|page }}" target="_blank">Aviso de Privacidad</a></label>
+                  </fieldset>
+                  <button type="submit" class="btnpr btnpr__primary btnpr__primary--outline" id="submit-reg">
+                    <i class="fa fa-user"></i><span>Registrar</span>
+                  </button>
+                  {{ form_close() }}
+                  <div class="loginCont">
+                    <p>¿Ya tienes cuenta? <a href="#0" data-btn-frm="#formLogin" id="link-log">Ingresa</a></p>
+                  </div>
+                </div><!-- end.contentForms -->
+              </div><!-- end.formReg -->
+              
+              {% else %}
+                  <h3>Por el momento el registro de usuarios está deshabilitado. Intenta más tarde.</h3>
+              {% endif %}
+            </div>
+          </div>
+          
+<script>
+    $(window).on('ajaxErrorMessage', function(event, message){
+        $('#message-reg').append(message);
+        $('#message-reg').show();
+        $('#message-log').append(message);
+        $('#message-log').show();
+        event.preventDefault();
+    });
+    $( "#submit-log" ).click(function() {
+      $('#message-reg').hide();
+      $('#message-reg').empty();
+      $('#message-log').hide();
+      $('#message-log').empty();
+    });
+    $( "#submit-reg" ).click(function() {
+      $('#message-reg').hide();
+      $('#message-reg').empty();
+      $('#message-log').hide();
+      $('#message-log').empty();
+    });
+    $( "#link-log" ).click(function() {
+      $('#message-reg').hide();
+      $('#message-reg').empty();
+      $('#message-log').hide();
+      $('#message-log').empty();
+    });
+    $( "#link-reg" ).click(function() {
+      $('#message-reg').hide();
+      $('#message-reg').empty();
+      $('#message-log').hide();
+      $('#message-log').empty();
+    });
+</script>

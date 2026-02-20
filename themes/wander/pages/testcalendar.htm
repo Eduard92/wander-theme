@@ -1,0 +1,144 @@
+title = "testcalendar"
+url = "/testcalendar"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+==
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendario Mobiscroll con servicio</title>
+<link href="css/mobiscroll.lite.min.css" rel="stylesheet" />
+<script src="js/mobiscroll.javascript.lite.min.js"></script>
+
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h2 { margin-top: 30px; }
+    input { width: 250px; padding: 8px; margin: 10px 0; }
+    #calInline { margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <h1>Calendario conectado a servicio</h1>
+
+  <label>Locación: 
+    <input type="text" id="locacion" value="1" />
+  </label>
+
+  <br>
+  <label><input type="radio" name="adultos" value="1" checked> 1 adulto</label>
+  <label><input type="radio" name="adultos" value="2"> 2 adultos</label>
+  <label><input type="radio" name="adultos" value="3"> 3 adultos</label>
+
+  <div id="calInline"></div>
+
+  <script>
+    let all = [];
+    let adultVal = 1;
+    let vali = '';
+
+    mobiscroll.setOptions({
+      locale: mobiscroll.localeEs,
+      theme: 'material',
+      themeVariant: 'light'
+    });
+
+    // Inicializar calendario inline
+    mobiscroll.datepicker('#calInline', {
+      controls: ['calendar'],
+      display: 'inline',
+      select: 'range',
+
+      // Se dispara cuando se carga un mes
+      onPageLoading: function (event, inst) {
+        const text = document.getElementById('locacion').value;
+        vali = (text && text.length > 0) ? text : '';
+        const raiodbtn = document.querySelector('input[name="adultos"]:checked').value;
+        adultVal = raiodbtn == 1 ? 1 : raiodbtn;
+
+        getPrices(event.firstDay, adultVal, vali, function callback(bookings) {
+          inst.setOptions({
+            labels: bookings.labels,
+            invalid: bookings.invalid
+          });
+          all = bookings.all; // guardamos todas
+        });
+      },
+
+      // Cuando selecciona una celda
+      onCellClick: function (event, inst) {
+        if (event.active == 'start') {
+          inst.setOptions({ invalid: all });
+
+          getPrices2(event.date, adultVal, vali, function callback(bookings) {
+            inst.setVal([event.date, null]);
+            inst.setOptions({
+              labels: bookings.labels,
+              invalid: bookings.invalid,
+              valid: bookings.valid
+            });
+          });
+        }
+      }
+    });
+
+    // === Funciones de servicio ===
+    function getPrices(d, adultos, idx, callback) {
+      let invalid = [], valid = [], labels = [], all = [];
+
+      const cabin = '/' + idx;
+      const huespedes = '/' + adultos;
+
+      mobiscroll.util.http.getJson('/fechas/' + d.getFullYear() + '/' + d.getMonth() + huespedes + cabin, function (bookings) {
+        for (let i = 0; i < bookings.length; ++i) {
+          const booking = bookings[i];
+          const fecha = new Date(booking.d);
+
+          if (booking.price > 0) {
+            labels.push({
+              start: fecha,
+              title: '$' + booking.price,
+              textColor: '#818C70',
+            });
+            valid.push(fecha);
+          } else {
+            invalid.push(fecha);
+          }
+          all.push(fecha);
+        }
+        callback({ labels, invalid, valid, all });
+      }, 'jsonp');
+    }
+
+    function getPrices2(d, adultos, idx, callback) {
+      let invalid = [], valid = [], labels = [];
+
+      const cabin = '/' + idx;
+      const huespedes = '/' + adultos;
+
+      mobiscroll.util.http.getJson('/fechas2/' + d.getFullYear() + '/' + d.getMonth() + '/' + d.getDate() + huespedes + cabin, function (bookings) {
+        for (let i = 0; i < bookings.length; ++i) {
+          const booking = bookings[i];
+          const fecha = new Date(booking.d);
+
+          if (booking.price > 0) {
+            labels.push({
+              start: fecha,
+              title: '$' + booking.price,
+              textColor: '#818C70',
+            });
+            valid.push(fecha);
+          } else {
+            invalid.push(fecha);
+          }
+        }
+        callback({ labels, invalid, valid });
+      }, 'jsonp');
+    }
+
+    console.log('Mobiscroll version:', mobiscroll.version);
+  </script>
+</body>
+</html>
