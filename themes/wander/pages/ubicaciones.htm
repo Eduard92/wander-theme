@@ -843,14 +843,14 @@ line-height: 1.3em;
                                 <div class="inputSelect__dateCheck">
                                     <button class="btnSelectOption" type="button" data-option="huesped1"
                                         data-close-ubic>
-                                        <span><i class=" fa fa-user"></i> Huéspedes</span>
+                                        <span><i class=" fa fa-user"></i> {{ 'Huéspedes'|_ }}</span>
                                         <div id="huesRes1"></div>
                                     </button>
                                     <div id="huesped1" class="modalOption">
                                         <ul class="boxListHuesped">
                                             <li>
                                                 <div class="inputHuespedHome">
-                                                    <h4 class="inputHuespedHome__title">Adultos</h4>
+                                                    <h4 class="inputHuespedHome__title">{{ 'Adultos'|_ }}</h4>
                                                     <div class="inputHuespedHome__opt1">
                                                         <input type="radio" class="radioRes smallInp" name="adultos"
                                                             id="adulto-1-1" value="1">
@@ -869,11 +869,11 @@ line-height: 1.3em;
                                             </li>
                                             <li>
                                                 <div class="inputHuespedHome">
-                                                    <h4 class="inputHuespedHome__title">Niños</h4>
+                                                    <h4 class="inputHuespedHome__title">{{ 'Niños'|_ }}</h4>
                                                     <div class="inputHuespedHome__opt1">
                                                         <input type="radio" class="radioRes smallInp" name="ninos"
                                                             id="nino-0-1" value="0" checked>
-                                                        <label for="nino-0-1">NO</label>
+                                                        <label for="nino-0-1">{{ 'NO'|_ }}</label>
                                                         <input type="radio" class="radioRes smallInp" name="ninos"
                                                             id="nino-1-1" value="1">
                                                         <label for="nino-1-1">1</label>
@@ -891,7 +891,7 @@ line-height: 1.3em;
                                             </li>
                                             <li>
                                                 <div class="inputHuespedHome">
-                                                    <h4 class="inputHuespedHome__title">Mascotas</h4>
+                                                    <h4 class="inputHuespedHome__title">{{ 'Mascotas'|_ }}</h4>
                                                     <div class="inputHuespedHome__opt1">
                                                         <label class="switch">
                                                             <input type="checkbox" name="mascotas" id="mascotas1">
@@ -902,19 +902,19 @@ line-height: 1.3em;
                                             </li>
                                         </ul>
                                         <div class="closeModCt">
-                                            <button type="button" id="close-huesped1">Aceptar</button>
+                                            <button type="button" id="close-huesped1">{{ 'Aceptar'|_ }}</button>
                                         </div>
                                     </div><!-- end.modalOption -->
                                 </div><!-- end.inputSelect__dateCheck -->
                             </div>
                             <div class="form-group mb-2 inputSelect wIn">
-                                <label class="inputSelect__inputDate" data-input-home1 for="entrada">Fechas
+                                <label class="inputSelect__inputDate" data-input-home1 for="entrada">{{ 'Fechas'|_ }}
                                     <!--input type="text" mbsc-input class="form-control inputForm__input" id="entrada" name="entrada" placeholder="Entrada"><!-- mbsc-input -->
                                     <input id="range" class="form-control inputForm__input" name="range" mbsc-input
-                                        placeholder="Seleccione CheckIn y Checkout" />
+                                        placeholder="{{ 'seleccioneCheckInCheckout'|_ }}" />
                                 </label>
                             </div>
-                            <button type="submit" id="submit-disp1" class="btn btn-primary mb-2">Reservar</button>
+                            <button type="submit" id="submit-disp1" class="btn btn-primary mb-2">{{ 'Reservar'|_ }}</button>
                             {{ form_close() }}
                            
                         </div><!-- end.col-* -->
@@ -924,7 +924,7 @@ line-height: 1.3em;
         </section><!-- end.contFormCal -->
         <section class="row location contentLoc grayL" id="contFormCal"><!-- end.hero-sec -->
             <div class="col-12 col-md-8 col-lg-9 col-xl-9 CityInfo__container__1+rk9">
-                <div class="CityInfo__smallLabel__R1mCc">Escapada a</div>
+                <div class="CityInfo__smallLabel__R1mCc">{{ 'escapadaA'|_ }}</div>
                 <div class="CityInfo__flexTitle__nZpNH">
                     <div class="CityInfo__title__hsPID"> {{ubicacion.nombre}}</div>
                 </div>
@@ -955,23 +955,23 @@ line-height: 1.3em;
                                     <div id="picker"></div>
                                     <div class="form-group mb-2 inputSelect">
                                         <label class="inputSelect__inputDate" data-input-home for="entrada">
-                                            Fechas
+                                            {{ 'Fechas'|_ }}
                                             <input id="range1" class="form-control inputForm__input" name="range"
-                                                mbsc-input placeholder="Seleccione CheckIn y Checkout" />
+                                                mbsc-input placeholder="{{ 'seleccioneCheckInCheckout'|_ }}" />
                                         </label>
                                     </div>
                                     <div class="form-group mb-2 inputSelect wInLoc">
                                         <div class="inputSelect__dateCheckLocation">
                                             <button class="btnSelectOption" type="button" data-option="huesped"
                                                 data-close-ubic>
-                                                <span><i class=" fa fa-user"></i> Huéspedes</span>
+                                                <span><i class=" fa fa-user"></i> {{ 'Huéspedes'|_ }}</span>
                                                 <div id="huesRes"></div>
                                             </button>
                                             <div id="huesped" class="modalOption">
                                                 <ul class="boxListHuesped">
                                                     <li>
                                                         <div class="inputHuespedHome">
-                                                            <h4 class="inputHuespedHome__title">Adultos</h4>
+                                                            <h4 class="inputHuespedHome__title">{{ 'Adultos'|_ }}</h4>
                                                             <div class="inputHuespedHome__opt">
                                                                 <input type="radio" class="radioRes smallInp"
                                                                     name="adultos" id="adulto-1" value="1">
@@ -990,11 +990,11 @@ line-height: 1.3em;
                                                     </li>
                                                     <li>
                                                         <div class="inputHuespedHome">
-                                                            <h4 class="inputHuespedHome__title">Niños</h4>
+                                                            <h4 class="inputHuespedHome__title">{{ 'Niños'|_ }}</h4>
                                                             <div class="inputHuespedHome__opt">
                                                                 <input type="radio" class="radioRes smallInp"
                                                                     name="ninos" id="nino-0" value="0" checked>
-                                                                <label for="nino-0">NO</label>
+                                                                <label for="nino-0">{{ 'NO'|_ }}</label>
                                                                 <input type="radio" class="radioRes smallInp"
                                                                     name="ninos" id="nino-1" value="1">
                                                                 <label for="nino-1">1</label>
@@ -1012,7 +1012,7 @@ line-height: 1.3em;
                                                     </li>
                                                     <li>
                                                         <div class="inputHuespedHome">
-                                                            <h4 class="inputHuespedHome__title">Mascotas</h4>
+                                                            <h4 class="inputHuespedHome__title">{{ 'Mascotas'|_ }}</h4>
                                                             <div class="inputHuespedHome__opt">
                                                                 <label class="switch">
                                                                     <input type="checkbox" name="mascotas"
@@ -1024,13 +1024,13 @@ line-height: 1.3em;
                                                     </li>
                                                 </ul>
                                                 <div class="closeModCt">
-                                                    <button type="button" id="close-huesped">Aceptar</button>
+                                                    <button type="button" id="close-huesped">{{ 'Aceptar'|_ }}</button>
                                                 </div>
                                             </div><!-- end.modalOption -->
                                         </div><!-- end.inputSelect__dateCheck -->
                                     </div>
                                     <button type="submit" id="submit-disp"
-                                        class="btn btn-primary mb-2">Reservar</button>
+                                        class="btn btn-primary mb-2">{{ 'Reservar'|_ }}</button>
                                     {{ form_close() }}
                                     
                                 </div><!-- end.col-* -->
@@ -1083,17 +1083,16 @@ line-height: 1.3em;
         <section class="covidBanner" style="background-color:#FAFAFA!important">
             <div class="covidBanner__container" style="text-align:left!important;letter-spacing: 1.2px;">
                 <div class="InYourCabin__subcontainer__Zjqxj" style="scroll-margin-top: 70px;">
-                    <div class="InYourCabin__locationTitle__O+1HZ" style="color:#69745D!important;">Cabaña</div>
+                    <div class="InYourCabin__locationTitle__O+1HZ" style="color:#69745D!important;">{{ 'Cabaña'|_ }}</div>
                     <h1 class="InYourCabin__title__q3A77">{{ubicacion.descripcion}}</h1>
                     <div class="InYourCabin__flexRowInfo__Wchyq">
-                        <div class="InYourCabin__cabinInfo__bYlsl">{{cabanas.count}} cabañas</div>
+                        <div class="InYourCabin__cabinInfo__bYlsl">{{cabanas.count}} {{ 'cabañas'|_ }}</div>
                         <div class="InYourCabin__distance__H6Mu7" style="color:#B55B12!important;">
                             {{ubicacion.distancia}} desde {{ubicacion.ciudad.nombre}}</div>
                     </div>
                     <div class="InYourCabin__subtitle__SX-sU">
                         {{ubicacion.texto_1|raw}}
-                        <p><strong>Nuestras cabañas tienen todo lo que necesitas y nada que no necesites. Cada cabaña
-                                incluye:</strong></p>
+                        <p><strong>{{ 'cabanaIncluye'|_ }}</strong></p>
                     </div>
                     <div class="InYourCabin__categoryContainer__1dHOU">
                         <div class="InYourCabin__amenitiesGrid__Nw3-g">
@@ -1102,7 +1101,7 @@ line-height: 1.3em;
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_AC_Heat-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Minisplit</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadMinisplit'|_ }}</div>
                             </div>
                             {% endif %}
                             {%if ubicacion.id == 6%}
@@ -1110,100 +1109,99 @@ line-height: 1.3em;
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_AC_Heat-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Minisplit</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadMinisplit'|_ }}</div>
                             </div>
                             {% endif %}
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Icons-QueenBed-navy'|theme}}.svg"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Cama Queen</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadCamaQueen'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Shower-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Ducha caliente</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadDuchaCaliente'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Stovetop-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Estufa de dos quemadores</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadEstufa'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Toilet-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Baño privado</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadBanoPrivado'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Sink-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Fregadero + Agua Potable</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadFregadero'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_CellphoneLockbox-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Caja de seguridad del teléfono celular
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadCajaSeguridad'|_ }}
                                 </div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_ChairsPicnicTable-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Sillas + Mesa de picnic</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadSillasMesa'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_CookwareDishware-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Olla, Sartén + Vajilla</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadOllaSarten'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Dog-Treat-navy'|theme}}.svg"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Un pequeño regalo</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadRegalo'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Firepit_GrillGrate-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Pozo de fuego + parrilla</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadPozoFuego'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Fridge-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Mini-nevera</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadMiniNevera'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Log-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Leña + Iniciador de fuego</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadLena'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_SaltPepperOil-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Sal, Pimienta + Aceite de Oliva</div>
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadSalPimienta'|_ }}</div>
                             </div>
                             <div class="InYourCabin__categoryItem__MEPqh">
                                 <img alt="" class="lozad"
                                     data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Toilettries-navy.svg'|theme}}"
                                     class="InYourCabin__amenity__elejP" />
-                                <div class="InYourCabin__amenityTitle__+Pmgt">Shampoo, Acondicionador + Gel de baño
+                                <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadShampoo'|_ }}
                                 </div>
                             </div>
                         </div>
                         <button class="InYourCabin__showMore__YLB8t">
                             <div class="InYourCabin__buttonFlex__9O2h3">
-                                <div class="InYourCabin__buttonFlex__text" id="textoBoton">Ver todos los servicios de la
-                                    cabaña</div>
+                                <div class="InYourCabin__buttonFlex__text" id="textoBoton">{{ 'verTodosServicios'|_ }}</div>
                                 <img alt=""
                                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDE2IDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wLjMxMzM0OCAwLjMwNTE2NUMtMC4xMDQ0NSAwLjcxMDY2MyAtMC4xMDQ0NSAxLjM2NDQyIDAuMzEzMzQ4IDEuNzY5OTJMNy4zOTg4OCA4LjY0NjgzQzcuNzMxNDEgOC45Njk1NyA4LjI2ODU4IDguOTY5NTcgOC42MDExMiA4LjY0NjgzTDE1LjY4NjcgMS43Njk5MkMxNi4xMDQ0IDEuMzY0NDIgMTYuMTA0NCAwLjcxMDY2MyAxNS42ODY3IDAuMzA1MTY2QzE1LjI2ODkgLTAuMTAwMzMyIDE0LjU5NTMgLTAuMTAwMzMyIDE0LjE3NzUgMC4zMDUxNjZMNy45OTU3NCA2LjI5NjZMMS44MTQwMSAwLjI5Njg4OUMxLjQwNDc0IC0wLjEwMDMzMyAwLjcyMjYyMSAtMC4xMDAzMzMgMC4zMTMzNDggMC4zMDUxNjVaIiBmaWxsPSIjMjcyNzI4Ii8+Cjwvc3ZnPgo=" />
                             </div>
@@ -1223,7 +1221,7 @@ line-height: 1.3em;
         {% if cabanas.count > 0 %}
         <section class="contentLoc newUbic">
             <div class="titleNewUbi">
-                <div class="h2"> Cabañas </div>
+                <div class="h2"> {{ 'Cabañas'|_ }} </div>
             </div><!-- end.titleNewUbi -->
             <div class="containerCabanas" id="containerCabanas">
                 <div class="row justify-content-center min-margin-45  " id="ubicacionDesktop">
@@ -1258,7 +1256,7 @@ line-height: 1.3em;
                                                         font-family: 'Oswald',sans-serif;
                                                         font-weight: 500;
                                                         text-transform: uppercase;
-                                                        ">Desde ${{cabana.total|number_format}} p/noche
+                                                        ">{{ 'Desde'|_ }} ${{cabana.total|number_format}} {{ 'porNoche'|_ }}
                                                 </div>
                                             </div>
                                         </div>
@@ -1322,7 +1320,7 @@ line-height: 1.3em;
                                                         font-family: 'Oswald',sans-serif;
                                                         font-weight: 500;
                                                         text-transform: uppercase;
-                                                        ">Estancia desde ${{cabana.total|number_format}} por noche
+                                                        ">{{ 'estanciaDesde'|_ }} ${{cabana.total|number_format}} {{ 'porNoche'|_ }}
                                                 </div>
                                             </div>
                                         </div>
@@ -1360,8 +1358,8 @@ line-height: 1.3em;
                             class="btnCtaGen__link"
                             style="background-color: #B55B12!important;"
                             onclick="$('#select').request('onSelect');">
-                            Realiza tu reserva
-                    </button>                        
+                            {{ 'realizaTuReserva'|_ }}
+                    </button>
                     
                 </div><!-- end.btnCtaGen btnCtaGen__link--rounded-->
             </div> <!-- end.wrpLoc -->
@@ -1370,7 +1368,7 @@ line-height: 1.3em;
         {% if servicios.count > 0 %}
         <section class="contentLoc newUbicW">
             <div class="titleNewUbi">
-                <div class="h2">Mejora tu experiencia con alguno de nuestras actividades y kits</div>
+                <div class="h2">{{ 'mejoraExperiencia'|_ }}</div>
             </div><!-- end.titleNewUbi -->
             <div class="containerCabanas" id="containerCabanas">
                 <div class="row justify-content-center min-margin-45" id="serviciosDesktop">
@@ -1402,7 +1400,7 @@ line-height: 1.3em;
                                             </div>
                                         </div>
                                         <div class="cabinPrice">
-                                            <p style="text-align:right!important;">Desde
+                                            <p style="text-align:right!important;">{{ 'Desde'|_ }}
                                                 ${{servicio.precio_sab|number_format}}</p>
                                         </div>
                                     </div>
@@ -1411,7 +1409,7 @@ line-height: 1.3em;
                                             style="text-align: justify!important; line-height: 1.3em;">
                                             {{servicio.descripcion}}
                                         </p>
-                                        <a class="read-more-link">Leer más</a>
+                                        <a class="read-more-link">{{ 'leer-mas'|_ }}</a>
                                     </div>
                                 </div>
                             </div><!-- end.descCabana -->
@@ -1447,7 +1445,7 @@ line-height: 1.3em;
                                             </div>
                                         </div>
                                         <div class="cabinPrice">
-                                            <p class="cabinPriceP" style="text-align:right!important;">Desde
+                                            <p class="cabinPriceP" style="text-align:right!important;">{{ 'Desde'|_ }}
                                                 ${{servicio.precio_sab|number_format}}</p>
                                         </div>
                                     </div>
@@ -1455,7 +1453,7 @@ line-height: 1.3em;
                                         <p class="expandable-description" style="text-align: justify!important; ">
                                             {{servicio.descripcion}}
                                         </p>
-                                        <a class="read-more-link">Leer más</a>
+                                        <a class="read-more-link">{{ 'leer-mas'|_ }}</a>
                                     </div>
                                 </div>
                             </div><!-- end.descCabana -->
@@ -1475,7 +1473,7 @@ line-height: 1.3em;
                             class="btnCtaGen__link"
                             style="background-color: #B55B12!important;"
                             onclick="$('#select').request('onSelect');">
-                            Realiza tu reserva
+                            {{ 'realizaTuReserva'|_ }}
                     </button>
                     
                 </div><!-- end.btnCtaGen btnCtaGen__link--rounded-->
@@ -1489,7 +1487,7 @@ line-height: 1.3em;
                 <div class="row">
                     <div class="col-12">
                         <div class="titleNewUbi">
-                            <div class="h2"> Ubicación</div>
+                            <div class="h2"> {{ 'Ubicación'|_ }}</div>
                         </div><!-- end.titleNewUbi -->
                     </div><!-- end.col-* -->
                 </div><!-- end.row -->
@@ -1504,7 +1502,7 @@ line-height: 1.3em;
                             class="btnCtaGen__link"
                             style="background-color: #B55B12!important;"
                             onclick="$('#select').request('onSelect');">
-                            Realiza tu reserva contactless
+                            {{ 'Realiza tu reserva contactless'|_ }}
                         </button>
 
             </div><!-- end.btnCtaGen btnCtaGen__link--rounded-->
@@ -1515,7 +1513,7 @@ line-height: 1.3em;
                 <div>
                     <div class="row align-items-start containerBlog" id="containerBlog">
                         <div class="titleNewUbi">
-                            <div class="h2"> Blog </div>
+                            <div class="h2"> {{ 'Blog'|_ }} </div>
                         </div><!-- end.titleNewUbi -->
                         <div class="col-12 slideBlog" style="padding:0 0 20px 0">
                             {% for post in posts|slice(0,4) %}
@@ -1527,7 +1525,7 @@ line-height: 1.3em;
                                             alt="{{a}}" class="attachment-thumbnail size-thumbnail wp-post-image lozad"
                                             alt="" loading="lazy">
                                         {% endfor %}
-                                        <a href="/blog/post/{{ post.slug}}">Ver más</a>
+                                        <a href="/blog/post/{{ post.slug}}">{{ 'ver-mas'|_ }}</a>
                                     </div>
                                     <figcaption>
                                         <h3 class="figBlog__title"> <a
@@ -1535,7 +1533,7 @@ line-height: 1.3em;
                                         <!--h3 class="title"> <a href="/blog/post/{{ post.slug}}">{{post.title}}</a></h3-->
                                         <p class="figBlog__desc" style="line-height: 1.6em; text-align: justify;">
                                             {{post.excerpt}}</p>
-                                        <a href="/blog/post/{{ post.slug}}" class="figBlog__link">Ver más</a>
+                                        <a href="/blog/post/{{ post.slug}}" class="figBlog__link">{{ 'ver-mas'|_ }}</a>
                                     </figcaption>
                                 </figure><!-- edn.figBlog -->
                             </div><!-- end.col-* -->
@@ -1543,7 +1541,7 @@ line-height: 1.3em;
                         </div>
                         <div class="col-12">
                             <div class="blogList__btn">
-                                <a href="/blog" class="blogList__link">Ver más notas</a>
+                                <a href="/blog" class="blogList__link">{{ 'ver-mas-notas'|_ }}</a>
                             </div><!-- end.blogList__btn -->
                         </div><!-- end.col-* -->
                     </div><!-- end.row -->
@@ -1557,7 +1555,7 @@ line-height: 1.3em;
         {% if paquetes.count > 0 %}
         <section class="contentLoc newUbicW">
             <div class="titleNewUbi">
-                <div class="h2">Disfruta la mejor experiecia con alguno de nuestros paquetes </div>
+                <div class="h2">{{ 'disfrutaPaquetes'|_ }} </div>
             </div><!-- end.titleNewUbi -->
             <div class="containerCabanas" id="containerCabanas">
                 <div class="row justify-content-center min-margin-45" id="serviciosDesktop">
@@ -1589,7 +1587,7 @@ line-height: 1.3em;
                                             </div>
                                         </div>
                                         <div class="cabinPrice">
-                                            <p style="text-align:right!important;">Costo
+                                            <p style="text-align:right!important;">{{ 'Costo'|_ }}
                                                 ${{paquete.total|number_format}}</p>
                                         </div>
                                     </div>
@@ -1598,7 +1596,7 @@ line-height: 1.3em;
                                             style="text-align: justify!important; line-height: 1.3em;">
                                             {{paquete.descripcion}}
                                         </p>
-                                        <a class="read-more-link">Leer más</a>
+                                        <a class="read-more-link">{{ 'leer-mas'|_ }}</a>
                                     </div>
                                 </div>
                             </div><!-- end.descCabana -->
@@ -1606,9 +1604,9 @@ line-height: 1.3em;
                        <div class="PackSelectCard__flexColumn_buttons">
                                                  <button class="PackSelectCard__button__auYmq PackSelectCard_button_W" 
                                                  onclick="location.href='/packs/fechas/{{ paquete.id }}/{{ paquete.general ? ubicacion_id : paquete.ubicacion_id }}';"
-                                                 type="button">Seleccionar</button>
+                                                 type="button">{{ 'Seleccionar'|_ }}</button>
 
-                                                 <button class="PackSelectCard__button__auYmq"  style="background-color:#B55B12!important;" onclick="location.href='https://wandercabins.mx/pack/{{paquete.ubicacion.url}}/{{paquete.slug}}';"  type="button">Leer más</button>
+                                                 <button class="PackSelectCard__button__auYmq"  style="background-color:#B55B12!important;" onclick="location.href='https://wandercabins.mx/pack/{{paquete.ubicacion.url}}/{{paquete.slug}}';"  type="button">{{ 'leer-mas'|_ }}</button>
 
                                             </div>
                         
@@ -1631,7 +1629,7 @@ line-height: 1.3em;
                             class="btnCtaGen__link"
                             style="background-color: #B55B12!important;"
                             onclick="$('#select').request('onSelect');">
-                            Realiza tu reserva
+                            {{ 'realizaTuReserva'|_ }}
                     </button>
                     
                 </div><!-- end.btnCtaGen btnCtaGen__link--rounded-->
@@ -1650,7 +1648,7 @@ line-height: 1.3em;
         <section class="contentLoc newUbicW" style="background-color: #ffffff !important;">
             <div class="row">
                 <div class="titleNewUbi">
-                    <div class="h2"> Nuestros Huéspedes Opinan </div>
+                    <div class="h2"> {{ 'titleOpinion'|_ }} </div>
                 </div><!-- end.titleNewUbi -->
                 <div class="col-12">
                     <div class="slideTestimonials">
@@ -1727,7 +1725,7 @@ line-height: 1.3em;
             <ul role="menu" aria-label="Pagination">
                 <li>
 
-                    <button href="#" onclick="view()" style="background-color:#222919;">Reservar</button>
+                    <button href="#" onclick="view()" style="background-color:#222919;">{{ 'Reservar'|_ }}</button>
 
 
                 </li>
@@ -1864,9 +1862,9 @@ line-height: 1.3em;
             link.click(function () {
                 description.toggleClass("expanded");
                 if (description.hasClass("expanded")) {
-                    link.text("Leer menos");
+                    link.text("{{ 'leer-menos'|_ }}");
                 } else {
-                    link.text("Leer más");
+                    link.text("{{ 'leer-mas'|_ }}");
                 }
             });
         });
@@ -1886,8 +1884,8 @@ line-height: 1.3em;
                 // Mostrar todos los elementos si no se han mostrado antes
                 $(".InYourCabin__categoryItem__MEPqh").show();
                 contenidoMostrado = true;
-                document.getElementById('textoBoton').textContent = 'Ocultar los servicios de la cabaña';
-                //textB.text("Ocultar los servicios de la cabaña");
+                document.getElementById('textoBoton').textContent = '{{ 'ocultarServicios'|_ }}';
+                //textB.text("{{ 'ocultarServicios'|_ }}");
             } else {
                 contenidoMostrado = false;
                 // Mostrar u ocultar los elementos después del sexto alternativamente
@@ -1897,8 +1895,8 @@ line-height: 1.3em;
                     $(".InYourCabin__categoryItem__MEPqh:gt(5)").hide();
                 }
                 // Cambiar el texto del botón
-                document.getElementById('textoBoton').textContent = 'Ver todos los servicios de la cabaña';
-                // textB.text("Ver todos los servicios de la cabaña");
+                document.getElementById('textoBoton').textContent = '{{ 'verTodosServicios'|_ }}';
+                // textB.text("{{ 'verTodosServicios'|_ }}");
             }
         });
     });

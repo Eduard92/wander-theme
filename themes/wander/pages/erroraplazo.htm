@@ -67,7 +67,7 @@ robot_follow = "follow"
   <div class="reservaCt">
     <div class="descFullPage">
       <img src="{{ 'assets/img/logos/logo-wander-black-text.svg'|theme }}" alt="Wander">
-      <h2>OCURRIO UN ERROR EN EL PAGO DE LA RESERVA</h2>
+      <h2>{{ 'errorPagoReserva'|_ }}</h2>
     </div>
     <div class="payContent">
       <div class="container">
@@ -75,47 +75,47 @@ robot_follow = "follow"
           <div class="col-12 col-md-6">
           <h4>{{reserva.user.name}}<br>
           <small>{{reserva.user.email}}  +{{reserva.user.codigo_telefonico}} {{reserva.user.telefono}}</small><br><br>
-          Cabaña {{reserva.cabana.nombre}} en {{reserva.ubicacion.nombre}}, {{reserva.noches}} noche(s).<br></h4>
-          
+          {{ 'Cabaña'|_ }} {{reserva.cabana.nombre}} {{ 'en'|_ }} {{reserva.ubicacion.nombre}}, {{reserva.noches}} {{ 'noches'|_ }}.<br></h4>
+
             <div class="payContent__box" style="text-align=left;">
-              
-              <p><small>Número de reservación: </small>{{reserva.id}}<br>
-              <small>Estatus: </small>{{reserva.estatus}}<br>
-              <small>Reservado el: </small>{{reserva.created_at|date("d/m/Y H:m")}}hrs.<br>
+
+              <p><small>{{ 'numeroDeReservacion'|_ }}: </small>{{reserva.id}}<br>
+              <small>{{ 'Estatus'|_ }}: </small>{{reserva.estatus}}<br>
+              <small>{{ 'reservadoEl'|_ }}: </small>{{reserva.created_at|date("d/m/Y H:m")}}hrs.<br>
               <br>
-              <small>Check-in: </small>{{reserva.inicio|date("d/m/Y")}} 16:00hrs.<br>
-              <small>Check-out: </small>{{reserva.fin|date("d/m/Y")}} 12:00hrs.<br>
-              <small>Adultos: </small>{{reserva.adultos}}<br>
-              <small>Niños: </small>{{reserva.ninos}}<br>
-              <small>Acceso a mascotas: </small>{% if reserva.mascotas == 0 %}NO{% else %}SI{% endif %}<br>
+              <small>{{ 'checkIn'|_ }}: </small>{{reserva.inicio|date("d/m/Y")}} 16:00hrs.<br>
+              <small>{{ 'checkOut'|_ }}: </small>{{reserva.fin|date("d/m/Y")}} 12:00hrs.<br>
+              <small>{{ 'Adultos'|_ }}: </small>{{reserva.adultos}}<br>
+              <small>{{ 'Niños'|_ }}: </small>{{reserva.ninos}}<br>
+              <small>{{ 'accesoAMascotas'|_ }}: </small>{% if reserva.mascotas == 0 %}NO{% else %}SI{% endif %}<br>
               <br>
-              <small>Total: </small>${{reserva.costo_total|number_format(2, '.', ',') }} <small>MXN.</small><br><br>
-              <small>Cupón de Descuento: </small>{% if reserva.cupon %}{{reserva.cupon.cupon}} <br> 
-                  <small>% de Descuento: </small> {{reserva.cupon.descuento}} % <br> 
-                  <small>Monto de Descuento: </small> ${{reserva.descuento}}<br>{% else %}No Aplico{% endif %}<br>
-                  
-              <small>Clave de acceso: </small>{{reserva.cabana.clave_acceso}}<br><br>
-              
-               
-               Nuestro equipo se pondra en contacto contigo un dia antes de tu reserva para mas detalles sobre tu llegada y experiencia.<br>
+              <small>{{ 'Total'|_ }}: </small>${{reserva.costo_total|number_format(2, '.', ',') }} <small>MXN.</small><br><br>
+              <small>{{ 'cuponDeDescuento'|_ }}: </small>{% if reserva.cupon %}{{reserva.cupon.cupon}} <br>
+                  <small>{{ 'porcentajeDescuento'|_ }}: </small> {{reserva.cupon.descuento}} % <br>
+                  <small>{{ 'montoDeDescuento'|_ }}: </small> ${{reserva.descuento}}<br>{% else %}{{ 'noAplico'|_ }}{% endif %}<br>
+
+              <small>{{ 'claveDeAcceso'|_ }}: </small>{{reserva.cabana.clave_acceso}}<br><br>
+
+
+               {{ 'nuestroEquipoContacto'|_ }}<br>
 
               </p>
               
             </div>
             
             {% if reserva.servicios %}
-                <h4>Servicios extra:<br/>
+                <h4>{{ 'serviciosExtra'|_ }}:<br/>
                     {% for servicio in reserva.servicios %}
                         {% if servicio.servicio.tipo == 'kit' %}
                             <small>{{servicio.servicio.nombre}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
                         {% elseif servicio.servicio.tipo == 'extended' %}
                             <small>{{servicio.servicio.nombre}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
                         {% elseif servicio.servicio.tipo == 'actividad' %}
-                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} por {{servicio.dias}} día(s) ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} {{ 'por'|_ }} {{servicio.dias}} {{ 'dias'|_ }} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
                         {% elseif servicio.servicio.tipo == 'alimentos' %}
-                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} por {{servicio.dias}} día(s) ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} {{ 'por'|_ }} {{servicio.dias}} {{ 'dias'|_ }} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
                         {% elseif servicio.servicio.tipo == 'amenidades' %}
-                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} la noche {{servicio.fecha}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} {{ 'laNoche'|_ }} {{servicio.fecha}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
                         {% else  %}
                             <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
                         {% endif %}
@@ -124,10 +124,10 @@ robot_follow = "follow"
                 </h4>
                 <br>
             {% endif %}
-            
-            <h4>Huéspedes:<br/>
+
+            <h4>{{ 'Huéspedes'|_ }}:<br/>
             {% for huesped in reserva.huespedes %}
-                <small>{{huesped.nombre}} - {{huesped.edad}} años</small><br/>
+                <small>{{huesped.nombre}} - {{huesped.edad}} {{ 'anos'|_ }}</small><br/>
             {% endfor %}
             </h4>
           </div><!-- end.col-* -->
@@ -141,7 +141,7 @@ robot_follow = "follow"
               <div class="d-flex flex-column justify-content-center align-items-center w-100" style="min-height:100%;">
                 <div class="card-body payMet text-center">
                   <div class="payMet__desc text-center mb-4">
-                    <h4>No te quedes sin vivir la experiencia, te ofrecemos alternativas de pago</h4>
+                    <h4>{{ 'alternativasDePago'|_ }}</h4>
                   </div>
             
                   <div class="d-flex flex-column gap-3 align-items-center w-100">
@@ -150,7 +150,7 @@ robot_follow = "follow"
                     <!-- Tarjeta con Stripe -->
                     <button type="submit" class="btn btnpr btnpr__primary--border newbtn align-items-center justify-content-center p-3"
                             onclick="document.getElementById('resMetodo').value='tarjeta'">
-                      <i class="fa fa-credit-card mr-2"></i> Tarjeta de Crédito / Débito 
+                      <i class="fa fa-credit-card mr-2"></i> {{ 'tarjetaCreditoDebito'|_ }}
                       <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" 
                            alt="Stripe" style="height:20px; margin-left:8px;">
                     </button>
@@ -159,7 +159,7 @@ robot_follow = "follow"
                       <!-- Transferencia con Stripe -->
                       <button type="submit" class="btn btnpr btnpr__primary--border newbtn align-items-center justify-content-center p-3"
                               onclick="document.getElementById('resMetodo').value='transferencia'">
-                        <i class="fa fa-bank mr-2"></i> Transferencia Bancaria 
+                        <i class="fa fa-bank mr-2"></i> {{ 'transferenciaBancaria'|_ }}
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" 
                              alt="Stripe" style="height:20px; margin-left:8px;">
                       </button>
@@ -169,7 +169,7 @@ robot_follow = "follow"
                       <!-- Oxxo -->
                       <button type="submit" class="btn btnpr btnpr__primary--border newbtn align-items-center justify-content-center p-3"
                               onclick="document.getElementById('resMetodo').value='oxxo'">
-                        <i class="fa fa-store mr-2"></i> Oxxo 
+                        <i class="fa fa-store mr-2"></i> {{ 'Oxxo'|_ }}
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" 
                              alt="Stripe" style="height:20px; margin-left:8px;">
                       </button>
@@ -195,13 +195,13 @@ robot_follow = "follow"
   <div class="reservaCt">
     <div class="descFullPage">
       <img src="{{ 'assets/img/logos/logo-wander-black-text.svg'|theme }}" alt="Wander">
-      <h2>Ocurrio un error </h2>
+      <h2>{{ 'ocurrioUnError'|_ }}</h2>
     </div>
        <div class="payContent">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-md-6 col-lg-6">
-            <h4>No se encontro la reserva.</h4><br>
+            <h4>{{ 'noSeEncontroReserva'|_ }}</h4><br>
           </div>
         </div>
      </div>

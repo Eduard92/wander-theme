@@ -221,7 +221,7 @@ pet friendly. ¡Te esperamos!{% endput %}
 
 <div id="loadingModal" class="loading-modal" style="display: none;">
   <img src="{{ 'assets/img/logos/wander-full-white.svg'|theme }}" alt="Wander" class="loading-image">
-  <p style="font-family: 'Oswald',sans-serif;font-size:1.5em;color:#ffffff;" claemzss="loading-message">Cargando...</p>
+  <p style="font-family: 'Oswald',sans-serif;font-size:1.5em;color:#ffffff;" claemzss="loading-message">{{ 'cargando'|_ }}</p>
 </div>
 
 
@@ -229,32 +229,32 @@ pet friendly. ¡Te esperamos!{% endput %}
   <div class="reservaCt">
     <div class="descReservar" id="focus">
       <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
-      <h2>Selecciona una cabaña</h2>
+      <h2>{{ 'seleccionaCabana'|_ }}</h2>
     </div>
     {{ form_ajax('onCabanas', {class: 'stepReservaFrm'}) }}
     <div class="wizard">
       <div class="steps clearfix">
         <ul role="tablist">
           <li role="tab" class="first done" aria-disabled="false" aria-selected="true">
-            <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">Paso 1</a>
+            <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">{{ 'paso1'|_ }}</a>
           </li>
           <li role="tab" class="done" aria-disabled="true">
-            <a id="steps-uid-0-t-1" href="{{'reservar-2'|page}}" aria-controls="steps-uid-0-p-1">Paso 2</a>
+            <a id="steps-uid-0-t-1" href="{{'reservar-2'|page}}" aria-controls="steps-uid-0-p-1">{{ 'paso2'|_ }}</a>
           </li>
           <li role="tab" class="done" aria-disabled="true">
-            <a id="steps-uid-0-t-2" href="{{'reservar-3'|page}}" aria-controls="steps-uid-0-p-2">Paso 3</a>
+            <a id="steps-uid-0-t-2" href="{{'reservar-3'|page}}" aria-controls="steps-uid-0-p-2">{{ 'paso3'|_ }}</a>
           </li>
           <li role="tab" class="current" aria-disabled="true">
-            <a id="steps-uid-0-t-3" href="{{''|page}}" aria-controls="steps-uid-0-p-3">Paso 4</a>
+            <a id="steps-uid-0-t-3" href="{{''|page}}" aria-controls="steps-uid-0-p-3">{{ 'paso4'|_ }}</a>
           </li>
           <li role="tab" class="disabled" aria-disabled="true">
-            <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">Paso 5</a>
+            <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">{{ 'paso5'|_ }}</a>
           </li>
           <li role="tab" class="disabled" aria-disabled="true">
-            <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">Paso 6</a>
+            <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">{{ 'paso6'|_ }}</a>
           </li>
           <li role="tab" class="disabled last" aria-disabled="true">
-            <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">Paso 7</a>
+            <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">{{ 'paso7'|_ }}</a>
           </li>
         </ul><!-- end.ul -->
       </div><!-- end.steps -->
@@ -366,7 +366,7 @@ pet friendly. ¡Te esperamos!{% endput %}
                                   id="cab-{{cabana.wander.slug}}" value="{{cabana.wander.id}}" {% if
                                   cabanaId==cabana.wander.id %}checked{% endif %}>
                                 <label for="cab-{{cabana.wander.slug}}"
-                                  onclick="select('{{cabana.wander.nombre}}')">Seleccionar</label>
+                                  onclick="select('{{cabana.wander.nombre}}')">{{ 'Seleccionar'|_ }}</label>
 
 
                               </div><!-- end.descCabana -->
@@ -374,7 +374,7 @@ pet friendly. ¡Te esperamos!{% endput %}
                           </div><!-- end.col-* -->
                           {% endfor %}
                           {% else %}
-                          <div class="col-12 col-md-4">No contamos con cabañas disponibles en esta ubicación.</div>
+                          <div class="col-12 col-md-4">{{ 'sinCabanasDisponibles'|_ }}</div>
                           {% endif %}
                         </div><!-- end.row -->
 
@@ -383,7 +383,7 @@ pet friendly. ¡Te esperamos!{% endput %}
                   </div><!-- end.card -->
                 </div><!-- end#accSelCabin -->
                 <small>
-                  <blockquote>* Precios sin IVA.</blockuote>
+                  <blockquote>* {{ 'preciosSinIVA'|_ }}</blockuote>
                 </small>
 
                 {% elseif grupo == 'todas' %}
@@ -397,7 +397,7 @@ pet friendly. ¡Te esperamos!{% endput %}
                           <input type="hidden" id="picker" name="picker"><!-- recibe los datos del calendario. -->
                           <div id="picker"></div>
                           <div style="text-align:center;margin-bottom: 10px;">
-                            <span class="labelTitleInp" id="labelSel1">Seleccione un destino</span>
+                            <span class="labelTitleInp" id="labelSel1">{{ 'seleccioneDestino'|_ }}</span>
                           </div>
                           <div class="form-group mb-2 inputSelect wIn" data-input-home>
                             <input type="hidden" name="locacion" id="locacion" value="">
@@ -406,9 +406,9 @@ pet friendly. ¡Te esperamos!{% endput %}
 
                               <a href="#" class="collOpenForm" id="openOpsForms">
 
-                                <span class="labelInp"><i class="fa fa-map-marker"></i> Destino</span>
+                                <span class="labelInp"><i class="fa fa-map-marker"></i> {{ 'Destino'|_ }}</span>
 
-                                <span id="textChange" class="responseText">Destino</span>
+                                <span id="textChange" class="responseText">{{ 'Destino'|_ }}</span>
 
                               </a><!-- end.collOpenForm -->
 
@@ -463,7 +463,7 @@ pet friendly. ¡Te esperamos!{% endput %}
                           <input type="hidden" id="picker" name="picker"><!-- recibe los datos del calendario. -->
                           <div id="picker"></div>
                           <div style="text-align:center;margin-bottom: 10px;">
-                            <span class="labelTitleInp" id="labelSel1">Seleccione un destino</span>
+                            <span class="labelTitleInp" id="labelSel1">{{ 'seleccioneDestino'|_ }}</span>
                           </div>
                           <div class="form-group mb-2 inputSelect wIn" data-input-home>
                             <input type="hidden" name="locacion" id="locacion" value="">
@@ -472,9 +472,9 @@ pet friendly. ¡Te esperamos!{% endput %}
 
                               <a href="#" class="collOpenForm" id="openOpsForms">
 
-                                <span class="labelInp"><i class="fa fa-map-marker"></i> Destino</span>
+                                <span class="labelInp"><i class="fa fa-map-marker"></i> {{ 'Destino'|_ }}</span>
 
-                                <span id="textChange" class="responseText">Destino</span>
+                                <span id="textChange" class="responseText">{{ 'Destino'|_ }}</span>
 
                               </a><!-- end.collOpenForm -->
 
@@ -618,7 +618,7 @@ pet friendly. ¡Te esperamos!{% endput %}
                                   id="cab-{{cabana.slug}}" value="{{cabana.id}}" {% if cabanaId==cabana.id %}checked{%
                                   endif %}>
                                 <label for="cab-{{cabana.slug}}"
-                                  onclick="select('{{cabana.nombre}}')">Seleccionar</label>
+                                  onclick="select('{{cabana.nombre}}')">{{ 'Seleccionar'|_ }}</label>
 
 
                               </div><!-- end.descCabana -->
@@ -626,7 +626,7 @@ pet friendly. ¡Te esperamos!{% endput %}
                           </div><!-- end.col-* -->
                           {% endfor %}
                           {% else %}
-                          <div class="col-12 col-md-4">No contamos con cabañas disponibles en esta ubicación.</div>
+                          <div class="col-12 col-md-4">{{ 'sinCabanasDisponibles'|_ }}</div>
                           {% endif %}
                         </div><!-- end.row -->
 
@@ -635,7 +635,7 @@ pet friendly. ¡Te esperamos!{% endput %}
                   </div><!-- end.card -->
                 </div><!-- end#accSelCabin -->
                 <small>
-                  <blockquote>* Precios sin IVA.</blockuote>
+                  <blockquote>* {{ 'preciosSinIVA'|_ }}</blockuote>
                 </small>
 
 
@@ -649,11 +649,11 @@ pet friendly. ¡Te esperamos!{% endput %}
       <div class="actions clearfix" style="background: #f7f5f1 !important">
         <ul role="menu" aria-label="Pagination">
           <li aria-disabled="false">
-            <a href="{{'reservar-3'|page}}">Atrás</a>
+            <a href="{{'reservar-3'|page}}">{{ 'Atrás'|_ }}</a>
           </li>
           <li aria-hidden="false" aria-disabled="false">
             <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="ubicacion" onclick="send(1)">
-              <i class="fa fa-chevron-right"></i><span>Siguiente</span>
+              <i class="fa fa-chevron-right"></i><span>{{ 'Siguiente'|_ }}</span>
             </button>
           </li>
         </ul><!-- end.ul -->

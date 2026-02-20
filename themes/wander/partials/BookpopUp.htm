@@ -152,8 +152,8 @@ pageNumber = "{{ :page }}"
                                         
                                         <div class="selectFormContact">
                                             <a href="#" class="collOpenForm" id="openOpsForms1">
-                                                <span class="labelInp"><i class="fa fa-map-marker"></i> Destino</span>
-                                                <span id="textChange1" class="responseText">Destino</span>
+                                                <span class="labelInp"><i class="fa fa-map-marker"></i> {{ 'Destino'|_ }}</span>
+                                                <span id="textChange1" class="responseText">{{ 'Destino'|_ }}</span>
                                             </a><!-- end.collOpenForm -->
 
                                             <nav id="navOpcionform1">
@@ -187,9 +187,9 @@ pageNumber = "{{ :page }}"
                                 <div class="form-group mb-2 inputSelect wIn">
                                     <div class="inputSelect__dateCheck">
                                         <button class="btnSelectOption activeHues" type="button" data-option="huesped1" data-close-ubic>
-                                            <span><i class=" fa fa-user"></i> Huéspedes</span>
+                                            <span><i class=" fa fa-user"></i> {{ 'Huéspedes'|_ }}</span>
                                             <div id="huesRes1">
-                                                <p>2 Adulto(s)</p>
+                                                <p>2 {{ 'Adulto'|_ }}(s)</p>
                                             </div>
                                         </button>
                                         <div id="huesped1" class="modalOption" style="bottom:unset!important" >
@@ -199,7 +199,7 @@ pageNumber = "{{ :page }}"
 
                                   <div class="inputHuespedHome">
 
-                                    <h4 class="inputHuespedHome__title">Adultos</h4>
+                                    <h4 class="inputHuespedHome__title">{{ 'Adultos'|_ }}</h4>
 
                                     <div class="inputHuespedHome__opt1">
 
@@ -235,7 +235,7 @@ pageNumber = "{{ :page }}"
 
                                   <div class="inputHuespedHome">
 
-                                    <h4 class="inputHuespedHome__title">Niños</h4>
+                                    <h4 class="inputHuespedHome__title">{{ 'Niños'|_ }}</h4>
 
                                     <div class="inputHuespedHome__opt1">
 
@@ -269,7 +269,7 @@ pageNumber = "{{ :page }}"
 
                                   <div class="inputHuespedHome">
 
-                                    <h4 class="inputHuespedHome__title">Mascotas</h4>
+                                    <h4 class="inputHuespedHome__title">{{ 'Mascotas'|_ }}</h4>
 
                                     <div class="inputHuespedHome__opt1">
 
@@ -290,7 +290,7 @@ pageNumber = "{{ :page }}"
                               </ul>
 
                                             <div class="closeModCt">
-                                <button type="button" id="close-huesped1">Aceptar</button>
+                                <button type="button" id="close-huesped1">{{ 'Aceptar'|_ }}</button>
                                             </div>
                                         </div><!-- end.modalOption -->
                                     </div><!-- end.inputSelect__dateCheck -->
@@ -298,7 +298,7 @@ pageNumber = "{{ :page }}"
 
 
                                 <div class="form-group mb-2 inputSelect wIn">
-                                    <label class="inputSelect__inputDate" data-input-home1 for="entrada">Fechas
+                                    <label class="inputSelect__inputDate" data-input-home1 for="entrada">{{ 'Fechas'|_ }}
                                         <!--input type="text" mbsc-input class="form-control inputForm__input" id="entrada" name="entrada" placeholder="Entrada"><!-- mbsc-input -->
                                         <input id="range" class="form-control inputForm__input" name="range" mbsc-input placeholder="Seleccione CheckIn y Checkout" />
                                     </label>
@@ -306,7 +306,7 @@ pageNumber = "{{ :page }}"
                                 </div>
 
 
-                                <button type="submit" id="submit-disp2" class="btn btn-primary mb-2">Reservar</button>
+                                <button type="submit" id="submit-disp2" class="btn btn-primary mb-2">{{ 'Reservar'|_ }}</button>
 
 
 

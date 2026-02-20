@@ -1032,7 +1032,7 @@ pageNumber = "{{ :page }}"
                   <div class="h2"><span style="font-size: .8em;margin-top:20px">{{ubicacion.distancia}} desde {{ubicacion.ciudad.nombre}}</span></div>
                           <div class="description-container"  style="padding: 0px 0;MIN-HEIGHT:5em">
                                 <p class="expandable-description" style="line-height: 1.6em; text-align: justify; " >{{ubicacion.descripcion}}</p>
-                                <p><a style="margin-top:5px;" class="read-more-link">Leer más</a></p>
+                                <p><a style="margin-top:5px;" class="read-more-link">{{ 'leer-mas'|_ }}</a></p>
                           </div>                  
               </div>
               {% if ubicacion.disponible == true %}
@@ -1101,7 +1101,7 @@ pageNumber = "{{ :page }}"
                     <div class="h2">{{ 'titlePaquetes'|_ }} </div>
                 </div><!-- end.titleNewUbi -->
                 <div class="containerPacks" id="containerPacks">
-                        <p>Cargando paquetes...</p>
+                        <p>{{ 'cargandoPaquetes'|_ }}</p>
                 </div>
             </section>
             <section class="contentLoc newUbic" id="actividades">
@@ -1222,7 +1222,7 @@ pageNumber = "{{ :page }}"
             <section id="comunidad" class="titleSecGen" style="background-image: url({{ 'assets/img/bgs/bg_comunidad.webp'|theme }});display: none;">
               <div class="titleSecGen__desc">
                 <img class="iconWander lozad" data-src="{{ 'assets/img/logos/icono-wander.svg'|theme }}" alt="Wander" loading="lazy">
-                <div class="h2">Comunidad Wander</div>
+                <div class="h2">{{ 'comunidadWander'|_ }}</div>
               </div>
             </section><!-- end#comunidad -->
             </hr>
@@ -1419,9 +1419,9 @@ window.onload = function() {
             link.click(function() {
                 description.toggleClass("expanded");
                 if (description.hasClass("expanded")) {
-                    link.text("Leer menos");
+                    link.text("{{ 'leer-menos'|_ }}");
                 } else {
-                    link.text("Leer más");
+                    link.text("{{ 'leer-mas'|_ }}");
                 }
             });
         });

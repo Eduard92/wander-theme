@@ -9,7 +9,7 @@ description = "cabanas"
   hola
   {% if estanciaMinima > 0 %}
          <div class="alert alert-warning" style="text-align:center;">
-            La estancia durante las fechas selccionadas minima en {{ubic1.nombre}} es de {{estanciaMinima}} noches. <strong><a href="/reservar/fechas">Cambia las fechas tu reserva <a></strong> o selecciona otra ubicación.
+            {{ 'estanciaMinimaMensaje1'|_ }} {{ubic1.nombre}} {{ 'estanciaMinimaMensaje2'|_ }} {{estanciaMinima}} {{ 'noches'|_ }}. <strong><a href="/reservar/fechas">{{ 'cambiaFechasReserva'|_ }} <a></strong> {{ 'oSeleccionaOtraUbicacion'|_ }}.
          </div> 
    {% endif %}
 
@@ -82,7 +82,7 @@ description = "cabanas"
                                             </div>
                                         
                                             <div class="cabinPrice">
-                                                <p> {{noches}} {% if noches > 1 %}noches{% else %}noche{% endif %}<br>${{cabana.total|number_format}}</p>
+                                                <p> {{noches}} {% if noches > 1 %}{{ 'noches'|_ }}{% else %}{{ 'noche'|_ }}{% endif %}<br>${{cabana.total|number_format}}</p>
                                             </div>
                                         </div>
                                         
@@ -106,7 +106,7 @@ description = "cabanas"
                                     {% if not estanciaMinima or estanciaMinima == 0 %}
                                             <input type="radio" data-check-btn class="boxCabanaRes__input" name="cabanaSel" id="cab-{{cabana.slug}}"
                                         value="{{cabana.id}}" {% if cabanaId==cabana.id %}checked{% endif %} >  
-                                      <label for="cab-{{cabana.slug}}"  onclick="select('{{cabana.nombre}}')" >Seleccionar</label>
+                                      <label for="cab-{{cabana.slug}}"  onclick="select('{{cabana.nombre}}')" >{{ 'Seleccionar'|_ }}</label>
                                     {% endif %}
                                     
                               </div><!-- end.descCabana -->
@@ -117,7 +117,7 @@ description = "cabanas"
             
             <div style="text-align:center">
               <img src="{{ 'assets/img/logos/wander-full-green.svg'|theme }}" alt="Wander" class="loading-image">
-              <p style="font-family: 'Oswald',sans-serif;font-size:1.8em;color:#818c70;" claemzss="loading-message">No contamos con cabañas disponibles en esta ubicación.</p>
+              <p style="font-family: 'Oswald',sans-serif;font-size:1.8em;color:#818c70;" claemzss="loading-message">{{ 'sinCabanasDisponibles'|_ }}</p>
             </div>
 
 
@@ -128,7 +128,7 @@ description = "cabanas"
       </div><!-- end.collapse -->
 
     </div><!-- end.card -->
-                                      <small><blockquote>* Precios sin IVA.</blockuote></small>
+                                      <small><blockquote>{{ 'preciosSinIVA'|_ }}</blockuote></small>
 
     {% endif %}
     <script type="text/javascript">

@@ -1024,18 +1024,18 @@ div.row div+div .boxCabanaRes__input[type=checkbox]+label{
 <script type="text/javascript" src="{{'assets/js/scripts/scriptReservar.js'|theme}}"></script>
 {% endput %}
 
-<h3 style="margin-top: 20px;">Agregar Servicios</h3>
+<h3 style="margin-top: 20px;">{{ 'agregarServicios'|_ }}</h3>
     {{ form_ajax('onSearch')}}
         <div class="row" style="min-width:450px;">
         
         
                 <div class="col-12" style="margin-bottom: 20px;">
                   <label for="id_reserva"></label>
-                  <input type="text" class="form-control" name="id_reserva" id="id_reserva" placeholder="Ingrese el ID de la reserva">
+                  <input type="text" class="form-control" name="id_reserva" id="id_reserva" placeholder="{{ 'ingresaIdReserva'|_ }}">
                 </div>
                 <div class="col-12" style="margin-bottom: 20px;">
 
-                    <button type="submit" class="btnCtaGen__link btnCtaGen__link--rounded" style="width:120px;">Buscar</button>
+                    <button type="submit" class="btnCtaGen__link btnCtaGen__link--rounded" style="width:120px;">{{ 'Buscar'|_ }}</button>
                 
                         <div id="error"style="margin-top: 20px;"></div>
 

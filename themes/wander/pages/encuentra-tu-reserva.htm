@@ -7,10 +7,10 @@ robot_follow = "nofollow"
 
 [miReserva]
 ==
-<h3 style="margin-top: 20px;">Gestion de Reservas</h3>
+<h3 style="margin-top: 20px;">{{ 'gestionDeReservas'|_ }}</h3>
 
                       <div class="descBoxCabinsNew">
-                            <div class="titleGeta" >Para encontrar una reserva y ver los detalles ingresa el ID de reserva o correo electrónico del cliente .</div>
+                            <div class="titleGeta" >{{ 'paraEncontrarReserva'|_ }}</div>
                       </div><!-- end.descBoxCabinsNew -->
                       
                       
@@ -20,11 +20,11 @@ robot_follow = "nofollow"
 
                 <div class="col-12" style="margin-bottom: 20px;">
                   <label for="id_reserva"></label>
-                  <input type="text" class="form-control" name="correo" id="correo" required placeholder="Ingresa tu correo electronico">
+                  <input type="text" class="form-control" name="correo" id="correo" required placeholder="{{ 'ingresaTuCorreo'|_ }}">
                 </div>
                 <div class="col-12" style="margin-bottom: 20px;">
 
-            <button type="submit" id="btnBuscar" class="btnCtaGen__link btnCtaGen__link--rounded" style="width:120px;">Buscar</button>
+            <button type="submit" id="btnBuscar" class="btnCtaGen__link btnCtaGen__link--rounded" style="width:120px;">{{ 'Buscar'|_ }}</button>
 
 
 <div id="loaderOverlay" style="
@@ -36,7 +36,7 @@ robot_follow = "nofollow"
   justify-content: center;
   align-items: center;
 ">
-  <img src="https://i.gifer.com/ZZ5H.gif" alt="Cargando..." style="width:80px;">
+  <img src="https://i.gifer.com/ZZ5H.gif" alt="{{ 'cargando'|_ }}..." style="width:80px;">
 </div>
 
 

@@ -19,7 +19,7 @@ detailsPage = "-"
 detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
 ==
-{% put pagetitle %}Servicios adicionales{% endput %}
+{% put pagetitle %}{{ 'packServiciosAdicionales'|_ }}{% endput %}
 {% put metatitle %}Conoce nuestras cabañas en renta petfriendly en Valle de Bravo y Malinalco{% endput %}
 {% put metadescription %}Reserva la experiencia Wander en una de nuestras cabañas en medio de la naturaleza. Ingresa a nuestro sitio, elige tu fecha favorita y ¡listo! Alístate junto con tu pareja, familia, amigos y hasta tu mascota, somos pet friendly. ¡Te esperamos!{% endput %}
 
@@ -1091,7 +1091,7 @@ serviciosExtra.forEach(serviciosExtra => {
   <div class="reservaCt">
     <div class="descReservar" id="focus">
       <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
-      <h2>AGREGA SERVICIOS EXTRA</h2>
+      <h2>{{ 'packAgregaServiciosExtra'|_ }}</h2>
 
     </div>
     {{ form_ajax('onServicios', {class: 'stepReservaFrm'}) }}
@@ -1106,19 +1106,19 @@ serviciosExtra.forEach(serviciosExtra => {
               <a id="steps-uid-0-t-1"  aria-controls="steps-uid-0-p-1"></a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
-              <a id="steps-uid-0-t-2" href="{{ '/packs/fechas/' ~ paquete_id }}" aria-controls="steps-uid-0-p-2">Paso 1</a>
+              <a id="steps-uid-0-t-2" href="{{ '/packs/fechas/' ~ paquete_id }}" aria-controls="steps-uid-0-p-2">{{ 'paso1'|_ }}</a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
-              <a id="steps-uid-0-t-3" href="{{'/packs/cabanas'}}" aria-controls="steps-uid-0-p-3">Paso 2</a>
+              <a id="steps-uid-0-t-3" href="{{'/packs/cabanas'}}" aria-controls="steps-uid-0-p-3">{{ 'paso2'|_ }}</a>
             </li>
             <li role="tab" class="current" aria-disabled="true">
-              <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">Paso 3</a>
+              <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">{{ 'paso3'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">Paso 4</a>
+              <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">{{ 'paso4'|_ }}</a>
             </li>
             <li role="tab" class="disabled last" aria-disabled="true">
-              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">Paso 5</a>
+              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">{{ 'paso5'|_ }}</a>
             </li>
           </ul><!-- end.ul -->
         </div><!-- end.steps --> 
@@ -1138,7 +1138,7 @@ serviciosExtra.forEach(serviciosExtra => {
 
                       
                       <div class="descBoxCabinsNew">
-                        <div class="titleGeta" >Tu paquete cuenta con servicios que han sido preseleccionados.<br> Pero aun puedes agregar servicios adicionales si deseas.</div>
+                        <div class="titleGeta" >{{ 'packServiciosPreseleccionados'|_ }}</div>
 
                       </div><!-- end.descBoxCabinsNew -->
                     </div><!-- end.col-* -->
@@ -1166,7 +1166,7 @@ serviciosExtra.forEach(serviciosExtra => {
                                       <div style="position: relative;">
                                           <div style="top: -80px; position: absolute;"></div>
                                           <div class="AddOnCategory__container__SwFF-" style="padding:unset">
-                                              <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset">Extiende tu Estadía</div>
+                                              <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset">{{ 'extiendeEstadia'|_ }}</div>
               
                                           </div>
                                       </div>
@@ -1233,10 +1233,10 @@ serviciosExtra.forEach(serviciosExtra => {
                                                        value="{{time.id}}" {% if time.id in servicios|keys %}checked{% endif %}>
                                                        
                                                        {% if time.id in servicios|keys %}
-                                                                                                              <label class="AddOnPreview__button__mgCpz" >Agregar</label>
+                                                                                                              <label class="AddOnPreview__button__mgCpz" >{{ 'packAgregar'|_ }}</label>
 
                                                        {% else %}
-                                                                                                              <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{time}}')" for="{{time.slug}}">Agregar</label>
+                                                                                                              <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{time}}')" for="{{time.slug}}">{{ 'packAgregar'|_ }}</label>
 
                                                        {% endif %}
                 
@@ -1267,7 +1267,7 @@ serviciosExtra.forEach(serviciosExtra => {
                           <div style="position: relative;">
                             <div style="top: -80px; position: absolute;"></div>
                             <div class="AddOnCategory__container__SwFF-" style="padding:unset">
-                                <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset" >Amenidades</div>
+                                <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset" >{{ 'Amenidades'|_ }}</div>
 
                             </div>
                         </div>
@@ -1314,7 +1314,7 @@ serviciosExtra.forEach(serviciosExtra => {
 
     
                                                 <div class="" style="margin-top: 20px;">
-                                                    <p style="font-weight: 400;">Selecciona la fecha de tu eleccion.</p>
+                                                    <p style="font-weight: 400;">{{ 'seleccionaFechaEleccion'|_ }}</p>
 
                                                     <!--button onclick="actionAct('{{amenidad}}','removeDay')" type="button" id="extras-days-min-{{amenidad.id}}"><i class="fa fa-minus"></i></button-->
                                                         <div class="checkbox-container">
@@ -1368,10 +1368,10 @@ serviciosExtra.forEach(serviciosExtra => {
                                         id="{{amenidad.slug}}" value="{{amenidad.id}}" {% if amenidad.id in servicios|keys %}checked{% endif %}>
                                         
                                                        {% if amenidad.id in servicios|keys %}
-                                                               <label class="AddOnPreview__button__mgCpz" >Agregar</label>
+                                                               <label class="AddOnPreview__button__mgCpz" >{{ 'packAgregar'|_ }}</label>
 
                                                        {% else %}
-                                                        <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{amenidad}}')" for="{{amenidad.slug}}">Agregar</label>
+                                                        <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{amenidad}}')" for="{{amenidad.slug}}">{{ 'packAgregar'|_ }}</label>
 
                                                        {% endif %}
                                                        
@@ -1392,7 +1392,7 @@ serviciosExtra.forEach(serviciosExtra => {
                                <div style="position: relative;">
                             <div style="top: -80px; position: absolute;"></div>
                             <div class="AddOnCategory__container__SwFF-" style="padding:unset">
-                                <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset" >Actividades</div>
+                                <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset" >{{ 'Actividades'|_ }}</div>
 
                             </div>
                         </div>
@@ -1439,20 +1439,20 @@ serviciosExtra.forEach(serviciosExtra => {
                                                                          <div class="AddOnPreview__description__jOho+ expandable-description">{{actividad.descripcion}}</div>
 
                                                         
-                                                        <p><a style="margin-top:5px;" class="read-more-link">Leer más</a></p>
+                                                        <p><a style="margin-top:5px;" class="read-more-link">{{ 'packLeerMas'|_ }}</a></p>
                                                   </div>  
                                                   
                                       
                                                      <div class="inpInc__inputs">
 
                                                        {% if actividad.id in servicios|keys %}
-                                                           <div class="inpText">Cantidad: <input type="text" name="cantidad-ct-{{actividad.id}}"
+                                                           <div class="inpText">{{ 'Cantidad'|_ }}: <input type="text" name="cantidad-ct-{{actividad.id}}"
                                                                 id="cantidad-ct-{{actividad.id}}" value="1" min="0" max="4">
                                                             </div>
                                                        {% else %}
 
                                                             <button onclick="actionAct('{{actividad}}','removeCant')" type="button"  id="extras-cant-min-{{actividad.id}}"><i class="fa fa-minus"></i></button>
-                                                            <div class="inpText">Cantidad: <input type="text" name="cantidad-ct-{{actividad.id}}"
+                                                            <div class="inpText">{{ 'Cantidad'|_ }}: <input type="text" name="cantidad-ct-{{actividad.id}}"
                                                                 id="cantidad-ct-{{actividad.id}}" value="1" min="0" max="4">
                                                             </div>
                                                             <button onclick="actionAct('{{actividad}}','addCant')" type="button" id="extras-cant-max-{{actividad.id}}"><i class="fa fa-plus"></i></button>
@@ -1464,11 +1464,11 @@ serviciosExtra.forEach(serviciosExtra => {
                                                   {% if actividad.tipo_cobro  == 'Hora' %}
                                                      <div class="inpInc__inputs" style="margin-top: 20px;">
                                                        {% if actividad.id in servicios|keys %}
-                                                            <div class="inpText">Horas: <input type="text" name="dias-ds-{{actividad.id}}" id="dias-ds-{{actividad.id}}"
+                                                            <div class="inpText">{{ 'Horas'|_ }}: <input type="text" name="dias-ds-{{actividad.id}}" id="dias-ds-{{actividad.id}}"
                                                                 value="1" min="0" max="7"></div>
                                                        {% else %}
                                                              <button onclick="actionAct('{{actividad}}','removeDay')" type="button" id="extras-days-min-{{actividad.id}}"><i class="fa fa-minus"></i></button>
-                                                            <div class="inpText">Horas: <input type="text" name="dias-ds-{{actividad.id}}" id="dias-ds-{{actividad.id}}"
+                                                            <div class="inpText">{{ 'Horas'|_ }}: <input type="text" name="dias-ds-{{actividad.id}}" id="dias-ds-{{actividad.id}}"
                                                                 value="1" min="0" max="7"></div>
                                                             <button  onclick="actionAct('{{actividad}}','addDay')" type="button" id="extras-days-max-{{actividad.id}}"><i class="fa fa-plus"></i></button>
                                                        {% endif %}
@@ -1487,7 +1487,7 @@ serviciosExtra.forEach(serviciosExtra => {
                                                             value="1" min="0" max="7"></div>
                                                        {% else %}
                                                              <button onclick="actionAct('{{actividad}}','removeDay')" type="button" id="extras-days-min-{{actividad.id}}"><i class="fa fa-minus"></i></button>
-                                                        <div class="inpText">Días:
+                                                        <div class="inpText">{{ 'Días'|_ }}:
                                                            <input type="text" name="dias-ds-{{actividad.id}}" id="dias-ds-{{actividad.id}}"
                                                             value="1" min="0" max="7"></div>
                                                         <button  onclick="actionAct('{{actividad}}','addDay')" type="button" id="extras-days-max-{{actividad.id}}"><i class="fa fa-plus"></i></button>
@@ -1507,10 +1507,10 @@ serviciosExtra.forEach(serviciosExtra => {
                                         id="{{actividad.slug}}" value="{{actividad.id}}" {% if actividad.id in servicios|keys %}checked{% endif %}>
                                         
                                                          {% if actividad.id in servicios|keys %}
-                                                               <label class="AddOnPreview__button__mgCpz" >Agregar</label>
+                                                               <label class="AddOnPreview__button__mgCpz" >{{ 'packAgregar'|_ }}</label>
 
                                                        {% else %}
-                                        <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{actividad}}')" for="{{actividad.slug}}">Agregar</label>
+                                        <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{actividad}}')" for="{{actividad.slug}}">{{ 'packAgregar'|_ }}</label>
 
                                                        {% endif %}
                                                        
@@ -1531,7 +1531,7 @@ serviciosExtra.forEach(serviciosExtra => {
                         <div style="position: relative;">
                             <div style="top: -80px; position: absolute;"></div>
                             <div class="AddOnCategory__container__SwFF-" style="padding:unset">
-                                <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset">Kits</div>
+                                <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset">{{ 'Kits'|_ }}</div>
 
                             </div>
                         </div>
@@ -1581,10 +1581,10 @@ serviciosExtra.forEach(serviciosExtra => {
                                        value="{{kit.id}}" {% if kit.id in servicios|keys %}checked{% endif %}>
                                        
                                            {% if kit.id in servicios|keys %}
-                                                               <label class="AddOnPreview__button__mgCpz" >Agregar</label>
+                                                               <label class="AddOnPreview__button__mgCpz" >{{ 'packAgregar'|_ }}</label>
 
                                                        {% else %}
-                                       <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{kit}}')" for="{{kit.slug}}">Agregar</label>
+                                       <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{kit}}')" for="{{kit.slug}}">{{ 'packAgregar'|_ }}</label>
 
                                                        {% endif %}
                                                        
@@ -1602,7 +1602,7 @@ serviciosExtra.forEach(serviciosExtra => {
                       <div style="position: relative;">
                         <div style="top: -80px; position: absolute;"></div>
                         <div class="AddOnCategory__container__SwFF-" style="padding:unset">
-                            <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset" >Alimentos y Bebidas</div>
+                            <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset" >{{ 'alimentosBebidas'|_ }}</div>
 
                         </div>
                     </div>
@@ -1647,7 +1647,7 @@ serviciosExtra.forEach(serviciosExtra => {
                                                                          <div class="AddOnPreview__description__jOho+ expandable-description">{{alimento.descripcion}}</div>
 
                                                         
-                                                        <p><a style="margin-top:5px;" class="read-more-link">Leer más</a></p>
+                                                        <p><a style="margin-top:5px;" class="read-more-link">{{ 'packLeerMas'|_ }}</a></p>
                                                   </div>  
                                                   
                                       
@@ -1656,12 +1656,12 @@ serviciosExtra.forEach(serviciosExtra => {
 
                                               <div class="inpInc__inputs">
                                                        {% if alimento.id in servicios|keys %}
-                                                            <div class="inpText">Cantidad: <input type="text" name="cantidad-ct-{{alimento.id}}"
+                                                            <div class="inpText">{{ 'Cantidad'|_ }}: <input type="text" name="cantidad-ct-{{alimento.id}}"
                                                                     id="cantidad-ct-{{alimento.id}}" value="1" min="0" max="4">
                                                                 </div>
                                                        {% else %}
                                                             <button onclick="actionAct('{{alimento}}','removeCant')" type="button"  id="extras-cant-min-{{alimento.id}}"><i class="fa fa-minus"></i></button>
-                                                                <div class="inpText">Cantidad: <input type="text" name="cantidad-ct-{{alimento.id}}"
+                                                                <div class="inpText">{{ 'Cantidad'|_ }}: <input type="text" name="cantidad-ct-{{alimento.id}}"
                                                                     id="cantidad-ct-{{alimento.id}}" value="1" min="0" max="4">
                                                                 </div>
                                                             <button onclick="actionAct('{{alimento}}','addCant')" type="button" id="extras-cant-max-{{alimento.id}}"><i class="fa fa-plus"></i></button>
@@ -1674,12 +1674,12 @@ serviciosExtra.forEach(serviciosExtra => {
                                               <div class="inpInc__inputs" style="margin-top: 20px;">
                                               
                                                        {% if alimento.id in servicios|keys %}
-                                                            <div class="inpText">Cantidad: <input type="text" name="cantidad-ct-{{alimento.id}}"
+                                                            <div class="inpText">{{ 'Cantidad'|_ }}: <input type="text" name="cantidad-ct-{{alimento.id}}"
                                                                     id="cantidad-ct-{{alimento.id}}" value="1" min="0" max="4">
                                                                 </div>
                                                        {% else %}
                                                             <button onclick="actionAct('{{alimento}}','removeDay')" type="button" id="extras-days-min-{{alimento.id}}"><i class="fa fa-minus"></i></button>
-                                                                <div class="inpText">Horas: <input type="text" name="dias-ds-{{alimento.id}}" id="dias-ds-{{alimento.id}}"
+                                                                <div class="inpText">{{ 'Horas'|_ }}: <input type="text" name="dias-ds-{{alimento.id}}" id="dias-ds-{{alimento.id}}"
                                                                     value="1" min="0" max="7"></div>
                                                                 <button  onclick="actionAct('{{alimento}}','addDay')" type="button" id="extras-days-max-{{alimento.id}}"><i class="fa fa-plus"></i></button>
                                                                 
@@ -1698,12 +1698,12 @@ serviciosExtra.forEach(serviciosExtra => {
                                               <div class="inpInc__inputs" style="margin-top: 20px;">
                                               
                                                        {% if alimento.id in servicios|keys %}
-                                                           <div class="inpText">Días:
+                                                           <div class="inpText">{{ 'Días'|_ }}:
                                                                    <input type="text" name="dias-ds-{{alimento.id}}" id="dias-ds-{{alimento.id}}"
                                                                     value="1" min="0" max="7"></div>
                                                        {% else %}
                                                           <button onclick="actionAct('{{alimento}}','removeDay')" type="button" id="extras-days-min-{{alimento.id}}"><i class="fa fa-minus"></i></button>
-                                                                <div class="inpText">Días:
+                                                                <div class="inpText">{{ 'Días'|_ }}:
                                                                    <input type="text" name="dias-ds-{{alimento.id}}" id="dias-ds-{{alimento.id}}"
                                                                     value="1" min="0" max="7"></div>
                                                                 <button  onclick="actionAct('{{alimento}}','addDay')" type="button" id="extras-days-max-{{alimento.id}}"><i class="fa fa-plus"></i></button>
@@ -1723,10 +1723,10 @@ serviciosExtra.forEach(serviciosExtra => {
                                     id="{{alimento.slug}}" value="{{alimento.id}}" {% if alimento.id in servicios|keys %}checked{% endif %}>
                                     
                                     {% if alimento.id in servicios|keys %}
-                                                               <label class="AddOnPreview__button__mgCpz" >Agregar</label>
+                                                               <label class="AddOnPreview__button__mgCpz" >{{ 'packAgregar'|_ }}</label>
 
                                                        {% else %}
-                                    <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{alimento}}')" for="{{alimento.slug}}">Agregar</label>
+                                    <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{alimento}}')" for="{{alimento.slug}}">{{ 'packAgregar'|_ }}</label>
 
                                                        {% endif %}
                                                        
@@ -1758,20 +1758,20 @@ serviciosExtra.forEach(serviciosExtra => {
                         <div class="AddOnTripSummary__childContainer__FaaaI">
                            <div class="TripSummary__container__IKaD1">
                               <div class="TripSummary__header__jm6-s">
-                                 <h3 class="TripSummary__tripSummaryTitle__+gUss">Tu Paquete</h3>
+                                 <h3 class="TripSummary__tripSummaryTitle__+gUss">{{ 'packTuPaquete'|_ }}</h3>
                                  <h4 class="TripOverview__tripSummaryDates__SpUJf"><span>{{start}} - {{end}}</span> 
                                 </h4>
                                  <p class="TripOverview__tripSummaryDetails__WAByO">{{cabana.nombre}} - {{ubicacion.nombre}}<br>
-                                  {{adultos}} Adultos                           
-                                  {% if ninos == 1 %} - {{ninos}} Niño {% endif %}
-                                  {% if ninos > 1 %} - {{ninos}} Niños {% endif %}</p>
+                                  {{adultos}} {{ 'Adultos'|_ }}
+                                  {% if ninos == 1 %} - {{ninos}} {{ 'Niño'|_ }} {% endif %}
+                                  {% if ninos > 1 %} - {{ninos}} {{ 'Niños'|_ }} {% endif %}</p>
                               </div>
                               <div class="TripSummary__body__r5nyk ">
                                  <dl>
 
                                     <details>
                                         <summary class="LineItem__tripSummaryItem__+xfgv" > 
-                                            <strong class="LineItem__tripSummaryItemName__6xWJY">Noches del Paquete</strong>
+                                            <strong class="LineItem__tripSummaryItemName__6xWJY">{{ 'packNochesPaquete'|_ }}</strong>
                                 
                                              <dd class="LineItem__tripSummaryItemValue__EtrwN" style="text-decoration:line-through;"> 
                                                                          ${{total|number_format}}.00
@@ -1798,7 +1798,7 @@ serviciosExtra.forEach(serviciosExtra => {
                                     
                                     <div class="LineItem__tripSummaryItem__+xfgv LineItem__bold__Mb2BL LineItem__withMarginTop__n1H+i">
                                        <dt class="LineItem__tripSummaryItemName__6xWJY">
-                                          <div >Costo Paquete</div>
+                                          <div >{{ 'packCostoPaquete'|_ }}</div>
                                        </dt>
                                        <p class="LineItem__tripSummaryItemValue__EtrwN">  $   {{ total_paquete|number_format(2, '.', ',') }}</p>
                                     </div>
@@ -1806,7 +1806,7 @@ serviciosExtra.forEach(serviciosExtra => {
 
                                      <div class="LineItem__tripSummaryItem__+xfgv LineItem__bold__Mb2BL LineItem__withMarginTop__n1H+i">
                                        <dt class="LineItem__tripSummaryItemName__6xWJY">
-                                          <div >Servicios Agregados</div>
+                                          <div >{{ 'packServiciosAgregados'|_ }}</div>
                                        </dt>
         
                                     </div>
@@ -1817,21 +1817,21 @@ serviciosExtra.forEach(serviciosExtra => {
           
                                     <div class="LineItem__tripSummaryItem__+xfgv LineItem__bold__Mb2BL LineItem__withMarginTop__n1H+i">
                                        <dt class="LineItem__tripSummaryItemName__6xWJY">
-                                          <div >Sub Total</div>
+                                          <div >{{ 'subTotal'|_ }}</div>
                                        </dt>
                                        <p class="LineItem__tripSummaryItemValue__EtrwN" id="car_subtotal"></p>
                                     </div>
 
                                     <div class="LineItem__tripSummaryItem__+xfgv LineItem__bold__Mb2BL LineItem__withMarginTop__n1H+i">
                                       <dt class="LineItem__tripSummaryItemName__6xWJY">
-                                         <div class="">Impuestos</div>
+                                         <div class="">{{ 'Impuestos'|_ }}</div>
                                       </dt>
                                       <p class="LineItem__tripSummaryItemValue__EtrwN" id="car_impuestos"></p>
                                    </div>
 
                                     <div class="LineItem__tripSummaryItem__+xfgv LineItem__bold__Mb2BL LineItem__withMarginTop__n1H+i">
                                       <dt class="LineItem__tripSummaryItemName__6xWJY">
-                                         <div class="">Total</div>
+                                         <div class="">{{ 'Total'|_ }}</div>
                                       </dt>
                                       <dd class="LineItem__tripSummaryItemValue__EtrwN" id="car_total"></dd>
                                    </div>
@@ -1843,7 +1843,7 @@ serviciosExtra.forEach(serviciosExtra => {
                         </div>
                         <div class="AddOnTripSummary__buttonContainer__t+wGk">
                            <button class="AddOnTripSummary__button__cA3Cn" type="submit">
-                              <div>Siguiente</div>
+                              <div>{{ 'Siguiente'|_ }}</div>
                               <img alt="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNyAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzU3N18zMjMpIj4KPHBhdGggZD0iTTE2LjAzMDMgOC41MzAzM0MxNi4zMjMyIDguMjM3NDQgMTYuMzIzMiA3Ljc2MjU2IDE2LjAzMDMgNy40Njk2N0wxMS4yNTc0IDIuNjk2N0MxMC45NjQ1IDIuNDAzODEgMTAuNDg5NiAyLjQwMzgxIDEwLjE5NjcgMi42OTY3QzkuOTAzODEgMi45ODk1OSA5LjkwMzgxIDMuNDY0NDcgMTAuMTk2NyAzLjc1NzM2TDE0LjQzOTMgOEwxMC4xOTY3IDEyLjI0MjZDOS45MDM4MSAxMi41MzU1IDkuOTAzODEgMTMuMDEwNCAxMC4xOTY3IDEzLjMwMzNDMTAuNDg5NiAxMy41OTYyIDEwLjk2NDUgMTMuNTk2MiAxMS4yNTc0IDEzLjMwMzNMMTYuMDMwMyA4LjUzMDMzWk0xLjUgOC43NUgxNS41VjcuMjVIMS41VjguNzVaIiBmaWxsPSIjRjZGNEYyIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfNTc3XzMyMyI+CjxyZWN0IHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuNSkiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K">
                            </button>
                            <div class="BookingBanner__container__Ip53C">
@@ -1859,7 +1859,7 @@ serviciosExtra.forEach(serviciosExtra => {
                     </div>
 
                     <div class="col-12">
-                      <blockquote>* Precios sin IVA.</blockuote>
+                      <blockquote>{{ 'preciosSinIVA'|_ }}</blockuote>
                     </div>                  
 
                   </div><!-- end.row -->
@@ -1874,11 +1874,11 @@ serviciosExtra.forEach(serviciosExtra => {
         <div class="actions clearfix">
           <ul role="menu" aria-label="Pagination">
             <li aria-disabled="false">
-              <a href="{{'packs-cabanas'|page}}">Atrás</a>
+              <a href="{{'packs-cabanas'|page}}">{{ 'Atrás'|_ }}</a>
             </li>
             <li aria-hidden="false" aria-disabled="false">
               <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="servicios" >
-                <i class="fa fa-chevron-right"></i><span>Siguiente</span>
+                <i class="fa fa-chevron-right"></i><span>{{ 'Siguiente'|_ }}</span>
               </button>
             </li>
           </ul><!-- end.ul -->
@@ -2396,9 +2396,9 @@ function actionAct(i,action){
             link.click(function() {
                 description.toggleClass("expanded");
                 if (description.hasClass("expanded")) {
-                    link.text("Leer menos");
+                    link.text("{{ 'packLeerMenos'|_ }}");
                 } else {
-                    link.text("Leer más");
+                    link.text("{{ 'packLeerMas'|_ }}");
                 }
             });
         });

@@ -89,7 +89,7 @@ pageNumber = "{{ :page }}"
 
 <div id="loadingModal" class="loading-modal" style="display: none;">
   <img src="{{ 'assets/img/logos/wander-full-white.svg'|theme }}" alt="Wander" class="loading-image">
-  <p style="font-family: 'Oswald',sans-serif;font-size:1.5em;color:#ffffff;" class="loading-message">Cargando...</p>
+  <p style="font-family: 'Oswald',sans-serif;font-size:1.5em;color:#ffffff;" class="loading-message">{{ 'cargando'|_ }}</p>
 </div>
 
 
@@ -156,9 +156,8 @@ pageNumber = "{{ :page }}"
             
             
                 <div class="PackSelection__container__BY+7V">
-                        <h2 class="PackSelection__title__l-e92" style="color:#DF7016!important">Ahorra en tu Escape a la Naturelaza</h2>
-                        <p class="PackSelection__description__DQML3">Pasa más tiempo en la naturaleza, ahorra más en tus escapadas: hasta un <strong>45% de descuento</strong>. Es así de simple con los paquetes Escapada a menudo, nuestros paquetes de varias noches diseñados para ayudarte a quedarte más tiempo por menos. En otras palabras, más tiempo libre para hacer las cosas que más importan. No incluye camarotes clásicos con suites exteriores. 
-                            ¿Preguntas? Consulte nuestras  <a href="#faqsContent" class="PackSelection__faqs__8XutP" style="color:#69745D!important"> preguntas frecuentes </a></p></div>
+                        <h2 class="PackSelection__title__l-e92" style="color:#DF7016!important">{{ 'ahorraPaquetes'|_ }}</h2>
+                        <p class="PackSelection__description__DQML3">{{ 'paquetesDescripcion'|_ }} <a href="#faqsContent" class="PackSelection__faqs__8XutP" style="color:#69745D!important"> {{ 'preguntasFrecuentesLink'|_ }} </a></p></div>
         
             </section><!-- end.hero-sec -->
              
@@ -177,7 +176,7 @@ pageNumber = "{{ :page }}"
 
 
                                 
-                                                    <h2 class="SelectLocation__header__GWDiC">Elige tu Destino</h2>
+                                                    <h2 class="SelectLocation__header__GWDiC">{{ 'Destino'|_ }}</h2>
                                 <div style="max-width: 600px; margin: 0px auto;">
                                 
                                             
@@ -185,8 +184,8 @@ pageNumber = "{{ :page }}"
                                                       <input type="hidden" name="locacion" id="locacion" value="">       
                                                       <div class="selectFormContact" style="width: 100%!important;">
                                                         <a href="#" class="collOpenForm" id="openOpsForms">
-                                                          <span class="labelInp"><i class="fa fa-map-marker"></i> Destino</span>
-                                                          <span id="textChange" class="responseText">Destino</span>
+                                                          <span class="labelInp"><i class="fa fa-map-marker"></i> {{ 'Destino'|_ }}</span>
+                                                          <span id="textChange" class="responseText">{{ 'Destino'|_ }}</span>
                                                         </a><!-- end.collOpenForm -->
                                                         <nav id="navOpcionform">
                                                           <ul id="locationList">
@@ -230,24 +229,24 @@ pageNumber = "{{ :page }}"
             
             <div class="HowPacksWork__container__gFZOM">
     <section class="HowPacksWork__subContainer__wR+IE">
-        <h2 class="HowPacksWork__title__5QXo0">Cómo funcionan los paquetes</h2>
+        <h2 class="HowPacksWork__title__5QXo0">{{ 'comoFuncionanPaquetes'|_ }}</h2>
         <div class="HowPacksWork__items__ICcNC">
             <div class="HowPacksWork__item__-AzCM">
-                <h3 class="HowPacksWork__itemTitle__mTWUV">Elige tu paquete</h3>
+                <h3 class="HowPacksWork__itemTitle__mTWUV">{{ 'eligePaquete'|_ }}</h3>
                 <div class="HowPacksWork__itemDescription__0t3Yg">
-                    <p style="">Selecciona el pack que mejor se adapte a tu horario. Después de la compra, se acreditará en su cuenta el código promocional de su paquete.</p>
+                    <p style="">{{ 'eligePaqueteDesc'|_ }}</p>
 
                 </div>
             </div>
             <div class="HowPacksWork__item__-AzCM">
-                <h3 class="HowPacksWork__itemTitle__mTWUV">Reserva cuando quieras</h3>
+                <h3 class="HowPacksWork__itemTitle__mTWUV">{{ 'reservaCuandoQuieras'|_ }}</h3>
                 <div class="HowPacksWork__itemDescription__0t3Yg">
-                    <p>Elija las fechas y la cabaña. Al hacer la reserva, su crédito se aplicará automáticamente. Recibirás la información de tu cabaña la semana de tu estancia.</p>
+                    <p>{{ 'reservaCuandoQuierasDesc'|_ }}</p>
                 </div>
             </div>
             <div class="HowPacksWork__item__-AzCM">
-                <h3 class="HowPacksWork__itemTitle__mTWUV">Desconectate</h3>
-                <div class="HowPacksWork__itemDescription__0t3Yg"><p>Aléjate. Disfruta de los beneficios de la naturaleza y de un verdadero descanso. Habla con tus seres queridos o disfruta de la magia del bosque. Repetir.</p></div>
+                <h3 class="HowPacksWork__itemTitle__mTWUV">{{ 'desconectate'|_ }}</h3>
+                <div class="HowPacksWork__itemDescription__0t3Yg"><p>{{ 'desconectateDesc'|_ }}</p></div>
             </div>
         </div>
     </section>
@@ -268,7 +267,7 @@ pageNumber = "{{ :page }}"
 
                         <img class="iconWander lozad"  width="100" height="100"   data-src="{{ 'assets/img/logos/icono-wander-green.svg'|theme }}" alt="Wander" loading="lazy">
 
-                        <div class="h2" style="color:#69745D!important">Preguntas Frecuentes</div>
+                        <div class="h2" style="color:#69745D!important">{{ 'titleFAQ'|_ }}</div>
 
                       </div>
 
@@ -471,9 +470,9 @@ window.onload = function() {
             link.click(function() {
                 description.toggleClass("expanded");
                 if (description.hasClass("expanded")) {
-                    link.text("Leer menos");
+                    link.text("{{ 'leer-menos'|_ }}");
                 } else {
-                    link.text("Leer más");
+                    link.text("{{ 'leer-mas'|_ }}");
                 }
             });
         });
@@ -500,7 +499,7 @@ window.onload = function() {
               // Mostrar todos los elementos si no se han mostrado antes
               $(".InYourCabin__categoryItem__MEPqh").show();
               contenidoMostrado = true;
-                document.getElementById('textoBoton').textContent = 'Ocultar los servicios de la cabaña';
+                document.getElementById('textoBoton').textContent = "{{ 'ocultarServicios'|_ }}";
                 //textB.text("Ocultar los servicios de la cabaña");
             } else {
                 contenidoMostrado = false;
@@ -514,9 +513,9 @@ window.onload = function() {
                         $(".InYourCabin__categoryItem__MEPqh:gt(5)").hide();
                 }
                                       // Cambiar el texto del botón
-                   document.getElementById('textoBoton').textContent = 'Ver todos los servicios de la cabaña';
+                   document.getElementById('textoBoton').textContent = "{{ 'verTodosServicios'|_ }}";
 
-                    textB.text("Ver todos los servicios de la cabaña");
+                    textB.text("{{ 'verTodosServicios'|_ }}");
              }
           });
     });

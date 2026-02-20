@@ -20,29 +20,29 @@ robot_follow = "nofollow"
   <div class="reservaCt">
     <div class="descFullPage">
       <img src="{{ 'assets/img/logos/logo-wander-black-text.svg'|theme }}" alt="Wander">
-      <h2>CONFIRMACIÓN DE PAGO DE EXPERIENCIAS</h2>
+      <h2>{{ 'confirmacionPagoExperiencias'|_ }}</h2>
     </div>
     <div class="payContent">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-md-6 col-lg-6">
             <div class="payContent__box">
-              <h4>¡Todo listo {{reserva.user.name}}!<br>
-              Tu cabaña {{cabana.nombre}} en {{ubicacion.nombre}} te espera.<br></h4>
+              <h4>{{ 'todoListo'|_ }} {{reserva.user.name}}!<br>
+              {{ 'tuCabanaTeEspera'|_ (cabana.nombre, ubicacion.nombre) }}<br></h4>
               
-              <p>En breve recibirás un correo de confirmación<br>con los detalles de tu reserva.</p>
+              <p>{{ 'enBreveRecibiras'|_ }}</p>
               
-              <p><small>Número de reservación: <b>{{reserva.id}}</b><br>
-              Del {{reserva.inicio}} al {{reserva.fin}}<br/>
-              {{reserva.adultos}} Adulto(s)<br>
+              <p><small>{{ 'numeroDeReservacion'|_ }}: <b>{{reserva.id}}</b><br>
+              {{ 'del'|_ }} {{reserva.inicio}} {{ 'al'|_ }} {{reserva.fin}}<br/>
+              {{reserva.adultos}} {{ 'adultos'|_ }}<br>
               {% if reserva.ninos > 0 %}
-              {{reserva.ninos}} Niño(s)<br>
+              {{reserva.ninos}} {{ 'ninos'|_ }}<br>
               {% endif %}
               {% if reserva.mascotas > 0 %}
-              Acceso con mascotas<br>
+              {{ 'accesoConMascotas'|_ }}<br>
               {% endif %}
               </small>
-                            <small>Total pagado: </small>${{reserva.costo_total|number_format}} <small>MXN.</small><br><br>
+                            <small>{{ 'totalPagado'|_ }}: </small>${{reserva.costo_total|number_format}} <small>MXN.</small><br><br>
 
 </p>
               <br>
@@ -61,7 +61,7 @@ robot_follow = "nofollow"
               </div>
               <div class="payContent__btn">
                 <a href="{{ '/'|page }}" class="btnpr btnpr__primary btnpr__primary--border">
-                  <i class="fa fa-chevron-left"></i><span>Regresar a Inicio</span>
+                  <i class="fa fa-chevron-left"></i><span>{{ 'regresarAInicio'|_ }}</span>
                 </a>
               </div>
               <img src="{{ 'assets/img/logos/logo_gray_wander.svg'|theme }}" alt="Wander">

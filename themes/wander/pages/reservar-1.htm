@@ -87,7 +87,7 @@ pageNumber = "{{ :page }}"
   <div class="reservaCt">
     <div class="descReservar">
       <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
-      <h2>Selecciona una ubicación</h2>
+      <h2>{{ 'seleccionaUbicacion'|_ }}</h2>
       
     </div>
     {{ form_ajax('onUbicacion', {class: 'stepReservaFrm'}) }}
@@ -95,25 +95,25 @@ pageNumber = "{{ :page }}"
         <div class="steps clearfix">
           <ul role="tablist">
             <li role="tab" class="first current" aria-disabled="false" aria-selected="true">
-              <a id="steps-uid-0-t-0" href="#steps-uid-0-h-0" aria-controls="steps-uid-0-p-0">Paso 1</a>
+              <a id="steps-uid-0-t-0" href="#steps-uid-0-h-0" aria-controls="steps-uid-0-p-0">{{ 'paso1'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-1" href="#steps-uid-0-h-1" aria-controls="steps-uid-0-p-1">Paso 2</a>
+              <a id="steps-uid-0-t-1" href="#steps-uid-0-h-1" aria-controls="steps-uid-0-p-1">{{ 'paso2'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-2" href="#steps-uid-0-h-2" aria-controls="steps-uid-0-p-2">Paso 3</a>
+              <a id="steps-uid-0-t-2" href="#steps-uid-0-h-2" aria-controls="steps-uid-0-p-2">{{ 'paso3'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-3" href="#steps-uid-0-h-3" aria-controls="steps-uid-0-p-3">Paso 4</a>
+              <a id="steps-uid-0-t-3" href="#steps-uid-0-h-3" aria-controls="steps-uid-0-p-3">{{ 'paso4'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-4" href="#steps-uid-0-h-4" aria-controls="steps-uid-0-p-4">Paso 5</a>
+              <a id="steps-uid-0-t-4" href="#steps-uid-0-h-4" aria-controls="steps-uid-0-p-4">{{ 'paso5'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-5" href="#steps-uid-0-h-5" aria-controls="steps-uid-0-p-5">Paso 6</a>
+              <a id="steps-uid-0-t-5" href="#steps-uid-0-h-5" aria-controls="steps-uid-0-p-5">{{ 'paso6'|_ }}</a>
             </li>
             <li role="tab" class="disabled last" aria-disabled="true">
-              <a id="steps-uid-0-t-6" href="#steps-uid-0-h-6" aria-controls="steps-uid-0-p-6">Paso 7</a>
+              <a id="steps-uid-0-t-6" href="#steps-uid-0-h-6" aria-controls="steps-uid-0-p-6">{{ 'paso7'|_ }}</a>
             </li>
           </ul><!-- end.ul -->
         </div><!-- end.steps -->
@@ -131,16 +131,16 @@ pageNumber = "{{ :page }}"
                        
                   <div class="descBoxCabinsNew">
                     <!-- p>Elige <strong>ciudades</strong> si quieres conocer la disponibilidad de todos nuestros destinos alrededor de una misma región<br> o elige <strong>destinos</strong> para ver las cabañas disponibles en un destino específico.<br><br>Si deseas ver las cabañas disponibles en todos nuestros destinos, haz clic en <strong>ver todos nuestros destinos disponibles</strong>.<br></p-->
-                        <div class="titleGeta"  >Elige <strong>ciudades</strong> si quieres conocer la disponibilidad de todos nuestros destinos alrededor de una misma región o elige <strong>destinos</strong> para ver las cabañas disponibles en un destino específico.
+                        <div class="titleGeta"  >{{ 'reservar1Desc1'|_ }}
                     </div>
-                    <div class="titleGeta" >Si deseas ver las cabañas disponibles en <strong>todos</strong> nuestros destinos, selecciona  <strong> ver todos nuestros destinos disponibles</strong>.<br>
+                    <div class="titleGeta" >{{ 'reservar1Desc2'|_ }}
                     </div>
                   </div>
                 </div>
                 <div class="col-12 col-md-10 col-lg-8 text-center">
                   <div class="checkBoxCus">
                     <input type="checkbox" class="CheckStyle" name="ubicacion-todas" id="todas" value="todas-0" {% if sitio=='todas' %}checked{% endif %}>
-                    <label for="todas">ver todos nuestros destinos disponibles</label>
+                    <label for="todas">{{ 'verTodosDestinos'|_ }}</label>
                     <!-- <div class="checkBtnCustom">
                       <input type="radio" name="ubicacion" id="todas" value="todas-0" {% if sitio=='todas' %}checked{% endif %}>
                       <label for="todas">Todas las ubicaciones</label>
@@ -151,10 +151,10 @@ pageNumber = "{{ :page }}"
                   <div class="locTabs">
                     <ul class="nav nav-tabs 2x nav-justified" id="ctLocTabs" role="tablist">
                        <li class="nav-item">
-                        <a class="nav-link  active" id="ciudades-tab" data-toggle="tab" href="#ciudades" role="tab" aria-controls="ciudades" aria-selected="false">Ciudades</a>
+                        <a class="nav-link  active" id="ciudades-tab" data-toggle="tab" href="#ciudades" role="tab" aria-controls="ciudades" aria-selected="false">{{ 'Ciudades'|_ }}</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="ubicaciones-tab" data-toggle="tab" href="#ubicaciones" role="tab" aria-controls="ubicaciones" aria-selected="true">Destinos</a>
+                        <a class="nav-link" id="ubicaciones-tab" data-toggle="tab" href="#ubicaciones" role="tab" aria-controls="ubicaciones" aria-selected="true">{{ 'destinosLabel'|_ }}</a>
                       </li>
 
 
@@ -186,11 +186,11 @@ pageNumber = "{{ :page }}"
                               {% if ciudad.disponible %}
                               <input type="radio" data-check-btn class="boxCabanaRes__input" name="ubicacion" id="{{ciudad.slug}}"
                                 value="ciudad-{{ciudad.id}}" {% if ciudad.slug==sitio %}checked{% endif %}>
-                              <label for="{{ciudad.slug}}" onclick="varaLayer = '{{ ciudad.nombre}}';" >Seleccionar</label>
+                              <label for="{{ciudad.slug}}" onclick="varaLayer = '{{ ciudad.nombre}}';" >{{ 'Seleccionar'|_ }}</label>
                               {% else %}
                               <input type="radio" class="boxCabanaRes__input" name="ubicacion" id="{{ciudad.slug}}" value="ciudad-{{ciudad.id}}"
                                 disabled>
-                              <label for="{{ciudad.slug}}">Próximamente</label>
+                              <label for="{{ciudad.slug}}">{{ 'proximamente'|_ }}</label>
                               {% endif %}
 
                             </div>
@@ -229,7 +229,7 @@ pageNumber = "{{ :page }}"
                                             <p class="expandable-description" style="line-height: 1.6em; " >{{ubicacion.descripcion}}</p>
              
                                             
-                                            <p><a style="margin-top:5px;" class="read-more-link">Leer más</a></p>
+                                            <p><a style="margin-top:5px;" class="read-more-link">{{ 'leer-mas'|_ }}</a></p>
                                       </div>  
                                       
                           
@@ -244,7 +244,7 @@ pageNumber = "{{ :page }}"
                                     <div class="boxCabanaRes__input" style="width: 100%;                                ">
                                       <input type="radio" data-check-btn class="boxCabanaRes__input" name="ubicacion" id="{{ubicacion.slug}}"
                                       value="ubicacion-{{ubicacion.id}}" {% if ubicacion.slug==sitio %}checked{% endif %}>
-                                    <label onclick="varaLayer = '{{ ubicacion.nombre}}';"  for="{{ubicacion.slug}}">Seleccionar</label>
+                                    <label onclick="varaLayer = '{{ ubicacion.nombre}}';"  for="{{ubicacion.slug}}">{{ 'Seleccionar'|_ }}</label>
                                       </div>
                                     {% elseif ubicacion.id == 6 %}
                                     
@@ -274,13 +274,13 @@ pageNumber = "{{ :page }}"
     font-weight: 500;
     text-decoration:none;
     border: 1px solid #222919;"  
-    href="ubicacion/{{ubicacion.slug}} " >Seleccionar</label></a>
+    href="ubicacion/{{ubicacion.slug}} " >{{ 'Seleccionar'|_ }}</label></a>
 
                                       </div>
                                       
            
                                     {% elseif ubicacion.disponible == false %}
-                                    <span class="boxLoc__btn boxLoc__btn--disabled">Próximamente</span>
+                                    <span class="boxLoc__btn boxLoc__btn--disabled">{{ 'proximamente'|_ }}</span>
                                     {% endif %}
                       
                                   </div>
@@ -303,7 +303,7 @@ pageNumber = "{{ :page }}"
         <div class="actions clearfix" style="background: #f7f5f1; !important">
           <ul role="menu" aria-label="Pagination">
             <li class="disabled" aria-disabled="true">
-              <a href="#0">Atrás</a>
+              <a href="#0">{{ 'Atrás'|_ }}</a>
             </li>
             <li aria-hidden="false" aria-disabled="false">
               <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="ubicacion" onclick="                              window.dataLayer.push({'wander': null }); window.dataLayer.push({
@@ -312,7 +312,7 @@ pageNumber = "{{ :page }}"
                                                 'sitio': varaLayer,
                                                 }
                                                 });">
-                <i class="fa fa-chevron-right"></i><span>Siguiente</span>
+                <i class="fa fa-chevron-right"></i><span>{{ 'Siguiente'|_ }}</span>
               </button>
             </li>
           </ul><!-- end.ul -->

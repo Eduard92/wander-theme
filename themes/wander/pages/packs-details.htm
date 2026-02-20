@@ -1730,7 +1730,7 @@ line-height: 1.3em;
     
     <section class="row location contentLoc grayL" id="contFormCal"><!-- end.hero-sec -->
         <div class="col-12 col-md-8 col-lg-9 col-xl-9 CityInfo__container__1+rk9" >
-            <div class="CityInfo__smallLabel__R1mCc">Paquete</div>
+            <div class="CityInfo__smallLabel__R1mCc">{{ 'paqueteLabel'|_ }}</div>
             <div class="CityInfo__flexTitle__nZpNH">
                 <div class="CityInfo__title__hsPID"> {{paquete.nombre}}</div>
             </div>
@@ -1759,7 +1759,7 @@ line-height: 1.3em;
                                         id="submit-disp"
                                         class="btn btn-primary mb-2 btnReservarmkt"
                                         onclick="window.location.href='/packs/fechas/{{ paquete.id }}'">
-                                    Reservar
+                                    {{ 'Reservar'|_ }}
                                 </button>
                                     
                                 </div><!-- end.col-* -->
@@ -1795,7 +1795,7 @@ line-height: 1.3em;
                                                        {{paquete.texto_extra|raw}}
 
 
-                        <p><strong>Nuestras cabañas tienen todo lo que necesitas y nada que no necesites. Cada cabaña incluye:</strong></p>
+                        <p><strong>{{ 'cabanaIncluye'|_ }}</strong></p>
                     </div>
                                                       <div class="InYourCabin__categoryContainer__1dHOU">
                                 <div class="InYourCabin__amenitiesGrid__Nw3-g">
@@ -1803,13 +1803,13 @@ line-height: 1.3em;
                                 {%if ubicacion.id == 4%}
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_AC_Heat-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Minisplit</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadMinisplit'|_ }}</div>
                                     </div>
                                 {% endif %}
                                   {%if ubicacion.id == 6%}
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_AC_Heat-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Minisplit</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadMinisplit'|_ }}</div>
                                     </div>
                                 {% endif %}
                                     
@@ -1817,15 +1817,15 @@ line-height: 1.3em;
                                     
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Icons-QueenBed-navy'|theme}}.svg" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Cama Queen</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadCamaQueen'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Shower-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Ducha caliente</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadDuchaCaliente'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Stovetop-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Estufa de dos quemadores</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadEstufa'|_ }}</div>
                                     </div>
                                     <!--div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_QueenBedBunk-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
@@ -1836,23 +1836,23 @@ line-height: 1.3em;
                                     
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Toilet-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Baño privado</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadBanoPrivado'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Sink-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Fregadero + Agua Potable</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadFregadero'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_CellphoneLockbox-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Caja de seguridad del teléfono celular</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadCajaSeguridad'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_ChairsPicnicTable-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Sillas + Mesa de picnic</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadSillasMesa'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_CookwareDishware-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Olla, Sartén + Vajilla</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadOllaSarten'|_ }}</div>
                                     </div>
                                     <!--div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Dog-LeashLine-navy'|theme}}.svg" class="InYourCabin__amenity__elejP" />
@@ -1860,36 +1860,36 @@ line-height: 1.3em;
                                     </div-->
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Dog-Treat-navy'|theme}}.svg" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Un pequeño regalo</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadRegalo'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Firepit_GrillGrate-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Pozo de fuego + parrilla</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadPozoFuego'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Fridge-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Mini-nevera</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadMiniNevera'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Log-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Leña + Iniciador de fuego</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadLena'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_SaltPepperOil-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Sal, Pimienta + Aceite de Oliva</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadSalPimienta'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Smores-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Malvaviscos</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadMalvaviscos'|_ }}</div>
                                     </div>
                                     <div class="InYourCabin__categoryItem__MEPqh">
                                         <img alt="" class="lozad" data-src="{{ 'assets/img/svg-ubicaciones/Getaway-Icons_Toilettries-navy.svg'|theme}}" class="InYourCabin__amenity__elejP" />
-                                        <div class="InYourCabin__amenityTitle__+Pmgt">Shampoo, Acondicionador + Gel de baño</div>
+                                        <div class="InYourCabin__amenityTitle__+Pmgt">{{ 'amenidadShampoo'|_ }}</div>
                                     </div>
                                 </div>
                         <button class="InYourCabin__showMore__YLB8t">
                             <div class="InYourCabin__buttonFlex__9O2h3">
-                              <div class="InYourCabin__buttonFlex__text" id="textoBoton">Ver todos los servicios de la cabaña</div>
+                              <div class="InYourCabin__buttonFlex__text" id="textoBoton">{{ 'verTodosServicios'|_ }}</div>
                                 <img
                                     alt=""
                                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDE2IDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wLjMxMzM0OCAwLjMwNTE2NUMtMC4xMDQ0NSAwLjcxMDY2MyAtMC4xMDQ0NSAxLjM2NDQyIDAuMzEzMzQ4IDEuNzY5OTJMNy4zOTg4OCA4LjY0NjgzQzcuNzMxNDEgOC45Njk1NyA4LjI2ODU4IDguOTY5NTcgOC42MDExMiA4LjY0NjgzTDE1LjY4NjcgMS43Njk5MkMxNi4xMDQ0IDEuMzY0NDIgMTYuMTA0NCAwLjcxMDY2MyAxNS42ODY3IDAuMzA1MTY2QzE1LjI2ODkgLTAuMTAwMzMyIDE0LjU5NTMgLTAuMTAwMzMyIDE0LjE3NzUgMC4zMDUxNjZMNy45OTU3NCA2LjI5NjZMMS44MTQwMSAwLjI5Njg4OUMxLjQwNDc0IC0wLjEwMDMzMyAwLjcyMjYyMSAtMC4xMDAzMzMgMC4zMTMzNDggMC4zMDUxNjVaIiBmaWxsPSIjMjcyNzI4Ii8+Cjwvc3ZnPgo="
@@ -1938,7 +1938,7 @@ line-height: 1.3em;
  
 <section class="contentLoc newUbicW">
     <div class="titleNewUbi">
-        <div class="h2">Para mejorar tu experiencia tu paquete incluye las siguientes actividades y/o kits</div>
+        <div class="h2">{{ 'packMejoraExperiencia'|_ }}</div>
     </div><!-- end.titleNewUbi -->
     <div class="containerCabanas" id="containerCabanas">
         
@@ -1972,7 +1972,7 @@ line-height: 1.3em;
                             <p class="expandable-description" style="text-align: justify!important; line-height: 1.3em;">
                                 {{servicio.descripcion}}
                             </p>
-                            <a class="read-more-link">Leer más</a>
+                            <a class="read-more-link">{{ 'leer-mas'|_ }}</a>
                         </div>
 
                         </div>
@@ -2016,7 +2016,7 @@ line-height: 1.3em;
                             <p class="expandable-description" style="text-align: justify!important; ">
                                 {{servicio.descripcion}}
                             </p>
-                            <a class="read-more-link">Leer más</a>
+                            <a class="read-more-link">{{ 'leer-mas'|_ }}</a>
                         </div>
 
                         </div>
@@ -2029,7 +2029,7 @@ line-height: 1.3em;
         </div>
                       <div class="btnCtaGen" style="margin:10px 0 10px;">
 
-                <a class="btnCtaGen__link " href="/packs/fechas/{{paquete.id}}" >Realiza tu reserva</a>
+                <a class="btnCtaGen__link " href="/packs/fechas/{{paquete.id}}" >{{ 'realizaTuReserva'|_ }}</a>
 
               </div><!-- end.btnCtaGen btnCtaGen__link--rounded-->
         <!-- end.gridLoc -->
@@ -2052,7 +2052,7 @@ line-height: 1.3em;
 
             <section class="contentLoc newUbic">
                 <div class="titleNewUbi">
-                    <div class="h2">Te presentamos las Cabañas que podras elegir para tu paquete</div>
+                    <div class="h2">{{ 'packCabanasDisponibles'|_ }}</div>
                 </div>
                 <!-- end.titleNewUbi -->
                 <div class="containerCabanas" id="containerCabanas">
@@ -2129,7 +2129,7 @@ line-height: 1.3em;
                                                     <div class="h2" style="text-align: left !important;">{{cabana.nombre}}</div>
             
                                                     <div style="text-align: right !important; text-align: right !important; /* color: #ffffff; */ margin: 0; padding: 0; font-family: 'Oswald', sans-serif; font-weight: 500; text-transform: uppercase;">
-                                                        Estancia desde ${{cabana.total|number_format}} por noche
+                                                        {{ 'estanciaDesde'|_ }} ${{cabana.total|number_format}} {{ 'porNoche'|_ }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -2156,7 +2156,7 @@ line-height: 1.3em;
                     <!-- end.gridLoc -->
             
                     <div class="btnCtaGen" style="margin: 10px 0 10px;">
-                        <a class="btnCtaGen__link" href="/packs/fechas/{{paquete.id}}">Realiza tu reserva</a>
+                        <a class="btnCtaGen__link" href="/packs/fechas/{{paquete.id}}">{{ 'realizaTuReserva'|_ }}</a>
                     </div>
                     <!-- end.btnCtaGen btnCtaGen__link--rounded-->
                 </div>
@@ -2184,7 +2184,7 @@ line-height: 1.3em;
             <div class="actions clearfix" style="display:none;" id="barMovil">
                 <ul role="menu" aria-label="Pagination">
                   <li>
-                    <button href="#" onclick="location.href='/packs/fechas/{{ paquete.id }}/{{ paquete.general ? ubicacion_id : paquete.ubicacion_id }}';" style="background-color:#222919;">Reservar</button>
+                    <button href="#" onclick="location.href='/packs/fechas/{{ paquete.id }}/{{ paquete.general ? ubicacion_id : paquete.ubicacion_id }}';" style="background-color:#222919;">{{ 'Reservar'|_ }}</button>
                   </li>
                 </ul><!-- end.ul -->
             </div>
@@ -2391,9 +2391,9 @@ window.onload = function() {
             link.click(function() {
                 description.toggleClass("expanded");
                 if (description.hasClass("expanded")) {
-                    link.text("Leer menos");
+                    link.text("{{ 'leer-menos'|_ }}");
                 } else {
-                    link.text("Leer más");
+                    link.text("{{ 'leer-mas'|_ }}");
                 }
             });
         });
@@ -2420,8 +2420,8 @@ window.onload = function() {
               // Mostrar todos los elementos si no se han mostrado antes
               $(".InYourCabin__categoryItem__MEPqh").show();
               contenidoMostrado = true;
-                document.getElementById('textoBoton').textContent = 'Ocultar los servicios de la cabaña';
-                //textB.text("Ocultar los servicios de la cabaña");
+                document.getElementById('textoBoton').textContent = '{{ 'ocultarServicios'|_ }}';
+                //textB.text("{{ 'ocultarServicios'|_ }}");
             } else {
                 contenidoMostrado = false;
 
@@ -2434,9 +2434,9 @@ window.onload = function() {
                         $(".InYourCabin__categoryItem__MEPqh:gt(5)").hide();
                 }
                                       // Cambiar el texto del botón
-                   document.getElementById('textoBoton').textContent = 'Ver todos los servicios de las cabaña';
+                   document.getElementById('textoBoton').textContent = '{{ 'verTodosServicios'|_ }}';
 
-                    textB.text("Ver todos los servicios de la cabaña");
+                    textB.text("{{ 'verTodosServicios'|_ }}");
              }
           });
     });

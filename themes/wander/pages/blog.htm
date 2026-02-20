@@ -36,7 +36,7 @@ pageNumber = "{{ :page }}"
                            </div>
                            <div class="elementor-element elementor-element-4cdb58a6 hero-description elementor-widget elementor-widget-text-editor" data-id="4cdb58a6" data-element_type="widget" data-widget_type="text-editor.default">
                               <div class="elementor-widget-container">
-                                 <p>Bienvenido a nuestra colección de historias y reflexiones sobre la maravilla de la naturaleza, la alegría del tiempo libre y el poder del descanso. Estamos felices de que estés aquí..</p>
+                                 <p>{{ 'blogIntro'|_ }}</p>
                               </div>
                            </div>
                         </div>
@@ -91,7 +91,7 @@ pageNumber = "{{ :page }}"
                                                 <div class="post-grid-excerpt">
                                                    <p>{{post.excerpt}}</p>
                                                 </div>
-                                                <a class="read-more-btn" href="/blog/post/{{ post.slug}}">Ver</a>
+                                                <a class="read-more-btn" href="/blog/post/{{ post.slug}}">{{ 'ver'|_ }}</a>
                                              </div>
                                           </div>
                                        </article>
@@ -177,7 +177,7 @@ pageNumber = "{{ :page }}"
                                                 <div class="post-grid-excerpt">
                                                    <p>{{post.excerpt}}</p>
                                                 </div>
-                                                <a class="read-more-btn" href="/blog/post/{{ post.slug}}">Leer más</a>
+                                                <a class="read-more-btn" href="/blog/post/{{ post.slug}}">{{ 'leer-mas'|_ }}</a>
                                              </div>
                                           </div>
                                        </article>

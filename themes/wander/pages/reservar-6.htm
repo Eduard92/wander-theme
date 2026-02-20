@@ -161,7 +161,7 @@ p
   <div class="reservaCt">
     <div class="descReservar">
       <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
-      <h2>REVISA TU RESERVA</h2>
+      <h2>{{ 'revisaTuReserva'|_ }}</h2>
     </div>
     {{ form_ajax('onReserva', {class: 'stepReservaFrm', id: 'frmResumen',     'data-request-success': 'onReservaSuccess(data)'}) }}
     
@@ -169,25 +169,25 @@ p
         <div class="steps clearfix">
           <ul role="tablist">
             <li role="tab" class="first done" aria-disabled="false" aria-selected="true">
-              <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">Paso 1</a>
+              <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">{{ 'paso1'|_ }}</a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
-              <a id="steps-uid-0-t-1" href="{{'reservar-2'|page}}" aria-controls="steps-uid-0-p-1">Paso 2</a>
+              <a id="steps-uid-0-t-1" href="{{'reservar-2'|page}}" aria-controls="steps-uid-0-p-1">{{ 'paso2'|_ }}</a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
-              <a id="steps-uid-0-t-2" href="{{'reservar-3'|page}}" aria-controls="steps-uid-0-p-2">Paso 3</a>
+              <a id="steps-uid-0-t-2" href="{{'reservar-3'|page}}" aria-controls="steps-uid-0-p-2">{{ 'paso3'|_ }}</a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
-              <a id="steps-uid-0-t-3" href="{{'reservar-4'|page}}" aria-controls="steps-uid-0-p-3">Paso 4</a>
+              <a id="steps-uid-0-t-3" href="{{'reservar-4'|page}}" aria-controls="steps-uid-0-p-3">{{ 'paso4'|_ }}</a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
-              <a id="steps-uid-0-t-4" href="{{'reservar-5'|page}}" aria-controls="steps-uid-0-p-4">Paso 5</a>
+              <a id="steps-uid-0-t-4" href="{{'reservar-5'|page}}" aria-controls="steps-uid-0-p-4">{{ 'paso5'|_ }}</a>
             </li>
             <li role="tab" class="current" aria-disabled="true">
-              <a id="steps-uid-0-t-5" href="{{''|page}}" aria-controls="steps-uid-0-p-5">Paso 6</a>
+              <a id="steps-uid-0-t-5" href="{{''|page}}" aria-controls="steps-uid-0-p-5">{{ 'paso6'|_ }}</a>
             </li>
             <li role="tab" class="disabled last" aria-disabled="true">
-              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">Paso 7</a>
+              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">{{ 'paso7'|_ }}</a>
             </li>
           </ul><!-- end.ul -->
         </div><!-- end.steps -->
@@ -245,11 +245,11 @@ p
                             <input class="cabana_type" id="cabana_type" type="hidden" value="{{cabana.nombre}}">
                               {% set guest = adultos + ninos %}
 
-                              <h3>Cabaña {{cabana.nombre}} - {{guest}} Huespedes</h3>
+                              <h3>{{ 'Cabaña'|_ }} {{cabana.nombre}} - {{guest}} Huespedes</h3>
                           
                               {% for key, dia in dias %}
                               <div class="descExtrasInp">
-                                <p>Noche {{loop.index}} - {{dia}}</p>
+                                <p>{{ 'Noche'|_ }} {{loop.index}} - {{dia}}</p>
                                 <span class="precio">${{precios[key]|number_format(2, '.', ',') }}</span>
                               </div>
                               {% endfor %}
@@ -271,9 +271,9 @@ p
                               <img src="{{ detalleninos.foto.path }}" alt="{{detalleninos.nombre}}">
                             </div><!-- end.extrasCt__icon -->
                             <div class="extrasInp__desc">
-                              <h3>{{detalleninos.nombre}} - {{ninos}} Niño(s)</h3>
+                              <h3>{{detalleninos.nombre}} - {{ninos}} {{ 'ninoLabel'|_ }}</h3>
                               <div class="descExtrasInp">
-                                <p>Por estadia completa</p>
+                                <p>{{ 'porEstadiaCompleta'|_ }}</p>
                                 <span class="precio">${{detalleninos.precio_sab*ninos|number_format(2, '.', ',') }}</span>
                               </div>
                             </div><!-- end.extrasInp__desc -->
@@ -288,7 +288,7 @@ p
                             <div class="extrasInp__desc">
                               <h3>{{detallemascotas.nombre}}</h3>
                               <div class="descExtrasInp">
-                                <p>Por estadia completa</p>
+                                <p>{{ 'porEstadiaCompleta'|_ }}</p>
                                 <span class="precio">${{detallemascotas.precio_sab|number_format(2, '.', ',') }}</span>
                               </div>
                             </div><!-- end.extrasInp__desc -->
@@ -317,17 +317,17 @@ p
                               <h3 class="servicio_adicional">{{servicio.nombre}}</h3>
                                {% if servicio.tipo_cobro  == 'Hora' %}
                                 <div class="descExtrasInp">
-                                   <p>Cantidad: {{servicios[servicio.id].cantidad}} | Horas:{{servicios[servicio.id].dias}}</p>
+                                   <p>{{ 'Cantidad'|_ }}: {{servicios[servicio.id].cantidad}} | {{ 'Horas'|_ }}:{{servicios[servicio.id].dias}}</p>
                                    <span class="precio">${{servicio.precio_sab*servicios[servicio.id].cantidad*servicios[servicio.id].dias|number_format(2, '.', ',') }}</span>
                                 </div>
                               {% elseif servicio.tipo_cobro  == 'Paquete' %}
                                 <div class="descExtrasInp">
-                                   <p>Cantidad: {{servicios[servicio.id].cantidad}}</p>
+                                   <p>{{ 'Cantidad'|_ }}: {{servicios[servicio.id].cantidad}}</p>
                                    <span class="precio">${{servicio.precio_sab*servicios[servicio.id].cantidad*servicios[servicio.id].dias|number_format(2, '.', ',') }}</span>
                                 </div>
                               {% else%}
                                 <div class="descExtrasInp">
-                                  <p>Cantidad: {{servicios[servicio.id].cantidad}} | Días:{{servicios[servicio.id].dias}}</p>
+                                  <p>{{ 'Cantidad'|_ }}: {{servicios[servicio.id].cantidad}} | {{ 'Días'|_ }}:{{servicios[servicio.id].dias}}</p>
                                   <span class="precio">${{servicio.precio_sab*servicios[servicio.id].cantidad*servicios[servicio.id].dias|number_format(2, '.', ',') }}</span>
                                 </div>
                               {% endif %}
@@ -342,17 +342,17 @@ p
                               <h3 class="servicio_adicional">{{servicio.nombre}}</h3>
                                {% if servicio.tipo_cobro  == 'Hora' %}
                                 <div class="descExtrasInp">
-                                   <p>Cantidad: {{servicios[servicio.id].cantidad}} | Horas:{{servicios[servicio.id].dias}}</p>
+                                   <p>{{ 'Cantidad'|_ }}: {{servicios[servicio.id].cantidad}} | {{ 'Horas'|_ }}:{{servicios[servicio.id].dias}}</p>
                                    <span class="precio">${{servicio.precio_sab*servicios[servicio.id].cantidad*servicios[servicio.id].dias|number_format(2, '.', ',') }}</span>
                                 </div>
                               {% elseif servicio.tipo_cobro  == 'Paquete' %}
                                 <div class="descExtrasInp">
-                                   <p>Cantidad: {{servicios[servicio.id].cantidad}}</p>
+                                   <p>{{ 'Cantidad'|_ }}: {{servicios[servicio.id].cantidad}}</p>
                                    <span class="precio">${{servicio.precio_sab*servicios[servicio.id].cantidad*servicios[servicio.id].dias|number_format(2, '.', ',') }}</span>
                                 </div>
                               {% else%}
                                 <div class="descExtrasInp">
-                                  <p>Cantidad: {{servicios[servicio.id].cantidad}} | Días:{{servicios[servicio.id].dias}}</p>
+                                  <p>{{ 'Cantidad'|_ }}: {{servicios[servicio.id].cantidad}} | {{ 'Días'|_ }}:{{servicios[servicio.id].dias}}</p>
                                   <span class="precio">${{servicio.precio_sab*servicios[servicio.id].cantidad*servicios[servicio.id].dias|number_format(2, '.', ',') }}</span>
                                 </div>
                               {% endif %}
@@ -366,7 +366,7 @@ p
                             <div class="extrasInp__desc">
                               <h3 class="servicio_adicional">{{servicio.nombre}}</h3>
                                 <div class="descExtrasInp">
-                                  <p>Días:{{servicio.dias}}</p>
+                                  <p>{{ 'Días'|_ }}:{{servicio.dias}}</p>
                                   <span class="precio">${{servicio.precio_sab*servicio.dias|number_format(2, '.', ',') }}</span>
                                 </div>
                             </div><!-- end.extrasInp__desc -->
@@ -379,7 +379,7 @@ p
                             <div class="extrasInp__desc">
                               <h3 class="servicio_adicional" >{{servicio.nombre}}</h3>
                               <div class="descExtrasInp">
-                                <p>1 Kit</p>
+                                <p>{{ 'unKit'|_ }}</p>
                                 <span class="precio">${{servicio.precio_sab|number_format(2, '.', ',') }}</span>
                               </div>
                             </div><!-- end.extrasInp__desc -->
@@ -392,7 +392,7 @@ p
                               <!--<img src="{{ 'assets/img/imgPrueba/percent.svg'|theme }}" alt="Impuesto">-->
                             </div><!-- end.extrasCt__icon -->
                             <div class="extrasInp__desc">
-                              <h3>Descuento</h3>
+                              <h3>{{ 'Descuento'|_ }}</h3>
                               <div class="descExtrasInp">
                                 <p id="cuponDesc"></p>
                                 <span id="cuponDescMoney" class="precio"></span>
@@ -406,7 +406,7 @@ p
                               <!--<img src="{{ 'assets/img/imgPrueba/percent.svg'|theme }}" alt="Impuesto">-->
                             </div><!-- end.extrasCt__icon -->
                             <div class="extrasInp__desc">
-                              <h3>Impuestos</h3>
+                              <h3>{{ 'Impuestos'|_ }}</h3>
                               <div class="descExtrasInp">
                                 <p>IVA. 16%</p>
                                 <span class="precio" id="montoIva">${{iva|number_format(2, '.', ',') }}</span>
@@ -415,7 +415,7 @@ p
                           </div><!-- end.extrasInp__box -->
                           
                           <div class="Promo__container__wyI9w">
-                              <h3>Código de Promoción</h3>
+                              <h3>{{ 'codigoPromocion'|_ }}</h3>
                               <div class="Promo__wrapper__vQUV1 Promo__desktopWrapper__72N74">
                                   <input class="Promo__input__f1ybK Promo__desktopInput__szr8d" type="text" placeholder="Ingrese Cupón" name="promoCode" id="promoCode" value="" />
                                   <button class="Promo__button__CoSJA Promo__desktopButton__cqQCD" id='aplicarCupon' onclick="aplicar()" type="button"><span class="Promo__buttonInner__n5-z9">APLICAR</span></button>
@@ -425,7 +425,7 @@ p
                               <p class="codeOk" id="codeOk"></p>
                           </div>
                       
-                          <div class="h2 precioFinal">TOTAL ${{total|number_format(2, '.', ',') }} MXN</div><!-- end.precio -->
+                          <div class="h2 precioFinal">{{ 'Total'|_ }} ${{total|number_format(2, '.', ',') }} MXN</div><!-- end.precio -->
                           <!--<div class="ctBtnAcc">
                           {% if not user %}
                             <a class="btn BtnNext collapsed" href="#" data-open-modal="">Siguiente</a>
@@ -450,16 +450,16 @@ p
                         <div id="accInpt-3" class="panel-collapse " aria-labelledby="title-list-3" data-parent="#accInputsRes">
                           <div class="card-body huesCont">
                             <div class="huesCont__desc">
-                              <p>Agrega los datos de todos los huéspedes.</p>
+                              <p>{{ 'agregaDatosHuespedes'|_ }}</p>
                             </div><!-- huesCont__desc -->
 
                             {% for i in 1..adultos %}
                                 {% if i == 1 %}
                                     <div class="huesCont__box" data-frm-inp="huesped-{{i}}">
-                                      <h4>Adulto 1 (titular)</h4>
+                                      <h4>{{ 'adultoTitular'|_ }}</h4>
 
                                       <div class="form-group row">
-                                        <label for="nombre-1" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">Correo Electrónico</label>
+                                        <label for="nombre-1" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">{{ 'correoElectronico'|_ }}</label>
                                         <div class="col-8 col-sm-9 col-md-8 col-xl-9">
                                           <input type="email" class="form-control nameResInp" id="email" name="email"        autocomplete="off"  onblur="search()" list="email-suggestions" required>
                                             <datalist id="email-suggestions"></datalist>
@@ -468,7 +468,7 @@ p
                                       </div>
                                       
                                       <div class="form-group row">
-                                        <label for="nombre-1" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">Nombre</label>
+                                        <label for="nombre-1" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">{{ 'Nombre'|_ }}</label>
                                         <div class="col-8 col-sm-9 col-md-8 col-xl-9">
                                           <input type="text" class="form-control nameResInp" id="nombre_1" name="nombre_1" onblur="guardar()"  required>
                                         </div>
@@ -476,7 +476,7 @@ p
                                       
                                       
                                       <div class="form-group row">
-                                        <label for="nombre-1" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">Apellidos</label>
+                                        <label for="nombre-1" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">{{ 'Apellidos'|_ }}</label>
                                         <div class="col-8 col-sm-9 col-md-8 col-xl-9">
                                           <input type="text" class="form-control nameResInp" id="apellido_1" name="apellido_1" onblur="guardar()"  required>
                                         </div>
@@ -493,7 +493,7 @@ p
                                       </div-->
                                       
                                       <div class="form-group row">
-                                      <label for="dd_1" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">Fecha de nacimiento</label>
+                                      <label for="dd_1" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">{{ 'fechaNacimiento'|_ }}</label>
                                       <div class="col-8 col-sm-9 col-md-8 col-xl-9">
                                         <select class="form-control" name="dd_1" id="dd_1" required onblur="guardar()" style="width:30%;float:left;">
                                           <option value="">DD</option>
@@ -533,18 +533,18 @@ p
                                     
                                         <select class="form-control" name="mm_1" id="mm_1" required onblur="guardar()" style="width:30%;float:left;">
                                           <option value="">MM</option>
-                                          <option value="1">Enero</option>
-                                          <option value="2">Febrero</option>
-                                          <option value="3">Marzo</option>
-                                          <option value="4">Abril</option>
-                                          <option value="5">Mayo</option>
-                                          <option value="6">Junio</option>
-                                          <option value="7">Julio</option>
-                                          <option value="8">Agosto</option>
-                                          <option value="9">Septiembre</option>
-                                          <option value="10">Octubre</option>
-                                          <option value="11">Noviembre</option>
-                                          <option value="12">Diciembre</option>
+                                          <option value="1">{{ 'Enero'|_ }}</option>
+                                          <option value="2">{{ 'Febrero'|_ }}</option>
+                                          <option value="3">{{ 'Marzo'|_ }}</option>
+                                          <option value="4">{{ 'Abril'|_ }}</option>
+                                          <option value="5">{{ 'Mayo'|_ }}</option>
+                                          <option value="6">{{ 'Junio'|_ }}</option>
+                                          <option value="7">{{ 'Julio'|_ }}</option>
+                                          <option value="8">{{ 'Agosto'|_ }}</option>
+                                          <option value="9">{{ 'Septiembre'|_ }}</option>
+                                          <option value="10">{{ 'Octubre'|_ }}</option>
+                                          <option value="11">{{ 'Noviembre'|_ }}</option>
+                                          <option value="12">{{ 'Diciembre'|_ }}</option>
                                         </select>
                                     
                                         <input type="number" class="form-control" name="aa_1" id="aa_1" placeholder="AAAA"
@@ -555,13 +555,13 @@ p
                                       
                                         <div class="form-group row">
                                       
-                                        <label for="telefono-1" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">Teléfono</label>
+                                        <label for="telefono-1" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">{{ 'Teléfono'|_ }}</label>
                                     
 
 
                                         <div  class="col-4 col-sm-3 col-md-4 col-xl-3">
                                                 <select id="countrySelect"   class="js-example-templating form-control" name="codeCountry" required >
-                                                    <option value="">Selecciona un país</option>
+                                                    <option value="">{{ 'seleccionaPais'|_ }}</option>
                                                     {% for country in paises %}
                                                         <option value="{{ country.name }}"  data-country-code="{{country.code}}" data-calling-code="{{ country.callingCodes }}">  + {{ country.callingCodes }}  {{ country.name }}</option>
                                                     {% endfor %}
@@ -580,7 +580,7 @@ p
                                       
                                                                           
                                       <div class="form-group row">
-                                        <label for="cp" class="col-6 col-sm-6 col-md-6 col-xl-3 col-form-label">Código Postal</label>
+                                        <label for="cp" class="col-6 col-sm-6 col-md-6 col-xl-3 col-form-label">{{ 'codigoPostal'|_ }}</label>
                                         <div class="col-6 col-sm-9 col-md-8 col-xl-9">
                                           <input type="number" class="form-control" name="cp" id="cp" maxlength="5" pattern="[0-9]{5}"required style="width:50%" onblur="guardar()" >
                                         </div>
@@ -590,7 +590,7 @@ p
                                     </div>
                                 {% else %}
                                     <div class="huesCont__box" data-frm-inp="huesped-{{i}}">
-                                      <h4>Adulto {{i}}</h4>
+                                      <h4>{{ 'Adulto'|_ }} {{i}}</h4>
                                       <div class="form-group row">
                                         <label for="nombre-{{i}}" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">Nombre completo</label>
                                         <div class="col-8 col-sm-9 col-md-8 col-xl-9">
@@ -610,7 +610,7 @@ p
                             {% if ninos > 0 %}
                                 {% for i in 1..ninos %}
                                     <div class="huesCont__box" data-frm-inp="nino-{{i}}">
-                                      <h4>Niño {{i}}</h4>
+                                      <h4>{{ 'Niño'|_ }} {{i}}</h4>
                                       <div class="form-group row">
                                         <label for="nino-{{i}}" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">Nombre completo</label>
                                         <div class="col-8 col-sm-9 col-md-8 col-xl-9">
@@ -645,42 +645,41 @@ p
                           <div class="card-body">
                             <div class="contPolicy">
                     
-                              <h5 class="contPolicy__title">Política de cancelación</h5>
+                              <h5 class="contPolicy__title">{{ 'politicaCancelacion'|_ }}</h5>
                               <div class="contPolicy_desc">
-                                <p>No hay reembolsos, sin embargo puede cambiar la fecha de su reservación hasta 5 días antes para otra ocasión que pueda venir, siempre y cuando
-                                  contemos con disponibilidad.</p>
+                                <p>{{ 'politicaCancelacionDesc'|_ }}</p>
                               </div><!-- end.contPolicy_desc -->
-                              <h5 class="contPolicy__title">Reglas</h5>
+                              <h5 class="contPolicy__title">{{ 'Reglas'|_ }}</h5>
                               <div class="contPolicy_desc">
                                 <p>Los términos y condiciones</p>
                                 <ul>
                                   <li>
-                                    <p><i class="fa fa-times"></i> Se permite fumar</p> <span>No</span>
+                                    <p><i class="fa fa-times"></i> {{ 'sePermiteFumar'|_ }}</p> <span>No</span>
                                   </li>
                                   <li>
-                                    <p><i class="fa fa-check"></i> Mascotas permitidas (Aplica Cargos Adicionales)</p> <span>Si</span>
+                                    <p><i class="fa fa-check"></i> {{ 'mascotasPermitidas'|_ }}</p> <span>Si</span>
                                   </li>
                                 </ul><br>
                               </div><!-- end.contPolicy_desc -->
                               
-                             <h5 class="contPolicy__title">Transporte</h5>
+                             <h5 class="contPolicy__title">{{ 'Transporte'|_ }}</h5>
                               <div class="contPolicy_desc" >
-                               <p><b>Te recomendamos viajar en un auto que te permita desplazarte en terracería ya que el acceso a todas nuestras cabañas será por caminos de tierra.</b></p>
+                               <p><b>{{ 'transporteDesc'|_ }}</b></p>
                               </div>
  
-                             <h5 class="contPolicy__title">Terminos y Condiciones</h5>
+                             <h5 class="contPolicy__title">{{ 'terminosCondiciones'|_ }}</h5>
                               <div class="contPolicy_desc" >
                                 <fieldset class="form-group" style="text-align:unset; margin-bottom: 1rem;">
                                   <input type="checkbox" class="CheckStyle" id="resAcepto" name="resAcepto" required>
-                                  <label for="resAcepto">He leído y acepto todas las condiciones y políticas de alquiler.</label> <a href="/terminos-y-condiciones" target="_blank"><i class="fa fa-eye"></i></a>
+                                  <label for="resAcepto">{{ 'aceptoCondiciones'|_ }}</label> <a href="/terminos-y-condiciones" target="_blank"><i class="fa fa-eye"></i></a>
                                 </fieldset>
                               </div>
                               
-                              <h5 class="contPolicy__title">Deslinde de Responsabilidad</h5>
+                              <h5 class="contPolicy__title">{{ 'deslindeResponsabilidad'|_ }}</h5>
                               <div class="contPolicy_desc">
                                 <fieldset class="form-group" style="text-align:unset; margin-bottom: 1rem;">
                                   <input type="checkbox" class="CheckStyle" id="resDeslinde" name="resDeslinde" required>
-                                  <label for="resDeslinde">He leído y acepto el deslinde de responsabilidad.</label> <a href="/deslinde-de-responsabilidad" target="_blank"><i class="fa fa-eye"></i></a>
+                                  <label for="resDeslinde">{{ 'aceptoDeslinde'|_ }}</label> <a href="/deslinde-de-responsabilidad" target="_blank"><i class="fa fa-eye"></i></a>
 
                                 </fieldset>
                               </div>
@@ -706,7 +705,7 @@ p
                         <div id="accInpt-4" class="panel-collapse" aria-labelledby="title-list-4" data-parent="#accInputsRes">
                           <div class="card-body payMet">
                             <div class="payMet__desc">
-                              <p>Seleccione su Método de Pago.</p>
+                              <p>{{ 'seleccioneMetodoPago'|_ }}</p>
                             </div><!-- huesCont__desc -->
                             
                               <div class="d-flex flex-column gap-3 align-items-center w-100">
@@ -715,7 +714,7 @@ p
                                  <!-- Tarjeta con Stripe -->
                                 <button type="submit" class="btn btnpr btnpr__primary--border newbtn align-items-center justify-content-center p-3"
                                         onclick="document.getElementById('resMetodo').value='tarjeta'">
-                                  <i class="fa fa-credit-card mr-2"></i> Tarjeta de Crédito / Débito 
+                                  <i class="fa fa-credit-card mr-2"></i> {{ 'tarjetaCreditoDebito'|_ }}
                                   <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" 
                                        alt="Stripe" style="height:20px; margin-left:8px;">
                                 </button>
@@ -724,7 +723,7 @@ p
                                 <!-- Transferencia con Stripe -->
                                 <button type="submit" class="btn btnpr btnpr__primary--border newbtn align-items-center justify-content-center p-3"
                                         onclick="document.getElementById('resMetodo').value='transferencia'">
-                                  <i class="fa fa-bank mr-2"></i> Transferencia Bancaria 
+                                  <i class="fa fa-bank mr-2"></i> {{ 'transferenciaBancaria'|_ }}
                                   <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" 
                                        alt="Stripe" style="height:20px; margin-left:8px;">
                                 </button>
@@ -735,7 +734,7 @@ p
                                 <!-- Transferencia con oxxx -->
                                 <button type="submit" class="btn btnpr btnpr__primary--border newbtn align-items-center justify-content-center p-3"
                                         onclick="document.getElementById('resMetodo').value='oxxo'">
-                                  <i class="fa fa-bank mr-2"></i> Oxxo 
+                                  <i class="fa fa-bank mr-2"></i> {{ 'Oxxo'|_ }}
                                   <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" 
                                        alt="Stripe" style="height:20px; margin-left:8px;">
                                 </button>
@@ -744,7 +743,7 @@ p
                             
                                 <button type="submit" class="btn btnpr btnpr__primary--border newbtn aplazo align-items-center justify-content-center p-3"
                                         onclick="document.getElementById('resMetodo').value='aplazo'">
-                                  <i class="fa fa-credit-card mr-2"></i> Paga en mensualidades 
+                                  <i class="fa fa-credit-card mr-2"></i> {{ 'pagaEnMensualidades'|_ }}
                                   <img src="https://aplazo.invasor.mx/img/logo.png?1758758956" 
                                        alt="Aplazo" style="height:20px; margin-left:8px;">
                                 </button>
@@ -791,7 +790,7 @@ p
         <div class="actions clearfix">
           <ul role="menu" aria-label="Pagination">
             <li aria-disabled="false">
-              <a href="{{'reservar-5'|page}}">Atrás</a>
+              <a href="{{'reservar-5'|page}}">{{ 'Atrás'|_ }}</a>
             </li>
             <!--li aria-hidden="false" class="constrolsRes btnsNext" aria-disabled="false">
               <button type="submit" data-btn-valid class="btnpr btnpr__primary btnpr__primary--border " id="resumen">

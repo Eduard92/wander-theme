@@ -24,32 +24,32 @@ robot_follow = "nofollow"
   <div class="reservaCt">
     <div class="descReservar">
       <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
-      <h2>Selecciona la cantidad de huéspedes</h2>
+      <h2>{{ 'seleccionaCantidadHuespedes'|_ }}</h2>
     </div>
     {{ form_ajax('onHuespedes', {class: 'stepReservaFrm'}) }}
       <div class="wizard">
         <div class="steps clearfix">
           <ul role="tablist">
             <li role="tab" class="first done" aria-disabled="false" aria-selected="true">
-              <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">Paso 1</a>
+              <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">{{ 'paso1'|_ }}</a>
             </li>
             <li role="tab" class="current" aria-disabled="true">
-              <a id="steps-uid-0-t-1" href="{{''|page}}" aria-controls="steps-uid-0-p-1">Paso 2</a>
+              <a id="steps-uid-0-t-1" href="{{''|page}}" aria-controls="steps-uid-0-p-1">{{ 'paso2'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-2" href="#" aria-controls="steps-uid-0-p-2">Paso 3</a>
+              <a id="steps-uid-0-t-2" href="#" aria-controls="steps-uid-0-p-2">{{ 'paso3'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-3" href="#" aria-controls="steps-uid-0-p-3">Paso 4</a>
+              <a id="steps-uid-0-t-3" href="#" aria-controls="steps-uid-0-p-3">{{ 'paso4'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">Paso 5</a>
+              <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">{{ 'paso5'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">Paso 6</a>
+              <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">{{ 'paso6'|_ }}</a>
             </li>
             <li role="tab" class="disabled last" aria-disabled="true">
-              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">Paso 7</a>
+              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">{{ 'paso7'|_ }}</a>
             </li>
           </ul><!-- end.ul -->
         </div><!-- end.steps -->
@@ -62,8 +62,7 @@ robot_follow = "nofollow"
                     <!--p>Define el <strong>número de huéspedes</strong> y te mostraremos la cabaña ideal para tu visita.<br>
                     El hospedaje para mascotas tiene un costo adicional por estancia sin importar el número de días.</p-->
                     
-                    <div class="titleGeta" >Define el <strong>número de huéspedes</strong> y te mostraremos la cabaña ideal para tu visita.<br>
-                    El hospedaje para mascotas tiene un costo adicional por estancia sin importar el número de días.</div>
+                    <div class="titleGeta" >{{ 'reservar2Desc'|_ }}</div>
                     
 
                   </div><!-- end.descBoxCabinsNew -->
@@ -77,7 +76,7 @@ robot_follow = "nofollow"
                 </div><!-- end.col-* -->
                 <div class="col-12 col-md-6 col-lg-5">
                   <div class="inputHuesped">
-                    <h4 class="inputHuesped__title">Adultos</h4>
+                    <h4 class="inputHuesped__title">{{ 'Adultos'|_ }}</h4>
                     <div class="inputHuesped__opt text-center">
                       <input type="radio" class="radioRes" name="adultos" id="adulto-1" value="1" {% if adultos == '1' %}checked{% endif %}>
                       <label onclick="objLayer.adultos ='1';" for="adulto-1">1</label>
@@ -90,14 +89,14 @@ robot_follow = "nofollow"
                     </div><!-- end.inputHuesped__opt -->
                   </div><!-- end.inputHuesped -->
                   <div class="inputHuesped">
-                    <h4 class="inputHuesped__title">Niños
-                      {% if detalleninos.precio_sab > 0 %}| Costo por estancia ${{detalleninos.precio_sab|number_format(2, '.', ',') }}
-                      {% elseif detalleninos.precio_sab == 0 %}| Estancia sin costo extra
-                      {% else %}<small>*Podria aplicar costo extra por estancia</small>
+                    <h4 class="inputHuesped__title">{{ 'Niños'|_ }}
+                      {% if detalleninos.precio_sab > 0 %}| {{ 'costoPorEstancia'|_ }} ${{detalleninos.precio_sab|number_format(2, '.', ',') }}
+                      {% elseif detalleninos.precio_sab == 0 %}| {{ 'estanciaSinCostoExtra'|_ }}
+                      {% else %}<small>*{{ 'podriaAplicarCostoExtra'|_ }}</small>
                       {% endif %}</h4>
                       <div class="inputHuesped__opt text-center">
                       <input type="radio" class="radioRes" name="ninos" id="nino-0" value="0" {% if ninos == '0' or not ninos %}checked{% endif %}>
-                      <label onclick="objLayer.ninos ='NO';" for="nino-0">NO</label>
+                      <label onclick="objLayer.ninos ='NO';" for="nino-0">{{ 'NO'|_ }}</label>
                       <input type="radio" class="radioRes" name="ninos" id="nino-1" value="1" {% if ninos == '1' %}checked{% endif %}>
                       <label onclick="objLayer.ninos ='1';" for="nino-1">1</label>
                       <input type="radio" class="radioRes" name="ninos" id="nino-2" value="2" {% if ninos == '2' %}checked{% endif %}>
@@ -109,12 +108,12 @@ robot_follow = "nofollow"
                     </div><!-- end.inputHuesped__opt -->
                   </div><!-- end.inputHuesped -->
                   <div class="inputHuesped">
-                    <h4 class="inputHuesped__title">Mascotas {% if detallemascotas.precio_sab %}| Costo por estancia ${{detallemascotas.precio_sab|number_format(2, '.', ',') }}{% else %}<small>*Costo extra por estancia</small>{% endif %}</h4>
+                    <h4 class="inputHuesped__title">{{ 'Mascotas'|_ }} {% if detallemascotas.precio_sab %}| {{ 'costoPorEstancia'|_ }} ${{detallemascotas.precio_sab|number_format(2, '.', ',') }}{% else %}<small>*{{ 'podriaAplicarCostoExtra'|_ }}</small>{% endif %}</h4>
                       <div class="inputHuesped__opt text-center">
                           <input type="radio" class="radioRes" name="mascotas" id="mascotas-0" value="0" {% if mascotas == '0' or not mascotas %}checked{% endif %}>
-                          <label onclick="objLayer.mascota ='NO';"  for="mascotas-0">NO</label>
+                          <label onclick="objLayer.mascota ='NO';"  for="mascotas-0">{{ 'NO'|_ }}</label>
                           <input type="radio" class="radioRes" name="mascotas" id="mascotas-1" value="1" {% if mascotas == '1' %}checked{% endif %}>
-                          <label onclick="objLayer.mascota ='SI';" for="mascotas-1">SI</label>
+                          <label onclick="objLayer.mascota ='SI';" for="mascotas-1">{{ 'SI'|_ }}</label>
                       </div><!-- end.inputHuesped__opt -->
                     <!--div class="inputHuesped__opt">
                       <label class="switch">
@@ -131,7 +130,7 @@ robot_follow = "nofollow"
         <div class="actions clearfix">
           <ul role="menu" aria-label="Pagination">
             <li aria-disabled="false">
-              <a href="{{'reservar-1'|page}}">Atrás</a>
+              <a href="{{'reservar-1'|page}}">{{ 'Atrás'|_ }}</a>
             </li>
             <li aria-hidden="false" aria-disabled="false">
               <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="paso-2"  onclick="dataLayer.push({'wander': null }); dataLayer.push({
@@ -142,7 +141,7 @@ robot_follow = "nofollow"
                                                     'mascota' : objLayer.mascota
                                                 }
                                                 });">
-                <i class="fa fa-chevron-right"></i><span>Siguiente</span>
+                <i class="fa fa-chevron-right"></i><span>{{ 'Siguiente'|_ }}</span>
               </button>
             </li>
           </ul><!-- end.ul -->

@@ -740,7 +740,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                                 loading="lazy"
                                                             />
                                                         </div>
-                                                        <span class="Header-businessLink-label Text Text-color--gray800 Text-fontSize--14 Text-fontWeight--500">Atrás</span>
+                                                        <span class="Header-businessLink-label Text Text-color--gray800 Text-fontSize--14 Text-fontWeight--500">{{ 'Atrás'|_ }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -784,7 +784,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                             <div class="PaymentRequestOrHeader" style="display: inherit; height: auto;">
                                 <div class="PaymentHeaderContainer" style="display: block; opacity: 1;">
-                                    <div class="PaymentHeader"><div class="Text Text-color--default Text-fontSize--20 Text-fontWeight--500">Pago por {{metodo}}</div></div>
+                                    <div class="PaymentHeader"><div class="Text Text-color--default Text-fontSize--20 Text-fontWeight--500">{{ 'pagoPor'|_ }} {{metodo}}</div></div>
                                 </div>
                                 <div class="ButtonAndDividerContainer" style="opacity: 0; display: none;"></div>
                             </div>
@@ -815,7 +815,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         <div class="flex-item width-12">
                                             <div role="list" class="ReadOnlyForm ReadOnlyForm--withShadow">
                                                 <div class="ReadOnlyFormField-email ReadOnlyFormField">
-                                                    <div class="ReadOnlyFormField-label"><span class="Text Text-color--gray600 Text-fontSize--13 Text-fontWeight--500">Correo electrónico</span></div>
+                                                    <div class="ReadOnlyFormField-label"><span class="Text Text-color--gray600 Text-fontSize--13 Text-fontWeight--500">{{ 'correoElectronico'|_ }}</span></div>
                                                     <div class="ReadOnlyFormField-content">
                                                         <div class="ReadOnlyFormField-titleContainer">
                                                             <div class="ReadOnlyFormField-title">{{email}}</div>
@@ -843,8 +843,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                 <button class="SubmitButton SubmitButton--incomplete" type="submit" data-testid="hosted-payment-submit-button" style="background-color: rgb(241, 178, 63); color: rgb(0, 0, 0);">
                                                     <div class="SubmitButton-Shimmer" style="background: linear-gradient(to right, rgba(241, 178, 63, 0) 0%, rgb(255, 203, 88) 50%, rgba(241, 178, 63, 0) 100%);"></div>
                                                     <div class="SubmitButton-TextContainer">
-                                                        <span id="btn_pagar"   class="SubmitButton-Text SubmitButton-Text--current Text Text-color--default Text-fontWeight--500 Text--truncate" aria-hidden="false">Pagar</span>
-                                                        <span id="btn_process" class="SubmitButton-Text SubmitButton-Text--pre Text Text-color--default Text-fontWeight--500 Text--truncate" aria-hidden="true">Procesando...</span>
+                                                        <span id="btn_pagar"   class="SubmitButton-Text SubmitButton-Text--current Text Text-color--default Text-fontWeight--500 Text--truncate" aria-hidden="false">{{ 'Pagar'|_ }}</span>
+                                                        <span id="btn_process" class="SubmitButton-Text SubmitButton-Text--pre Text Text-color--default Text-fontWeight--500 Text--truncate" aria-hidden="true">{{ 'procesando'|_ }}</span>
                                                     </div>
                                                     <div class="SubmitButton-IconContainer">
                                                         <div class="SubmitButton-Icon SubmitButton-Icon--pre">

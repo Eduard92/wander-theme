@@ -21,7 +21,7 @@ pageNumber = "{{ :page }}"
 
 <h3><a href="/backend/roll/reservaciones/reservaciones" title="Atras"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
 
-Disponibilidad de cabañas</h3>
+{{ 'disponibilidadCabanas'|_ }}</h3>
 <form data-request="calendarioReservas::onFechasLibres">
 
                 <div class"col-lg-12" id="error"></div>
@@ -80,7 +80,7 @@ Disponibilidad de cabañas</h3>
         
     </div>
     <div class="col col-md-4">
-        <button type="submit" class="btnCtaGen__link btnCtaGen__link--rounded" style="width:120px;">Consultar</button>
+        <button type="submit" class="btnCtaGen__link btnCtaGen__link--rounded" style="width:120px;">{{ 'Consultar'|_ }}</button>
     </div>
 </div>
 </form>

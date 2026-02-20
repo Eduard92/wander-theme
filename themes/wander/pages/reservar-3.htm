@@ -45,32 +45,32 @@ robot_follow = "nofollow"
   <div class="reservaCt">
     <div class="descReservar">
       <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
-      <h2>Selecciona las fechas</h2>
+      <h2>{{ 'seleccionaFechas'|_ }}</h2>
     </div>
     {{ form_ajax('onFechas', {class: 'stepReservaFrm'}) }}
       <div class="wizard">
         <div class="steps clearfix">
           <ul role="tablist">
             <li role="tab" class="first done" aria-disabled="false" aria-selected="true">
-              <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">Paso 1</a>
+              <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">{{ 'paso1'|_ }}</a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
-              <a id="steps-uid-0-t-1" href="{{'reservar-2'|page}}" aria-controls="steps-uid-0-p-1">Paso 2</a>
+              <a id="steps-uid-0-t-1" href="{{'reservar-2'|page}}" aria-controls="steps-uid-0-p-1">{{ 'paso2'|_ }}</a>
             </li>
             <li role="tab" class="current" aria-disabled="true">
-              <a id="steps-uid-0-t-2" href="{{''|page}}" aria-controls="steps-uid-0-p-2">Paso 3</a>
+              <a id="steps-uid-0-t-2" href="{{''|page}}" aria-controls="steps-uid-0-p-2">{{ 'paso3'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-3" href="#" aria-controls="steps-uid-0-p-3">Paso 4</a>
+              <a id="steps-uid-0-t-3" href="#" aria-controls="steps-uid-0-p-3">{{ 'paso4'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">Paso 5</a>
+              <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">{{ 'paso5'|_ }}</a>
             </li>
             <li role="tab" class="disabled" aria-disabled="true">
-              <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">Paso 6</a>
+              <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">{{ 'paso6'|_ }}</a>
             </li>
             <li role="tab" class="disabled last" aria-disabled="true">
-              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">Paso 7</a>
+              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">{{ 'paso7'|_ }}</a>
             </li>
           </ul><!-- end.ul -->
         </div><!-- end.steps -->
@@ -82,8 +82,7 @@ robot_follow = "nofollow"
                   <div class="descBoxCabinsNew">
                     <!--p>Selecciona tu <strong>fecha de llegada (check-in)</strong> y la de partida <strong>(check-out)</strong>.<br>
                     Si no encuentras disponibilidad, te recomendamos probar con otro destino.</p-->
-                    <div class="titleGeta" >Selecciona tu <strong>fecha de llegada (check-in)</strong> y la de partida <strong>(check-out)</strong>.<br>
-                    Si no encuentras disponibilidad, te recomendamos probar con otro destino.</div>
+                    <div class="titleGeta" >{{ 'reservar3Desc'|_ }}</div>
                     
                     
                   </div><!-- end.descBoxCabinsNew -->
@@ -133,21 +132,21 @@ robot_follow = "nofollow"
                   </div><!-- end.boxMessageRes -->
                   <div class="boxGridReservar">
                     <div class="boxGridReservar__item boxGridReservar__item--input">
-                      <label for="start-input">Check-in</label>
+                      <label for="start-input">{{ 'checkIn'|_ }}</label>
                       <input id="start-input" name="start-input" type="text" readonly placeholder="Check-In">
                     </div><!-- enc.boxGridReservar__item -->
                     <div class="boxGridReservar__item boxGridReservar__item--input">
-                      <label for="end-input">Check-out</label>
+                      <label for="end-input">{{ 'checkOut'|_ }}</label>
                       <input id="end-input" name="end-input" type="text" readonly placeholder="Check-Out">
                     </div><!-- enc.boxGridReservar__item -->
                     <div class="boxGridReservar__item boxGridReservar__item--btn">
-                      <button id="limpiar" type="button">Borrar Fechas</button>
+                      <button id="limpiar" type="button">{{ 'borrarFechas'|_ }}</button>
                     </div><!-- enc.boxGridReservar__item -->
                   </div><!-- end.boxGridReservar -->
                   <input type="hidden" id="rangeDate" name="rangeDate"><!-- recibe los datos del calendario. -->
                   <div class="calCustom" id="rangeDate"></div>
-                  <small><blockquote>* Precios sin IVA.</blockuote></small>
-                  <small><blockquote>** Se muestra el costo de la cabaña más ecónomica por día.</blockuote></small>
+                  <small><blockquote>* {{ 'preciosSinIVA'|_ }}</blockuote></small>
+                  <small><blockquote>** {{ 'costoMinimoDesc'|_ }}</blockuote></small>
                 </div>
               </div>
             </div>
@@ -158,11 +157,11 @@ robot_follow = "nofollow"
 
           <ul role="menu" aria-label="Pagination">
             <li aria-disabled="false">
-              <a href="{{'reservar-2'|page}}">Atrás</a>
+              <a href="{{'reservar-2'|page}}">{{ 'Atrás'|_ }}</a>
             </li>
             <li aria-hidden="false" aria-disabled="false">
               <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="ubicacion"  onclick="send()">
-                <i class="fa fa-chevron-right"></i><span>Siguiente</span>
+                <i class="fa fa-chevron-right"></i><span>{{ 'Siguiente'|_ }}</span>
               </button>
             </li>
           </ul><!-- end.ul -->

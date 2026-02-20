@@ -175,7 +175,7 @@ pageNumber = "{{ :page }}"
           <h2>
           <a href="/backend/roll/reservaciones/reservaciones" title="Atras"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
 
-            Reservación manual</h2>
+            {{ 'reservacionManual'|_ }}</h2>
               {% for ubicacion in ubicaciones %}
                       <a href="{{'reservacion-manual'|page ({ubicacion:ubicacion.id})}}" class="btnpr btnpr__primary btnpr__primary--border nB">{{ubicacion.nombre}}</a>
               {% endfor %}
@@ -183,7 +183,7 @@ pageNumber = "{{ :page }}"
 
 
               <br>
-              o
+              {{ 'o'|_ }}
                             <br>
                             <br>
               {% for ciudad in ciudades %}
@@ -202,7 +202,7 @@ pageNumber = "{{ :page }}"
 
             <div class="mt-2 d-flex justify-content-center gap-2">
                 <a href="{{ message.url_aplazo }}" class="btn btn-primary" style="background-color: #7fedfa;">
-                    Completar pago con Aplazo
+                    {{ 'completarPagoAplazo'|_ }}
                 </a>
                 </br>
                 <button type="button" class="btn btn-secondary"  onclick="copiarAplazo('{{ message.url_aplazo }}')">
@@ -211,7 +211,7 @@ pageNumber = "{{ :page }}"
             </div>
 
            <small id="copiarAviso" class="text-success d-block mt-2" style="display:none;">
-                ¡Enlace copiado al portapapeles!
+                {{ 'enlaceCopiadoPortapapeles'|_ }}
             </small>
         {% else %}
             <p>{{ message.mensaje ?? message }}</p>
@@ -256,7 +256,7 @@ pageNumber = "{{ :page }}"
                 {% if this.param.ubicacion > 0 %}
 
                   <div class="inputHuesped">
-                    <h4 class="inputHuesped__title">Grupo</h4>
+                    <h4 class="inputHuesped__title">{{ 'Grupo'|_ }}</h4>
                     <div class="inputHuesped__opt">
                       <input type="radio" class="radioRes" name="grupo" id="individual" value="0" checked>
                       <label for="individual">NO</label>
@@ -267,13 +267,13 @@ pageNumber = "{{ :page }}"
                   </div><!-- end.inputHuesped -->
                   
                   <div class="inputHuesped" id="adultosGrupos" style="display: none;">
-                      <h4 class="inputHuesped__title">Huespedes</h4>
+                      <h4 class="inputHuesped__title">{{ 'Huéspedes'|_ }}</h4>
                       <input type="number" class="form-control" name="adultos" min="1" value='1' style="width:30%!important" onkeydown="return false;">
                   </div>
                 {% endif %}
                   
                   <div class="inputHuesped" id="adultos">
-                    <h4 class="inputHuesped__title">Adultos</h4>
+                    <h4 class="inputHuesped__title">{{ 'Adultos'|_ }}</h4>
                     <div class="inputHuesped__opt">
                       <input type="radio" class="radioRes" name="adultos" id="adulto-1" value="1" >
                       <label for="adulto-1">1</label>
@@ -286,7 +286,7 @@ pageNumber = "{{ :page }}"
                     </div><!-- end.inputHuesped__opt -->
                   </div><!-- end.inputHuesped -->
                   <div class="inputHuesped" id="ninos">
-                    <h4 class="inputHuesped__title">Niños</h4>
+                    <h4 class="inputHuesped__title">{{ 'Niños'|_ }}</h4>
                     <div class="inputHuesped__opt">
                       <input type="radio" class="radioRes" name="ninos" id="nino-0" value="0" checked>
                       <label for="nino-0">NO</label>
@@ -301,7 +301,7 @@ pageNumber = "{{ :page }}"
                     </div><!-- end.inputHuesped__opt -->
                   </div><!-- end.inputHuesped -->
                   <div class="inputHuesped">
-                    <h4 class="inputHuesped__title">Mascotas</h4>
+                    <h4 class="inputHuesped__title">{{ 'Mascotas'|_ }}</h4>
                     <div class="inputHuesped__opt">
                       <label class="switch">
                         <input type="checkbox" name="mascotas" id="mascotas" {% if mascotas == '1' %}checked{% endif %}>
@@ -322,7 +322,7 @@ pageNumber = "{{ :page }}"
                   <input type="hidden" id="rangeDate" name="rangeDate"><!-- recibe los datos del calendario. -->
                   <div id="rangeDate"></div>
                 <div class="col-12 text-center">
-                  <button type="submit" class="btnpr btnpr__primary btnpr__primary--border nB">Ver Cabañas</button>
+                  <button type="submit" class="btnpr btnpr__primary btnpr__primary--border nB">{{ 'verCabanas'|_ }}</button>
                 </div>
                 </div>
               </div>
