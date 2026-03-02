@@ -1,0 +1,146 @@
+title = "Importar"
+url = "/importar"
+layout = "layout"
+is_hidden = 1
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[builderList cabanasList]
+modelClass = "Roll\Cabanas\Models\Cabana"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList ubicacionesList]
+modelClass = "Roll\Cabanas\Models\Ubicacion"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[importaReserva]
+==
+{% component 'builderList' %}
+{% set ubicaciones = ubicacionesList.records %}
+{% set cabanas = cabanasList.records %}
+
+<article class="bg-gen">
+  <section class="descFull">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>Importación de reservaciones manuales</h2>
+          {{ form_ajax('onImportar')}}
+            {% flash %}
+                <div class="alert alert-warning" style="text-align:center;">
+                    {{ message }}
+                </div>
+            {% endflash %}
+          <div class="row" data-input-home>
+            <!--<div class="col-12">
+              <h4>Fecha de reservacion</h4>
+            </div>-->
+            <!--<div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <input type="text" class="form-control" name="reserva-a" id="reserva-a" placeholder="AAAA">
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <input type="text" class="form-control" name="reserva-m" id="reserva-m" placeholder="MM">
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <input type="text" class="form-control" name="reserva-d" id="reserva-d" placeholder="DD">
+            </div>-->
+            <!--<div class="col-12 col-md-6" style="margin-bottom: 10px;">
+              <div class="inputSelect wIn" data-input-home style="margin-bottom: 10px;">
+                <select class="custom-select" name="locacion" id="locacion">
+                  <option value="">Locación</option>
+                  {% for ubicacion in ubicaciones %}
+                  {% if ubicacion.disponible == true %}
+                  {% if ubicacion.id == 1 %}
+                  <option value="{{ubicacion.id}}">{{ubicacion.nombre}}</option>
+                  {% else %}
+                  <option value="{{ubicacion.id}}">{{ubicacion.nombre}}</option>
+                  {% endif %}
+                  {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
+            </div>--><!-- end.col-* -->
+            <div class="col-12 col-md-6" style="margin-bottom: 10px;">
+              <div class="inputSelect wIn" data-input-home style="margin-bottom: 10px;">
+                <select class="custom-select" name="cabana" id="cabana">
+                  <option value="">Cabaña</option>
+                  {% for cabana in cabanas %}
+                  <option value="{{cabana.id}}">{{cabana.nombre}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div><!-- end.col-* -->
+            <div class="col-12">
+              <h4>Checkin</h4>
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <input type="text" class="form-control" name="checkin-a" id="checkin-a" placeholder="AAAA">
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <input type="text" class="form-control" name="checkin-m" id="checkin-m" placeholder="MM">
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <input type="text" class="form-control" name="checkin-d" id="checkin-d" placeholder="DD">
+            </div><!-- end.col-* -->
+            <div class="col-12">
+              <h4>Checkout</h4>
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <input type="text" class="form-control" name="checkout-a" id="checkout-a" placeholder="AAAA">
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <input type="text" class="form-control" name="checkout-m" id="checkout-m" placeholder="MM">
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <input type="text" class="form-control" name="checkout-d" id="checkout-d" placeholder="DD">
+            </div><!-- end.col-* -->
+            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <label for="total">Total</label>
+              <input type="number" class="form-control" name="total" id="total">
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" name="nombre" id="nombre">
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 20px;">
+              <label for="correo">Correo</label>
+              <input type="text" class="form-control" name="correo" id="correo">
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+              <label for="adultos">Adultos</label>
+              <input type="text" class="form-control" name="adultos" id="adultos" value="2">
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 20px;">
+              <label for="ninos">Niños</label>
+              <input type="text" class="form-control" name="ninos" id="ninos" value="0">
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom: 20px;">
+              <label for="mascotas">Mascotas</label>
+             <input type="radio" id="mascotas" name="mascotas" value="1">
+              <label for="mascotas">SI</label>
+              <input type="radio" id="nomascotas" name="mascotas" value="0" checked>
+              <label for="nomascotas">NO</label>
+            </div>
+            <div class="col-12 text-center">
+              <button type="submit" class="btnpr btnpr__primary btnpr__primary--border nB">Guardar</button>
+            </div>
+          </div><!-- end.row -->
+          
+          {{ form_close() }}
+        </div>
+      </div>
+    </div>
+  </section>
+</article>

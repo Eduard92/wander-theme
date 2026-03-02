@@ -1,5 +1,5 @@
 title = "Reservar 6"
-url = "/reservar/resumen"
+url = "/reservar/resumen/:uuid?"
 layout = "layout"
 is_hidden = 0
 robot_index = "noindex"
@@ -249,7 +249,7 @@ p
                           
                               {% for key, dia in dias %}
                               <div class="descExtrasInp">
-                                <p>{{ 'Noche'|_ }} {{loop.index}} - {{dia}}</p>
+                                <p>{{ 'noche'|_ }} {{loop.index}} - {{dia}}</p>
                                 <span class="precio">${{precios[key]|number_format(2, '.', ',') }}</span>
                               </div>
                               {% endfor %}
@@ -590,7 +590,7 @@ p
                                     </div>
                                 {% else %}
                                     <div class="huesCont__box" data-frm-inp="huesped-{{i}}">
-                                      <h4>{{ 'Adulto'|_ }} {{i}}</h4>
+                                      <h4>{{ 'adulto'|_ }} {{i}}</h4>
                                       <div class="form-group row">
                                         <label for="nombre-{{i}}" class="col-4 col-sm-3 col-md-4 col-xl-3 col-form-label">Nombre completo</label>
                                         <div class="col-8 col-sm-9 col-md-8 col-xl-9">
@@ -1132,16 +1132,28 @@ document.getElementById('servicios-2')?.addEventListener('click', () => {
 // 4️⃣ Detectar cierre o abandono de página
 window.addEventListener('beforeunload', function (e) {
     if (window._internalNavigation) return;
+    
+    var klaviyoTags = {{ klaviyo_tags_session | raw }};
 
     const visitorId = localStorage.getItem('visitor_id');
-    const data = {
+
+
+        const data = {
         event_name: 'Abandon_Cart',
         wander: visitorId,
-        with_session_tags => true,
-        properties: {
+       properties: Object.assign({
             abandoned_step: 'Paso 6',
+            url: '{{ url_cart_recovery }}',
+            image: '{{ image }}',
+            cabin_name: '{{ cabana.nombre }}',
+            nights: '{{ noches }}',
+            guests: '{{ guest }}',
+            start_date: '{{ start }}',
+            end_date: '{{ end }}',
+            location: '{{ ubicacion.nombre }}',
+            total_price: {{ total }},
             page: window.location.pathname
-        }
+        }, klaviyoTags)
     };
 
     // Opción 1: sendBeacon (la más confiable para beforeunload)
@@ -1164,7 +1176,6 @@ window.addEventListener('beforeunload', function (e) {
 
 document.addEventListener('DOMContentLoaded', function () {
    {% set guest = (adultos ?? 0) + (ninos ?? 0) %}
-   var klaviyoTags = {{ klaviyo_tags | raw }};
 
 
     const reservationData = Object.assign({
@@ -1177,7 +1188,7 @@ document.addEventListener('DOMContentLoaded', function () {
         total_price: {{ total }},
         $value: {{ total }},
         currency: 'MXN'
-    }, klaviyoTags);
+    }, {{ klaviyo_tags | raw }});
 
     // Crear hash simple de los datos
     const dataHash = JSON.stringify(reservationData);

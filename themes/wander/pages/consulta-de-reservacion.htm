@@ -30,8 +30,8 @@ security = "all"
               <br>
               <small>{{ 'checkIn'|_ }}: </small>{{reserva.inicio|date("d/m/Y")}} 16:00hrs.<br>
               <small>{{ 'checkOut'|_ }}: </small>{{reserva.fin|date("d/m/Y")}} 12:00hrs.<br>
-              <small>{{ 'Adultos'|_ }}: </small>{{reserva.adultos}}<br>
-              <small>{{ 'Niños'|_ }}: </small>{{reserva.ninos}}<br>
+              <small>{{ 'adultos'|_ }}: </small>{{reserva.adultos}}<br>
+              <small>{{ 'niños'|_ }}: </small>{{reserva.ninos}}<br>
               <small>{{ 'accesoAMascotas'|_ }}: </small>{% if reserva.mascotas == 0 %}NO{% else %}SI{% endif %}<br>
               <br>
               <small>{{ 'totalPagado'|_ }}: </small>${{reserva.costo_total|number_format(2, '.', ',') }} <small>MXN.</small><br><br>
@@ -62,7 +62,7 @@ security = "all"
                 </h4>
                 <br>
             {% endif %}
-            <h4>{{ 'Huéspedes'|_ }}:<br/>
+            <h4>{{ 'huéspedes'|_ }}:<br/>
             {% for huesped in reserva.huespedes %}
                 <small>{{huesped.nombre}} - {{huesped.edad}} {{ 'anos'|_ }}</small><br/>
             {% endfor %}

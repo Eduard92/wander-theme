@@ -1,0 +1,14 @@
+title = "Confirmacion Manual"
+url = "/confirmacion-manual/:rsrv"
+layout = "layout"
+is_hidden = 1
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[procesaPago]
+==
+{% flash %}
+        <div class="alert alert-warning" style="text-align:center;">
+            {{ message }}
+        </div>
+    {% endflash %}

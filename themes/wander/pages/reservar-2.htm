@@ -76,7 +76,7 @@ robot_follow = "nofollow"
                 </div><!-- end.col-* -->
                 <div class="col-12 col-md-6 col-lg-5">
                   <div class="inputHuesped">
-                    <h4 class="inputHuesped__title">{{ 'Adultos'|_ }}</h4>
+                    <h4 class="inputHuesped__title">{{ 'adultos'|_ }}</h4>
                     <div class="inputHuesped__opt text-center">
                       <input type="radio" class="radioRes" name="adultos" id="adulto-1" value="1" {% if adultos == '1' %}checked{% endif %}>
                       <label onclick="objLayer.adultos ='1';" for="adulto-1">1</label>
@@ -89,7 +89,7 @@ robot_follow = "nofollow"
                     </div><!-- end.inputHuesped__opt -->
                   </div><!-- end.inputHuesped -->
                   <div class="inputHuesped">
-                    <h4 class="inputHuesped__title">{{ 'Niños'|_ }}
+                    <h4 class="inputHuesped__title">{{ 'niños'|_ }}
                       {% if detalleninos.precio_sab > 0 %}| {{ 'costoPorEstancia'|_ }} ${{detalleninos.precio_sab|number_format(2, '.', ',') }}
                       {% elseif detalleninos.precio_sab == 0 %}| {{ 'estanciaSinCostoExtra'|_ }}
                       {% else %}<small>*{{ 'podriaAplicarCostoExtra'|_ }}</small>
@@ -108,7 +108,7 @@ robot_follow = "nofollow"
                     </div><!-- end.inputHuesped__opt -->
                   </div><!-- end.inputHuesped -->
                   <div class="inputHuesped">
-                    <h4 class="inputHuesped__title">{{ 'Mascotas'|_ }} {% if detallemascotas.precio_sab %}| {{ 'costoPorEstancia'|_ }} ${{detallemascotas.precio_sab|number_format(2, '.', ',') }}{% else %}<small>*{{ 'podriaAplicarCostoExtra'|_ }}</small>{% endif %}</h4>
+                    <h4 class="inputHuesped__title">{{ 'mascotas'|_ }} {% if detallemascotas.precio_sab %}| {{ 'costoPorEstancia'|_ }} ${{detallemascotas.precio_sab|number_format(2, '.', ',') }}{% else %}<small>*{{ 'podriaAplicarCostoExtra'|_ }}</small>{% endif %}</h4>
                       <div class="inputHuesped__opt text-center">
                           <input type="radio" class="radioRes" name="mascotas" id="mascotas-0" value="0" {% if mascotas == '0' or not mascotas %}checked{% endif %}>
                           <label onclick="objLayer.mascota ='NO';"  for="mascotas-0">{{ 'NO'|_ }}</label>
@@ -254,16 +254,19 @@ document.getElementById('paso-2')?.addEventListener('click', () => {
 window.addEventListener('beforeunload', function (e) {
     if (window._internalNavigation) return;
 
+       var klaviyoTags = {{ klaviyo_tags_session | raw }};
+
+
     const visitorId = localStorage.getItem('visitor_id');
     const data = {
         event_name: 'Abandon_Browse',
         wander: visitorId,
-        with_session_tags => true,
-        properties: {
+       properties: Object.assign({
             abandoned_step: 'Paso 2',
             page: window.location.pathname
-        }
+        }, klaviyoTags)
     };
+
 
     // Opción 1: sendBeacon (la más confiable para beforeunload)
     if (navigator.sendBeacon) {

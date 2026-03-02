@@ -1,0 +1,976 @@
+title = "Checkout"
+url = "/reservar/ch"
+meta_title = "Wander Cabins | Checkout"
+meta_description = "Checkout de pago de reservas Wander Cabins"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+==
+<?php
+header(
+  "Content-Security-Policy: " .
+  "default-src 'self'; " .
+  "script-src 'self' https://js.stripe.com https://www.googletagmanager.com; " .
+  "connect-src 'self' https://api.stripe.com; " .
+  "frame-src https://js.stripe.com https://hooks.stripe.com https://www.googletagmanager.com; " .
+  "img-src 'self' data: https://*.stripe.com; " .
+  "style-src 'self' 'unsafe-inline' https://js.stripe.com;"
+);
+?>
+
+<html lang="es-MX">
+    <head>
+        <link rel="preload" as="script" href="https://js.stripe.com/v3/fingerprinted/js/checkout-app-init-9526fab87bf2b1009b463b446cf7ce72.js" />
+        <link rel="preload" as="style" href="https://js.stripe.com/v3/fingerprinted/css/checkout-app-init-b9901cd417dc7886451ed17e2183666e.css" />
+        <link rel="preload" as="script" href="https://js.stripe.com/v3/fingerprinted/js/vendor-252d22c8ffee4ca892254a9cf8fc1526.js" />
+        <meta charset="utf-8" />
+        <meta name="robots" content="noindex" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+        <meta name="google" content="translate" />
+        <title>Wander Cabins | Checkout</title>
+        <link rel="apple-touch-icon" href="https://wandercabins.mx/storage/app/uploads/public/60e/680/73b/60e68073b95e8483929967.png">
+        <link rel="icon" type="image/png" href="https://wandercabins.mx/storage/app/uploads/public/60e/680/73b/60e68073b95e8483929967.png">
+        <link rel="shortcut icon" href="https://wandercabins.mx/storage/app/uploads/public/60e/680/73b/60e68073b95e8483929967.png">
+
+        <!-- prettier-ignore -->
+    <!--script>!function(){"use strict";"PerformanceLongTaskTiming"in window&&(window.__tti={longTaskWatcher:null,
+        tasks:[]},
+        window.__tti.longTaskWatcher=new PerformanceObserver((function(t){window.__tti.tasks=window.__tti.tasks.concat(t.getEntries())})),
+        window.__tti.longTaskWatcher.observe({entryTypes:["longtask"]}))}();
+//# sourceMappingURL=https://js.stripe.com/v3/sourcemaps/checkout-performance-observer-3599c2e515702b12b580706c4b5e047e.js.map</script-->
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    let varaLayer;
+    let objLayer ={};
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WSG8ZPF');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Meta Pixel Code ->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4563183173747615');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=4563183173747615&ev=PageView&noscript=1"
+/></noscript>
+<-- End Meta Pixel Code -->
+
+    
+
+        <style type="text/css">
+            @-webkit-keyframes placeload {
+                0% {
+                    -webkit-transform: translateX(-100%);
+                    transform: translateX(-100%);
+                }
+                to {
+                    -webkit-transform: translateX(100%);
+                    transform: translateX(100%);
+                }
+            }
+            @keyframes placeload {
+                0% {
+                    -webkit-transform: translateX(-100%);
+                    transform: translateX(-100%);
+                }
+                to {
+                    -webkit-transform: translateX(100%);
+                    transform: translateX(100%);
+                }
+            }
+            @-webkit-keyframes exit {
+                0% {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+            @keyframes exit {
+                0% {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+            @-webkit-keyframes enter {
+                0% {
+                    opacity: 0.1;
+                    -webkit-transform: scale(0.97);
+                    transform: scale(0.97);
+                }
+                to {
+                    opacity: 1;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+            @keyframes enter {
+                0% {
+                    opacity: 0.1;
+                    -webkit-transform: scale(0.97);
+                    transform: scale(0.97);
+                }
+                to {
+                    opacity: 1;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+            @-webkit-keyframes enter-form-mobile {
+                0% {
+                    opacity: 0.1;
+                    -webkit-transform: translateY(1rem);
+                    transform: translateY(1rem);
+                }
+                to {
+                    opacity: 1;
+                    -webkit-transform: none;
+                    transform: none;
+                }
+            }
+            @keyframes enter-form-mobile {
+                0% {
+                    opacity: 0.1;
+                    -webkit-transform: translateY(1rem);
+                    transform: translateY(1rem);
+                }
+                to {
+                    opacity: 1;
+                    -webkit-transform: none;
+                    transform: none;
+                }
+            }
+            @-webkit-keyframes enter-form-desktop {
+                0% {
+                    opacity: 0.1;
+                    -webkit-transform: translateX(1.5rem);
+                    transform: translateX(1.5rem);
+                }
+                to {
+                    opacity: 1;
+                    -webkit-transform: none;
+                    transform: none;
+                }
+            }
+            @keyframes enter-form-desktop {
+                0% {
+                    opacity: 0.1;
+                    -webkit-transform: translateX(1.5rem);
+                    transform: translateX(1.5rem);
+                }
+                to {
+                    opacity: 1;
+                    -webkit-transform: none;
+                    transform: none;
+                }
+            }
+            @-webkit-keyframes enter-background-shadow {
+                0% {
+                    opacity: 0.1;
+                    -webkit-transform: scaleX(0.9);
+                    transform: scaleX(0.9);
+                }
+                to {
+                    opacity: 1;
+                    -webkit-transform: scaleX(1);
+                    transform: scaleX(1);
+                }
+            }
+            @keyframes enter-background-shadow {
+                0% {
+                    opacity: 0.1;
+                    -webkit-transform: scaleX(0.9);
+                    transform: scaleX(0.9);
+                }
+                to {
+                    opacity: 1;
+                    -webkit-transform: scaleX(1);
+                    transform: scaleX(1);
+                }
+            }
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .LOADING-loads {
+                background-color: rgba(0, 0, 0, 0.05);
+                border-radius: 7px;
+                overflow: hidden;
+                position: relative;
+            }
+            .LOADING-loads:after {
+                -webkit-animation: placeload 1.3s linear infinite forwards;
+                animation: placeload 1.3s linear infinite forwards;
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.65) 50%, rgba(255, 255, 255, 0));
+                content: "";
+                -webkit-transform: translateX(-100%);
+                -ms-transform: translateX(-100%);
+                transform: translateX(-100%);
+                width: 200%;
+            }
+            .LOADING-container,
+            .LOADING-loads:after {
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+            }
+            .LOADING-container {
+                -webkit-animation: enter 0.3s 0s;
+                animation: enter 0.3s 0s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                padding: 0 16px;
+                pointer-events: none;
+                right: 0;
+                z-index: 9999999;
+            }
+            .LOADING-background {
+                height: 100%;
+                left: 0;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: -1;
+            }
+            .LOADING-container.is-hidden {
+                display: none;
+            }
+            .LOADING-hidden {
+                -webkit-animation: exit 0.3s;
+                animation: exit 0.3s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+            }
+            .LOADING-checkoutContainer {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                box-sizing: border-box;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                -webkit-justify-content: space-between;
+                justify-content: space-between;
+                margin: 0 auto;
+                max-width: 380px;
+                padding: 16px 0;
+                position: relative;
+                width: 100%;
+            }
+            .LOADING-header {
+                min-height: 32px;
+            }
+            .LOADING-backArrow,
+            .LOADING-header {
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+            }
+            .LOADING-backArrow {
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                color: rgba(0, 0, 0, 0.2);
+                height: 32px;
+                -webkit-justify-content: center;
+                justify-content: center;
+                margin-right: 8px;
+                width: 14px;
+            }
+            .LOADING-logo {
+                border-radius: 100%;
+                height: 28px;
+                width: 28px;
+            }
+            .LOADING-productSummary {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                margin-bottom: 10px;
+                margin-top: 32px;
+            }
+            .LOADING-productTitle {
+                -webkit-box-ordinal-group: 3;
+                -ms-flex-order: 2;
+                border-radius: 20px;
+                height: 16px;
+                margin: 2px 0;
+                -webkit-order: 2;
+                order: 2;
+                width: 85px;
+            }
+            .LOADING-productPrice {
+                -webkit-box-ordinal-group: 4;
+                -ms-flex-order: 3;
+                border-radius: 20px;
+                height: 24px;
+                margin: 8px 0 32px;
+                -webkit-order: 3;
+                order: 3;
+                width: 123px;
+            }
+            .LOADING-productImageContainer {
+                margin: 0 auto 20px;
+            }
+            .LOADING-productImage,
+            .LOADING-productImageContainer {
+                -webkit-box-ordinal-group: 2;
+                -ms-flex-order: 1;
+                -webkit-order: 1;
+                order: 1;
+            }
+            .LOADING-productImage {
+                height: 120px;
+                width: 120px;
+            }
+            .LOADING-paymentTitle {
+                display: none;
+            }
+            .LOADING-payment-oneRow,
+            .LOADING-payment-twoRow {
+                width: 100%;
+            }
+            .LOADING-button {
+                height: 44px;
+                margin-top: 29px;
+                width: 100%;
+            }
+            .LOADING-payment-oneRow {
+                height: 46px;
+            }
+            .LOADING-payment-twoRow {
+                height: 90px;
+            }
+            .LOADING-mb38 {
+                margin-bottom: 38px;
+            }
+            .LOADING-checkoutPayment {
+                -webkit-animation: enter-form-mobile 0.3s 0.1s;
+                animation: enter-form-mobile 0.3s 0.1s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+                margin-top: 48px;
+                opacity: 0.1;
+                -webkit-transform: translateY(2rem);
+                -ms-transform: translateY(2rem);
+                transform: translateY(2rem);
+            }
+            .LOADING-container--single .LOADING-checkoutPayment {
+                margin-top: 0;
+            }
+            .LOADING-container--single .LOADING-productSummary {
+                display: none;
+            }
+            .LOADING-container--single .LOADING-checkoutOverview {
+                margin-bottom: 66px;
+                padding-bottom: 0;
+            }
+            .LOADING-footer {
+                bottom: -3em;
+                color: hsla(0, 0%, 10%, 0.5);
+                font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, sans-serif;
+                font-size: 12px;
+                left: 0;
+                position: absolute;
+                text-align: center;
+                width: 100%;
+            }
+            .LOADING-footer svg {
+                fill: hsla(0, 0%, 10%, 0.4);
+                position: relative;
+                top: 4px;
+            }
+            .LOADING-container--single .LOADING-footer {
+                bottom: -2rem;
+            }
+            .LOADING-container.LOADING-container--redirectPage .LOADING-checkoutContainer,
+            .LOADING-container:not(.LOADING-container--redirectPage) .LOADING-redirectContainer {
+                display: none;
+            }
+            .LOADING-redirectContainer {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-align-items: center;
+                align-items: center;
+                bottom: 0;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                height: 100vh;
+                -webkit-justify-content: center;
+                justify-content: center;
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .LOADING-redirectContainer .LOADING-redirectSpinner {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-box-pack: center;
+                -webkit-box-ordinal-group: 2;
+                -ms-flex-order: 1;
+                height: 60px;
+                -webkit-order: 1;
+                order: 1;
+                width: 60px;
+            }
+            .LOADING-redirectContainer .LOADING-redirectSpinner,
+            .LOADING-redirectContainer .LOADING-redirectTitle {
+                -ms-flex-pack: center;
+                border-radius: 20px;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                -webkit-justify-content: center;
+                justify-content: center;
+            }
+            .LOADING-redirectContainer .LOADING-redirectTitle {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-box-pack: center;
+                -webkit-box-ordinal-group: 3;
+                -ms-flex-order: 2;
+                height: 40px;
+                margin-top: 12px;
+                -webkit-order: 2;
+                order: 2;
+                width: 130px;
+            }
+            .LOADING-redirectContainer .LOADING-redirectMessage {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-box-ordinal-group: 4;
+                -ms-flex-order: 3;
+                border-radius: 20px;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                height: 60px;
+                -webkit-justify-content: center;
+                justify-content: center;
+                margin-top: 12px;
+                -webkit-order: 3;
+                order: 3;
+                width: 300px;
+            }
+            @media only screen and (min-width: 992px) {
+                .LOADING-payment-oneRow {
+                    height: 38px;
+                }
+                .LOADING-payment-twoRow {
+                    height: 74px;
+                }
+                .LOADING-header {
+                    left: -21px;
+                    min-height: 28px;
+                    position: relative;
+                }
+                .LOADING-backArrow {
+                    height: 28px;
+                    margin-left: 0;
+                }
+                .LOADING-container {
+                    -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    -webkit-align-items: center;
+                    align-items: center;
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-justify-content: center;
+                    justify-content: center;
+                    min-height: 0;
+                    padding: 0;
+                }
+                .LOADING-double .LOADING-checkoutContainer {
+                    -webkit-box-orient: horizontal;
+                    -webkit-box-direction: normal;
+                    -webkit-flex-direction: row;
+                    -ms-flex-direction: row;
+                    flex-direction: row;
+                    max-width: 920px;
+                    padding: 16px 0 0;
+                }
+                .LOADING-container--single .LOADING-checkoutContainer {
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    -webkit-align-items: center;
+                    align-items: center;
+                }
+                .LOADING-container:not(.LOADING-container--single) .LOADING-checkoutPayment {
+                    -webkit-animation: enter-form-desktop 0.3s 0.1s forwards;
+                    animation: enter-form-desktop 0.3s 0.1s forwards;
+                    margin-top: 0;
+                    opacity: 0.1;
+                    -webkit-transform: translateX(2rem);
+                    -ms-transform: translateX(2rem);
+                    transform: translateX(2rem);
+                }
+                .LOADING-checkoutOverview,
+                .LOADING-checkoutPayment {
+                    margin-bottom: 0;
+                    padding-bottom: 40px;
+                    width: 380px;
+                }
+                .LOADING-container:not(.LOADING-container--single):before {
+                    -webkit-animation: enter-background-shadow 0.3s;
+                    animation: enter-background-shadow 0.3s;
+                    -webkit-animation-fill-mode: both;
+                    animation-fill-mode: both;
+                    background: white;
+                    box-shadow: 15px 0 30px 0 rgba(0, 0, 0, 0.18);
+                    content: " ";
+                    height: 100vh;
+                    opacity: 0.1;
+                    position: fixed;
+                    right: 0;
+                    top: 0;
+                    -webkit-transform: scaleX(0.9);
+                    -ms-transform: scaleX(0.9);
+                    transform: scaleX(0.9);
+                    -webkit-transform-origin: right;
+                    -ms-transform-origin: right;
+                    transform-origin: right;
+                    width: 50%;
+                }
+                .LOADING-container.LOADING-container--redirectPage:before {
+                    display: none;
+                }
+                .LOADING-productSummary {
+                    -webkit-box-align: start;
+                    -ms-flex-align: start;
+                    -webkit-align-items: flex-start;
+                    align-items: flex-start;
+                    margin-bottom: 0;
+                }
+                .LOADING-productTitle {
+                    -webkit-box-ordinal-group: 2;
+                    -ms-flex-order: 1;
+                    -webkit-order: 1;
+                    order: 1;
+                }
+                .LOADING-productPrice {
+                    -webkit-box-ordinal-group: 3;
+                    -ms-flex-order: 2;
+                    margin: 13px 0 32px;
+                    -webkit-order: 2;
+                    order: 2;
+                }
+                .LOADING-container--multiItem .LOADING-productImageContainer {
+                    display: none;
+                }
+                .LOADING-productImageContainer {
+                    height: 300px;
+                    margin: 32px 0;
+                    width: 300px;
+                }
+                .LOADING-productImage,
+                .LOADING-productImageContainer {
+                    -webkit-box-ordinal-group: 4;
+                    -ms-flex-order: 3;
+                    -webkit-order: 3;
+                    order: 3;
+                }
+                .LOADING-productImage {
+                    height: 187px;
+                    width: 187px;
+                }
+                .LOADING-footer {
+                    bottom: 0;
+                    left: 0;
+                    margin: 12px 0;
+                    position: absolute;
+                    text-align: left;
+                }
+                .LOADING-paymentTitle {
+                    border-radius: 20px;
+                    display: block;
+                    height: 26px;
+                    margin-bottom: 40px;
+                    width: 160px;
+                }
+                .LOADING-container--single .LOADING-paymentTitle {
+                    display: none;
+                }
+                .LOADING-container--single .LOADING-footer {
+                    text-align: center;
+                }
+                .LOADING-container--multiItem .LOADING-lineItem {
+                    -webkit-box-ordinal-group: 4;
+                    -ms-flex-order: 3;
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                    display: -ms-flexbox;
+                    display: flex;
+                    margin-bottom: 24px;
+                    -webkit-order: 3;
+                    order: 3;
+                }
+                .LOADING-container--multiItem .LOADING-productImage {
+                    display: none;
+                }
+                .LOADING-container--multiItem .LOADING-lineItem-image {
+                    display: inline-block;
+                    height: 42px;
+                    width: 42px;
+                }
+                .LOADING-container--multiItem .LOADING-lineItem-lines {
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                    -webkit-box-pack: justify;
+                    -ms-flex-pack: justify;
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-flex-direction: column;
+                    -ms-flex-direction: column;
+                    flex-direction: column;
+                    -webkit-justify-content: space-between;
+                    justify-content: space-between;
+                    margin-left: 12px;
+                }
+                .LOADING-container--multiItem .LOADING-lineItem-line {
+                    height: 12px;
+                    width: 280px;
+                }
+
+                .Error {
+                    margin-top: 0.25rem;
+                    color: #df1b41;
+                    font-weight: 400;
+                    font-size: 0.93rem;
+                }
+            }
+        </style>
+        <script id="stripe-js" src="https://js.stripe.com/v3/fingerprinted/js/stripe-d98d93f2145ce3662e677f0abb37eb53.js" async=""></script>
+        <link rel="stylesheet" type="text/css" href="https://js.stripe.com/v3/fingerprinted/css/checkout-app-init-b9901cd417dc7886451ed17e2183666e.css" />
+        <link rel="stylesheet" type="text/css" href="https://js.stripe.com/v3/fingerprinted/css/icon-99f116bc625febaeb5e22bd64fc33afc.css" />
+    </head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSG8ZPF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+            <div class="App-Container is-darkBackground flex-container justify-content-center" data-testid="checkout-container">
+                <div class="App-Background" style="background-color: rgb(129, 140, 112);"></div>
+                <div class="App App--singleItem">
+                    <div class="App-Overview is-darkBackground" style="background-color: rgb(129, 140, 112);">
+                    <header class="Header is-darkBackground" style="background-color: rgb(129, 140, 112);">
+                            <div class="Header-content flex-container justify-content-space-between align-items-stretch">
+                                <div class="Header-business flex-item width-grow flex-container align-items-center">
+                                    <a class="Link Header-businessLink Link--primary" href="https://wandercabins.mx/" aria-label="Volver a Wander Cabins" title="Wander Cabins" target="_self">
+                                        <div style="position: relative;">
+                                            <div class="flex-container align-items-center">
+                                                <div class="Header-backArrowContainer" style="opacity: 1; transform: none;">
+                                                    <svg class="InlineSVG Icon Header-backArrow mr2 Icon--sm" focusable="false" width="12" height="12" viewBox="0 0 16 16">
+                                                        <path d="M3.417 7H15a1 1 0 0 1 0 2H3.417l4.591 4.591a1 1 0 0 1-1.415 1.416l-6.3-6.3a1 1 0 0 1 0-1.414l6.3-6.3A1 1 0 0 1 8.008 2.41z" fill-rule="evenodd"></path>
+                                                    </svg>
+                                                </div>
+                                                <div class="Header-merchantLogoContainer" style="transform: none;">
+                                                    <div class="Header-merchantLogoWithLabel">
+                                                        <div class="HeaderImage HeaderImage--logo flex-item width-fixed flex-container justify-content-center align-items-center width-fixed">
+                                                            <img
+                                                                alt="Wander Cabins logo"
+                                                                src="https://stripe-camo.global.ssl.fastly.net/05310bf8e1d794535acc7b39b7bdd31a7f0dc8ab119d2cadc7aa3b7ace114157/68747470733a2f2f66696c65732e7374726970652e636f6d2f66696c65732f4d44423859574e6a6446387852306445527a46435a7a6c535633684e557a517966475a6662476c325a5639554d3051324e3278535a576c364f46426a54316f7762577472524563304e585130306a6e5649774e6750"
+                                                                class="HeaderImage-img"
+                                                                loading="lazy"
+                                                            />
+                                                        </div>
+                                                        <span class="Header-businessLink-label Text Text-color--gray800 Text-fontSize--14 Text-fontWeight--500">Atrás</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </header>
+                    <div class="App-productSummaryContainer">
+                        <div data-testid="product-summary" class="ProductSummary">
+                                <div class="ProductSummary-productImageContainer" data-testid="product-summary-product-image">
+                                    <div class="ProductImage-container" data-testid="product-image">
+                                        <img
+                                            src="{{image}}"
+                                            alt="{{item}}"
+                                            class="ProductImage-image"
+                                            fetchpriority="high"
+                                        />
+                                    </div>
+                                </div>
+                            <div class="ProductSummary-info is-darkBackground">
+                                <span class="ProductSummary-name Text Text-color--gray500 Text-fontSize--16 Text-fontWeight--500" data-testid="product-summary-name">{{item}}</span>
+                                <div class="ProductSummary-amountsContainer">
+                                        <div class="ProductSummary-totalsRead" style="opacity: 1;">
+                                            <div class="ProductSummary-totalAmountContainer" style="opacity: 1;">
+                                                <span class="ProductSummary-totalAmount Text Text-color--default Text-fontWeight--600 Text--tabularNumbers" id="ProductSummary-totalAmount" data-testid="product-summary-total-amount">
+                                                    <span>$ {{total}} MXN</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                </div>
+                                <span class="ProductSummary-description Text Text-color--gray500 Text-fontSize--14 Text-fontWeight--500" id="ProductSummary-description" data-testid="product-summary-description">
+                                        <div class="ProductSummaryDescription ProductSummaryDescription--singleItem"><div></div></div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="App-Payment">
+                        <div class="CheckoutPaymentForm">
+
+                            <div class="PaymentRequestOrHeader" style="display: inherit; height: auto;">
+                                <div class="PaymentHeaderContainer" style="display: block; opacity: 1;">
+                                    <div class="PaymentHeader"><div class="Text Text-color--default Text-fontSize--20 Text-fontWeight--500">Pago por {{metodo}}</div></div>
+                                </div>
+                                <div class="ButtonAndDividerContainer" style="opacity: 0; display: none;"></div>
+                            </div>
+
+                            <div class="PaymentFormFixedHeightContainer flex-container direction-column" style="height: 563px;">
+                             <form id="payment-form">
+                                    <div>
+                                        <div>
+                                            <div style="opacity: 1;">
+                                                <div style="opacity: 1;">
+                                                    <div class="PaymentForm-paymentMethodForm flex-container spacing-16 direction-column wrap-wrap">
+                                                        <div class="flex-item width-12">
+                                                            <div class="FormFieldGroup">
+                                                                <div class="FormFieldGroup-labelContainer flex-container justify-content-space-between">
+                                                                    <label for="cardNumber-fieldset"><span class="Text Text-color--gray600 Text-fontSize--13 Text-fontWeight--500"></span></label>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% if metodo == 'Tarjeta'%}
+
+                                    <div class="App-Global-Fields flex-container spacing-16 direction-row wrap-wrap">
+                                        <div class="flex-item width-12">
+                                            <div role="list" class="ReadOnlyForm ReadOnlyForm--withShadow">
+                                                <div class="ReadOnlyFormField-email ReadOnlyFormField">
+                                                    <div class="ReadOnlyFormField-label"><span class="Text Text-color--gray600 Text-fontSize--13 Text-fontWeight--500">Correo electrónico</span></div>
+                                                    <div class="ReadOnlyFormField-content">
+                                                        <div class="ReadOnlyFormField-titleContainer">
+                                                            <div class="ReadOnlyFormField-title">{{email}}</div>
+                                                            <div class="ReadOnlyFormField-action"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif%}
+
+                                    <div id="payment-element">
+                                    <!-- Elements will create form elements here -->
+                                    </div>
+
+                                    <div id="error-message" class="p-FieldError Error">
+                                    <!-- Display error message to your customers here -->
+                                    </div>
+                                    
+                                    <div class="PaymentForm-confirmPaymentContainer mt4 flex-item width-grow">
+                                        <div>
+                                            <div class="flex-item width-12"></div>
+                                            <div class="flex-item width-12">
+                                                <button class="SubmitButton SubmitButton--incomplete" type="submit" data-testid="hosted-payment-submit-button" style="background-color: rgb(241, 178, 63); color: rgb(0, 0, 0);">
+                                                    <div class="SubmitButton-Shimmer" style="background: linear-gradient(to right, rgba(241, 178, 63, 0) 0%, rgb(255, 203, 88) 50%, rgba(241, 178, 63, 0) 100%);"></div>
+                                                    <div class="SubmitButton-TextContainer">
+                                                        <span id="btn_pagar"   class="SubmitButton-Text SubmitButton-Text--current Text Text-color--default Text-fontWeight--500 Text--truncate" aria-hidden="false">Pagar</span>
+                                                        <span id="btn_process" class="SubmitButton-Text SubmitButton-Text--pre Text Text-color--default Text-fontWeight--500 Text--truncate" aria-hidden="true">Procesando...</span>
+                                                    </div>
+                                                    <div class="SubmitButton-IconContainer">
+                                                        <div class="SubmitButton-Icon SubmitButton-Icon--pre">
+                                                            <div class="Icon Icon--md Icon--square">
+                                                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                                                                    <path
+                                                                        d="M3 7V5a5 5 0 1 1 10 0v2h.5a1 1 0 0 1 1 1v6a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2V8a1 1 0 0 1 1-1zm5 2.5a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1zM11 7V5a3 3 0 1 0-6 0v2z"
+                                                                        fill="#000000"
+                                                                        fill-rule="evenodd"
+                                                                    ></path>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div class="SubmitButton-Icon SubmitButton-SpinnerIcon SubmitButton-Icon--pre">
+                                                            <div class="Icon Icon--md Icon--square">
+                                                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false"><ellipse cx="12" cy="12" rx="10" ry="10" style="stroke: rgb(0, 0, 0);"></ellipse></svg>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SubmitButton-CheckmarkIcon">
+                                                        <div class="Icon Icon--md">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="14" focusable="false">
+                                                                <path d="M 0.5 6 L 8 13.5 L 21.5 0" fill="transparent" stroke-width="2" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                            
+                                            <div class="flex-item width-12">
+                                                <div class="ConfirmPayment-PostSubmit">
+                                                    <div>
+                                                        <div class="flex-container spacing-8 direction-column" style="margin-top: 4px; margin-bottom: 4px;">
+                                                            <div class="flex-item width-grow"></div>
+                                                            <div class="flex-item width-grow"></div>
+                                                            <div class="flex-item width-grow"></div>
+                                                            <div class="flex-item width-grow"><div class="ConfirmTerms Text Text-color--gray500 Text-fontSize--13" data-testid="ConfirmPaymentTermsText"></div></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="PolicyHighlight-container">
+                                                        <div class="flex-container justify-content-center">
+                                                            <button class="Button PolicyHighlight-highlight Button--link Button--md" type="button">
+                                                                <!--div class="flex-container justify-content-center align-items-center">
+                                                                    <svg class="InlineSVG Icon PolicyHighlight-icon Icon--sm" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                                        <path
+                                                                            opacity="0.9"
+                                                                            d="M13.5488 8.66895C13.5488 5.94824 11.7168 4.06836 8.61328 4.06836H4.32031L2.74121 4.14355L3.9375 3.13184L5.67383 1.43652C5.81055 1.30664 5.89941 1.13574 5.89941 0.910156C5.89941 0.479492 5.59863 0.171875 5.1543 0.171875C4.96289 0.171875 4.75098 0.260742 4.60059 0.404297L0.683594 4.2666C0.526367 4.41699 0.444336 4.62207 0.444336 4.83398C0.444336 5.03906 0.526367 5.24414 0.683594 5.39453L4.60059 9.25684C4.75098 9.40039 4.96289 9.48926 5.1543 9.48926C5.59863 9.48926 5.89941 9.18164 5.89941 8.75098C5.89941 8.52539 5.81055 8.36133 5.67383 8.22461L3.9375 6.5293L2.74121 5.52441L4.32031 5.59277H8.64746C10.835 5.59277 12.0449 6.83691 12.0449 8.61426C12.0449 10.3916 10.835 11.6904 8.64746 11.6904H7.04785C6.59668 11.6904 6.27539 12.0322 6.27539 12.4492C6.27539 12.8662 6.59668 13.208 7.05469 13.208H8.70215C11.751 13.208 13.5488 11.4102 13.5488 8.66895Z"
+                                                                            fill="currentColor"
+                                                                        ></path>
+                                                                    </svg>
+                                                                    <div class="flex-container direction-column"><span class="Text Text-color--default Text-fontSize--12 Text-fontWeight--400">Cancelar</span></div>
+                                                                </div-->
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                </footer>
+            </div>
+        </div>
+    </div>
+
+
+    </body>
+
+
+
+  <script src="https://js.stripe.com/v3/"></script>
+  
+  <script>
+          const stripe = Stripe('{{publicApi}}');
+        
+          const options = {
+          clientSecret: '{{paymentIntent}}',
+            };
+        
+        // Set up Stripe.js and Elements to use in checkout form, passing the client secret obtained in step 3
+        const elements = stripe.elements(options);
+        
+        // Create and mount the Payment Element
+        const paymentElement = elements.create('payment');
+        paymentElement.mount('#payment-element');
+
+
+        const form = document.getElementById('payment-form');
+        let btn_pagar = document.getElementById("btn_pagar");
+        let btn_process = document.getElementById("btn_process");
+
+        
+        form.addEventListener('submit', async (event) => {
+
+
+
+          event.preventDefault();
+        
+          const {error} = await stripe.confirmPayment({
+            //`Elements` instance that was used to create the Payment Element
+            elements,
+            confirmParams: {
+              return_url: '{{success_url}}',
+            //  receipt_email: '{{email}}',
+            },
+          });
+        
+          if (error) {
+            // This point will only be reached if there is an immediate error when
+            // confirming the payment. Show error to your customer (for example, payment
+            // details incomplete)
+            const messageContainer = document.querySelector('#error-message');
+            messageContainer.textContent = error.message;
+          } else {
+            // Your customer will be redirected to your `return_url`. For some payment
+            // methods like iDEAL, your customer will be redirected to an intermediate
+            // site first to authorize the payment, then redirected to the `return_url`.
+          }
+        });
+
+
+
+  </script>

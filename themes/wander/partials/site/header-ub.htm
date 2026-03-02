@@ -280,8 +280,60 @@ button.cloudbeds-button_link{
 }
 
 /*fin styles cloudbeds*/
-  
-  
+
+/* Locale Switcher */
+.toolsHead {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.locale-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 6px 9px;
+    cursor: pointer;
+}
+
+.locale-icon {
+    color: #ffffff;
+    font-size: 1rem;
+    pointer-events: none;
+    line-height: 1;
+}
+
+.locale-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.locale-switcher {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 140px;
+    opacity: 0;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-family: "Oswald", sans-serif;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
 
   </style>
   
@@ -335,12 +387,12 @@ button.cloudbeds-button_link{
               </a>
             </div><!-- end.logoHead -->
           </div><!-- end.col-* -->
-          <div class="col-12 col-lg-7 d-none d-lg-block">
+          <div class="col-12 col-lg-8 d-none d-lg-block">
             <div class="menuMain">
               <nav class="menuDesk">
                 <ul id="md">
                    <li class="submenu">
-                      <a class="menuIemHover" href="#">{{ 'Destinos'|_ }}</a>
+                      <a class="menuIemHover" href="#">{{ 'destinos'|_ }}</a>
                           <ul class="submenu-content">
                              {% for ciudad in ciudades %}
                              
@@ -379,13 +431,24 @@ button.cloudbeds-button_link{
               </nav><!-- end.menuDesk -->
             </div><!-- end.menuMain -->
           </div><!-- end.col-* -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <div class="col-6 col-md-6 col-lg-2">
             <div class="toolsHead">
-            
-        
 
                       <a class="toolsHead__link toolsHead__link--acceso" onclick="view()" href="#" >{{ 'Reservar'|_ }}</a>
                       <button type="button" id="openMenuMobile" class="toolsHead__link menu-mobile-btn" onclick="menuMobile()" data-menu-expand="false"><span></span></button>
+
+              {% if isBackendUser and locales|length > 1 %}
+              <div class="locale-wrapper">
+                  <i class="fa fa-globe locale-icon"></i>
+                  {{ form_open({'class': 'locale-form'}) }}
+                      <select name="locale" class="locale-switcher" data-request="onSwitchLocale">
+                          {% for code, name in locales %}
+                              <option value="{{ code }}" {{ code == activeLocale ? 'selected' }}>{{ code|upper }}</option>
+                          {% endfor %}
+                      </select>
+                  {{ form_close() }}
+              </div>
+              {% endif %}
                   
 
 

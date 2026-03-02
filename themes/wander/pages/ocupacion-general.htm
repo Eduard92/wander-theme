@@ -1,0 +1,92 @@
+title = "Ocupación General"
+url = "/ocupacion-general"
+layout = "layout"
+description = "Calendario de ocupación general de todas las ubicaciones"
+is_hidden = 0
+
+[calendarioReservas]
+==
+<?php
+function onStart()
+{
+    // Página protegida — solo usuarios backend autenticados
+    $user = \BackendAuth::getUser();
+    if (!$user) {
+        return \Redirect::to('/backend');
+    }
+}
+?>
+==
+<link rel="stylesheet" href="{{ 'assets/vendor/ubis/calendario-ocupacion.css' | theme }}?v={{ 'now' | date('U') }}">
+
+<div class="cal-wrap" id="calWrap">
+
+    <!-- Toolbar (sticky top, always visible) -->
+    <div class="cal-toolbar">
+        <div class="cal-toolbar-left">
+            <span class="cal-toolbar-title">🏕️ Ocupación General</span>
+            <div class="cal-filter-group">
+                <button class="cal-filter-btn active" id="btnExpand" onclick="Cal.expandAll()">Expandir todo</button>
+                <button class="cal-filter-btn" id="btnCollapse" onclick="Cal.collapseAll()">Colapsar todo</button>
+            </div>
+            <select class="cal-select" id="selUbi" onchange="Cal.filterUbi(this.value)">
+                <option value="">Todas las ubicaciones</option>
+            </select>
+        </div>
+        <div class="cal-toolbar-right">
+            <div style="display:flex;">
+                <button class="cal-btn cal-btn--nav cal-btn--nav-left" onclick="Cal.nav(-1)" title="Semana anterior">‹</button>
+                <button class="cal-btn cal-btn--nav cal-btn--nav-right" onclick="Cal.nav(1)" title="Semana siguiente">›</button>
+            </div>
+            <button class="cal-btn" onclick="Cal.goToday()">Hoy</button>
+            <span class="cal-date-display" id="elDate"></span>
+        </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="cal-legend">
+        <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#166534"></div> Confirmada</div>
+        <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#1e40af"></div> Modificada</div>
+        <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#854d0e"></div> Por Revisar</div>
+        <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#9a3412"></div> Pendiente</div>
+        <div class="cal-legend-right">
+            <span>🟢 Disponible</span>
+            <span>🟡 Parcial</span>
+            <span>🔴 Lleno</span>
+        </div>
+    </div>
+
+    <!-- Main scroll area: scrolls both X (days) and Y (cabins) -->
+    <div class="cal-container" id="elContainer">
+        <div class="cal-table" id="elTable">
+            <!-- Row: months header -->
+            <div class="cal-hrow cal-hrow--months" id="elHeaderMonths">
+                <div class="cal-corner cal-corner--months">
+                    <span class="cal-sidebar-head-label">Cabañas / Ubicación</span>
+                </div>
+                <div class="cal-hcells" id="elMonths"></div>
+            </div>
+            <!-- Row: days header -->
+            <div class="cal-hrow cal-hrow--days" id="elHeaderDays">
+                <div class="cal-corner cal-corner--days"></div>
+                <div class="cal-hcells" id="elDays"></div>
+            </div>
+            <!-- Row: data body -->
+            <div class="cal-body" id="elBody">
+                <div class="cal-sidebar" id="elSideRows"></div>
+                <div class="cal-grid" id="elGrid">
+                    <div id="elRows"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="cal-stats" id="elStats"></div>
+</div>
+
+<!-- Popup -->
+<div class="cal-overlay" id="elOverlay" onclick="Cal.closePop()"></div>
+<div class="cal-pop" id="elPop"></div>
+
+<script src="{{ 'assets/js/scripts/calendario-ocupacion.js' | theme }}?v={{ 'now' | date('U') }}"></script>

@@ -1,0 +1,211 @@
+title = "Ocurrio un errror"
+url = "reservacion/aplazo/error/:id"
+layout = "layout"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[miReserva]
+==
+{% if reserva %}
+
+{% set reserva = reserva %}
+{% set inicio = reserva.inicio|date('Y-m-d') %}
+{% set hoy = "now"|date('Y-m-d') %}
+{% set diasFaltantes = ((reserva.inicio|date('U')) - ("now"|date('U'))) / 86400 %}
+{% set total = reserva.costo_total %}
+
+<style>
+.newbtn{
+    background-color: #F1B23F;
+    border: solid 1px #F1B23F;
+    color: #ffffff;
+    max-width:80%;
+    max-width:100%
+    letter-spacing: 1.2px;
+        font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: "Oswald", sans-serif;
+    font-weight: 500;
+    min-width:300px;
+}
+.newbtn:hover{
+    background-color: #EA7F26;
+    border: solid 1px #EA7F26;
+}
+
+.aplazo{
+    letter-spacing: 1.2px;
+        background-color: #7fedfa;
+            border: solid 1px #7fedfa;
+
+            font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: "Oswald", sans-serif;
+    font-weight: 500;
+    width:300px
+    }
+    
+    
+    .aplazo:hover{
+        background-color: #4cc1cf;
+            border: solid 1px #4cc1cf;
+}
+
+
+    
+</style>
+
+
+    {{ form_ajax('onRecuperar')}}
+
+<article class="bg-gen">
+  <div class="reservaCt">
+    <div class="descFullPage">
+      <img src="{{ 'assets/img/logos/logo-wander-black-text.svg'|theme }}" alt="Wander">
+      <h2>OCURRIO UN ERROR EN EL PAGO DE LA RESERVA</h2>
+    </div>
+    <div class="payContent">
+      <div class="container">
+        <div class="row justify-content-center align-items-start g-4">
+          <div class="col-12 col-md-6">
+          <h4>{{reserva.user.name}}<br>
+          <small>{{reserva.user.email}}  +{{reserva.user.codigo_telefonico}} {{reserva.user.telefono}}</small><br><br>
+          Cabaña {{reserva.cabana.nombre}} en {{reserva.ubicacion.nombre}}, {{reserva.noches}} noche(s).<br></h4>
+          
+            <div class="payContent__box" style="text-align=left;">
+              
+              <p><small>Número de reservación: </small>{{reserva.id}}<br>
+              <small>Estatus: </small>{{reserva.estatus}}<br>
+              <small>Reservado el: </small>{{reserva.created_at|date("d/m/Y H:m")}}hrs.<br>
+              <br>
+              <small>Check-in: </small>{{reserva.inicio|date("d/m/Y")}} 16:00hrs.<br>
+              <small>Check-out: </small>{{reserva.fin|date("d/m/Y")}} 12:00hrs.<br>
+              <small>Adultos: </small>{{reserva.adultos}}<br>
+              <small>Niños: </small>{{reserva.ninos}}<br>
+              <small>Acceso a mascotas: </small>{% if reserva.mascotas == 0 %}NO{% else %}SI{% endif %}<br>
+              <br>
+              <small>Total: </small>${{reserva.costo_total|number_format(2, '.', ',') }} <small>MXN.</small><br><br>
+              <small>Cupón de Descuento: </small>{% if reserva.cupon %}{{reserva.cupon.cupon}} <br> 
+                  <small>% de Descuento: </small> {{reserva.cupon.descuento}} % <br> 
+                  <small>Monto de Descuento: </small> ${{reserva.descuento}}<br>{% else %}No Aplico{% endif %}<br>
+                  
+              <small>Clave de acceso: </small>{{reserva.cabana.clave_acceso}}<br><br>
+              
+               
+               Nuestro equipo se pondra en contacto contigo un dia antes de tu reserva para mas detalles sobre tu llegada y experiencia.<br>
+
+              </p>
+              
+            </div>
+            
+            {% if reserva.servicios %}
+                <h4>Servicios extra:<br/>
+                    {% for servicio in reserva.servicios %}
+                        {% if servicio.servicio.tipo == 'kit' %}
+                            <small>{{servicio.servicio.nombre}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% elseif servicio.servicio.tipo == 'extended' %}
+                            <small>{{servicio.servicio.nombre}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% elseif servicio.servicio.tipo == 'actividad' %}
+                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} por {{servicio.dias}} día(s) ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% elseif servicio.servicio.tipo == 'alimentos' %}
+                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} por {{servicio.dias}} día(s) ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% elseif servicio.servicio.tipo == 'amenidades' %}
+                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} la noche {{servicio.fecha}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% else  %}
+                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% endif %}
+
+                    {% endfor %}
+                </h4>
+                <br>
+            {% endif %}
+            
+            <h4>Huéspedes:<br/>
+            {% for huesped in reserva.huespedes %}
+                <small>{{huesped.nombre}} - {{huesped.edad}} años</small><br/>
+            {% endfor %}
+            </h4>
+          </div><!-- end.col-* -->
+          <!-- Columna derecha: Opciones de pago / recuperación -->
+    <!-- Columna derecha: Métodos de pago -->
+            <div class="col-12 col-md-6 d-flex justify-content-center">
+            
+              <input name="id_reserva" type="hidden" value="{{reserva.id}}">
+            
+            
+              <div class="d-flex flex-column justify-content-center align-items-center w-100" style="min-height:100%;">
+                <div class="card-body payMet text-center">
+                  <div class="payMet__desc text-center mb-4">
+                    <h4>No te quedes sin vivir la experiencia, te ofrecemos alternativas de pago</h4>
+                  </div>
+            
+                  <div class="d-flex flex-column gap-3 align-items-center w-100">
+                    <input type="hidden" name="resMetodo" id="resMetodo">
+            
+                    <!-- Tarjeta con Stripe -->
+                    <button type="submit" class="btn btnpr btnpr__primary--border newbtn align-items-center justify-content-center p-3"
+                            onclick="document.getElementById('resMetodo').value='tarjeta'">
+                      <i class="fa fa-credit-card mr-2"></i> Tarjeta de Crédito / Débito 
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" 
+                           alt="Stripe" style="height:20px; margin-left:8px;">
+                    </button>
+            
+                    {% if diasFaltantes > 5 %}
+                      <!-- Transferencia con Stripe -->
+                      <button type="submit" class="btn btnpr btnpr__primary--border newbtn align-items-center justify-content-center p-3"
+                              onclick="document.getElementById('resMetodo').value='transferencia'">
+                        <i class="fa fa-bank mr-2"></i> Transferencia Bancaria 
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" 
+                             alt="Stripe" style="height:20px; margin-left:8px;">
+                      </button>
+                    {% endif %}
+            
+                    {% if diasFaltantes > 14 and total < 10000 %}
+                      <!-- Oxxo -->
+                      <button type="submit" class="btn btnpr btnpr__primary--border newbtn align-items-center justify-content-center p-3"
+                              onclick="document.getElementById('resMetodo').value='oxxo'">
+                        <i class="fa fa-store mr-2"></i> Oxxo 
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" 
+                             alt="Stripe" style="height:20px; margin-left:8px;">
+                      </button>
+                    {% endif %}
+            
+                    <!-- Aplazo -->
+                  </div>
+                </div>
+              </div>
+            </div>
+                
+          
+        </div><!-- end.row -->
+      </div><!-- end.container -->
+    </div><!-- end.payContent -->
+  </div><!-- end.reservaCt -->
+</article><!-- end.bg-gen -->
+    {{ form_ajax('onRecuperar')}}
+
+{% else %}
+
+<article class="bg-gen">
+  <div class="reservaCt">
+    <div class="descFullPage">
+      <img src="{{ 'assets/img/logos/logo-wander-black-text.svg'|theme }}" alt="Wander">
+      <h2>Ocurrio un error </h2>
+    </div>
+       <div class="payContent">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 col-lg-6">
+            <h4>No se encontro la reserva.</h4><br>
+          </div>
+        </div>
+     </div>
+  </div>
+</article>
+
+{% endif %}

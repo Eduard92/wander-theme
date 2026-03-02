@@ -1,0 +1,498 @@
+title = "Reservar"
+url = "/reservar-backup"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[builderList ubicacionesList]
+modelClass = "Roll\Cabanas\Models\Ubicacion"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList cabanasList]
+modelClass = "Roll\Cabanas\Models\Cabana"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% put scriptreserva %}
+<script type="text/javascript" src="{{'assets/js/scripts/scriptReservar.js'|theme}}"></script>
+{% endput %}
+
+{% set ubicaciones = ubicacionesList.records %}
+{% set cabanas = cabanasList.records %}
+
+<article class="bg-gen">
+  <div class="reservaCt">
+    <div class="descReservar">
+      <!-- <img src="{{ 'assets/img/logos/logo-wander-black-text.svg'|theme }}" alt="Wander"> -->
+      <h2>Selecciona Cabañas</h2>
+    </div>
+    <form action="#" id="pasoResservas" class="stepReservaFrm">
+      <div>
+        <h3>Paso 1</h3>
+        <section>
+          <div class="container">
+            <div class="row justify-content-center">
+              
+            {% for ubicacion in ubicaciones %}
+              <div class="col-md-4">
+                <div class="boxCabanaRes">
+                  <div class="boxCabanaRes__img">
+                    <div id="cab-{{loop.index}}" data-slider class="sliderRes">
+
+                      <div>
+                        <figure class="boxCabanaRes__fig">
+                          <img src="{{ ubicacion.imagen.thumb('410','310','crop') }}" alt="{{ubicacion.nombre}}">
+                        </figure>
+                      </div>
+                      <div>
+                        <figure class="boxCabanaRes__fig">
+                          <img src="{{ ubicacion.imagen.thumb('410','310','crop') }}" alt="{{ubicacion.nombre}}">
+                        </figure>
+                      </div>
+
+                    </div>
+                    <!-- <a class="btnSlideRes bLeftP" href="#" id="prevSlideRes-0"></a> -->
+                    <!-- <a class="btnSlideRes nRightP" href="#" id="nextSlideRes-0"></a> -->
+                    <h5 class="boxCabanaRes__titleCab">{{ubicacion.nombre}}</h5>
+                  </div><!-- end.slideCabanaRes -->
+                  <input type="radio" class="boxCabanaRes__input" name="cabanaSel" id="cabana-{{ubicacion.slug}}" value="{{ubicacion.slug}}">
+                  <label for="cabana-{{ubicacion.slug}}">Seleccionar</label>
+                  <div class="boxCabanaRes__desc">
+                    <h2>Lorem ipsum dolor sit amet</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At amet tellus facilisis
+                    molestie quis faucibus. Lorem ipsum dolor sit amet.</p>
+                  </div><!-- end.descCabana -->
+                </div><!-- end.boxLoc -->
+              </div><!-- end.col-* -->
+            {% endfor %}
+
+            </div><!-- end.row -->
+          </div>
+        </section><!-- end.selectLocation -->
+        <h3>Paso 2</h3>
+        <section>
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-6">
+                <div class="inputHuesped">
+                  <h4 class="inputHuesped__title">Adulto</h4>
+                  <div class="inputHuesped__opt">
+                    <input type="radio" class="radioRes" name="adultos" id="adutlo-1" value="1">
+                    <label for="adutlo-1">1</label>
+                    <input type="radio" class="radioRes" name="adultos" id="adutlo-2" value="2">
+                    <label for="adutlo-2">2</label>
+                    <input type="radio" class="radioRes" name="adultos" id="adutlo-3" value="3">
+                    <label for="adutlo-3">3</label>
+                    <input type="radio" class="radioRes" name="adultos" id="adutlo-4" value="4">
+                    <label for="adutlo-4">4</label>
+                  </div><!-- end.inputHuesped__opt --> 
+                </div><!-- end.inputHuesped -->
+                <div class="inputHuesped">
+                  <h4 class="inputHuesped__title">Niños | Costo por estancia $XX</h4>
+                  <div class="inputHuesped__opt">
+                    <input type="radio" class="radioRes" name="ninos" id="nino-1" value="1">
+                    <label for="nino-1">1</label>
+                    <input type="radio" class="radioRes" name="ninos" id="nino-2" value="2">
+                    <label for="nino-2">2</label>
+                    <input type="radio" class="radioRes" name="ninos" id="nino-3" value="3">
+                    <label for="nino-3">3</label>
+                    <input type="radio" class="radioRes" name="ninos" id="nino-4" value="4">
+                    <label for="nino-4">4</label>
+                  </div><!-- end.inputHuesped__opt --> 
+                </div><!-- end.inputHuesped -->
+                <div class="inputHuesped">
+                  <h4 class="inputHuesped__title">Mascotas | Costo por estancia $XX</h4>
+                  <div class="inputHuesped__opt">
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="sldInp round"></span>
+                    </label>
+                  </div><!-- end.inputHuesped__opt --> 
+                </div><!-- end.inputHuesped -->
+              </div><!-- end.col-* -->
+            </div><!-- end.row -->
+          </div>
+        </section><!-- end.SelectHuesped -->
+        <h3>Paso 3</h3>
+        <section>
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-6 col-lg-5">
+                <div id="picker"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <h3>Paso 4</h3>
+        <section>
+          <div class="container">
+            <div class="row">
+              
+             {% for cabana in cabanas %}
+              <div class="col-md-4">
+                <div class="boxCabanaRes">
+                  <div class="boxCabanaRes__img">
+                    <div class="boxCabanaRes__tools">
+                      <div class="boxTool">
+                        <i class="fa fa-bed"></i> <span>{{cabana.camas}}</span>
+                      </div>
+                      <div class="boxTool">
+                        <i class="fa fa-user"></i> <span>{{cabana.capacidad}}</span>
+                      </div>
+                    </div><!-- end.boxCabanaRes__tools -->
+                    <div id="cab-{{loop.index}}" data-slider class="sliderRes">
+          
+                      <div>
+                        <figure class="boxCabanaRes__fig">
+                          <img src="{{ cabana.foto.thumb('310','410','crop') }}" alt="{{cabana.nombre}}">
+                        </figure>
+                      </div>
+                      <div>
+                        <figure class="boxCabanaRes__fig">
+                          <img src="{{ cabana.foto.thumb('310','410','crop') }}" alt="{{cabana.nombre}}">
+                        </figure>
+                      </div>
+          
+                    </div>
+                    <!-- <a class="btnSlideRes bLeftP" href="#" id="prevSlideRes-0"></a> -->
+                    <!-- <a class="btnSlideRes nRightP" href="#" id="nextSlideRes-0"></a> -->
+                    <h5 class="boxCabanaRes__titleCab">{{cabana.nombre}}</h5>
+                  </div><!-- end.slideCabanaRes -->
+                  <input type="radio" class="boxCabanaRes__input" name="cabSel" id="cab-{{cabana.slug}}" value="{{cabana.slug}}">
+                  <label for="cab-{{cabana.slug}}">Seleccionar</label>
+                  <div class="boxCabanaRes__desc">
+                    <h2>Lorem ipsum dolor sit amet</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At amet tellus facilisis
+                      molestie quis faucibus. Lorem ipsum dolor sit amet.</p>
+                  </div><!-- end.descCabana -->
+                </div><!-- end.boxLoc -->
+              </div><!-- end.col-* -->
+             {% endfor %}
+              
+              
+          
+            </div><!-- end.row -->
+          </div>
+        </section>
+        <h3>Paso 5</h3>
+        <section>
+          <div class="extrasCt">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+
+                  <div class="extrasCt__box">
+                    <div class="extrasCt__icon">
+                      <img src="{{ 'assets/img/imgPrueba/pastel_icon.svg'|theme }}" alt="Celebración">
+                    </div><!-- end.extrasCt__icon -->
+                    <div class="extrasCt__desc">
+                      <div class="titleExtras">
+                        <h3>Kit de celebración</h3>
+                        <span class="precio">$33</span>
+                      </div>
+                      <p>Cumpleaños, aniversarios, festejos, compromisos, lo que sea.</p>
+                    </div><!-- end.extrasCt__desc -->
+                  </div><!-- end.extrasCt__box -->
+                  <input type="radio" class="boxCabanaRes__input" name="kitSel" id="kit-celebracion" value="Kit Celebración">
+                  <label for="kit-celebracion">Agregar</label>
+                  <div class="extrasCt__box">
+                    <div class="extrasCt__icon">
+                      <img src="{{ 'assets/img/imgPrueba/tomantico_icon.svg'|theme }}" alt="Kit Romántico">
+                    </div><!-- end.extrasCt__icon -->
+                    <div class="extrasCt__desc">
+                      <div class="titleExtras">
+                        <h3>Kit de romántico</h3>
+                        <span class="precio">$33</span>
+                      </div>
+                      <p>Sorprenda a su pareja con una estancia bajo la luz de las estrellas.</p>
+                    </div><!-- end.extrasCt__desc -->
+                  </div><!-- end.extrasCt__box -->
+                  <input type="radio" class="boxCabanaRes__input" name="kitSel" id="kit-romantico" value="Kit Romántico">
+                  <label for="kit-romantico">Agregar</label>
+                  <div class="extrasCt__box">
+                    <div class="extrasCt__icon">
+                      <img src="{{ 'assets/img/imgPrueba/caballo_icon.svg'|theme }}" alt="Paseo en caballo">
+                    </div><!-- end.extrasCt__icon -->
+                    <div class="extrasCt__desc">
+                      <div class="titleExtras">
+                        <h3>Paseo a caballo</h3>
+                        <span class="precio">$33</span>
+                      </div>
+                      <p>Disfruta de un paseo a caballo para dos personas por tres horas.</p>
+                      <div class="inpInc">
+                        <div class="inpInc__inputs">
+                          <button type="button" id="extras-horse-minus"><i class="fa fa-minus"></i></button>
+                          <div class="inpText"><input type="text" name="horseDay" id="horseDay" value="0" min="0" max="4"> caballo(s)</div>
+                          <button type="button" id="extras-horse-plus"><i class="fa fa-plus"></i></button>
+                        </div><!-- end.inpInc__inputs -->
+                        <div class="inpInc__inputs">
+                          <button type="button" id="extras-horseD-minus"><i class="fa fa-minus"></i></button>
+                          <div class="inpText"><input type="text" name="dayH" id="dayH" value="0" min="0" max="4"> dia(s)</div>
+                          <button type="button" id="extras-horseD-plus"><i class="fa fa-plus"></i></button>
+                        </div><!-- end.inpInc__inputs -->
+                      </div><!-- end.inpInc -->
+                    </div><!-- end.extrasCt__desc -->
+                  </div><!-- end.extrasCt__box -->
+                  <input type="radio" class="boxCabanaRes__input" name="kitSel" id="kit-paseo" value="Paseo a caballo">
+                  <label for="kit-paseo">Agregar</label><!-- end.paseoACaballo -->
+                  <div class="extrasCt__box">
+                    <div class="extrasCt__icon">
+                      <img src="{{ 'assets/img/imgPrueba/caballo_icon.svg'|theme }}" alt="Paseo en caballo">
+                    </div><!-- end.extrasCt__icon -->
+                    <div class="extrasCt__desc">
+                      <div class="titleExtras">
+                        <h3>Paseo en bici</h3>
+                        <span class="precio">$33</span>
+                      </div>
+                      <p>Disfruta de un paseo a caballo para dos personas por tres horas.</p>
+                      <div class="inpInc">
+                        <div class="inpInc__inputs">
+                          <button type="button" id="extras-bici-minus"><i class="fa fa-minus"></i></button>
+                          <div class="inpText"><input type="text" name="biciDay" id="biciDay" value="0" min="0" max="4"> Bici(s)</div>
+                          <button type="button" id="extras-bici-plus"><i class="fa fa-plus"></i></button>
+                        </div><!-- end.inpInc__inputs -->
+                        <div class="inpInc__inputs">
+                          <button type="button" id="extras-biciD-minus"><i class="fa fa-minus"></i></button>
+                          <div class="inpText"><input type="text" name="dayB" id="dayB" value="0" min="0" max="4"> dia(s)</div>
+                          <button type="button" id="extras-biciD-plus"><i class="fa fa-plus"></i></button>
+                        </div><!-- end.inpInc__inputs -->
+                      </div><!-- end.inpInc -->
+                    </div><!-- end.extrasCt__desc -->
+                  </div><!-- end.extrasCt__box -->
+                  <input type="radio" class="boxCabanaRes__input" name="kitSel" id="kit-bici" value="Paseo en Bici">
+                  <label for="kit-bici">Agregar</label><!-- end.paseoEnBici -->
+
+                </div><!-- end.col-* -->
+              </div><!-- end.row -->
+            </div><!-- end.container -->
+          </div><!-- end.extrasCt -->
+        </section>
+        <h3>Paso 6</h3>
+        <section>
+          <div class="detallecompra">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+
+                  <div class="detailBox">
+                    <div class="dateDetail">
+                      <h3>21 - 23 Junio</h3>
+                      <p>2 noches en Valle de Bravo</p>
+                    </div><!-- end.dateDetail -->
+                    <div class="detBox">
+
+                      <div class="detBox__item">
+                        <figure class="figBoxDet">
+                          <img src="{{ 'assets/img/imgPrueba/port_malinalco_410x310.jpg'|theme }}" alt="">
+                        </figure><!-- end.figBoxDet -->
+                      </div><!-- end.detBox__item -->
+                      <div class="detBox__item">
+                        <figure class="figBoxDet">
+                          <img src="{{ 'assets/img/imgPrueba/port_malinalco_410x310.jpg'|theme }}" alt="">
+                        </figure><!-- end.figBoxDet -->
+                      </div><!-- end.detBox__item -->
+                      <div class="detBox__list">
+                        <ul>
+                          <li><img src="{{ 'assets/img/imgPrueba/bedroom_icon.svg'|theme }}" alt=""> 2 Camas</li>
+                          <li><img src="{{ 'assets/img/imgPrueba/user_icon_black.svg'|theme }}" alt=""> 2 Adulto(s)</li>
+                          <li><img src="{{ 'assets/img/imgPrueba/tomantico_icon.svg'|theme }}" alt=""> Kit Romántico</li>
+                          <li><img src="{{ 'assets/img/imgPrueba/wander_icon.svg'|theme }}" alt=""> Cabaña Meztli</li>
+                          <li><img src="{{ 'assets/img/imgPrueba/kids_icon.svg'|theme }}" alt=""> 2 Niños</li>
+                          <li><img src="{{ 'assets/img/imgPrueba/caballo_icon_black.svg'|theme }}" alt=""> Paseo en Caballo</li>
+                        </ul>
+                      </div><!-- end.detBox__list -->
+
+                    </div><!-- end.detBox -->
+                    <h2 class="precioFinal">TOTAL $3,000 MXN</h2>
+                  </div><!-- end.detailBox -->
+
+                  <div class="contAccordionBox">
+                    <div class="accordion accInputList" id="accInputsRes">
+
+                      <div class="card">
+                        <div class="card-header" id="title-list-1">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#accInpt-1" aria-expanded="false" aria-controls="accInpt-1">
+                              Desglose de pago
+                            </button>
+                          </h2>
+                        </div><!-- end.card-header -->
+                        <div id="accInpt-1" class="collapse" aria-labelledby="title-list-1" data-parent="#accInputsRes">
+                          <div class="card-body extrasInp">
+
+                            <div class="extrasInp__box">
+                              <div class="extrasInp__icon">
+                                <img src="{{ 'assets/img/imgPrueba/wander_icon.svg'|theme }}" alt="Wander">
+                              </div><!-- end.extrasCt__icon -->
+                              <div class="extrasInp__desc">
+                                <h3>Cabaña Meztli</h3>
+                                <div class="descExtrasInp">
+                                  <p>Lunes 14 de Junio</p>
+                                  <span class="precio">$33</span>
+                                </div>
+                                <div class="descExtrasInp">
+                                  <p>Martes 15 de Junio</p>
+                                  <span class="precio">$33</span>
+                                </div>
+                                <div class="descExtrasInp">
+                                  <p>Miercoles 16 de Junio</p>
+                                  <span class="precio">$33</span>
+                                </div>
+                              </div><!-- end.extrasInp__desc -->
+                            </div><!-- end.extrasInp__box -->
+                            <div class="extrasInp__box">
+                              <div class="extrasInp__icon">
+                                <img src="{{ 'assets/img/imgPrueba/kids_icon.svg'|theme }}" alt="Wander">
+                              </div><!-- end.extrasCt__icon -->
+                              <div class="extrasInp__desc">
+                                <h3>2 Niños</h3>
+                                <div class="descExtrasInp">
+                                  <p>Por estadia completa</p>
+                                  <span class="precio">$33</span>
+                                </div>
+                              </div><!-- end.extrasInp__desc -->
+                            </div><!-- end.extrasInp__box -->
+                            <div class="extrasInp__box">
+                              <div class="extrasInp__icon">
+                                <img src="{{ 'assets/img/imgPrueba/caballo_icon_black.svg'|theme }}" alt="Wander">
+                              </div><!-- end.extrasCt__icon -->
+                              <div class="extrasInp__desc">
+                                <h3>Paseo a caballo</h3>
+                                <div class="descExtrasInp">
+                                  <p>2 Caballos | 3 días</p>
+                                  <span class="precio">$33</span>
+                                </div>
+                              </div><!-- end.extrasInp__desc -->
+                            </div><!-- end.extrasInp__box -->
+                            <div class="extrasInp__box">
+                              <div class="extrasInp__icon">
+                                <img src="{{ 'assets/img/imgPrueba/tomantico_icon.svg'|theme }}" alt="Wander">
+                              </div><!-- end.extrasCt__icon -->
+                              <div class="extrasInp__desc">
+                                <h3>Kit Romántico</h3>
+                                <div class="descExtrasInp">
+                                  <p>1 Kit</p>
+                                  <span class="precio">$33</span>
+                                </div>
+                              </div><!-- end.extrasInp__desc -->
+                            </div><!-- end.extrasInp__box -->
+                            <h2 class="precioFinal">TOTAL $3,000 MXN</h2><!-- end.precio -->
+
+                          </div><!-- end.card-body -->
+                        </div><!-- end.collapse -->
+                      </div><!-- end.card -->
+                      <div class="card">
+                        <div class="card-header" id="title-list-2">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#accInpt-2" aria-expanded="false" aria-controls="accInpt-2">
+                              POLÍTICAS Y REGLAS
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="accInpt-2" class="collapse" aria-labelledby="title-list-2" data-parent="#accInputsRes">
+                          <div class="card-body">
+                            <div class="contPolicy">
+
+                              <h5 class="contPolicy__title">Política de cancelación</h5>
+                              <div class="contPolicy_desc">
+                                <p>No hay reembolsos. Si cancela le guardamos su reserva para otra ocasión que pueda venir, siempre y cuando haya disponibilidad.</p>
+                              </div><!-- end.contPolicy_desc -->
+                              <h5 class="contPolicy__title">Reglas</h5>
+                              <div class="contPolicy_desc">
+                                <p>Los términos y condiciones</p>
+                                <ul>
+                                  <li>
+                                    <p><i class="fa fa-times"></i> Se permite fumar</p> <span>No</span>
+                                  </li>
+                                  <li>
+                                    <p><i class="fa fa-check"></i> Mascotas permitidas</p> <span>Si</span>
+                                  </li>
+                                </ul>
+                              </div><!-- end.contPolicy_desc -->
+                              <fieldset class="form-group">
+                                <input type="checkbox" class="CheckStyle" id="resAcepto" name="resAcepto" value="1" required>
+                                <label for="resAcepto">He leído y acepto todas las condiciones y políticas de alquiler.</label>
+                              </fieldset>
+
+                            </div><!-- end.contPolicy -->
+                          </div><!-- end.card-body -->
+                        </div><!-- end.collapse -->
+                      </div><!-- end.card -->
+                      <div class="card">
+                        <div class="card-header" id="title-list-3">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#accInpt-3" aria-expanded="false" aria-controls="accInpt-3">
+                              HUÉSPEDES
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="accInpt-3" class="collapse" aria-labelledby="title-list-3" data-parent="#accInputsRes">
+                          <div class="card-body huesCont">
+                            <div class="huesCont__desc">
+                              <p>Agrega los datos de todos los huéspedes.</p>
+                            </div><!-- huesCont__desc -->
+
+                            <div class="huesCont__box" data-frm-inp="huesped-1">
+                              <h3>Huesped 1</h3>
+                              <div class="form-group row">
+                                <label for="nombre-1" class="col-4 col-sm-2 col-md-4 col-xl-2 col-form-label">Nombre</label>
+                                <div class="col-8 col-sm-10 col-md-8 col-xl-10">
+                                  <input type="text" class="form-control" id="nombre-1" name="nombre-1">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="edad-1" class="col-4 col-sm-2 col-md-4 col-xl-2 col-form-label">Edad</label>
+                                <div class="col-8 col-sm-10 col-md-8 col-xl-10">
+                                  <input type="number" class="form-control" name="edad-1" id="edad-1">
+                                </div>
+                              </div>
+                            </div><!-- end.huesCont__box -->
+                            <div class="huesCont__box" data-frm-inp="huesped-1">
+                              <h3>Huesped 2</h3>
+                              <div class="form-group row">
+                                <label for="nombre-2" class="col-4 col-sm-2 col-md-4 col-xl-2 col-form-label">Nombre</label>
+                                <div class="col-8 col-sm-10 col-md-8 col-xl-10">
+                                  <input type="text" class="form-control" id="nombre-2" name="nombre-2">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="edad-2" class="col-4 col-sm-2 col-md-4 col-xl-2 col-form-label">Edad</label>
+                                <div class="col-8 col-sm-10 col-md-8 col-xl-10">
+                                  <input type="number" class="form-control" name="edad-2" id="edad-2">
+                                </div>
+                              </div>
+                            </div><!-- end.huesCont__box -->
+
+                          </div>
+                        </div>
+                      </div><!-- end.card -->
+
+                    </div><!-- end.accInputList -->
+                  </div><!-- end.contAccordionBox -->
+                  
+                </div><!-- end.col-* -->
+              </div><!-- end.row -->
+            </div><!-- end.container -->
+          </div><!-- end.detallecompra -->
+        </section>
+        <h3>Paso 7</h3>
+        <section>
+          En cada sección va el contenido
+        </section>
+      </div>
+    </form><!-- end.stepReservaFrm -->
+
+  </div><!-- end.reservaCt -->
+</article>

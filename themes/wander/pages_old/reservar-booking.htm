@@ -1,0 +1,868 @@
+title = "Reservar Booking"
+url = "/reservar/booking/:ubicacionId?"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[builderList ubicacionesList]
+modelClass = "Roll\Cabanas\Models\Ubicacion"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList ciudadesList]
+modelClass = "Roll\Cabanas\Models\Ciudad"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[reservaRapida]
+==
+<style>
+  .min-margin-45 {
+    margin-right: -45px;
+    margin-left: -45px;
+  }
+
+  @media (max-width:576px) {
+
+
+    margin5 {
+      padding-right: 5px !important;
+      padding-left: 5px !important;
+
+    }
+
+
+    .inputSelect.wIn {
+      width: 30%
+    }
+
+    .inputSelect.wIn span {
+      font-size: .7rem !important;
+    }
+
+    .selectFormContact .collOpenForm .labelInp {
+      font-size: .7rem !important;
+    }
+
+    .inputSelect__inputDate .mbsc-material.mbsc-textfield-box-floating {
+      font-size: .7rem !important;
+    }
+
+
+    .inputSelect__dateCheck .btnSelectOption {
+      padding: 5px 5PX
+    }
+
+    .inputSelect__dateCheck .activeHues {
+      padding: 15px 5px 5px;
+    }
+
+    .inputSelect__dateCheck .activeHues p {
+      font-size: 0.7rem;
+
+    }
+
+
+
+    .contFormCal .stickyForm {
+      padding: 10px 0px;
+    }
+
+
+    .container-fluid {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+
+
+    .inputSelect__inputDate .mbsc-material.mbsc-label-box-floating.mbsc-ltr,
+    .inputSelect__inputDate .mbsc-material.mbsc-label-outline-floating.mbsc-ltr {
+      padding-top: .3em;
+    }
+  }
+
+  @media (max-width:380px) {
+    .inputSelect.wIn span {
+      font-size: .6rem !important;
+    }
+
+    .selectFormContact .collOpenForm .labelInp {
+      font-size: .6rem !important;
+    }
+
+    .inputSelect__inputDate .mbsc-material.mbsc-textfield-box-floating {
+      font-size: .6rem !important;
+    }
+
+    .inputSelect__inputDate .mbsc-material.mbsc-label-box-floating.mbsc-ltr,
+    .inputSelect__inputDate .mbsc-material.mbsc-label-outline-floating.mbsc-ltr {
+      padding-top: .3em;
+
+    }
+
+
+    .inputSelect__dateCheck .btnSelectOption {
+      padding: 5px 5PX
+    }
+
+    .inputSelect__dateCheck .activeHues {
+      padding: 15px 5px 5px;
+    }
+
+    .inputSelect__dateCheck .activeHues p {
+      font-size: 0.6rem;
+
+    }
+
+  }
+
+  .expandable-description {
+    max-height: 3.6em;
+    /* Establece la altura máxima para mostrar una descripción truncada */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+
+
+  .expandable-description.expanded {
+    max-height: none;
+    /* Al expandirse, se muestra todo el contenido */
+  }
+
+  .read-more-link {
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 10px;
+    color: #707267 !important;
+  }
+
+  .read-more-link:focus {
+    outline: none;
+  }
+
+
+
+  /*para pop up */
+
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .content {
+    background-color: #fefefe;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px;
+    border: 1px solid #888;
+    width: 50%;
+    /* Tamaño del popup */
+  }
+
+  /* Media query para dispositivos con un ancho máximo de 768px (típicamente dispositivos móviles) */
+  @media (max-width: 768px) {
+    .content {
+      width: 75%;
+      /* Tamaño del popup para dispositivos móviles */
+    }
+  }
+
+
+  .content h1 {
+    color: green;
+  }
+
+  .content img {
+    max-width: 100%;
+    /* Ajusta el ancho máximo de la imagen al 100% del contenedor */
+    height: auto;
+    /* Ajusta automáticamente la altura para mantener la proporción */
+  }
+
+
+
+  /* Estilos para el botón de cerrar */
+  .close {
+    position: absolute;
+    top: -15px;
+    /* Ajusta según la posición deseada */
+    right: -15px;
+    /* Ajusta según la posición deseada */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 30px;
+    z-index: 1;
+    /* Asegura que esté encima del banner */
+  }
+
+  /* Estilos para el contenedor */
+  .content {
+    position: relative;
+  }
+
+
+
+
+  .col-nav {
+    list-style: none !important;
+    /* Eliminar viñetas de la lista */
+    padding: 0 !important;
+    /* Eliminar el padding por defecto */
+    margin: 0 !important;
+    /* Eliminar el margen por defecto */
+    justify-content: center !important;
+    /* Opcional: Centrar horizontalmente los elementos */
+    display: table-cell !important;
+    min-width: 180px !important;
+  }
+
+  @media (max-width: 575px) {
+
+    .col-nav {
+      display: flex !important;
+    }
+  }
+
+
+  .contFormCal .stickyForm {
+
+    background-color: #ffffff;
+  }
+
+  .form-inline .form-group {
+
+    border: 1px solid #0c282a;
+  }
+
+  .inputSelect__dateCheck .btnSelectOption {
+
+    background: #ffffff;
+  }
+
+  .loading-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #818c70cc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .loading-image {
+    max-width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .loading-message {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  @media (min-width: 576px) {
+
+    .selectFormContact,
+    .inputSelect__dateCheck,
+    .inputSelect__inputDate,
+    .inputSelect__inputDate .mbsc-material.mbsc-textfield {
+      width: 150px;
+    }
+
+    .descBoxCabinsNew .titleGeta {
+      text-align: center;
+    }
+  }
+  
+  
+  /* Contenedor del calendario */
+#rangeBooking .mbsc-calendar {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Título del mes */
+.mbsc-calendar-month-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    text-align: center !important;
+}
+
+/* Encabezado días de la semana */
+.mbsc-calendar-week-day {
+    font-size: 12px !important;
+    color: #999 !important;
+    font-weight: 400 !important;
+    text-transform: capitalize;
+}
+
+/* Celdas del calendario */
+.mbsc-calendar-cell {
+    height: 55px !important;
+    vertical-align: top !important;
+    padding: 4px 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+.mbsc-calendar-cell-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    border-radius: 4px !important;
+}
+
+/* Número del día */
+.mbsc-calendar-day-text {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #333 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    width: auto !important;
+    height: auto !important;
+    line-height: 1.2 !important;
+}
+
+/* Label del precio debajo del día */
+.mbsc-calendar-label {
+    background: transparent !important;
+    border: none !important;
+    position: relative !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+}
+
+.mbsc-calendar-label-text {
+    font-size: 10px !important;
+    color: #888 !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    line-height: 1 !important;
+}
+
+/* Día seleccionado (inicio/fin del rango) */
+.mbsc-range-day .mbsc-calendar-cell-inner {
+    background-color: #4a7c6f !important;
+    border-radius: 4px !important;
+}
+
+.mbsc-range-day .mbsc-calendar-day-text {
+    color: #fff !important;
+    font-weight: 600 !important;
+}
+
+.mbsc-range-day .mbsc-calendar-label-text {
+    color: #fff !important;
+}
+
+/* Rango entre fechas */
+.mbsc-range-hover .mbsc-calendar-cell-inner,
+.mbsc-ltr .mbsc-range-day-start ~ .mbsc-range-day-end .mbsc-calendar-cell-inner {
+    background-color: #e8f0ed !important;
+}
+
+/* Día de hoy */
+.mbsc-calendar-today .mbsc-calendar-day-text {
+    color: #4a7c6f !important;
+    font-weight: 600 !important;
+}
+
+/* Días inválidos/bloqueados */
+.mbsc-disabled .mbsc-calendar-day-text,
+.mbsc-disabled .mbsc-calendar-label-text {
+    color: #ccc !important;
+}
+
+/* Quitar bordes y sombras extra */
+.mbsc-calendar-slide {
+    padding: 0 8px !important;
+}
+
+/* Separador entre semanas */
+.mbsc-calendar-row {
+    border-bottom: none !important;
+}
+
+@media (max-width: 768px) {
+    /* Contenedor principal del calendario */
+    .mbsc-calendar-body {
+        overflow-y: auto !important;
+        max-height: calc(100vh - 150px) !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Evitar que se corte el último mes */
+    .mbsc-calendar-body-inner {
+        overflow: visible !important;
+        height: auto !important;
+    }
+
+    .mbsc-calendar-scroll-wrapper {
+        overflow: visible !important;
+        height: auto !important;
+    }
+
+    .mbsc-calendar-slide {
+        overflow: visible !important;
+        height: auto !important;
+        margin-bottom: 16px !important;
+        padding-bottom: 12px !important;
+    }
+
+    /* Asegurar que las filas no se corten */
+    .mbsc-calendar-row {
+        overflow: visible !important;
+    }
+
+    /* El popup fullscreen use todo el alto */
+    .mbsc-popup-body {
+        max-height: 100vh !important;
+        overflow-y: auto !important;
+    }
+
+    .mbsc-popup-wrapper-full {
+        height: 100% !important;
+    }
+}
+@media (max-width: 768px) {
+    .mbsc-calendar-wrapper {
+        height: auto !important;
+        min-height: 100% !important;
+        overflow: visible !important;
+    }
+
+    .mbsc-calendar {
+        height: auto !important;
+        overflow: visible !important;
+    }
+}
+
+</style>
+{% put scriptinicio %}
+
+<script type="text/javascript" src="{{'assets/js/scripts/scriptReservar.js'|theme}}"></script>
+<script type="text/javascript" src="{{ 'assets/js/scripts/layoutScripts.js'|theme }}?v={{ 'now'|date('U') }}"></script>
+
+
+{% endput %} {% set ubicaciones = ubicacionesList.records %} {% set ciudades =
+ciudadesList.records %}
+
+<div id="loadingModal" class="loading-modal" style="display: none;">
+  <img src="{{ 'assets/img/logos/wander-full-white.svg'|theme }}" alt="Wander" class="loading-image">
+  <p style="font-family: 'Oswald',sans-serif;font-size:1.5em;color:#ffffff;" claemzss="loading-message">Cargando...</p>
+</div>
+
+
+<article class="bg-gen" style="background: #f7f5f1 !important">
+
+
+  <div class="reservaCt">
+    <div class="descReservar">
+      <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
+      <h2>Encuentra la Mejor Experiencia</h2>
+
+    </div>
+    <div class="wizard">
+      <div class="steps clearfix">
+        <ul role="tablist">
+          <li role="tab" class="first done" aria-disabled="false" aria-selected="true">
+            <a id="steps-uid-0-t-0" href="{{'reservar-1'|page}}" aria-controls="steps-uid-0-p-0">Paso 1</a>
+          </li>
+          <li role="tab" class="done" style="display:none" aria-disabled="true">
+            <a id="steps-uid-0-t-1" href="{{'reservar-2'|page}}" aria-controls="steps-uid-0-p-1">Paso 2</a>
+          </li>
+          <li role="tab" class="done" style="display:none" aria-disabled="true">
+            <a id="steps-uid-0-t-2" href="{{'reservar-3'|page}}" aria-controls="steps-uid-0-p-2">Paso 3</a>
+          </li>
+          <li role="tab" class="current" aria-disabled="true">
+            <a id="steps-uid-0-t-3" href="{{''|page}}" aria-controls="steps-uid-0-p-3">Paso 4</a>
+          </li>
+          <li role="tab" class="disabled" aria-disabled="true">
+            <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">Paso 5</a>
+          </li>
+          <li role="tab" class="disabled" aria-disabled="true">
+            <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">Paso 6</a>
+          </li>
+          <li role="tab" class="disabled last" aria-disabled="true">
+            <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">Paso 7</a>
+          </li>
+        </ul><!-- end.ul -->
+      </div><!-- end.steps -->
+    </div>
+    <!-- end.ctFrmSs -->
+</article>
+
+<div class="ctFrmSt">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-9">
+        <div class="descBoxCabinsNew">
+          <!--p>Selecciona tu <strong>fecha de llegada (check-in)</strong> y la de partida <strong>(check-out)</strong>.<br>
+                    Si no encuentras disponibilidad, te recomendamos probar con otro destino.</p-->
+          <div class="titleGeta">Selecciona tu <strong>Destino</strong>, <strong>Huespedes</strong>, <strong>fecha de
+              llegada (check-in)</strong> y la de partida <strong>(check-out)</strong>.<br>
+            Si no encuentras disponibilidad, te recomendamos probar con otro destino.</div>
+
+        </div><!-- end.descBoxCabinsNew -->
+      </div><!-- end.col-* -->
+    </div><!-- end.row-* -->
+  </div><!-- end.container-* -->
+</div><!-- end.ctFrmSt-* -->
+<section class="contFormCal" id="contFormCal">
+  <div class="stickyForm">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 margin5">
+          {{ form_ajax('', {class: 'form-inline', id: 'calHome', name: 'calHome'}) }}
+
+          <input type="hidden" id="picker" name="picker" /><!-- recibe los datos del calendario. -->
+
+          <div id="picker"></div>
+
+          <div class="form-group mb-2 inputSelect wIn" data-input-home>
+            <input type="hidden" name="locacion" id="locacion" value="" />
+
+            <div class="selectFormContact">
+              <a href="#" class="collOpenForm" id="openOpsForms">
+                <span class="labelInp"><i class="fa fa-map-marker"></i> Destino</span>
+
+                <span id="textChange" class="responseText">Destino</span> </a><!-- end.collOpenForm -->
+
+              <nav id="navOpcionform">
+                {% for ciudad in ciudades %} {%if ciudad.ubicaciones.count >
+                0%}
+                <ul class="col-nav">
+                  <li>
+                    <a style="color: #707267" class="btnFormContact" id="filtro_ciudad" href="#"
+                      data-valor="ciudad-{{ciudad.id}}"
+                      >{{ciudad.nombre}}
+                    </a>
+                  </li>
+
+                  <ul>
+                    <!-- Iterar ubicaciones correspondientes a la ciudad -->
+                    {% for ubicacion in ciudad.ubicaciones %}
+
+                    <li style="padding-left: 20px;">
+                      <a class="btnFormContact{% if ubicacion.id == 7 or ubicacion.id == 8 %} ubiNew{% endif %}"
+                        href="#" data-valor="ubicacion-{{ ubicacion.id }}">
+                        {{ ubicacion.nombre }}
+                      </a>
+                    </li>
+
+                    {% endfor %}
+                  </ul>
+                </ul>
+                {%endif%} {% endfor %}
+              </nav>
+              <!-- end.navOpcionform -->
+            </div>
+            <!-- end.selectFormContact -->
+          </div>
+          <!-- end.selectUbicacion -->
+
+          <div class="form-group mb-2 inputSelect wIn">
+            <div class="inputSelect__dateCheck">
+              <button class="btnSelectOption activeHues" type="button" data-option="huesped" data-close-ubic>
+                <span><i class="fa fa-user"></i> Huéspedes</span>
+
+                <div id="huesRes">
+                  <p>2 Adulto(s)</p>
+                </div>
+              </button>
+
+              <div id="huesped" class="modalOption">
+                <!-- <input type="hidden" name="select_adulto" id="select_adulto" min="1" max="4" value="1"> -->
+
+                <!-- <input type="hidden" name="select_nino" id="select_nino" min="1" max="4" value="1"> -->
+
+                <ul class="boxListHuesped">
+                  <li>
+                    <!-- <span class="boxListHuesped__count--adulto">1</span> <span class="boxListHuesped__label">Adulto(s)</span>
+
+                                  <button type="button" class="btnHuesped adult-plus"><i class="fa fa-plus"></i></button> <button type="button"
+
+                                    class="btnHuesped adult-minus"><i class="fa fa-minus"></i></button> -->
+
+                    <div class="inputHuespedHome">
+                      <h4 class="inputHuespedHome__title">Adultos</h4>
+
+                      <div class="inputHuespedHome__opt">
+                        <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-1" value="1" />
+
+                        <label for="adulto-1">1</label>
+
+                        <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-2" value="2" checked />
+
+                        <label for="adulto-2">2</label>
+
+                        <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-3" value="3" />
+
+                        <label for="adulto-3">3</label>
+
+                        <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-4" value="4" />
+
+                        <label for="adulto-4">4</label>
+                      </div>
+                      <!-- end.inputHuesped__opt -->
+                    </div>
+                    <!-- end.inputHuespedHome -->
+                  </li>
+
+                  <li>
+
+
+                    <div class="inputHuespedHome">
+                      <h4 class="inputHuespedHome__title">Niños</h4>
+
+                      <div class="inputHuespedHome__opt">
+                        <input type="radio" class="radioRes smallInp" name="ninos" id="nino-0" value="0" checked />
+
+                        <label for="nino-0">NO</label>
+
+                        <input type="radio" class="radioRes smallInp" name="ninos" id="nino-1" value="1" />
+
+                        <label for="nino-1">1</label>
+
+                        <input type="radio" class="radioRes smallInp" name="ninos" id="nino-2" value="2" />
+
+                        <label for="nino-2">2</label>
+
+                        <input type="radio" class="radioRes smallInp" name="ninos" id="nino-3" value="3" />
+
+                        <label for="nino-3">3</label>
+
+                        <input type="radio" class="radioRes smallInp" name="ninos" id="nino-4" value="4" />
+
+                        <label for="nino-4">4</label>
+                      </div>
+                      <!-- end.inputHuesped__opt -->
+                    </div>
+                    <!-- end.inputHuespedHome -->
+                  </li>
+
+                  <li>
+                    <!-- <input class="CheckStyle" type="checkbox" name="mascota" id="mascota" value="Si">
+
+                                  <label for="mascota">Mascotas</label> -->
+
+                    <div class="inputHuespedHome">
+                      <h4 class="inputHuespedHome__title">Mascotas</h4>
+
+                      <div class="inputHuespedHome__opt">
+                        <label class="switch">
+                          <input type="checkbox" name="mascotas" id="mascotas" />
+
+                          <span class="sldInp round"></span>
+                        </label>
+                      </div>
+                      <!-- end.inputHuesped__opt -->
+                    </div>
+                    <!-- end.inputHuespedHome -->
+                  </li>
+                </ul>
+
+                <div class="closeModCt">
+                  <button type="button" id="close-huesped">Aceptar</button>
+                </div>
+              </div>
+              <!-- end.modalOption -->
+            </div>
+            <!-- end.inputSelect__dateCheck -->
+          </div>
+
+          <div class="form-group mb-2 inputSelect wIn">
+            <label class="inputSelect__inputDate" data-input-home1 for="entrada">Fechas
+              <input id="rangeBooking" class="form-control inputForm__input" mbsc-input
+                placeholder="Seleccione CheckIn y Checkout" />
+                <input type="hidden" name="range" id="range">
+
+            </label>
+          </div>
+
+          <button type="button" id="btnBuscar" class="btn btn-primary mb-2">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <span>Buscar</span>
+          </button>
+
+          {{ form_close() }}
+        </div>
+        <!-- end.col-* -->
+      </div>
+      <!-- end.row -->
+    </div>
+    <!-- end.container -->
+  </div>
+  <!-- end.stickyForm -->
+</section>
+
+
+
+<div class="container">
+  <div class="row justify-content-center;">
+    <div class="col-12">
+
+
+
+
+      <div id="accSelCabinState" class="accSlideCabins">
+
+<div id="result"></div>
+
+      </div>
+
+
+    </div><!-- end.col-* -->
+  </div><!-- end.row -->
+</div>
+
+<!-- end.contFormCal -->
+
+</div>
+<script type="text/javascript">
+
+
+
+  let barMovil = document.getElementById("barMovil");
+
+  function view() {
+    $(".stickyForm").css("position", "fixed");
+    $(".actions").css("display", "none");
+  }
+
+
+  $(document).ready(function () {
+
+    $('#btnBuscar').on('click', function () {
+        let locacion = $('#locacion').val();
+        if (!locacion) {
+            alert('Selecciona una ubicación');
+            return;
+        }
+    
+        let adultos = $('input[name="adultos"]:checked').val();
+        let ninos = $('input[name="ninos"]:checked').val();
+        let mascotas = $('#mascotas').is(':checked') ? 1 : 0;
+        let fechas = $('#range').val();
+    
+        $('#loadingModal').show();
+    
+        $.request('reservaRapida::onCabanasBooking', {
+            data: {
+                locacion: locacion,
+                adultos: adultos,
+                ninos: ninos,
+                mascotas: mascotas,
+                fechas: fechas
+            },
+            // SIN update — el PHP ya retorna ['#result' => ...] 
+            // y October AJAX framework actualiza #result automáticamente
+                flash: true,
+
+            complete: function () {
+                $('#loadingModal').hide();
+            }
+        });
+    });
+
+  });
+
+  window.$WanderLoc = null;
+  window.$capacidad = 2; // default
+
+  $(document).on('click', '.btnFormContact', function (e) {
+    e.preventDefault();
+
+    let valor = $(this).data('valor');
+    // ejemplo: "ubicacion-7" o "ciudad-3"
+
+    if (valor) {
+      window.$WanderLoc = '/' + valor;
+    } else {
+      window.$WanderLoc = null;
+    }
+
+    console.log('WanderLoc:', window.$WanderLoc);
+  });
+
+  function actualizarCapacidad() {
+    let adultos = parseInt($('input[name="adultos"]:checked').val() || 0);
+    let ninos = parseInt($('input[name="ninos"]:checked').val() || 0);
+
+    window.$capacidad = adultos + ninos;
+
+    console.log('Capacidad total:', window.$capacidad);
+  }
+
+  // inicializar al cargar
+  $(document).ready(function () {
+    actualizarCapacidad();
+  });
+
+  // actualizar al cambiar radios
+  $(document).on('change', 'input[name="adultos"], input[name="ninos"]', function () {
+    actualizarCapacidad();
+  });
+
+</script>
+<script type="text/javascript">
+$(window).on('load', function () {
+    setTimeout(function () {
+        var preselected = '{{ preselectedLocacion }}';
+
+        if (preselected) {
+            var $link = $('.btnFormContact[data-valor="' + preselected + '"]');
+            
+            if ($link.length) {
+                $link.trigger('click');
+                
+                // Cerrar el menú después del click programático
+                setTimeout(function() {
+                    $('#navOpcionform').hide();
+                    // O si usa clases para abrir/cerrar:
+                    $('#navOpcionform').removeClass('active open show');
+                    $('#openOpsForms').removeClass('active open');
+                }, 300);
+            }
+        }
+    }, 800);
+});
+</script>

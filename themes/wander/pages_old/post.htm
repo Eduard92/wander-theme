@@ -1,0 +1,35 @@
+title = "Post"
+url = "/blog/post/:slug"
+layout = "layoutBlog"
+is_hidden = 0
+canonical_url = "/blog/post/:slug"
+robot_index = "index"
+robot_follow = "follow"
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "post"
+
+[SeoBlogPost]
+post = "post"
+==
+<?php
+function onEnd () {
+    $post = $this->components['blogPost'];
+    $post = $post->post;
+
+
+    if( $post ) {
+        $post = $post->title;
+               $this->page->title = $post.' | Wander Cabins';
+    }
+}
+?>
+==
+{% if post %}
+    {% component 'blogPost' %}   
+    {% component 'SeoBlogPost' data=post %}
+
+{% else %}
+    <h2>Post not found</h2>
+{% endif %}

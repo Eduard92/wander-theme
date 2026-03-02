@@ -404,15 +404,17 @@ document.getElementById('ubicacion')?.addEventListener('click', () => {
 window.addEventListener('beforeunload', function (e) {
     if (window._internalNavigation) return;
 
+    var klaviyoTags = {{ klaviyo_tags_session | raw }};
+
+
     const visitorId = localStorage.getItem('visitor_id');
     const data = {
         event_name: 'Abandon_Browse',
         wander: visitorId,
-        with_session_tags => true,
-        properties: {
+       properties: Object.assign({
             abandoned_step: 'Paso 1',
             page: window.location.pathname
-        }
+        }, klaviyoTags)
     };
 
     // Opción 1: sendBeacon (la más confiable para beforeunload)

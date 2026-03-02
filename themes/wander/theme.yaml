@@ -3,11 +3,3 @@ description: 'Tema para sitio web Wander'
 author: Roll
 homepage: 'https://www.roll.mx/'
 code: wander
-
-form:
-    fields:
-        mapbox_token:
-            tab: Mapa
-            label: Mapbox Access Token
-            type: text
-            comment: 'Token público de Mapbox para los mapas'

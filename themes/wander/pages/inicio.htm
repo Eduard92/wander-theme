@@ -3,6 +3,7 @@ url = "/"
 layout = "layout"
 description = "Vive la experiencia Wander en nuestras cabañas en medio de la naturaleza de Valle de Mexico, Malinalco, La Cañana, Tzibanza Queretaro y Monterrey"
 is_hidden = 0
+
 [builderList ubicacionesList]
 modelClass = "Roll\Cabanas\Models\Ubicacion"
 scope = "-"
@@ -14,6 +15,7 @@ detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
 sortColumn = "id"
 sortDirection = "desc"
+
 [builderList opinionesList]
 modelClass = "Roll\Contenido\Models\Opinion"
 scope = "-"
@@ -24,6 +26,7 @@ detailsPage = "-"
 detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
 sortColumn = "orden"
+
 [builderList preguntasList]
 modelClass = "Roll\Contenido\Models\Preguntas"
 scope = "-"
@@ -35,7 +38,9 @@ detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
 sortColumn = "orden"
 sortDirection = "asc"
+
 [reservaRapida]
+
 [builderList ciudadesList]
 modelClass = "Roll\Cabanas\Models\Ciudad"
 scope = "-"
@@ -45,6 +50,7 @@ noRecordsMessage = "No se han encontrado registros"
 detailsPage = "-"
 detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
+
 [builderList postsList]
 modelClass = "RainLab\Blog\Models\Post"
 scope = "-"
@@ -54,6 +60,7 @@ noRecordsMessage = "No se han encontrado registros"
 detailsPage = "-"
 detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
+
 [builderList sliders]
 modelClass = "Eduard\Slider\Models\Slider"
 scope = "-"
@@ -506,8 +513,8 @@ pageNumber = "{{ :page }}"
                           <input type="hidden" name="locacion" id="locacion" value="">
                           <div class="selectFormContact">
                             <a href="#" class="collOpenForm" id="openOpsForms">
-                              <span class="labelInp"><i class="fa fa-map-marker"></i> {{ 'Destino'|_ }} </span>
-                              <span id="textChange" class="responseText">{{ 'Destino'|_ }}</span>
+                              <span class="labelInp"><i class="fa fa-map-marker"></i> {{ 'destino'|_ }} </span>
+                              <span id="textChange" class="responseText">{{ 'destino'|_ }}</span>
                             </a><!-- end.collOpenForm -->
                             <nav id="navOpcionform">
                                 {% for ciudad in ciudades %}
@@ -548,9 +555,9 @@ pageNumber = "{{ :page }}"
                         <div class="form-group mb-2 inputSelect wIn" >
                           <div class="inputSelect__dateCheck">
                             <button class="btnSelectOption activeHues" type="button" data-option="huesped" data-close-ubic>
-                              <span><i class=" fa fa-user"></i> {{ 'Huéspedes'|_ }}</span>
+                              <span><i class=" fa fa-user"></i> {{ 'huéspedes'|_ }}</span>
                               <div id="huesRes">
-                              <p>2 {{ 'Adulto'|_ }}(s)</p>
+                              <p>2 {{ 'adulto'|_ }}(s)</p>
                               </div>
                             </button>
                             <div id="huesped" class="modalOption">
@@ -562,7 +569,7 @@ pageNumber = "{{ :page }}"
                                   <button type="button" class="btnHuesped adult-plus"><i class="fa fa-plus"></i></button> <button type="button"
                                     class="btnHuesped adult-minus"><i class="fa fa-minus"></i></button> -->
                                   <div class="inputHuespedHome">
-                                    <h4 class="inputHuespedHome__title">{{ 'Adultos'|_ }}</h4>
+                                    <h4 class="inputHuespedHome__title">{{ 'adultos'|_ }}</h4>
                                     <div class="inputHuespedHome__opt">
                                       <input type="radio" class="radioRes smallInp" name="adultos" id="adulto-1" value="1">
                                       <label for="adulto-1">1</label>
@@ -580,10 +587,10 @@ pageNumber = "{{ :page }}"
                                     type="button" class="btnHuesped nino-plus"><i class="fa fa-plus"></i></button> <button type="button"
                                     class="btnHuesped nino-minus"><i class="fa fa-minus"></i></button> -->
                                   <div class="inputHuespedHome">
-                                    <h4 class="inputHuespedHome__title">{{ 'Niños'|_ }}</h4>
+                                    <h4 class="inputHuespedHome__title">{{ 'niños'|_ }}</h4>
                                     <div class="inputHuespedHome__opt">
                                       <input type="radio" class="radioRes smallInp" name="ninos" id="nino-0" value="0" checked>
-                                      <label for="nino-0">{{ 'Niños'|_ }}</label>
+                                      <label for="nino-0">{{ 'niños'|_ }}</label>
                                       <input type="radio" class="radioRes smallInp" name="ninos" id="nino-1" value="1">
                                       <label for="nino-1">1</label>
                                       <input type="radio" class="radioRes smallInp" name="ninos" id="nino-2" value="2">
@@ -599,7 +606,7 @@ pageNumber = "{{ :page }}"
                                   <!-- <input class="CheckStyle" type="checkbox" name="mascota" id="mascota" value="Si">
                                   <label for="mascota">Mascotas</label> -->
                                   <div class="inputHuespedHome">
-                                    <h4 class="inputHuespedHome__title">{{ 'Mascotas'|_ }}</h4>
+                                    <h4 class="inputHuespedHome__title">{{ 'mascotas'|_ }}</h4>
                                     <div class="inputHuespedHome__opt">
                                       <label class="switch">
                                         <input type="checkbox" name="mascotas" id="mascotas">
@@ -610,7 +617,7 @@ pageNumber = "{{ :page }}"
                                 </li>
                               </ul>
                               <div class="closeModCt">
-                                <button type="button" id="close-huesped">{{ 'Aceptar'|_ }}</button>
+                                <button type="button" id="close-huesped">{{ 'aceptar'|_ }}</button>
                               </div>
                             </div><!-- end.modalOption -->
                           </div><!-- end.inputSelect__dateCheck -->
@@ -835,7 +842,7 @@ pageNumber = "{{ :page }}"
                         <img class="figContent__img lozad" data-src="{{ 'assets/img/imgPrueba/Wander_iconos_cama.png'|theme }}" alt="paso2" loading="lazy">
                         <figcaption>
                    <span class="figContent__step">{{ 'Paso-2-title'|_ }}</span>
-                          <div class=" h3 figContent__title">{{ 'Paso-2-txt1'|_ }}</div>
+                          <div class=" h3 figContent__title">{{ 'paso.2.txt1'|_ }}</div>
                           <p class="figContent__desc">{{ 'Paso-2-txt2'|_ }} </p>
                         </figcaption>
                       </figure><!-- edn.cabanasContent__box -->
@@ -1268,7 +1275,7 @@ pageNumber = "{{ :page }}"
                     <div class="col-12">
                       <div class="faqsCt__desc">
                         <img class="iconWander lozad" data-src="{{ 'assets/img/logos/icono-wander-green.svg'|theme }}" alt="Wander" loading="lazy">
-                        <div class="h2">{{ 'titleFAQ'|_ }}</div>
+                        <div class="h2">{{ 'titlefaq'|_ }}</div>
                       </div>
                     </div><!-- end.col-* -->
                     <div class="col-12 col-md-8 col-lg-7">

@@ -1,0 +1,1240 @@
+title = "estCAlendar"
+url = "/testcalendar"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+==
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ 
+    <title>Test</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"> <meta name="description" content="This example demonstrates the Room Scheduler in Javascript (ES5) Scheduler Control. Explore here for more details." />
+    <meta name="author" content="Syncfusion" />
+    <link rel="shortcut icon" href="https://ej2.syncfusion.com/home/favicon.ico" />
+
+
+  <link rel="stylesheet" type="text/css" href="{{ [
+    'assets/vendor/ej2/bootstrap.css'
+
+  ]|theme }}">
+  
+  <!--Main Scripts-->
+  <script type="text/javascript" src="{{ [
+    'assets/vendor/ej2/ej2.min.js'
+
+
+  ]|theme }}"></script>
+  
+
+    <style>
+        #loader {
+            color: #008cff;
+            height: 40px;
+            left: 45%;
+            position: absolute;
+            top: 45%;
+            width: 30%;
+        }
+
+        #js-licensing {
+            display: none
+        }
+
+        body {
+            touch-action: none;
+        }
+        
+        .body {
+    font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
+}
+
+.e-view {
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.sb-left {
+    float: left;
+}
+
+.sb-right {
+    float: right;
+}
+
+.sb-block {
+    display: block;
+}
+
+.sb-table {
+    display: table;
+}
+
+.sb-table-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/*sample header*/
+
+
+.sb-header {
+    height: 48px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12);
+    z-index: 1001;
+    opacity: 100;
+}
+
+
+.sb-header-left, .sb-header-right {
+    height: 100%;
+}
+
+#sb-header-text {
+    padding-left: 22px;
+    opacity: 0.87;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 15px;
+    color: #000000;
+    text-align: left;
+}
+
+.header-logo {
+    float: left;
+    padding-left: 8px;
+    padding-right: 22px;
+}
+
+.footer-logo {
+    background: url(https://ej2.syncfusion.com/home/images/footer-logo.svg) no-repeat right;
+    height: 40px;
+    width: 140px;
+}
+
+.sb-header-splitter {
+    float: left;
+    border-left: 1px solid rgb(196, 196, 196);
+    height: 32px;
+    margin-top: 8px;
+    padding-left: 22 px;
+}
+
+.sb-header-settings {
+    display: none;
+}
+
+.product-style a{
+   padding-right: 15px;
+   font-family:Roboto;
+   font-weight: 500;
+   font-size: 13px;
+   color: #363636;
+   text-align: center;
+   text-decoration: none;
+}
+.product-style a:hover {
+    color:#3C78EF;
+}
+
+.sb-download-btn a {
+    text-decoration: none;
+}
+
+.sb-download-text {
+    color: #FFFFFF;
+}
+
+.sb-download-wrapper {
+    padding-right: 27px;
+}
+
+.sb-download-btn:hover .sb-download-btn:focus .sb-download-btn.active {
+    border-radius: 2px;
+    font-family: "Roboto";
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.sb-download-btn:hover {
+    background: #006CE6;
+}
+
+.sb-download-btn:focus {
+    background: #0051CB;
+}
+
+.sb-download-btn.active {
+    background: #0036B1;
+}
+
+.sb-download-btn {
+    background-color: #3C78EF;
+    opacity: 100;
+    border-radius: 2px;
+    font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
+    font-weight: 500;
+    line-height: 18px;
+    height: 32px;
+    border-color: transparent;
+}
+
+.sb-bread-crumb h2 {
+    padding-left: 20px;
+    padding-top: 24px;
+    padding-bottom: 10px;
+    margin: 0;
+}
+
+.sb-bread-crumb h1 {
+    font-size: 22px;
+    padding-left: 20px;
+    padding-top: 24px;
+    /* padding-bottom: 10px; */
+    margin: 0;
+}
+
+.category-allcontrols a, .category-text a, .crumb-sample {
+    display: table;
+    opacity: 0.87;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 15px;
+    color: #3C78EF;
+    text-align: left;
+    text-decoration: none;
+}
+
+.sb-bread-crumb .sb-bread-crumb-text>div {
+    font-size: 15px;
+    font-weight: 500;
+    padding-right: 8px;
+    cursor: default;
+    display: table-cell;
+    padding-top: 5px;
+    height: 100%;
+}
+
+.sb-bread-crumb-text>div.seperator {
+    font-weight: 700;
+    font-size: 15px;
+    vertical-align: bottom;
+    /* padding-top: 5px; */
+} 
+
+.content {
+overflow: auto;
+height: calc(100% - 50px);
+top: 50px;
+}
+
+
+.sample-content {
+    top: 48px;
+    background: #FFFFFF;
+}
+
+.div {
+  display: block;
+}
+
+.crumb-sample {
+    color: #000000;
+    line-height: 18px;
+}
+
+.control-section {
+    padding-left: 4px;
+}
+
+#description {
+    padding-bottom: 16px;
+    padding-left: 20px;
+    opacity: 0.75;
+    font-family: Roboto;
+    font-size: 13px;
+    color: #000000;
+    text-align: left;
+    padding-top: 14px;
+}
+
+#action-description {
+    padding-left: 20px;
+    padding-bottom: 15px;
+    opacity: 0.75;
+    font-family: Roboto;
+    font-size: 13px;
+    color: #000000;
+    text-align: left;
+}
+
+#description-section {
+    padding-left: 20px;
+    padding-top: 30px;
+    opacity: 0.87;
+    font-family:Roboto;
+    font-weight: 700;
+    font-size: 15px;
+    color: #000000;
+    text-align: left;
+}
+.layout {
+    display:inline-block;
+    cursor: pointer;
+}
+#actionDes {
+    opacity: 0.75;
+}
+/*sb-icons declaration*/
+
+@font-face {
+    font-family: 'sbicons';
+    src: url(data:font/truetype;charset=utf-8;base64,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) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.sb-icons {
+    font-family: 'sbicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sb-icon-Next:before {
+    content: '\e91b';
+}
+
+.sb-icon-Previous:before {
+    content: '\e91f';
+}
+
+#next-sample,
+#prev-sample {
+    font-size: 18px;
+    border: 0.5px solid#E5E5E5;
+    background: #FFFFFF;
+    display: inline-table;
+    padding: 2px 5px 0px 5px;
+}
+
+.sb-navigation-next a, .sb-navigation-prev a{
+    color: #636363;
+    text-decoration: none;
+}
+
+#prev-sample {
+    border-radius: 4px 0px 0px 4px;
+}
+
+#next-sample {
+    border-radius: 0px 4px 4px 0px;
+    float: right;
+}
+
+#next-sample:hover,
+#prev-sample:hover{
+background-color: #D8D8D8;
+text-decoration: none; 
+}
+
+.sb-sample-navigation {
+    font-size: 18px;
+    color: #5a5a5a;
+    cursor: pointer;
+}
+
+.sb-custom-item {
+    padding-right: 15px;
+    padding-left: 30px;
+    display: inline-table;
+    padding-top: 20px;
+}
+
+a.e-disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+}
+@media (max-width: 550px) {
+        
+    .sb-headers {
+        height: 48px;
+        background: #FFFFFF;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12);
+        z-index: 1001;
+        opacity: 100;
+    }
+    .sb-header {
+        display: none;
+    }
+    .syncfusion-logo {
+        float: left;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .sync-logo {
+        padding-right: 0px;
+        padding-left: 8px;
+        background: url(../../styles/images/SyncfusionLogo.svg) no-repeat right;
+        height: 40px;
+        width: 40px;
+    }
+    .sb-icon-notification {
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 18px;
+        transform: rotate(-180deg);
+        color: #5D5D5D;
+        opacity: 100%;
+    }
+    #sb-header-text {
+        padding-left: 0%;
+    }
+
+    .sb-icon-notification:before {
+        content: "\ea08";
+    }
+    .product a:hover{
+        color: #5D5D5D;
+        text-decoration: none;
+    }
+}
+
+
+
+    </style>
+</head>
+
+<body class='e-view ej2-new' aria-busy="true">
+
+                    <div class="container-fluid">
+                        <div class="control-section">
+                             <div class="col-lg-12 control-section">
+                                  <div class="content-wrapper">
+                                    <div id="Schedule"></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+<script id="resource-template" type="text/x-template">
+  <div class='template-wrap'>
+    <div class="room-name">${getRoomName(data)}</div>
+    <div class="room-type">${getRoomType(data)}</div>
+    <div class="room-capacity">${getRoomCapacity(data)}</div>
+  </div>
+</script>
+<style>
+  .e-schedule .e-timeline-view .e-resource-left-td {
+    vertical-align: bottom;
+  }
+  
+  .room-schedule.e-schedule.e-device .e-timeline-view .e-resource-left-td {
+    width: 75px;
+  }
+  
+  .room-schedule.e-schedule .e-timeline-view .e-resource-left-td {
+    width: 240px;
+  }
+  
+  .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
+    display: flex;
+    font-weight: 500;
+    padding: 0;
+    height: 36px;
+  }
+  
+  .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #0000001f;
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    flex: 0 0 33.3%;
+    font-weight: 500;
+    height: 36px;
+    line-height: 36px;
+    padding-left: 5px;
+  }
+  
+  .e-schedule:not(.e-rtl) .e-timeline-view .e-resource-left-td .e-resource-text>div:last-child {
+    border-right: 0;
+  }
+  
+  .e-schedule.e-rtl .e-timeline-view .e-resource-cells,
+  .e-schedule.e-rtl .e-timeline-month-view .e-resource-cells {
+    padding-right: 0;
+  }
+  
+  .e-schedule .e-timeline-view .e-block-appointment {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .bootstrap4 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .bootstrap5 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .bootstrap5\.3 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .bootstrap5-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .bootstrap5\.3-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .fluent2 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .fluent2-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .fluent2-highcontrast .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
+    height: 37px;
+  }
+  
+  .bootstrap4 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .fluent2 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .fluent2-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .fluent2-highcontrast .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    height: 37px;
+    line-height: 37px;
+  }
+  
+  .material3 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .material3-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
+    height: 40px;
+  }
+  
+  .material3 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .material3-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    height: 40px;
+    line-height: 40px;
+  }
+  
+  .fluent2 .e-schedule .e-resource-cells .template-wrap>div,
+  .fluent2 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #e0e0e0;
+  }
+  
+  .fluent2-dark .e-schedule .e-resource-cells .template-wrap>div,
+  .fluent2-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #525252;
+  }
+  
+  .fluent2-highcontrast .e-schedule .e-resource-cells .template-wrap>div,
+  .fluent2-highcontrast .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #fff;
+  }
+  
+  .material3 .e-schedule .e-resource-cells .template-wrap>div,
+  .material3 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #c4c7c5;
+  }
+  
+  .material3-dark .e-schedule .e-resource-cells .template-wrap>div,
+  .material3-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #444746;
+  }
+  
+  .material-dark .e-schedule .e-resource-cells .template-wrap>div,
+  .material-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #616161;
+  }
+  
+  .fabric-dark .e-schedule .e-resource-cells .template-wrap>div,
+  .fabric-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #414040;
+  }
+  
+  .fluent-dark .e-schedule .e-resource-cells .template-wrap>div,
+  .fluent-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #292827;
+  }
+  
+  .bootstrap-dark .e-schedule .e-resource-cells .template-wrap>div,
+  .bootstrap-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #505050;
+  }
+  
+  .bootstrap5-dark .e-schedule .e-resource-cells .template-wrap>div,
+  .bootstrap5-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .bootstrap5\.3-dark .e-schedule .e-resource-cells .template-wrap>div,
+  .bootstrap5\.3-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #444c54;
+  }
+  
+  .tailwind-dark .e-schedule .e-resource-cells .template-wrap>div,
+  .tailwind3-dark .e-schedule .e-resource-cells .template-wrap>div {
+    border-color: #4b5563;
+  }
+  
+  .highcontrast .e-schedule .e-resource-cells .template-wrap>div {
+    border-color: #969696;
+  }
+  
+  .bootstrap4.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .bootstrap5.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .bootstrap5\.3.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .fluent2.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .fluent2-dark.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .fluent2-highcontrast.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
+    height: 39px;
+  }
+  
+  .bootstrap4.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .fluent2.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .fluent2-dark.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .fluent2-highcontrast.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    height: 39px;
+    line-height: 39px;
+  }
+  
+  .tailwind .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .tailwind3 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .tailwind-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .tailwind3-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
+    height: 39px;
+  }
+  
+  .tailwind .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .tailwind3 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .tailwind-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .tailwind3-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    height: 39px;
+    line-height: 39px;
+  }
+  
+  .tailwind .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .tailwind3 .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    background-color: #f3f4f6;
+    border-color: #e5e7eb;
+  }
+  
+  .tailwind-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .tailwind3-dark .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    background-color: #374151;
+    border-color: #4b5563;
+  }
+  
+  .tailwind.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .tailwind3.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .tailwind-dark.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+  .tailwind3-dark.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
+    height: 40px;
+  }
+  
+  .tailwind.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .tailwind3.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .tailwind-dark.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+  .tailwind3-dark.e-bigger .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    height: 40px;
+    line-height: 40px;
+  }
+  
+  .highcontrast .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
+    height: 36px;
+  }
+  
+  .highcontrast .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+    border-color: #969696;
+  }
+  
+  .e-schedule .template-wrap {
+    display: flex;
+    height: 100%;
+    text-align: left;
+  }
+  
+  .e-schedule.e-rtl .template-wrap {
+    text-align: right;
+  }
+  
+  .e-schedule .template-wrap>div {
+    border-right: 1px solid #0000001f;
+    flex: 0 0 33.3%;
+    font-weight: 500;
+    line-height: 58px;
+    overflow: hidden;
+    padding-left: 5px;
+    text-overflow: ellipsis;
+  }
+  
+  .material3 .e-schedule .template-wrap>div,
+  .material3-dark .e-schedule .template-wrap>div {
+    line-height: 83px;
+  }
+  
+  .e-schedule:not(.e-rtl) .template-wrap>div:last-child {
+    border-right: 0;
+  }
+  
+  .e-schedule .e-timeline-view .e-resource-cells,
+  .e-schedule .e-timeline-month-view .e-resource-cells {
+    padding-left: 0;
+  }
+  
+  .e-schedule .e-timeline-view .e-date-header-wrap table col,
+  .e-schedule .e-timeline-view .e-content-wrap table col {
+    width: 100px;
+  }
+  
+  .e-schedule .e-read-only {
+    opacity: .8;
+  }
+  
+  @media (max-width: 550px) {
+    .e-schedule .e-timeline-view .e-resource-left-td {
+      width: 100px;
+    }
+    .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div,
+    .e-schedule .e-resource-cells .template-wrap>div {
+      flex: 0 0 100%;
+    }
+    .e-schedule .e-resource-cells .template-wrap>div:first-child {
+      border-right: 0;
+    }
+    .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div:first-child {
+      border-right: 0;
+    }
+    .e-schedule .room-type,
+    .e-schedule .room-capacity {
+      display: none;
+    }
+  }
+</style>
+                        </div>
+                    </div>
+  
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+<script type="text/javascript">
+
+
+
+window.roomData = [
+    {
+        Id: 1,
+        Subject: 'Board Meeting',
+        Description: 'Meeting to discuss business goal of 2024.',
+        StartTime: new Date(2024, 6, 30, 9, 0),
+        EndTime: new Date(2024, 6, 30, 11, 0),
+        RoomId: 1
+    },
+    {
+        Id: 2,
+        Subject: 'Training session on JSP',
+        Description: 'Knowledge sharing on JSP topics.',
+        StartTime: new Date(2024, 6, 30, 15, 0),
+        EndTime: new Date(2024, 6, 30, 17, 0),
+        RoomId: 5
+    },
+    {
+        Id: 3,
+        Subject: 'Sprint Planning with Team members',
+        Description: 'Planning tasks for sprint.',
+        StartTime: new Date(2024, 6, 30, 9, 30),
+        EndTime: new Date(2024, 6, 30, 11, 0),
+        RoomId: 3
+    },
+    {
+        Id: 4,
+        Subject: 'Meeting with Client',
+        Description: 'Customer meeting to discuss features.',
+        StartTime: new Date(2024, 6, 30, 11, 0),
+        EndTime: new Date(2024, 6, 30, 13, 0),
+        RoomId: 4
+    },
+    {
+        Id: 5,
+        Subject: 'Support Meeting with Managers',
+        Description: 'Meeting to discuss support plan.',
+        StartTime: new Date(2024, 6, 30, 16, 0),
+        EndTime: new Date(2024, 6, 30, 17, 30),
+        RoomId: 5
+    },
+    {
+        Id: 6, Subject: 'Client Meeting',
+        Description: 'Meeting to discuss client requirements.',
+        StartTime: new Date(2024, 6, 30, 10, 30),
+        EndTime: new Date(2024, 6, 30, 13, 0),
+        RoomId: 6
+    },
+    {
+        Id: 7,
+        Subject: 'Appraisal Meeting',
+        Description: 'Meeting to discuss employee appraisals.',
+        StartTime: new Date(2024, 6, 30, 15, 0),
+        EndTime: new Date(2024, 6, 30, 16, 30),
+        RoomId: 7
+    },
+    {
+        Id: 8,
+        Subject: 'HR Meeting',
+        Description: 'Meeting to discuss HR plans.',
+        StartTime: new Date(2024, 6, 30, 8, 0),
+        EndTime: new Date(2024, 6, 30, 9, 0),
+        RoomId: 4
+    },
+    {
+        Id: 9,
+        Subject: 'Customer Meeting',
+        Description: 'Meeting to discuss customer reported issues.',
+        StartTime: new Date(2024, 6, 30, 10, 0),
+        EndTime: new Date(2024, 6, 30, 12, 0),
+        RoomId: 8
+    },
+    {
+        Id: 10,
+        Subject: 'Board Meeting',
+        Description: 'Meeting to discuss business plans.',
+        StartTime: new Date(2024, 6, 30, 14, 30),
+        EndTime: new Date(2024, 6, 30, 17, 0),
+        RoomId: 9
+    },
+    {
+        Id: 11,
+        Subject: 'Training session on Vue',
+        Description: 'Knowledge sharing on Vue concepts.',
+        StartTime: new Date(2024, 6, 30, 9, 0),
+        EndTime: new Date(2024, 6, 30, 10, 30),
+        RoomId: 10
+    },
+    {
+        Id: 12,
+        Subject: 'Meeting with Team members',
+        Description: 'Meeting to discuss on work report.',
+        StartTime: new Date(2024, 6, 30, 11, 30),
+        EndTime: new Date(2024, 6, 30, 12, 0),
+        RoomId: 5
+    },
+    {
+        Id: 13,
+        Subject: 'Meeting with General Manager',
+        Description: 'Meeting to discuss support plan.',
+        StartTime: new Date(2024, 6, 30, 14, 0),
+        EndTime: new Date(2024, 6, 30, 16, 0),
+        RoomId: 5
+    },
+    {
+        Id: 14,
+        Subject: 'Board Meeting',
+        Description: 'Meeting to discuss business goal of 2024.',
+        StartTime: new Date(2024, 6, 31, 9, 0),
+        EndTime: new Date(2024, 6, 31, 11, 0),
+        RoomId: 1
+    },
+    {
+        Id: 15,
+        Subject: 'Training session on JSP',
+        Description: 'Knowledge sharing on JSP topics.',
+        StartTime: new Date(2024, 6, 31, 14, 0),
+        EndTime: new Date(2024, 6, 31, 17, 0),
+        RoomId: 6
+    },
+    {
+        Id: 16,
+        Subject: 'Sprint Planning with Team members',
+        Description: 'Planning tasks for sprint.',
+        StartTime: new Date(2024, 6, 31, 9, 30),
+        EndTime: new Date(2024, 6, 31, 11, 0),
+        RoomId: 2
+    },
+    {
+        Id: 17,
+        Subject: 'Meeting with Client',
+        Description: 'Customer meeting to discuss features.',
+        StartTime: new Date(2024, 6, 31, 11, 0),
+        EndTime: new Date(2024, 6, 31, 13, 0),
+        RoomId: 7
+    },
+    {
+        Id: 18,
+        Subject: 'Support Meeting with Managers',
+        Description: 'Meeting to discuss support plan.',
+        StartTime: new Date(2024, 6, 31, 16, 0),
+        EndTime: new Date(2024, 6, 31, 17, 30),
+        RoomId: 2
+    },
+    {
+        Id: 19,
+        Subject: 'Training session on C#',
+        Description: 'Training session',
+        StartTime: new Date(2024, 6, 31, 14, 30),
+        EndTime: new Date(2024, 6, 31, 16, 0),
+        RoomId: 9
+    },
+    {
+        Id: 20,
+        Subject: 'Client Meeting',
+        Description: 'Meeting to discuss client requirements.',
+        StartTime: new Date(2024, 6, 31, 10, 30),
+        EndTime: new Date(2024, 6, 31, 13, 0),
+        RoomId: 3
+    },
+    {
+        Id: 21,
+        Subject: 'Appraisal Meeting',
+        Description: 'Meeting to discuss employee appraisals.',
+        StartTime: new Date(2024, 6, 31, 15, 0),
+        EndTime: new Date(2024, 6, 31, 16, 30),
+        RoomId: 3
+    },
+    {
+        Id: 22,
+        Subject: 'HR Meeting',
+        Description: 'Meeting to discuss HR plans.',
+        StartTime: new Date(2024, 6, 31, 8, 0),
+        EndTime: new Date(2024, 6, 31, 9, 0),
+        RoomId: 4
+    },
+    {
+        Id: 23,
+        Subject: 'Customer Meeting',
+        Description: 'Meeting to discuss customer reported issues.',
+        StartTime: new Date(2024, 6, 31, 10, 0),
+        EndTime: new Date(2024, 6, 31, 12, 0),
+        RoomId: 4
+    },
+    {
+        Id: 24,
+        Subject: 'Board Meeting',
+        Description: 'Meeting to discuss business plans.',
+        StartTime: new Date(2024, 7, 2, 16, 30),
+        EndTime: new Date(2024, 7, 2, 18, 0),
+        RoomId: 10
+    },
+    {
+        Id: 25,
+        Subject: 'Training session on Vue',
+        Description: 'Knowledge sharing on Vue concepts.',
+        StartTime: new Date(2024, 6, 31, 9, 0),
+        EndTime: new Date(2024, 6, 31, 10, 30),
+        RoomId: 5
+    },
+    {
+        Id: 26,
+        Subject: 'Meeting with Team members',
+        Description: 'Meeting to discuss on work report.',
+        StartTime: new Date(2024, 6, 31, 11, 30),
+        EndTime: new Date(2024, 6, 31, 12, 0),
+        RoomId: 5
+    },
+    {
+        Id: 27,
+        Subject: 'Meeting with General Manager',
+        Description: 'Meeting to discuss support plan.',
+        StartTime: new Date(2024, 6, 31, 14, 0),
+        EndTime: new Date(2024, 6, 31, 16, 0),
+        RoomId: 10
+    },
+
+    {
+        Id: 28,
+        Subject: 'Board Meeting',
+        Description: 'Meeting to discuss business goal of 2024.',
+        StartTime: new Date(2024, 7, 2, 9, 0),
+        EndTime: new Date(2024, 7, 2, 11, 0),
+        RoomId: 1
+    },
+    {
+        Id: 29,
+        Subject: 'Training session on JSP',
+        Description: 'Knowledge sharing on JSP topics.',
+        StartTime: new Date(2024, 7, 2, 17, 0),
+        EndTime: new Date(2024, 7, 2, 20, 0),
+        RoomId: 6
+    },
+    {
+        Id: 30,
+        Subject: 'Sprint Planning with Team members',
+        Description: 'Planning tasks for sprint.',
+        StartTime: new Date(2024, 7, 2, 10, 30),
+        EndTime: new Date(2024, 7, 2, 12, 0),
+        RoomId: 2
+    },
+    {
+        Id: 31,
+        Subject: 'Meeting with Client',
+        Description: 'Customer meeting to discuss features.',
+        StartTime: new Date(2024, 7, 2, 18, 0),
+        EndTime: new Date(2024, 7, 2, 20, 0),
+        RoomId: 8
+    },
+    {
+        Id: 32,
+        Subject: 'Support Meeting with Managers',
+        Description: 'Meeting to discuss support plan.',
+        StartTime: new Date(2024, 7, 2, 16, 0),
+        EndTime: new Date(2024, 7, 2, 17, 30),
+        RoomId: 7
+    },
+    {
+        Id: 33,
+        Subject: 'Training session on C#',
+        Description: 'Training session',
+        StartTime: new Date(2024, 7, 2, 14, 30),
+        EndTime: new Date(2024, 7, 2, 16, 0),
+        RoomId: 2
+    },
+    {
+        Id: 34,
+        Subject: 'Client Meeting',
+        Description: 'Meeting to discuss client requirements.',
+        StartTime: new Date(2024, 7, 2, 10, 30),
+        EndTime: new Date(2024, 7, 2, 13, 0),
+        RoomId: 3
+    },
+    {
+        Id: 35,
+        Subject: 'Appraisal Meeting',
+        Description: 'Meeting to discuss employee appraisals.',
+        StartTime: new Date(2024, 7, 2, 15, 0),
+        EndTime: new Date(2024, 7, 2, 16, 30),
+        RoomId: 8
+    },
+    {
+        Id: 36,
+        Subject: 'HR Meeting',
+        Description: 'Meeting to discuss HR plans.',
+        StartTime: new Date(2024, 7, 2, 9, 30),
+        EndTime: new Date(2024, 7, 2, 11, 30),
+        RoomId: 4
+    },
+    {
+        Id: 37,
+        Subject: 'Customer Meeting',
+        Description: 'Meeting to discuss customer reported issues.',
+        StartTime: new Date(2024, 7, 2, 10, 0),
+        EndTime: new Date(2024, 7, 2, 12, 0),
+        RoomId: 9
+    },
+    {
+        Id: 38,
+        Subject: 'Board Meeting',
+        Description: 'Meeting to discuss business plans.',
+        StartTime: new Date(2024, 7, 2, 15, 0),
+        EndTime: new Date(2024, 7, 2, 17, 0),
+        RoomId: 4
+    },
+    {
+        Id: 39,
+        Subject: 'Training session on Vue',
+        Description: 'Knowledge sharing on Vue concepts.',
+        StartTime: new Date(2024, 7, 2, 9, 0),
+        EndTime: new Date(2024, 7, 2, 10, 30),
+        RoomId: 5
+    },
+    {
+        Id: 40,
+        Subject: 'Meeting with Team members',
+        Description: 'Meeting to discuss on work report.',
+        StartTime: new Date(2024, 7, 2, 11, 30),
+        EndTime: new Date(2024, 7, 2, 12, 30),
+        RoomId: 5
+    },
+    {
+        Id: 41,
+        Subject: 'Meeting with General Manager',
+        Description: 'Meeting to discuss support plan.',
+        StartTime: new Date(2024, 7, 2, 14, 0),
+        EndTime: new Date(2024, 7, 2, 16, 0),
+        RoomId: 10
+    },
+    {
+        Id: 43,
+        Subject: 'HR Meeting',
+        Description: 'Meeting to discuss HR plans.',
+        StartTime: new Date(2024, 7, 2, 18, 0),
+        EndTime: new Date(2024, 7, 2, 20, 0),
+        RoomId: 2
+    },
+    {
+        Id: 44,
+        Subject: 'HR Meeting',
+        Description: 'Meeting to discuss HR plans.',
+        StartTime: new Date(2024, 7, 2, 17, 30),
+        EndTime: new Date(2024, 7, 2, 20, 0),
+        RoomId: 1
+    },
+    {
+        Id: 45,
+        Subject: 'Client Meeting',
+        Description: 'Meeting to discuss client requirements.',
+        StartTime: new Date(2024, 7, 2, 16, 30),
+        EndTime: new Date(2024, 7, 2, 18, 0),
+        RoomId: 3
+    },
+    {
+        Id: 46,
+        Subject: 'Board Meeting',
+        Description: 'Meeting to discuss business plans.',
+        StartTime: new Date(2024, 7, 2, 18, 30),
+        EndTime: new Date(2024, 7, 2, 20, 0),
+        RoomId: 4
+    },
+    {
+        Id: 47,
+        Subject: 'Board Meeting',
+        Description: 'Meeting to discuss business plans.',
+        StartTime: new Date(2024, 7, 2, 15, 30),
+        EndTime: new Date(2024, 7, 2, 18, 0),
+        RoomId: 5
+    },
+    {
+        Id: 48,
+        Subject: 'HR Meeting',
+        Description: 'Meeting to discuss HR plans.',
+        StartTime: new Date(2024, 7, 2, 18, 30),
+        EndTime: new Date(2024, 7, 2, 20, 0),
+        RoomId: 5
+    },
+    {
+        Id: 49,
+        Subject: 'HR Meeting',
+        Description: 'Meeting to discuss HR plans.',
+        StartTime: new Date(2024, 7, 2, 14, 30),
+        EndTime: new Date(2024, 7, 2, 16, 0),
+        RoomId: 6
+    },
+    {
+        Id: 50,
+        Subject: 'Board Meeting',
+        Description: 'Meeting to discuss business plans.',
+        StartTime: new Date(2024, 7, 2, 9, 30),
+        EndTime: new Date(2024, 7, 2, 12, 0),
+        RoomId: 6
+    },
+    {
+        Id: 51,
+        Subject: 'Client Meeting',
+        Description: 'Meeting to discuss client requirements.',
+        StartTime: new Date(2024, 7, 2, 10, 30),
+        EndTime: new Date(2024, 7, 2, 12, 0),
+        RoomId: 7
+    },
+    {
+        Id: 52,
+        Subject: 'Appraisal Meeting',
+        Description: 'Meeting to discuss employee appraisals.',
+        StartTime: new Date(2024, 7, 2, 18, 0),
+        EndTime: new Date(2024, 7, 2, 19, 30),
+        RoomId: 7
+    },
+    {
+        Id: 53,
+        Subject: 'Support Meeting with Managers',
+        Description: 'Meeting to discuss support plan.',
+        StartTime: new Date(2024, 7, 2, 15, 30),
+        EndTime: new Date(2024, 7, 2, 17, 0),
+        RoomId: 9
+    },
+    {
+        Id: 54,
+        Subject: 'Support Meeting with Managers',
+        Description: 'Meeting to discuss support plan.',
+        StartTime: new Date(2024, 7, 2, 11, 0),
+        EndTime: new Date(2024, 7, 2, 12, 30),
+        RoomId: 8
+    },
+    {
+        Id: 55,
+        Subject: 'Support Meeting with Managers',
+        Description: 'Meeting to discuss support plan.',
+        StartTime: new Date(2024, 7, 2, 11, 0),
+        EndTime: new Date(2024, 7, 2, 12, 30),
+        RoomId: 10
+    },
+    
+];
+
+</script>
+
+<script type="text/javascript">
+ej.base.registerLicense('Ngo9BigBOggjHTQxAR8/V1NMaF5cXmBCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH1fc3VUQmhcVE10V0A=');
+
+ej.base.enableRipple(window.ripple)
+let dataSource2;
+fetch('/timeline/getCabins')
+    .then(response => response.json())
+    .then(data => {
+        dataSource2 = data
+        
+        
+            var data = new ej.base.extend([], window.roomData, null, true);
+    var scheduleObj = new ej.schedule.Schedule({
+        cssClass: 'room-schedule',
+        width: '100%',
+        height: '650px',
+        selectedDate: new Date(2024, 7, 2),
+        currentView: 'TimelineWeek',
+        workHours: {
+            start: '00:00',
+            end: '23:59'
+        },
+        timeScale: {
+            slotCount: 1,
+            interval: 60
+        },
+        views: [
+            { option: 'TimelineDay' },
+            { option: 'TimelineWeek' }
+        ],
+        resourceHeaderTemplate: '#resource-template',
+        group: {
+            enableCompactView: true,
+            resources: ['MeetingRoom']
+        },
+        resources: [{
+            field: 'RoomId', title: 'Room Type',
+            name: 'MeetingRoom', allowMultiple: true,
+            dataSource: dataSource2 ,
+            textField: 'text', idField: 'id', colorField: 'color'
+        }],
+        eventSettings: {
+            dataSource: data,
+            fields: {
+                id: 'Id',
+                subject: { title: 'Summary', name: 'Subject' },
+                location: { title: 'Location', name: 'Location' },
+                description: { title: 'Comments', name: 'Description' },
+                startTime: { title: 'From', name: 'StartTime' },
+                endTime: { title: 'To', name: 'EndTime' }
+            }
+        },
+
+
+    });
+    scheduleObj.appendTo('#Schedule');
+    
+    
+    
+    })
+    .catch(error => {
+        console.error('Error fetching cabin data:', error);
+    });
+        
+    var isReadOnly = function (endDate) {
+        return (endDate < new Date(2024, 6, 31, 0, 0));
+    };
+    window.getRoomName = function (value) {
+        return value.resourceData[value.resource.textField];
+    };
+    window.getRoomType = function (value) {
+        return value.resourceData.type;
+    };
+    window.getRoomCapacity = function (value) {
+        return value.resourceData.capacity;
+    };
+
+
+</script>
+
+
+</body>
+
+</html>

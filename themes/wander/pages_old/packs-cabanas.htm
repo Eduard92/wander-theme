@@ -1,0 +1,541 @@
+title = "Elije Cabaña de tu Paquete"
+url = "/packs/cabanas/"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[paquetes]
+
+[getCabanas]
+==
+{% put pagetitle %}Cabañas{% endput %}
+{% put metatitle %}Conoce nuestras cabañas en renta petfriendly en Valle de Bravo y Malinalco{% endput %}
+{% put metadescription %}Reserva la experiencia Wander en una de nuestras cabañas en medio de la naturaleza. Ingresa a nuestro sitio, elige tu fecha favorita y ¡listo! Alístate junto con tu pareja, familia, amigos y hasta tu mascota, somos pet friendly. ¡Te esperamos!{% endput %}
+
+{% put scriptreserva %}
+<script type="text/javascript" src="{{'assets/js/scripts/scriptPaquetes.js'|theme}}"></script>
+
+{% endput %}
+<script type="text/javascript">
+
+    if(device == "movil")
+        location.hash = "#focus" ;
+</script>
+
+        
+<style>
+  .PageContainer{
+    background: #f7f5f1 !important;
+    
+  }
+.reservaCt .wizard .steps{
+    background-color:#f7f5f1;
+    }
+    
+.reservaCt .descReservar{
+    background-color:#f7f5f1;
+    }
+  
+.loading-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #818c70cc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-image {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.loading-message {
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+.slick-dots{
+bottom:30px!important;
+}
+
+.boxTool{
+    font-family: "Oswald",sans-serif;
+    margin-right: 10px;
+    font-weight: 500;
+    }
+    
+.cabinPrice p {
+    text-align: right;
+   /* color: #ffffff;*/
+    margin: 0;
+    padding: 0;
+    font-family: "Oswald",sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+  .centeredNav {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Optional: If you want to align the list items horizontally */
+  .centeredNav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .centeredNav li {
+    margin-right: 15px;
+  }
+  .inputSelect.wIn{
+      display: flex;
+    justify-content: center;
+   /* flex-flow: wrap;*/
+    }
+
+.selectFormContact{
+        position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.selectFormContact,.selectFormContact nav{width:250px;}    
+
+@media (min-width: 768px){
+    .selectFormContact{width:95%}
+    .selectFormContact nav{width:100%}    
+}
+
+.selectFormContact .collOpenForm{
+    width: 100%;
+    height: 40px;
+    padding: 5px 10px;
+    margin: 0;
+    background-color: #ffffff;
+    text-align: left;
+    display: block;
+    color: #0c282a;
+    line-height: 40px;
+    border-radius: 4px;
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+        border: 1px solid #0c282a45;
+    }
+
+    .activeLabel {
+        visibility:visible!important;
+    }
+    
+    .selectFormContact .collOpenForm{
+        padding: unset;
+        }
+ 
+    .selectFormContact .collOpenForm .labelInp {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: all 300ms ease,visibility 0s;
+    transition: all 300ms ease,visibility 0s;
+      
+
+
+}
+
+    .labelTitleInp {
+        font-family: "Oswald",sans-serif;
+        text-transform: uppercase;
+        font-size: calc(12px + 2 * ((100vw - 320px) / 880));
+        letter-spacing: 1.2px;
+        margin: 0 0 5px;
+        padding: 0;
+        color: #818C70;
+        font-weight: 400;
+    }
+    .flex-direction-unset
+    {
+    flex-direction:unset!important;
+    position: absolute!important;
+    }
+  
+
+    
+  .selectFormContact .collOpenForm.activeRes .responseText  {
+  
+        font-family: "Oswald",sans-serif;
+        text-transform: uppercase;
+        font-size: calc(14px + 2 * ((100vw - 320px) / 880));
+        margin-left: 10px;
+  }
+  
+  .navOpcionform{
+      z-index:99!important;
+      }
+ </style>
+{% set ciudades = ciudadesList.records %}
+
+
+<div id="loadingModal" class="loading-modal" style="display: none;">
+  <img src="{{ 'assets/img/logos/wander-full-white.svg'|theme }}" alt="Wander" class="loading-image">
+  <p style="font-family: 'Oswald',sans-serif;font-size:1.5em;color:#ffffff;" claemzss="loading-message">Cargando...</p>
+</div>
+
+
+<article class="bg-gen" style="background: #f7f5f1 !important">
+  <div class="reservaCt">
+    <div class="descReservar" id="focus">
+      <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
+      <h2>Selecciona una cabaña para tu paquete</h2>
+    </div>
+    {{ form_ajax('onCabanas', {class: 'stepReservaFrm'}) }}
+      <div class="wizard">
+        <div class="steps clearfix">
+          <ul role="tablist">
+            <li role="tab" class="first done" aria-disabled="false" aria-selected="true" style="display:none">
+              <a id="steps-uid-0-t-0"  aria-controls="steps-uid-0-p-0"></a>
+            </li>
+            <li role="tab" class="done" aria-disabled="true" style="display:none">
+              <a id="steps-uid-0-t-1"  aria-controls="steps-uid-0-p-1"></a>
+            </li>
+            <li role="tab" class="done" aria-disabled="true">
+              <a id="steps-uid-0-t-2"  href="{{ '/packs/fechas/' ~ paquete_id }}" aria-controls="steps-uid-0-p-2">Paso 1</a>
+            </li>
+            <li role="tab" class="current" aria-disabled="true">
+              <a id="steps-uid-0-t-3" href="{{''|page}}" aria-controls="steps-uid-0-p-3">Paso 2</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">Paso 3</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">Paso 4</a>
+            </li>
+            <li role="tab" class="disabled last" aria-disabled="true">
+              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">Paso 5</a>
+            </li>
+          </ul><!-- end.ul -->
+        </div><!-- end.steps --> 
+        <div class="content clearfix" style="overflow: unset;">
+       <section>
+          <div class="container">
+            <div class="row justify-content-center;">
+              <div class="col-12">
+
+        {% if grupo == 'todas' %} 
+                
+                      
+                     <div class="" id="contFormCal">
+                      <div class="stickyForm">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-12">
+                                <input type="hidden" id="picker" name="picker"><!-- recibe los datos del calendario. -->
+                                <div id="picker"></div>
+                                <div style="text-align:center;margin-bottom: 10px;">
+                                     <span class="labelTitleInp" id="labelSel1">Seleccione un destino</span>
+                                </div>
+                                <div class="form-group mb-2 inputSelect wIn" data-input-home>
+                                  <input type="hidden" name="locacion" id="locacion" value="">       
+                                  
+                                          <div class="selectFormContact">
+                
+                                                <a href="#" class="collOpenForm" id="openOpsForms">
+                    
+                                                  <span class="labelInp"><i class="fa fa-map-marker"></i> Destino</span>
+                    
+                                                  <span id="textChange" class="responseText">Destino</span>
+                    
+                                                </a><!-- end.collOpenForm -->
+                
+                
+                                            <nav id="navOpcionform">
+                
+                                              <ul>
+                
+                                                {% for ciudad in ciudades %}
+                                                  <li><p>{{ ciudad.nombre }} </p></li>
+                
+                                                    {% for ubicacion in ciudad.ubicaciones %}
+                                                        <li><a class="btnFormContact" href="#" onclick="selectSiteNavBar('{{ubicacion.id}}')" data-valor="ubicacion-{{ubicacion.id}}">{{ubicacion.nombre}}</a></li>
+                                                    {% endfor %}
+                                                    
+                                                {% endfor %}
+                
+                                              </ul>
+                
+                                            </nav><!-- end.navOpcionform -->
+                
+                                          </div><!-- end.selectFormContact -->
+                                </div><!-- end.selectUbicacion -->
+                            </div><!-- end.col-* -->
+                          </div><!-- end.row -->
+                        </div><!-- end.container -->
+                      </div><!-- end.stickyForm -->
+                    </div><!-- end.contFormCal -->
+    
+                <div id="accSelCabinState" class="accSlideCabins">
+                
+                {% partial 'cabanas' %}
+                                
+                    </div>
+                
+
+{% elseif grupo == 'ciudad' %} 
+
+                     <div class="" id="contFormCal">
+                      <div class="stickyForm">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-12">
+                                <input type="hidden" id="picker" name="picker"><!-- recibe los datos del calendario. -->
+                                <div id="picker"></div>
+                                <div style="text-align:center;margin-bottom: 10px;">
+                                     <span class="labelTitleInp" id="labelSel1">Seleccione un destino</span>
+                                </div>
+                                <div class="form-group mb-2 inputSelect wIn" data-input-home>
+                                  <input type="hidden" name="locacion" id="locacion" value="">       
+                                  
+                                          <div class="selectFormContact">
+                
+                                                <a href="#" class="collOpenForm" id="openOpsForms">
+                    
+                                                  <span class="labelInp"><i class="fa fa-map-marker"></i> Destino</span>
+                    
+                                                  <span id="textChange" class="responseText">Destino</span>
+                    
+                                                </a><!-- end.collOpenForm -->
+                
+                
+                                            <nav id="navOpcionform">
+                
+                                              <ul>
+                
+                                                  <li><p>{{ ciudad.nombre }} </p></li>
+                
+                                                    {% for ubicacion in ciudad.ubicaciones %}
+                                                        <li><a class="btnFormContact" href="#" onclick="selectSiteNavBar('{{ubicacion.id}}')" data-valor="ubicacion-{{ubicacion.id}}">{{ubicacion.nombre}}</a></li>
+                                                    {% endfor %}
+                                                    
+                
+                                              </ul>
+                
+                                            </nav><!-- end.navOpcionform -->
+                
+                                          </div><!-- end.selectFormContact -->
+                                </div><!-- end.selectUbicacion -->
+                            </div><!-- end.col-* -->
+                          </div><!-- end.row -->
+                        </div><!-- end.container -->
+                      </div><!-- end.stickyForm -->
+                    </div><!-- end.contFormCal -->
+                <div id="accSelCabinState" class="accSlideCabins">
+
+                {% partial 'cabanas' %}
+
+                </div>
+
+{% elseif grupo == 'ubicacion' %}
+
+                <div id="accSelCabinState" class="accSlideCabins">
+                  <div class="card" style="background: #f7f5f1 !important">
+                    <div class="card-header" id="headCollap-state-cdmx">
+                      <h5 class="mb-0">
+                        <a class="btn btn-link" data-toggle="collapse" data-target="#collap-state-cdmx" aria-expanded="true" aria-controls="collap-state-cdmx">
+                          {{seleccionado}}
+                                                           <i class="fa fa-chevron-down btnCiudades"></i>
+
+                        </a>
+                      </h5>
+                    </div>
+                
+                    <div id="collap-state-cdmx" class="collapse show" aria-labelledby="headCollap-state-cdmx" data-parent="#accSelCabinState">
+                      <div class="card-body">
+
+                        <div class="row" style="justify-content:center">
+                        {% if cabanas %}
+                        {% for cabana in cabanas %}
+                        <div class="col-xs-8 col-sm-6 col-md-5 col-lg-5 col-xl-5 hack-max" style="margin-bottom:30px; ">
+                            <div class="boxCabanaRes newBoxCabanaRes" style="margin-top: unset !important;flex-direction:column">
+                              <div class="boxCabanaRes__img " >
+                                <div class="boxCabanaRes__tools">
+                                  <!--div class="toolCaja cabinCount">
+                                    <div class="boxTool">
+                                      <i class="fa fa-bed"></i> <span>{{cabana.camas}}</span>
+                                    </div>
+                                    <div class="boxTool">
+                                      <i class="fa fa-user"></i> <span>{{cabana.capacidad}}</span>
+                                    </div>
+                                  </div><!-- end.toolCaja -->
+                                  <div class="toolCaja">
+                                    <div class="cabinPrice">
+                                    <!--p>Estancia de {{noches}} {% if noches > 1 %}noches{% else %}noche{% endif %}<br>${{cabana.total|number_format}}</p-->
+                                    </div><!-- end.cabinPrice -->
+                                  </div><!-- end.toolCaja -->
+                                </div><!-- end.boxCabanaRes__tools -->
+                                <div id="cab-{{cabana.slug}}-{{loop.index}}" data-slider class="sliderRes">
+                        
+                                  {% for foto in cabana.galeria %}
+                                  <a href="{{ foto.path | resize(1200) }}" data-lightbox="slider-{{cabana.slug}}" data-title="{{cabana.nombre}}">
+                                    <figure class="boxCabanaRes__fig cont-hack">
+                                      <img class="img-hack lozad"  data-src="{{ foto.path | resize(600)}}" alt="{{cabana.nombre}}" loading="lazy">
+                                    </figure>
+                                  </a>
+                                  {% endfor %}
+                        
+                                </div>
+                                <!--a class="btnSlideRes bLeftP" href="#" id="prevSlideRes-cab-{{cabana.slug}}-{{loop.index}}"></a>
+                                <a class="btnSlideRes nRightP" href="#" id="nextSlideRes-cab-{{cabana.slug}}-{{loop.index}}"></a-->
+                                <!--h5 class="boxCabanaRes__titleCab">{{cabana.nombre}}</h5-->
+                              </div><!-- end.slideCabanaRes -->
+                              
+                              
+                              <div class="boxCabanaRes__desc boxCabanaRes__desc--getawey min_height">
+                                    <div style="margin-bottom: 10px;">
+    
+                                       
+                                        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                            <div style="display:flex;flex-direction:row;max-width: 60%;">
+                                                <div class="boxTool">
+                                                  <div class="h2">{{cabana.nombre}}</div>
+                                                  <div class="h2">{{cabana.descipcion_corta}}</div>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="cabinPrice">
+                                                <p>{{noches}} {% if noches > 1 %}noches{% else %}noche{% endif %}<br></p>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                            <div style="display:flex;flex-direction:row">
+                                                <div class="boxTool">
+                                                  <i class="fa fa-bed"></i> <span>{{cabana.camas}}</span>
+                                                </div>
+                                                <div class="boxTool">
+                                                  <i class="fa fa-user"></i> <span>{{cabana.capacidad}}</span>
+                                                </div>
+                                            </div>
+                                        
+                                            <!--div class="cabinPrice">
+                                                <p>Estancia de {{noches}} {% if noches > 1 %}noches{% else %}noche{% endif %}<br>${{cabana.total|number_format}}</p>
+                                            </div-->
+                                        </div>
+                                        <p style="line-height: 1.6em;">{{cabana.descripcion_larga}}</p>
+                                    </div>
+                                    <input type="radio" data-check-btn class="boxCabanaRes__input" name="cabanaSel" id="cab-{{cabana.slug}}"
+                                value="{{cabana.id}}" {% if cabanaId==cabana.id %}checked{% endif %}>
+                              <label for="cab-{{cabana.slug}}"  onclick="select('{{cabana.nombre}}')" >Seleccionar</label>
+                                    
+                                    
+                              </div><!-- end.descCabana -->
+                            </div><!-- end.boxLoc -->
+                          </div><!-- end.col-* -->
+                        {% endfor %}
+                        {% else %}
+                          <div class="col-12 col-md-4">No contamos con cabañas disponibles en esta ubicación.</div>
+                        {% endif %}
+                        </div><!-- end.row -->
+                
+                      </div><!-- end.card-body -->
+                    </div><!-- end.collapse -->
+                  </div><!-- end.card -->
+                </div><!-- end#accSelCabin -->
+                                                      <small><blockquote>* Precios sin IVA.</blockuote></small>
+
+
+{% endif %}
+              </div><!-- end.col-* -->
+            </div><!-- end.row -->
+          </div>
+
+        </section>
+        </div>
+        <div class="actions clearfix" style="background: #f7f5f1 !important">
+          <ul role="menu" aria-label="Pagination">
+            <li aria-disabled="false">
+                    <a href="{{ '/packs/fechas/' ~ paquete_id }}">Atrás</a>
+            </li>
+            <li aria-hidden="false" aria-disabled="false">
+              <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="ubicacion"  >
+                <i class="fa fa-chevron-right"></i><span>Siguiente</span>
+              </button>
+            </li>
+          </ul><!-- end.ul -->
+        </div><!-- end.actions -->
+      </div><!-- end.wizard -->
+    {{ form_close() }}
+  </div><!-- end.reservaCt -->
+</article><!-- end.bg-gen -->
+
+<script>
+  
+     objLayer.cabana="";
+      function select(cabana){
+        
+       
+        objLayer.cabana = cabana;
+      //  objLayer.ubicacion = ubicacion.nombre;
+        console.log(cabana);
+        console.log(objLayer);
+        
+                                                                           
+      }
+  
+   
+       function send(send){
+        
+            if(objLayer.cabana != ''){
+        
+            dataLayer.push({'wander': null }); 
+            dataLayer.push({'event': 'Paso_4',
+                            'wander': {
+                            'cabana': objLayer.cabana
+                            }
+                        });
+        }
+        
+                                                
+      }
+      
+         
+        
+  $(document).ready(function() {
+    $('#sel1').change(function() {
+      $('#loadingModal').show();
+      var selectedValue = $(this).val(); // Obtener el valor seleccionado
+
+      $.request('getCabanas::onCabanasBooking', {
+        data: {
+          id: selectedValue
+        },
+        update: {
+          'cabanas': '#accSelCabinState'
+        },
+        complete: function() {
+          $('#loadingModal').hide();
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,102 @@
+title = "Ocupacion"
+url = "/ocupacion2/:ubicacion?/:anio?"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[builderList ubicacionesList]
+modelClass = "Roll\Cabanas\Models\Ubicacion"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[calendarioReservas]
+==
+{% set ubicaciones = ubicacionesList.records %}
+
+
+<script type="text/javascript">
+  let scheduleObj ;
+  let ubicacionId;
+
+ </script>
+  
+  
+  
+
+<h3><a href="/backend/roll/reservaciones/reservaciones" title="Atras"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+ Ocupación TimeLine </h3>
+
+<form data-request="calendarioReservas::onFechasTimeline">
+                <div class"col-lg-12" id="error"></div>
+
+
+<div class="row">
+    <div class="col col-md-8">
+      {% if permiso == 'reservaciones.admin' %}
+        <div class="form-group">
+
+           <select  name="ubicacion"  class="form-control" required>
+                     <option  value="" {% if this.param.ubicacion == '' %}selected{% endif %} >Seleccione Ubicacion</option>
+
+              {% for ubicacion in ubicaciones %}
+                  <div>
+                      <option  id="{{ubicacion.slug}}" value="{{ubicacion.id}}"  {% if this.param.ubicacion == ubicacion.id %}selected{% endif %} >{{ubicacion.nombre}}</option>
+                  </div>
+              {% endfor %}
+           </select>
+        </div>
+        {% endif %}
+        
+        
+        
+        {% if permiso != 'reservaciones.admin' %}
+        <div class="form-group">
+
+         <select  name="ubicacion"  class="form-control" required>
+                     <option  value="" {% if this.param.ubicacion == '' %}selected{% endif %} >Seleccione Servicio</option>
+
+              {% for ubicacion in ubicaciones %}
+                  <div>
+                      <option  id="{{ubicacion.slug}}" value="{{ubicacion.id}}"  {% if this.param.ubicacion == ubicacion.id %}selected{% endif %} >{{ubicacion.nombre}}</option>
+                  </div>
+              {% endfor %}
+           </select>
+        </div>
+
+        {% endif %}
+
+
+    </div>
+    
+    <div class="col col-md-4">
+        <button type="submit" class="btnCtaGen__link btnCtaGen__link--rounded" style="width:120px;">Consultar</button>
+    </div>
+</div>
+</form>
+<br>
+{% if this.param.anio %}
+<div class="row" style="width:50%;">
+{% for i in 1..12 %}
+<div class="col col-md-2" style="margin-bottom:5px;">
+<button class="btnCtaGen__link btnCtaGen__link--rounded" style="width:120px;" data-request="onAmenidadesReservadas" data-request-data="mes:{{i}},year:{{this.param.anio}},servicio:'{{this.param.servicio}}',ubicacion:{{this.param.ubicacion}}">{{this.param.anio}} - {{i}}</button>
+</div>
+{% endfor %}
+</div>
+{% endif %}
+
+
+<!-- Result container -->
+<div class="container" style="display: flex;
+  justify-content: center;
+  align-items: center;">
+    <div class="row">
+        <div class"col-lg-12" id="result"></div>
+    </div>
+</div>
+<br/>

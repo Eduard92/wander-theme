@@ -9,7 +9,7 @@ description = "cabanas"
   hola
   {% if estanciaMinima > 0 %}
          <div class="alert alert-warning" style="text-align:center;">
-            {{ 'estanciaMinimaMensaje1'|_ }} {{ubic1.nombre}} {{ 'estanciaMinimaMensaje2'|_ }} {{estanciaMinima}} {{ 'noches'|_ }}. <strong><a href="/reservar/fechas">{{ 'cambiaFechasReserva'|_ }} <a></strong> {{ 'oSeleccionaOtraUbicacion'|_ }}.
+            La estancia durante las fechas selccionadas minima en {{ubic1.nombre}} es de {{estanciaMinima}} noches. <strong><a href="/reservar/fechas">Cambia las fechas tu reserva <a></strong> o selecciona otra ubicación.
          </div> 
    {% endif %}
 
@@ -117,7 +117,7 @@ description = "cabanas"
             
             <div style="text-align:center">
               <img src="{{ 'assets/img/logos/wander-full-green.svg'|theme }}" alt="Wander" class="loading-image">
-              <p style="font-family: 'Oswald',sans-serif;font-size:1.8em;color:#818c70;" claemzss="loading-message">{{ 'sinCabanasDisponibles'|_ }}</p>
+              <p style="font-family: 'Oswald',sans-serif;font-size:1.8em;color:#818c70;" class="loading-message">{{ 'sinCabanasDisponibles'|_ }}</p>
             </div>
 
 

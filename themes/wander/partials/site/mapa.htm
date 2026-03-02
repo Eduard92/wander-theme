@@ -26,8 +26,8 @@ snippetName = "Mapa"
 
 <script type="text/javascript">
 
-    let ubicaciones = '{{ ubicaciones|json_encode|raw }}';
-    let ciudades ='{{ciudadesList.records|json_encode|raw}}'
+    let ubicaciones = {{ ubicaciones|json_encode|raw }};    
+    let ciudades ={{ciudadesList.records|json_encode|raw}};
 
 
   var urlPath = "{{ 'assets'|theme }}/img/";
@@ -67,7 +67,7 @@ snippetName = "Mapa"
         document.getElementById('mapLoaderDesktop').style.display = 'none';
         document.getElementById('mapDesktop').style.display = 'block';
 
-        mapboxgl.accessToken = '{{ this.theme.mapbox_token }}';
+        mapboxgl.accessToken = 'pk.eyJ1Ijoid2FuZGVyY2FiaW5zIiwiYSI6ImNsdTh0ZmNiNzAycHYybW41aWI1cjJ2NmgifQ.ptG2xapmJ4ieLgy-WT-GXA';
         var map = new mapboxgl.Map({
             container: 'mapDesktop',
             style: 'mapbox://styles/soulnessnet/ckz4pawjz001014la9z0pa03y',
@@ -78,8 +78,8 @@ snippetName = "Mapa"
         map.addControl(new mapboxgl.NavigationControl());
 
 
-        ubicaciones = jQuery.parseJSON(ubicaciones);
-        ciudades = jQuery.parseJSON(ciudades);
+      //  ubicaciones = jQuery.parseJSON(ubicaciones);
+       // ciudades = jQuery.parseJSON(ciudades);
         
           cd = []
           ciudades.forEach(c => {

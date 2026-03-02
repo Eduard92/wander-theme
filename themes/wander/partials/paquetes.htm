@@ -43,9 +43,9 @@ description = "paquetes"
                                             <div class="PackSelectCard__flexColumn_buttons">
                                                  <button class="PackSelectCard__button__auYmq PackSelectCard_button_W" 
                                                  onclick="location.href='packs/fechas/{{ paquete.id }}/{{ paquete.general ? ubicacion_id : paquete.ubicacion_id }}';"
-                                                 type="button">Seleccionar</button>
+                                                 type="button">{{ 'Seleccionar'|_ }}</button>
 
-                                                 <button class="PackSelectCard__button__auYmq"  style="background-color:#B55B12!important;" onclick="location.href='https://wandercabins.mx/pack/{{paquete.ubicacion.url}}/{{paquete.slug}}';"  type="button">Leer más</button>
+                                                 <button class="PackSelectCard__button__auYmq"  style="background-color:#B55B12!important;" onclick="location.href='https://wandercabins.mx/pack/{{paquete.ubicacion.url}}/{{paquete.slug}}';"  type="button">{{ 'leer-mas'|_ }}</button>
 
                                             </div>
                                             
@@ -59,7 +59,7 @@ description = "paquetes"
             
             <div style="text-align:center; padding-top:40px">
               <img src="{{ 'assets/img/logos/wander-full-green.svg'|theme }}" alt="Wander" class="loading-image">
-              <p style="font-family: 'Oswald',sans-serif;font-size:1.8em;color:#818c70;" claemzss="loading-message">No contamos con paquetes para esta ubicación.</p>
+              <p style="font-family: 'Oswald',sans-serif;font-size:1.8em;color:#818c70;" class="loading-message">{{ 'sinPaquetes'|_ }}</p>
             </div>
 
 

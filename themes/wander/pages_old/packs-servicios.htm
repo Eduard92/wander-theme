@@ -1,0 +1,2409 @@
+title = "Agrega Servicios a tu Paquete"
+url = "/packs/servicios"
+layout = "layout"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+
+[paquetes]
+
+[getServicios]
+
+[builderList serviciosList]
+modelClass = "Roll\Cabanas\Models\Servicio"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "nombre"
+noRecordsMessage = "No se han encontrado registros"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% put pagetitle %}Servicios adicionales{% endput %}
+{% put metatitle %}Conoce nuestras cabañas en renta petfriendly en Valle de Bravo y Malinalco{% endput %}
+{% put metadescription %}Reserva la experiencia Wander en una de nuestras cabañas en medio de la naturaleza. Ingresa a nuestro sitio, elige tu fecha favorita y ¡listo! Alístate junto con tu pareja, familia, amigos y hasta tu mascota, somos pet friendly. ¡Te esperamos!{% endput %}
+
+{% put scriptreserva %}
+<script type="text/javascript" src="{{'assets/js/scripts/scriptPaquetes.js'|theme}}"></script>
+{% endput %}
+
+<style>
+.reservaCt .wizard .steps{
+    background-color:#f7f5f1;
+    }
+    
+.reservaCt .descReservar{
+    background-color:#f7f5f1;
+    }
+
+
+  .PageContainer{
+    background: #f7f5f1 !important;
+  }
+  .reservaCt .wizard .actions{
+    background-color: #f7f5f1 !important;
+  }
+  .container{text-align: justify;
+   /* max-width :1460px*/} 
+  @media (min-width:1920px){
+    .container{max-width:1900px} 
+  .descripcionAct{font-size: 1.6em;}
+  p{font-size: 1.4em;}}
+
+  
+ /* @import url(//hello.myfonts.net/count/3479cb);*/
+
+
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.15
+}
+
+details,
+menu {
+    display: block
+}
+summary {
+    display: list-item
+}
+canvas {
+    display: inline-block
+}
+[hidden],
+template {
+    display: none
+}
+html {
+    box-sizing: border-box
+}
+*,
+:after,
+:before {
+    box-sizing: inherit
+}
+@-ms-viewport {
+    width: device-width
+}
+html {
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: transparent
+}
+body {
+    background-color: #fff;
+    color: #272728;
+    /*font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;*/
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5
+}
+[tabindex="-1"]:focus {
+    outline: 0!important
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: .5rem;
+    margin-top: 0
+}
+p {
+    margin-bottom: 1rem;
+    margin-top: 0
+}
+abbr[data-original-title],
+abbr[title] {
+    cursor: help
+}
+address {
+    font-style: normal;
+    line-height: inherit
+}
+address,
+dl,
+ol,
+ul {
+    margin-bottom: 1rem
+}
+dl,
+ol,
+ul {
+    margin-top: 0
+}
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+    margin-bottom: 0
+}
+dt {
+    font-weight: 700
+}
+dd {
+    margin-bottom: .5rem;
+    margin-left: 0
+}
+blockquote {
+    margin: 0 0 1rem
+}
+a {
+    text-decoration: none
+}
+a:focus,
+a:hover {
+    text-decoration: underline
+}
+a:not([href]):not([tabindex]),
+a:not([href]):not([tabindex]):focus,
+a:not([href]):not([tabindex]):hover {
+    color: inherit;
+    text-decoration: none
+}
+a:not([href]):not([tabindex]):focus {
+    outline: 0
+}
+pre {
+    margin-bottom: 1rem;
+    margin-top: 0;
+    overflow: auto
+}
+figure {
+    margin: 0 0 1rem
+}
+img {
+    vertical-align: middle
+}
+[role=button] {
+    cursor: pointer
+}
+
+html {
+    font-size: 12px
+}
+@media only screen and (min-width: 600px) {
+    html {
+        font-size: 16px
+    }
+}
+body {
+    background-color: #f7f5f1;
+    /*font-family: gtwalsheim, Avenir, -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;*/
+    font-weight: 350
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1260px;
+    padding: 0 1.5rem
+}
+.container:after {
+    clear: both;
+    content: "";
+    display: block
+}
+@media only screen and (max-width: 599px) {
+    .container:after {
+        text-align: center
+    }
+}
+input,
+input:focus,
+input:invalid {
+    box-shadow: none;
+    outline: 0
+}
+input,
+select,
+textarea {
+    /*font-family: inherit*/
+}
+input {
+    background: #f7f5f1;
+    border-bottom: 1px solid #272728;
+    color: #272728
+}
+.form--inline {
+    display: flex;
+    justify-content: center
+}
+@media only screen and (max-width: 599px) {
+    .form.contact {
+        display: none
+    }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 1.5rem
+}
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem
+}
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.75rem
+}
+h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem
+}
+h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem
+}
+h5 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem
+}
+strong {
+    font-weight: 700
+}
+p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 2rem
+}
+@media only screen and (max-width: 599px) {
+    p {
+        font-size: 16px;
+        line-height: 2
+    }
+}
+.bottomBtn {
+    background-color: transparent;
+    border: 2px solid #f7f5f1;
+    color: #f7f5f1;
+    font-weight: 400;
+    width: 100%
+}
+.d-block {
+    display: block!important
+}
+.hide {
+    display: none!important
+}
+.text-center {
+    text-align: center!important
+}
+.text-highlight {
+    color: #222919!important
+}
+.w-100 {
+    width: 100%!important
+}
+.is-hidden {
+    display: none!important
+}
+.capitalized {
+    text-transform: capitalize
+}
+
+
+
+
+
+.TripOverview__tripSummaryDates__SpUJf {
+    color: #000;
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    justify-content: space-between;
+    margin: 0
+}
+
+.TripOverview__tripSummaryDetails__WAByO {
+    color: #000;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.65;
+    margin: 0
+}
+
+.Carousel__slider__IsQJ2 {
+    max-width: 450px;
+    max-height: 404px;
+    position: relative;
+    width: 100%
+}
+@media only screen and (max-width: 600px) {
+    .Carousel__slider__IsQJ2 {
+        height: 100%;
+        max-height: 300px;
+        max-width: unset !important;
+        width: 100%
+    }
+}
+
+.Carousel__overlayImg__TYhyJ {
+    height: 404px;
+    max-height: 404px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: relative;
+    width: 100%
+}
+@media only screen and (max-width: 600px) {
+    .Carousel__overlayImg__TYhyJ {
+        height: 300px;
+        max-height: 300px
+    }
+}
+
+
+
+.AddOnPreview__container__A1tp0 {
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    /*font-family: gtwalsheim, Avenir, -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;*/
+    height: auto;
+    max-height: 404px;
+    /*max-width: min(940px, 100% - 260px);*/
+    min-height: 354px;
+    position: relative;
+    width: 100%
+}
+
+@media only screen and (max-width: 940px) {
+    .AddOnPreview__container__A1tp0 {
+        max-width: min(940px, 100% - 160px);
+
+    }
+}
+@media only screen and (min-width: 1400px) {
+    .AddOnPreview__container__A1tp0 {
+      /*  max-width: min(1400px, 100% - 260px);*/
+
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .AddOnPreview__container__A1tp0 {
+        flex-direction: column;
+        max-height: unset;
+        max-width: 100%
+    }
+}
+@media only screen and (min-width: 601px)and (max-width: 1100px) {
+    .AddOnPreview__container__A1tp0 {
+        max-width: 100%!important;
+        width: 100%
+    }
+}
+@media only screen and (min-width: 1601px) {
+    .AddOnPreview__container__A1tp0:not(:last-child) {
+        margin-right: 10px
+        
+    }
+}
+@media only screen and (min-width: 1025px)and (max-width: 1600px) {
+    .AddOnPreview__container__A1tp0:not(:last-child) {
+        margin-right: 10px
+    }
+}
+@media only screen and (min-width: 601px)and (max-width: 1024px) {
+    .AddOnPreview__container__A1tp0:not(:last-child) {
+        margin-right: 10px
+    }
+}
+.AddOnPreview__container__A1tp0.AddOnPreview__grayedOut__Lnwn5 {
+    opacity: .6
+}
+.AddOnPreview__subContainer__1Wt9u {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 380px;
+    min-width: 380px;
+    padding: 16px 16px 18px 20px
+}
+@media only screen and (min-width: 1240px) {
+    .AddOnPreview__subContainer__1Wt9u {
+       /* max-width: 450px;*/
+       /* max-width: 1140px;*/
+    }
+}
+
+@media only screen and (min-width: 1801px) {
+    .AddOnPreview__subContainer__1Wt9u {
+        max-width: unset;
+        width: 100%
+    }
+}
+@media only screen and (max-width: 600px) {
+    .AddOnPreview__subContainer__1Wt9u {
+        height: 100%;
+        max-width: unset;
+        min-width: unset;
+        width: 100%
+    }
+}
+.AddOnPreview__namePriceContainer__YacrY {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px
+}
+.AddOnPreview__namePriceContainer__YacrY .AddOnPreview__name__CoUn6 {
+    color: #222919;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    position: relative
+}
+@media only screen and (max-width: 600px) {
+    .AddOnPreview__namePriceContainer__YacrY .AddOnPreview__name__CoUn6 {
+        font-size: 18px
+    }
+}
+.AddOnPreview__namePriceContainer__YacrY .AddOnPreview__price__pxc1I {
+    font-size: 16px;
+    line-height: 24px
+}
+@media only screen and (max-width: 600px) {
+    .AddOnPreview__namePriceContainer__YacrY .AddOnPreview__price__pxc1I {
+        font-size: 14px
+    }
+}
+.AddOnPreview__description__jOho\+ {
+    /*-webkit-box-orient: vertical!important;*/
+    box-orient: vertical!important;
+    -webkit-line-clamp: 5;
+    display: -webkit-box;
+    font-size: 16px;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    visibility: visible;
+    white-space: normal
+}
+@media only screen and (max-width: 600px) {
+    .AddOnPreview__description__jOho\+ {
+        -webkit-line-clamp: 3;
+        height: unset;
+        width: 100%
+    }
+}
+.AddOnPreview__buttonsContainer__QUOuV,
+.AddOnPreview__quantitiesButtons__fOq5\+ {
+    align-items: center;
+    display: flex;
+    justify-content: space-between
+}
+
+
+.AddOnPreview__button__mgCpz {
+    -webkit-font-smoothing: antialiased;
+    align-items: center;
+    background: #222919;
+    background: #fff;
+    border: 1px solid #2d3f53;
+    color: #f6f4f2;
+    color: #2d3f53;
+    cursor: pointer;
+    display: inline-block;
+    display: flex;
+    /*font-family: gtwalsheim, Avenir, -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;*/
+    font-size: 16px;
+    font-weight: 700;
+    height: 60px;
+    justify-content: center;
+    letter-spacing: .5px;
+    line-height: 1;
+    padding: 15px 31px;
+    transition: background-color .3s ease-out, border-color .3s ease-out;
+    width: 100%
+}
+.AddOnPreview__button__mgCpz:disabled {
+    background: #c7bebd;
+    border-color: currentColor;
+    cursor: not-allowed
+}
+.AddOnPreview__button__mgCpz:not(:disabled):focus,
+.AddOnPreview__button__mgCpz:not(:disabled):hover {
+    background: #EA7F26;
+    border: 1px solid #EA7F26;
+    color: #f6f4f2
+}
+.AddOnPreview__button__mgCpz:disabled:focus,
+.AddOnPreview__button__mgCpz:disabled:hover {
+    color: #f6f4f2
+}
+.AddOnPreview__button__mgCpz:not(:disabled):hover {
+    background: #1b2632;
+    border: 1px solid #1b2632;
+    color: #f6f4f2
+}
+.AddOnPreview__button__mgCpz:not(:disabled):focus {
+    background: inherit;
+    border: inherit;
+    color: inherit
+}
+@media only screen and (max-width: 600px) {
+    .AddOnPreview__button__mgCpz {
+        height: 50px;
+        line-height: 0;
+        margin: 15px 0
+    }
+}
+@media only screen and (max-width: 600px) {
+    .AddOnPreview__descriptionContainer__RlNGg {
+        /*height: 60px;*/
+        margin-bottom: 10px
+    }
+    .AddOnPreview__descriptionContainer__RlNGg p {
+        margin-bottom: 0
+    }
+}
+
+    .AddOnPreview__descriptionContainer__RlNGg {
+        /*height: 60px;*/
+        margin-bottom: 10px
+    }
+
+.LineItem__tripSummaryItem__\+xfgv {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    position: relative
+}
+.LineItem__tripSummaryItem__\+xfgvd {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    position: relative
+}
+.LineItem__tripSummaryItem__\+xfgv+.LineItem__tripSummaryItem__\+xfgv {
+    border-top: 1px solid #272728;
+    margin-top: 1rem;
+    padding-top: 1rem
+}
+.LineItem__tripSummaryItem__\+xfgvd {
+    margin-top: 0.5rem;
+    padding-top: unset
+}
+.LineItem__tripSummaryItem__\+xfgv:last-child {
+   /* border-top: 1px solid #272728*/
+}
+.LineItem__tripSummaryItemName__6xWJY,
+.LineItem__tripSummaryItemValue__EtrwN {
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 20px
+}
+.LineItem__tripSummaryItemName__6xWJY {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start
+}
+.LineItem__bold__Mb2BL .LineItem__tripSummaryItemName__6xWJY,
+.LineItem__bold__Mb2BL .LineItem__tripSummaryItemValue__EtrwN {
+    color: #272728;
+    font-weight: 600
+}
+.LineItem__tripSummaryItemValue__EtrwN {
+    color: #7a7979;
+    font-weight: 300;
+    margin: 0;
+    padding-right: 2.5rem;
+    position: relative
+}
+.LineItem__withMarginTop__n1H\+i {
+    padding-top: 15px
+}
+@media(min-width:600px) {
+    .LineItem__tripSummaryItemValue__EtrwN {
+        padding-right: 2rem
+    }
+
+}
+
+
+.TripSummary__body__r5nyk dl {
+    background: linear-gradient(#fff 30%, hsla(0, 0%, 100%, 0)), linear-gradient(hsla(0, 0%, 100%, 0), #fff 70%) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), transparent), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), transparent) 0 100%;
+    background-attachment: local, local, scroll, scroll;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+    max-height: calc(100vh - 520px);
+    overflow-y: auto;
+    overscroll-behavior-y: contain
+}
+.TripSummary__body__r5nyk dl>div:last-child {
+    scroll-snap-align: end
+}
+.TripSummary__header__jm6-s {
+    color: #2d3f53;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative
+}
+.TripSummary__header__jm6-s .TripSummary__tripSummaryTitle__\+gUss {
+    color: #222919;
+    font-family: 'souvenir';
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: .25px
+}
+.TripSummary__header__jm6-s .TripSummary__buttonContainer__8qmMZ {
+    display: flex;
+    justify-content: center
+}
+.TripSummary__header__jm6-s .TripSummary__editButton__oodrr {
+    -webkit-font-smoothing: antialiased;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #222919;
+    color: #222919;
+    cursor: pointer;
+    /*font-family: gtwalsheim, Avenir, -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;*/
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .44px;
+    line-height: 1.5;
+    outline: none;
+    padding: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .3s ease-in
+}
+.TripSummary__header__jm6-s .TripSummary__editButton__oodrr:hover {
+    border-bottom: 2px solid #EA7F26;
+    color: #EA7F26
+}
+.TripSummary__container__IKaD1 {
+    background-color: transparent
+}
+.TripSummary__tripSummaryContainer__tfg6M {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 100%
+}
+
+
+@media(min-width:600px) {
+    .TripSummary__tripSummaryContainer__tfg6M {
+        border: 1px solid #e9e2d3;
+        box-shadow: 0 0 4px rgba(0, 0, 0, .1);
+        min-width: 430px
+    }
+}
+
+
+
+
+.AddOnTripSummary__container__jBFXq {
+    background: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .1);
+    margin-top: 40px;
+    padding: 30px 30px 5px;
+    position: fixed;
+    right: 50px;
+    top: 250px;
+    width: 400px;
+    z-index: 100
+}
+/*@media only screen and (min-width: 1900px) {
+    .AddOnTripSummary__container__jBFXq {
+        position: absolute!important
+    }
+}*/
+
+
+@media(min-width:600px) {
+    .AddOnTripSummary__container__jBFXq {
+        border: 1px solid #e9e2d3;
+        box-shadow: 0 0 4px rgba(0, 0, 0, .1);
+        min-width: 430px
+    }
+}
+@media only screen and (min-width: 601px)and (max-width: 1024px) {
+    .AddOnTripSummary__container__jBFXq {
+        margin-top: 24px;
+        padding: 20px;
+        right: 16px;
+        top: 180px;
+        width: 300px
+    }
+}
+.AddOnTripSummary__childContainer__FaaaI {
+    top: 90px
+}
+.AddOnTripSummary__buttonContainer__t\+wGk {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+.AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn {
+    -webkit-font-smoothing: antialiased;
+    align-items: center;
+    background: #F1B23F;
+    border: 1px solid #F1B23F;
+    color: #f6f4f2;
+    cursor: pointer;
+    display: inline-block;
+    display: flex;
+    /*font-family: gtwalsheim, Avenir, -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;*/
+    font-size: 16px;
+    font-weight: 700;
+    gap: 10px;
+    justify-content: center;
+    letter-spacing: .5px;
+    line-height: 1;
+    padding: 21px 49px;
+    transition: background-color .3s ease-out, border-color .3s ease-out;
+    width: 300px
+}
+.AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn:disabled {
+    background: #c7bebd;
+    border-color: currentColor;
+    cursor: not-allowed
+}
+@media only screen and (max-width: 600px) {
+    .AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn {
+        padding: 15px 43px
+    }
+}
+.AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn:not(:disabled):focus,
+.AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn:not(:disabled):hover {
+    background: #EA7F26;
+    border: 1px solid #EA7F26;
+    color: #f6f4f2
+}
+.AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn:disabled:focus,
+.AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn:disabled:hover {
+    color: #f6f4f2
+}
+@media only screen and (min-width: 601px)and (max-width: 1024px) {
+    .AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn {
+        -webkit-font-smoothing: antialiased;
+        align-items: center;
+        background: #F1B23F;
+        border: 1px solid #F1B23F;
+        color: #f6f4f2;
+        cursor: pointer;
+        display: inline-block;
+        display: flex;
+        /*font-family: gtwalsheim, Avenir, -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;*/
+        font-size: 16px;
+        font-weight: 700;
+        justify-content: center;
+        letter-spacing: .5px;
+        line-height: 1;
+        padding: 15px 31px;
+        transition: background-color .3s ease-out, border-color .3s ease-out;
+        width: 100%
+    }
+    .AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn:disabled {
+        background: #c7bebd;
+        border-color: currentColor;
+        cursor: not-allowed
+    }
+    .AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn:not(:disabled):focus,
+    .AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn:not(:disabled):hover {
+        background: #EA7F26;
+        border: 1px solid #EA7F26;
+        color: #f6f4f2
+    }
+    .AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn:disabled:focus,
+    .AddOnTripSummary__buttonContainer__t\+wGk .AddOnTripSummary__button__cA3Cn:disabled:hover {
+        color: #f6f4f2
+    }
+}
+
+
+
+.AddOnCategory__container__SwFF- {
+    /*padding: 38px 0 40px*/
+    padding: 0 0 60px
+}
+.AddOnCategory__container__SwFF- .AddOnCategory__subtitle__uqpb3 {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 18px;
+    max-width: 50%
+}
+.AddOnCategory__container__SwFF- .AddOnCategory__title__9sOvz {
+    color: #222919;
+    
+   /* font-weight: bold;*/
+    font-family: 'souvenir';
+    font-size: 32px;
+    letter-spacing: .94px;
+    line-height: 34px;
+    padding-bottom: 22px
+}
+@media only screen and (max-width: 600px) {
+    .AddOnCategory__container__SwFF- {
+        /**padding: 18px 0 20px*/
+        padding: 0px 0 20px
+    }
+    .AddOnCategory__container__SwFF- .AddOnCategory__title__9sOvz {
+        color: #222919;
+
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 24px;
+        padding-bottom: 20px;
+        width: 100%
+    }
+}
+@media only screen and (min-width: 601px)and (max-width: 1024px) {
+    .AddOnCategory__container__SwFF- .AddOnCategory__title__9sOvz {
+
+        color: #222919;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 28px;
+        width: 100%
+    }
+    .AddOnCategory__container__SwFF- .AddOnCategory__subtitle__uqpb3 {
+        font-size: 14px;
+        line-height: 21px
+    }
+}
+.AddOnCategory__addons__WsYXa {
+    display: flex;
+    flex-direction: column;
+    gap: 32px
+}
+
+div.row div+div .boxCabanaRes__input[type=checkbox]+label{
+    max-width: 100%;
+    background-color:#fff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #EA7F26;
+  border-radius: 20px;
+  border: 3px solid orange;
+}
+
+
+.AddOns__addonTitle__QDV-V {
+    color: #2d3f53;
+   /* font-family: gtwalsheim,Avenir,-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;*/
+    font-size: 18px;
+    font-weight: bolder;
+    letter-spacing: .1em;
+    line-height: 24px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+
+@media only screen and (max-width: 600px){
+.AddOns__addonTitle__QDV-V {
+    font-size: 16px;
+}
+}
+
+
+@media only screen and (min-width: 920px){
+.titleGeta {
+    text-align: left!important;
+}
+}
+
+
+.checkbox-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+   /* display: flex;*/
+    justify-content: space-between;
+  }
+  
+  .checkbox-container + input {
+    background: #f7f5f1;
+    border-bottom: 1px solid #272728;
+    color: #272728;
+    }
+
+    .checkbox-badge .dateInputCheck[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    }
+
+
+    .checkbox-container .dateInputCheck {
+    -webkit-font-smoothing: antialiased;
+    align-items: center;
+    background: #222919;
+    background: #fff;
+    border: 1px solid #2d3f53;
+    color: #f6f4f2;
+    color: #2d3f53;
+    cursor: pointer;
+    display: inline-block;
+    display: flex;
+    /* font-family: gtwalsheim, Avenir, -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif; */
+    font-size: 16px;
+    font-weight: 700;
+    height: 60px;
+    justify-content: center;
+    letter-spacing: .5px;
+    line-height: 1;
+    padding: 15px 31px;
+    transition: background-color .3s ease-out, border-color .3s ease-out;
+    width: 100%;
+ 
+}
+    .checkbox-container .dateInputCheck[type=checkbox]+label {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    padding: 0;
+    margin: 0 0 10px;
+    cursor: pointer;
+    display: block;
+    color: #222919;
+    text-align: center;
+    background-color: #ffffff;
+    text-transform: uppercase;
+    font-size: calc(10px + 2 * ((100vw - 320px) / 880));
+    letter-spacing: 1.2px;
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
+    line-height: 35px;
+    font-family: "Oswald",sans-serif;
+    font-weight: 500;
+    border: 1px solid #000000;
+    padding: 0 10px;
+}
+
+.checkbox-container .dateInputCheck[type=checkbox]:checked+label {
+    background-color: #222919;
+    color: #ffffff
+}
+
+.checkbox-container .dateInputCheck[type=checkbox]:disabled+label {
+    cursor: auto;
+    opacity: 0.5;
+    pointer-events: none
+}
+.dateInputCheck:not(:disabled):hover {
+    background: #1b2632;
+    border: 1px solid #1b2632;
+    color: #f6f4f2;
+}
+
+
+
+
+   .expandable-description {
+        max-height: 5em; /* Establece la altura máxima para mostrar una descripción truncada */
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+    }
+    
+    
+    .expandable-description.expanded {
+        max-height: none; /* Al expandirse, se muestra todo el contenido */
+    }
+    
+    .read-more-link {
+       text-decoration: underline;
+        cursor: pointer;
+        margin-top: 10px;
+        color: #707267!important;
+    }
+    
+    .read-more-link:focus {
+        outline: none;
+    }
+    
+    
+    
+    
+  </style>
+
+{% set serviciosExtra = serviciosList.records %}
+
+<script type="text/javascript">
+
+    if(device == "movil")
+        location.hash = "#focus" ;
+
+
+
+  let serviciosExtra = '{{ serviciosExtra|json_encode|raw }}';
+  let serviciosGuardados = '{{ servicios|json_encode|raw }}';
+  console.log(serviciosGuardados);
+
+  serviciosExtra = serviciosExtra.replace(/\r?\n/g, "<br>");
+
+  serviciosExtra = JSON.parse(serviciosExtra);
+  serviciosGuardados = jQuery.parseJSON(serviciosGuardados);
+
+  let subtotal = '{{total_paquete}}';
+  let ubicacion = '{{ubicacion_id}}';
+ // console.log(subtotal);
+
+ let total = subtotal*1.16;
+ let iva = subtotal*.16;
+  let checks = [];
+  if(typeof  serviciosExtra != 'undefined'){
+
+serviciosExtra.forEach(serviciosExtra => {
+
+  checks[serviciosExtra.slug] = '0';
+});
+
+}
+    let extras = [];  
+
+  if(typeof  serviciosGuardados != 'undefined'){
+
+    
+    $.each(serviciosGuardados, function(index, value) {
+        let id = value.id;
+             let idx = serviciosExtra.findIndex(i => i.id == id);
+
+        extras.push(serviciosExtra[idx].nombre);
+        
+        //console.log(extra);
+}); 
+
+
+
+
+    }
+    
+
+
+</script>
+
+<article class="bg-gen" >
+  <div class="reservaCt">
+    <div class="descReservar" id="focus">
+      <!--<img src="{{ 'assets/img/logos/logo-wander-white-text.svg'|theme }}" alt="Wander">-->
+      <h2>AGREGA SERVICIOS EXTRA</h2>
+
+    </div>
+    {{ form_ajax('onServicios', {class: 'stepReservaFrm'}) }}
+
+      <div class="wizard">
+        <div class="steps clearfix">
+          <ul role="tablist">
+            <li role="tab" class="first done" aria-disabled="false" aria-selected="true" style="display:none">
+              <a id="steps-uid-0-t-0"  aria-controls="steps-uid-0-p-0"></a>
+            </li>
+            <li role="tab" class="done" aria-disabled="true" style="display:none">
+              <a id="steps-uid-0-t-1"  aria-controls="steps-uid-0-p-1"></a>
+            </li>
+            <li role="tab" class="done" aria-disabled="true">
+              <a id="steps-uid-0-t-2" href="{{ '/packs/fechas/' ~ paquete_id }}" aria-controls="steps-uid-0-p-2">Paso 1</a>
+            </li>
+            <li role="tab" class="done" aria-disabled="true">
+              <a id="steps-uid-0-t-3" href="{{'/packs/cabanas'}}" aria-controls="steps-uid-0-p-3">Paso 2</a>
+            </li>
+            <li role="tab" class="current" aria-disabled="true">
+              <a id="steps-uid-0-t-4" href="#" aria-controls="steps-uid-0-p-4">Paso 3</a>
+            </li>
+            <li role="tab" class="disabled" aria-disabled="true">
+              <a id="steps-uid-0-t-5" href="#" aria-controls="steps-uid-0-p-5">Paso 4</a>
+            </li>
+            <li role="tab" class="disabled last" aria-disabled="true">
+              <a id="steps-uid-0-t-6" href="#" aria-controls="steps-uid-0-p-6">Paso 5</a>
+            </li>
+          </ul><!-- end.ul -->
+        </div><!-- end.steps --> 
+        <div class="content clearfix">
+        
+        <section>
+           
+              <div class="extrasCt">
+                <div class="container" style=" padding-right: px;
+              /*  padding-left: 45px;*/
+                margin-right: auto;
+                margin-left: auto;
+            ">
+                  <div class="row justify-content-center">
+                    <div class="col-12">
+
+
+                      
+                      <div class="descBoxCabinsNew">
+                        <div class="titleGeta" >Tu paquete cuenta con servicios que han sido preseleccionados.<br> Pero aun puedes agregar servicios adicionales si deseas.</div>
+
+                      </div><!-- end.descBoxCabinsNew -->
+                    </div><!-- end.col-* -->
+                    <!--div class="col-12 col-md-12 col-lg-7 col-xl-12"-->
+
+
+                    
+                    <div class="col-12 col-md-12 col-lg-8 col-xl-8">
+                     
+
+          <!-- fin amenidades-->
+          
+                     
+                        
+                        {% set totalCupo = 0 %} {# Inicializa la variable totalCupo fuera del bucle #}
+          
+                        {% for time in extended %}
+                          {% if time.cupo > 0 %}
+                              {% set totalCupo = totalCupo + time.cupo %} {# Suma el valor de cupo si cumple la condición #}
+                          {% endif %}
+                        {% endfor %}
+              
+                        {% if totalCupo > 0%}
+              
+                                      <div style="position: relative;">
+                                          <div style="top: -80px; position: absolute;"></div>
+                                          <div class="AddOnCategory__container__SwFF-" style="padding:unset">
+                                              <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset">Extiende tu Estadía</div>
+              
+                                          </div>
+                                      </div>
+              
+                                      {% for key, time in extended %}
+                                          {% set disponible = 0 %} 
+                 
+                                                {% if time.slug == 'early-check' and early_disponible == 1 %} 
+                                                    {% set disponible = 1%} 
+                                                {% endif %}
+                                                 
+                                                 {% if time.slug == 'late-check-out' and late_disponible == 1 %} 
+                                                    {% set disponible = 1%} 
+                                                {% endif %} 
+                                                                                              
+                                      
+                                      {% if time.cupo > 0 and disponible == 1%}
+
+
+
+                                      <div style="position: relative;">
+                                        <div style="top: -80px; position: absolute;"></div>
+                                        <div class="AddOnCategory__container__SwFF-">
+                                           <div class="AddOnCategory__title__9sOvz"></div>
+                                           <div class="AddOnCategory__addons__WsYXa">
+                                              <div class="AddOnPreview__container__A1tp0" style="min-height:2em">
+                                                    <div class="Carousel__slider__IsQJ2">
+                                                      <div class="AddOnPreview__subContainer__1Wt9u">
+                                                          <div>
+                                                             <div class="AddOnPreview__namePriceContainer__YacrY">
+                                                                <div class="AddOnPreview__name__CoUn6">{{time.nombre}}</div>
+                                                                <div class="AddOnPreview__price__pxc1I">${{time.precio_sab}}</div>
+              
+                                                             </div>
+                                                             <div class="">
+                                                                <div style="width: 100%;">
+                                                                   <div class="AddOnPreview__descriptionContainer__RlNGg">
+                                                                      <div class="AddOnPreview__description__jOho+">{{time.descripcion}}</div>
+                      
+                                                                  </div>
+                                                                </div>
+                                                             </div>
+                                                          </div>
+                                                       </div>
+                                  
+                                                 </div>
+                                                 <div class="AddOnPreview__subContainer__1Wt9u ">
+                                                    <div>
+                                                       <div class="AddOnPreview__namePriceContainer__YacrY">
+                                                          <div class="AddOnPreview__name__CoUn6"></div>
+                                                          <div class="AddOnPreview__price__pxc1I"></div>
+                                                       </div>
+                                                       <div class="">
+                                                          <div style="width: 100%;">
+                                                             <div class="AddOnPreview__descriptionContainer__RlNGg">
+                                                                <div class="AddOnPreview__description__jOho+"></div>
+                
+                                                            </div>
+                                                          </div>
+                                                       </div>
+                                                    </div>
+                                                    <div class="AddOnPreview__buttonsContainer__QUOuV">
+                                                      <input  type="checkbox" data-add-extras="{{time.slug}}" class="boxCabanaRes__input" name="servicios[]" id="{{time.slug}}"
+                                                       value="{{time.id}}" {% if time.id in servicios|keys %}checked{% endif %}>
+                                                       
+                                                       {% if time.id in servicios|keys %}
+                                                                                                              <label class="AddOnPreview__button__mgCpz" >Agregar</label>
+
+                                                       {% else %}
+                                                                                                              <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{time}}')" for="{{time.slug}}">Agregar</label>
+
+                                                       {% endif %}
+                
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                           </div>
+                                        </div>
+                                     </div>
+                {% endif%}
+                                      {% endfor %}       
+                                      
+                                      
+                                      {% endif%}
+                                      
+                                      
+                                                              {% set totalCupoA = 0 %} {# Inicializa la variable totalCupo fuera del bucle #}
+          
+                        {% for ameni in amenidades %}
+                          {% if ameni.cupo > 0 %}
+                              {% set totalCupoA = totalCupo + ameni.cupo %} {# Suma el valor de cupo si cumple la condición #}
+                          {% endif %}
+                        {% endfor %}
+
+
+                     {% if totalCupoA > 0%}
+                          <!-- amenidades -->
+                          <div style="position: relative;">
+                            <div style="top: -80px; position: absolute;"></div>
+                            <div class="AddOnCategory__container__SwFF-" style="padding:unset">
+                                <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset" >Amenidades</div>
+
+                            </div>
+                        </div>
+                    {% for key, amenidad in amenidades %}
+                    {% if amenidad.cupo > 0 %}
+                    <div style="position: relative;">
+                        <div style="top: -80px; position: absolute;"></div>
+                        <div class="AddOnCategory__container__SwFF-">
+                        <div class="AddOnCategory__title__9sOvz"></div>
+                        <div class="AddOnCategory__addons__WsYXa">
+                            <div class="AddOnPreview__container__A1tp0">
+                                    <div class="Carousel__slider__IsQJ2">
+
+                                    <section class="slider" aria-label="carousel-slider" role="region" tabindex="0" style="box-sizing: border-box; display: block; height: inherit; position: relative; width: 100%;">
+                                        <div aria-live="polite" aria-atomic="true" tabindex="-1" style="position: absolute; width: 1px; height: 1px; overflow: hidden; padding: 0px; margin: -1px; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border: 0px;">Slide 1 of 1</div>
+                                        <div class="slider-frame" style="box-sizing: border-box; display: block; height: 100%; margin: 0px; overflow: hidden; padding: 0px; position: relative; touch-action: pan-y pinch-zoom; transform: translate3d(0px, 0px, 0px);">
+                                            <div class="slider-list" style=" box-sizing: border-box; cursor: pointer; display: block; height: 404px; margin: 0px; padding: 0px; position: relative; touch-action: pan-y pinch-zoom; transform: translate3d(0px, 0px, 0px); width: auto; transition: all 0s ease 0s;">
+                                                <div class="slider-slide slide-visible slide-current"  role="group" tabindex="-1" style="   align-items: center; justify-content: center; box-sizing: border-box; display: inline-block; height: auto; left: 0px; list-style-type: none; margin: auto 0px; position: absolute; top: 0px; transform: scale(1); transition: transform 0.4s linear 0s; vertical-align: top; width: 100%;">
+                                                    <!--img data-src="{{ amenidad.foto.path | resize(600)}}" alt="{{amenidad.nombre}}" class="Carousel__overlayImg__TYhyJ lozad"-->
+                                                    
+                                                          <a href="{{ amenidad.foto.path }}" data-lightbox="servicio-{{amenidad.slug}}" data-title="{{amenidad.nombre}}">
+                                                                <img data-src="{{ amenidad.foto.path | resize(600)}}" alt="{{amenidad.nombre}}" class="Carousel__overlayImg__TYhyJ lozad">
+                                                          </a>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </section>
+                                </div>
+                                <div class="AddOnPreview__subContainer__1Wt9u">
+                                    <div>
+                                    <div class="AddOnPreview__namePriceContainer__YacrY">
+                                        <div class="AddOnPreview__name__CoUn6">{{amenidad.nombre}}</div>
+                                        <div class="AddOnPreview__price__pxc1I">${{amenidad.precio_sab}}</div>
+                                    </div>
+                                    <div class="">
+                                        <div style="min-height: 200px; width: 100%;margin-bottom: 40px;">
+                                            <div class="AddOnPreview__descriptionContainer__RlNGg">
+                                                <div class="AddOnPreview__description__jOho+">{{amenidad.descripcion}}</div>
+
+
+                                                <input type="hidden" name="cantidad-ct-{{amenidad.id}}"id="cantidad-ct-{{amenidad.id}}" value="1" min="0" max="4">
+                                                <input type="hidden" name="dias-ds-{{amenidad.id}}"id="dias-ds-{{amenidad.id}}" value="1">
+
+    
+                                                <div class="" style="margin-top: 20px;">
+                                                    <p style="font-weight: 400;">Selecciona la fecha de tu eleccion.</p>
+
+                                                    <!--button onclick="actionAct('{{amenidad}}','removeDay')" type="button" id="extras-days-min-{{amenidad.id}}"><i class="fa fa-minus"></i></button-->
+                                                        <div class="checkbox-container">
+
+
+                                                            {% if amenidad.fechas > 0 %}
+                                                            {% set firstShown = false %}
+{% set firstShown = false %}
+{% set firstMarked = false %}
+{% for date, fecha in amenidad.fechas %}
+    {% if fecha > 0 and not firstShown %}
+        {% set isChecked = (date in servicios[amenidad.id]|keys) %}
+        {% if not isChecked and not firstMarked %}
+            {% set isChecked = true %}
+            {% set firstMarked = true %}
+        {% elseif isChecked %}
+            {% set firstMarked = true %}
+        {% endif %}
+        {% set firstShown = true %}
+
+        <div class="checkbox-badge">
+            <input class="dateInputCheck" type="checkbox"
+                name="fecha-ct-{{ amenidad.id }}[]"
+                id="fecha-ct-{{ amenidad.id }}-{{ date }}"
+                value="{{ date }}"
+                {% if isChecked %}checked{% endif %}>
+
+            <label for="fecha-ct-{{ amenidad.id }}-{{ date }}">
+                {{ date }}
+            </label>
+        </div>
+    {% endif %}
+{% endfor %}
+
+
+                                                        </div>
+                                                        <!--button  onclick="actionAct('{{amenidad}}','addDay')" type="button" id="extras-days-max-{{amenidad.id}}"><i class="fa fa-plus"></i></button-->
+                                                    </div><!-- end.inpInc__inputs -->
+
+
+                                            
+                                            {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    <div class="AddOnPreview__buttonsContainer__QUOuV" id="btnAmeni{{amenidad.id}}" {% if amenidad.id in servicios|keys %}style="display : block;"{%else%}style="display : none;"{% endif %}>
+                                        <input  type="checkbox"  data-add-extras="{{amenidad.slug}}" class="boxCabanaRes__input" name="servicios[]"
+                                        id="{{amenidad.slug}}" value="{{amenidad.id}}" {% if amenidad.id in servicios|keys %}checked{% endif %}>
+                                        
+                                                       {% if amenidad.id in servicios|keys %}
+                                                               <label class="AddOnPreview__button__mgCpz" >Agregar</label>
+
+                                                       {% else %}
+                                                        <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{amenidad}}')" for="{{amenidad.slug}}">Agregar</label>
+
+                                                       {% endif %}
+                                                       
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% endfor %}
+                            {% endif%}
+                            
+                            
+                            
+                               <div style="position: relative;">
+                            <div style="top: -80px; position: absolute;"></div>
+                            <div class="AddOnCategory__container__SwFF-" style="padding:unset">
+                                <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset" >Actividades</div>
+
+                            </div>
+                        </div>
+                      {% for key, actividad in actividades %}
+                      <div style="position: relative;">
+                        <div style="top: -80px; position: absolute;"></div>
+                        <div class="AddOnCategory__container__SwFF-">
+                           <div class="AddOnCategory__title__9sOvz"></div>
+                           <div class="AddOnCategory__addons__WsYXa">
+                              <div class="AddOnPreview__container__A1tp0">
+                                    <div class="Carousel__slider__IsQJ2">
+
+                                       <section class="slider" aria-label="carousel-slider" role="region" tabindex="0" style="box-sizing: border-box; display: block; height: inherit; position: relative; width: 100%;">
+                                          <div aria-live="polite" aria-atomic="true" tabindex="-1" style="position: absolute; width: 1px; height: 1px; overflow: hidden; padding: 0px; margin: -1px; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border: 0px;">Slide 1 of 1</div>
+                                          <div class="slider-frame" style="box-sizing: border-box; display: block; height: 100%; margin: 0px; overflow: hidden; padding: 0px; position: relative; touch-action: pan-y pinch-zoom; transform: translate3d(0px, 0px, 0px);">
+                                             <div class="slider-list" style=" box-sizing: border-box; cursor: pointer; display: block; height: 404px; margin: 0px; padding: 0px; position: relative; touch-action: pan-y pinch-zoom; transform: translate3d(0px, 0px, 0px); width: auto; transition: all 0s ease 0s;">
+                                                <div class="slider-slide slide-visible slide-current"  role="group" tabindex="-1" style="   align-items: center; justify-content: center; box-sizing: border-box; display: inline-block; height: auto; left: 0px; list-style-type: none; margin: auto 0px; position: absolute; top: 0px; transform: scale(1); transition: transform 0.4s linear 0s; vertical-align: top; width: 100%;">
+                                                    <!--img data-src="{{ actividad.foto.path | resize(600)}}" alt="{{actividad.nombre}}" class="Carousel__overlayImg__TYhyJ lozad" loading="lazy"-->
+                                                          <a href="{{ actividad.foto.path }}" data-lightbox="servicio-{{actividad.slug}}" data-title="{{actividad.nombre}}">
+                                                                <img data-src="{{ actividad.foto.path | resize(600)}}" alt="{{actividad.nombre}}" class="Carousel__overlayImg__TYhyJ lozad">
+                                                          </a>
+                                                          
+                                                          </div>
+                                             </div>
+                                          </div>
+                                         
+                                       </section>
+                                 </div>
+                                 <div class="AddOnPreview__subContainer__1Wt9u">
+                                    <div>
+                                       <div class="AddOnPreview__namePriceContainer__YacrY">
+                                          <div class="AddOnPreview__name__CoUn6">{{actividad.nombre}}</div>
+                                          <div class="AddOnPreview__price__pxc1I">${{actividad.precio_sab}}</div>
+                                       </div>
+                                       <div class="">
+                                          <div style="min-height: 200px; width: 100%;">
+                                             <div class="AddOnPreview__descriptionContainer__RlNGg">
+                                                <!--div class="AddOnPreview__description__jOho+">{{actividad.descripcion}}</div-->
+                                                
+                                                
+                                                 <div class="description-container"  style="padding: 0px 0;MIN-HEIGHT:4em;">
+                                  
+                                                        <!--p class="expandable-description" style="line-height: 1.6em; " >{{ubicacion.descripcion}}</p-->
+                                                                         <div class="AddOnPreview__description__jOho+ expandable-description">{{actividad.descripcion}}</div>
+
+                                                        
+                                                        <p><a style="margin-top:5px;" class="read-more-link">Leer más</a></p>
+                                                  </div>  
+                                                  
+                                      
+                                                     <div class="inpInc__inputs">
+
+                                                       {% if actividad.id in servicios|keys %}
+                                                           <div class="inpText">Cantidad: <input type="text" name="cantidad-ct-{{actividad.id}}"
+                                                                id="cantidad-ct-{{actividad.id}}" value="1" min="0" max="4">
+                                                            </div>
+                                                       {% else %}
+
+                                                            <button onclick="actionAct('{{actividad}}','removeCant')" type="button"  id="extras-cant-min-{{actividad.id}}"><i class="fa fa-minus"></i></button>
+                                                            <div class="inpText">Cantidad: <input type="text" name="cantidad-ct-{{actividad.id}}"
+                                                                id="cantidad-ct-{{actividad.id}}" value="1" min="0" max="4">
+                                                            </div>
+                                                            <button onclick="actionAct('{{actividad}}','addCant')" type="button" id="extras-cant-max-{{actividad.id}}"><i class="fa fa-plus"></i></button>
+                                                       {% endif %}
+
+          
+                                                  </div><!-- end.inpInc__inputs -->
+                                                  
+                                                  {% if actividad.tipo_cobro  == 'Hora' %}
+                                                     <div class="inpInc__inputs" style="margin-top: 20px;">
+                                                       {% if actividad.id in servicios|keys %}
+                                                            <div class="inpText">Horas: <input type="text" name="dias-ds-{{actividad.id}}" id="dias-ds-{{actividad.id}}"
+                                                                value="1" min="0" max="7"></div>
+                                                       {% else %}
+                                                             <button onclick="actionAct('{{actividad}}','removeDay')" type="button" id="extras-days-min-{{actividad.id}}"><i class="fa fa-minus"></i></button>
+                                                            <div class="inpText">Horas: <input type="text" name="dias-ds-{{actividad.id}}" id="dias-ds-{{actividad.id}}"
+                                                                value="1" min="0" max="7"></div>
+                                                            <button  onclick="actionAct('{{actividad}}','addDay')" type="button" id="extras-days-max-{{actividad.id}}"><i class="fa fa-plus"></i></button>
+                                                       {% endif %}
+                                                    </div><!-- end.inpInc__inputs -->
+                                                  {% elseif actividad.tipo_cobro  == 'Paquete' %}
+                                                  <div class="inpInc__inputs" style="margin-top: 20px;">
+                                                    <div class="inpText">
+                                                       <input type="hidden" name="dias-ds-{{actividad.id}}" id="dias-ds-{{actividad.id}}"
+                                                        value="1" min="0" max="7"></div>
+                                                  </div><!-- end.inpInc__inputs -->
+                                                  {% else%}
+                                                  <div class="inpInc__inputs" style="margin-top: 20px;">
+                                                  
+                                                       {% if actividad.id in servicios|keys %}
+                                                            <input type="text" name="dias-ds-{{actividad.id}}" id="dias-ds-{{actividad.id}}"
+                                                            value="1" min="0" max="7"></div>
+                                                       {% else %}
+                                                             <button onclick="actionAct('{{actividad}}','removeDay')" type="button" id="extras-days-min-{{actividad.id}}"><i class="fa fa-minus"></i></button>
+                                                        <div class="inpText">Días:
+                                                           <input type="text" name="dias-ds-{{actividad.id}}" id="dias-ds-{{actividad.id}}"
+                                                            value="1" min="0" max="7"></div>
+                                                        <button  onclick="actionAct('{{actividad}}','addDay')" type="button" id="extras-days-max-{{actividad.id}}"><i class="fa fa-plus"></i></button>
+                                                       {% endif %}
+                                                       
+                                                       
+                                                    
+                                                      </div><!-- end.inpInc__inputs -->
+                                                  {% endif %}
+
+                                            </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="AddOnPreview__buttonsContainer__QUOuV">
+                                        <input type="checkbox" data-add-extras="{{actividad.slug}}" class="boxCabanaRes__input" name="servicios[]"
+                                        id="{{actividad.slug}}" value="{{actividad.id}}" {% if actividad.id in servicios|keys %}checked{% endif %}>
+                                        
+                                                         {% if actividad.id in servicios|keys %}
+                                                               <label class="AddOnPreview__button__mgCpz" >Agregar</label>
+
+                                                       {% else %}
+                                        <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{actividad}}')" for="{{actividad.slug}}">Agregar</label>
+
+                                                       {% endif %}
+                                                       
+                                                       
+
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                      {% endfor %}
+                      
+                      
+                      
+                            
+                        <div style="position: relative;">
+                            <div style="top: -80px; position: absolute;"></div>
+                            <div class="AddOnCategory__container__SwFF-" style="padding:unset">
+                                <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset">Kits</div>
+
+                            </div>
+                        </div>
+                        
+                      {% for key, kit in kits %}
+                      <div style="position: relative;">
+                        <div style="top: -80px; position: absolute;"></div>
+                        <div class="AddOnCategory__container__SwFF-">
+                           <div class="AddOnCategory__title__9sOvz"></div>
+                           <div class="AddOnCategory__addons__WsYXa">
+                              <div class="AddOnPreview__container__A1tp0">
+                                    <div class="Carousel__slider__IsQJ2">
+
+                                       <section class="slider" aria-label="carousel-slider" role="region" tabindex="0" style="box-sizing: border-box; display: block; height: inherit; position: relative; width: 100%;">
+                                          <div aria-live="polite" aria-atomic="true" tabindex="-1" style="position: absolute; width: 1px; height: 1px; overflow: hidden; padding: 0px; margin: -1px; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border: 0px;">Slide 1 of 1</div>
+                                          <div class="slider-frame" style="box-sizing: border-box; display: block; height: 100%; margin: 0px; overflow: hidden; padding: 0px; position: relative; touch-action: pan-y pinch-zoom; transform: translate3d(0px, 0px, 0px);">
+                                             <div class="slider-list" style=" box-sizing: border-box; cursor: pointer; display: block; height: 404px; margin: 0px; padding: 0px; position: relative; touch-action: pan-y pinch-zoom; transform: translate3d(0px, 0px, 0px); width: auto; transition: all 0s ease 0s;">
+                                                <div class="slider-slide slide-visible slide-current"  role="group" tabindex="-1" style="   align-items: center; justify-content: center; box-sizing: border-box; display: inline-block; height: auto; left: 0px; list-style-type: none; margin: auto 0px; position: absolute; top: 0px; transform: scale(1); transition: transform 0.4s linear 0s; vertical-align: top; width: 100%;">
+                                                    <!--img data-src="{{ kit.foto.path | resize(600)}}" alt="{{kit.nombre}}" class="Carousel__overlayImg__TYhyJ lozad" loading="lazy"-->
+                                                           <a href="{{ kit.foto.path }}" data-lightbox="servicio-{{kit.slug}}" data-title="{{kit.nombre}}">
+                                                                <img data-src="{{ kit.foto.path | resize(600)}}" alt="{{kit.nombre}}" class="Carousel__overlayImg__TYhyJ lozad">
+                                                          </a>
+                                                          
+                                                          </div>
+                                             </div>
+                                          </div>
+                                         
+                                       </section>
+                                 </div>
+                                 <div class="AddOnPreview__subContainer__1Wt9u">
+                                    <div>
+                                       <div class="AddOnPreview__namePriceContainer__YacrY">
+                                          <div class="AddOnPreview__name__CoUn6">{{kit.nombre}}</div>
+                                          <div clas="AddOnPreview__price__pxc1I">${{kit.precio_sab}}</div>
+                                       </div>
+                                       <div class="">
+                                          <div style="min-height: 200px; width: 100%;">
+                                             <div class="AddOnPreview__descriptionContainer__RlNGg">
+                                                <div class="AddOnPreview__description__jOho+">{{kit.descripcion}}</div>
+
+                                            </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="AddOnPreview__buttonsContainer__QUOuV">
+                                      <input  type="checkbox" data-add-extras="{{kit.slug}}" class="boxCabanaRes__input" name="servicios[]" id="{{kit.slug}}"
+                                       value="{{kit.id}}" {% if kit.id in servicios|keys %}checked{% endif %}>
+                                       
+                                           {% if kit.id in servicios|keys %}
+                                                               <label class="AddOnPreview__button__mgCpz" >Agregar</label>
+
+                                                       {% else %}
+                                       <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{kit}}')" for="{{kit.slug}}">Agregar</label>
+
+                                                       {% endif %}
+                                                       
+                                                       
+                                                       
+
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                      {% endfor %}
+                      <div style="position: relative;">
+                        <div style="top: -80px; position: absolute;"></div>
+                        <div class="AddOnCategory__container__SwFF-" style="padding:unset">
+                            <div class="AddOnCategory__title__9sOvz" style="padding-bottom:unset" >Alimentos y Bebidas</div>
+
+                        </div>
+                    </div>
+                  {% for key, alimento in alimentos %}
+                  <div style="position: relative;">
+                    <div style="top: -80px; position: absolute;"></div>
+                    <div class="AddOnCategory__container__SwFF-">
+                       <div class="AddOnCategory__title__9sOvz"></div>
+                       <div class="AddOnCategory__addons__WsYXa">
+                          <div class="AddOnPreview__container__A1tp0">
+                                <div class="Carousel__slider__IsQJ2">
+
+                                   <section class="slider" aria-label="carousel-slider" role="region" tabindex="0" style="box-sizing: border-box; display: block; height: inherit; position: relative; width: 100%;">
+                                      <div aria-live="polite" aria-atomic="true" tabindex="-1" style="position: absolute; width: 1px; height: 1px; overflow: hidden; padding: 0px; margin: -1px; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border: 0px;">Slide 1 of 1</div>
+                                      <div class="slider-frame" style="box-sizing: border-box; display: block; height: 100%; margin: 0px; overflow: hidden; padding: 0px; position: relative; touch-action: pan-y pinch-zoom; transform: translate3d(0px, 0px, 0px);">
+                                         <div class="slider-list" style=" box-sizing: border-box; cursor: pointer; display: block; height: 404px; margin: 0px; padding: 0px; position: relative; touch-action: pan-y pinch-zoom; transform: translate3d(0px, 0px, 0px); width: auto; transition: all 0s ease 0s;">
+                                            <div class="slider-slide slide-visible slide-current"  role="group" tabindex="-1" style="   align-items: center; justify-content: center; box-sizing: border-box; display: inline-block; height: auto; left: 0px; list-style-type: none; margin: auto 0px; position: absolute; top: 0px; transform: scale(1); transition: transform 0.4s linear 0s; vertical-align: top; width: 100%;">
+                                                <!--img data-src="{{ alimento.foto.path |resize(600)}}" alt="{{alimento.nombre}}" class="Carousel__overlayImg__TYhyJ lozad" loading="lazy"-->
+                                                     <a href="{{ alimento.foto.path }}" data-lightbox="servicio-{{alimento.slug}}" data-title="{{alimento.nombre}}">
+                                                        <img data-src="{{ alimento.foto.path | resize(600)}}" alt="{{alimento.nombre}}" class="Carousel__overlayImg__TYhyJ lozad">
+                                                    </a>
+                                                          </div>
+                                         </div>
+                                      </div>
+                                     
+                                   </section>
+                             </div>
+                             <div class="AddOnPreview__subContainer__1Wt9u">
+                                <div>
+                                   <div class="AddOnPreview__namePriceContainer__YacrY">
+                                      <div class="AddOnPreview__name__CoUn6">{{alimento.nombre}}</div>
+                                      <div class="AddOnPreview__price__pxc1I">${{alimento.precio_sab}}</div>
+                                   </div>
+                                   <div class="">
+                                      <div style="min-height: 200px; width: 100%;">
+                                         <div class="AddOnPreview__descriptionContainer__RlNGg">
+                                            <!--div class="AddOnPreview__description__jOho+">{{alimento.descripcion}}</div-->
+                                            
+                                                   <div class="description-container"  style="padding: 0px 0;MIN-HEIGHT:4em;">
+                                  
+                                                        <!--p class="expandable-description" style="line-height: 1.6em; " >{{ubicacion.descripcion}}</p-->
+                                                                         <div class="AddOnPreview__description__jOho+ expandable-description">{{alimento.descripcion}}</div>
+
+                                                        
+                                                        <p><a style="margin-top:5px;" class="read-more-link">Leer más</a></p>
+                                                  </div>  
+                                                  
+                                      
+                                      
+                                      
+
+                                              <div class="inpInc__inputs">
+                                                       {% if alimento.id in servicios|keys %}
+                                                            <div class="inpText">Cantidad: <input type="text" name="cantidad-ct-{{alimento.id}}"
+                                                                    id="cantidad-ct-{{alimento.id}}" value="1" min="0" max="4">
+                                                                </div>
+                                                       {% else %}
+                                                            <button onclick="actionAct('{{alimento}}','removeCant')" type="button"  id="extras-cant-min-{{alimento.id}}"><i class="fa fa-minus"></i></button>
+                                                                <div class="inpText">Cantidad: <input type="text" name="cantidad-ct-{{alimento.id}}"
+                                                                    id="cantidad-ct-{{alimento.id}}" value="1" min="0" max="4">
+                                                                </div>
+                                                            <button onclick="actionAct('{{alimento}}','addCant')" type="button" id="extras-cant-max-{{alimento.id}}"><i class="fa fa-plus"></i></button>
+                                                       {% endif %}
+                                                       
+                                                
+                                              </div><!-- end.inpInc__inputs -->
+                                              
+                                              {% if alimento.tipo_cobro  == 'Hora' %}
+                                              <div class="inpInc__inputs" style="margin-top: 20px;">
+                                              
+                                                       {% if alimento.id in servicios|keys %}
+                                                            <div class="inpText">Cantidad: <input type="text" name="cantidad-ct-{{alimento.id}}"
+                                                                    id="cantidad-ct-{{alimento.id}}" value="1" min="0" max="4">
+                                                                </div>
+                                                       {% else %}
+                                                            <button onclick="actionAct('{{alimento}}','removeDay')" type="button" id="extras-days-min-{{alimento.id}}"><i class="fa fa-minus"></i></button>
+                                                                <div class="inpText">Horas: <input type="text" name="dias-ds-{{alimento.id}}" id="dias-ds-{{alimento.id}}"
+                                                                    value="1" min="0" max="7"></div>
+                                                                <button  onclick="actionAct('{{alimento}}','addDay')" type="button" id="extras-days-max-{{alimento.id}}"><i class="fa fa-plus"></i></button>
+                                                                
+                                                       {% endif %}
+                                                       
+                                                       
+                                                
+                                              </div><!-- end.inpInc__inputs -->
+                                              {% elseif alimento.tipo_cobro  == 'Paquete' %}
+                                              <div class="inpInc__inputs" style="margin-top: 20px;">
+                                                <div class="inpText">
+                                                   <input type="hidden" name="dias-ds-{{alimento.id}}" id="dias-ds-{{alimento.id}}"
+                                                    value="1" min="0" max="7"></div>
+                                              </div><!-- end.inpInc__inputs -->
+                                              {% else%}
+                                              <div class="inpInc__inputs" style="margin-top: 20px;">
+                                              
+                                                       {% if alimento.id in servicios|keys %}
+                                                           <div class="inpText">Días:
+                                                                   <input type="text" name="dias-ds-{{alimento.id}}" id="dias-ds-{{alimento.id}}"
+                                                                    value="1" min="0" max="7"></div>
+                                                       {% else %}
+                                                          <button onclick="actionAct('{{alimento}}','removeDay')" type="button" id="extras-days-min-{{alimento.id}}"><i class="fa fa-minus"></i></button>
+                                                                <div class="inpText">Días:
+                                                                   <input type="text" name="dias-ds-{{alimento.id}}" id="dias-ds-{{alimento.id}}"
+                                                                    value="1" min="0" max="7"></div>
+                                                                <button  onclick="actionAct('{{alimento}}','addDay')" type="button" id="extras-days-max-{{alimento.id}}"><i class="fa fa-plus"></i></button>
+                                                                   {% endif %}
+                                                       
+                                                       
+                                                
+                                                  </div><!-- end.inpInc__inputs -->
+                                              {% endif %}
+
+                                        </div>
+                                      </div>
+                                   </div>
+                                </div>
+                                <div class="AddOnPreview__buttonsContainer__QUOuV">
+                                    <input type="checkbox" data-add-extras="{{alimento.slug}}" class="boxCabanaRes__input" name="servicios[]"
+                                    id="{{alimento.slug}}" value="{{alimento.id}}" {% if alimento.id in servicios|keys %}checked{% endif %}>
+                                    
+                                    {% if alimento.id in servicios|keys %}
+                                                               <label class="AddOnPreview__button__mgCpz" >Agregar</label>
+
+                                                       {% else %}
+                                    <label class="AddOnPreview__button__mgCpz" onclick="addCar('{{alimento}}')" for="{{alimento.slug}}">Agregar</label>
+
+                                                       {% endif %}
+                                                       
+                                                       
+
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+
+                      {% endfor %}
+
+
+
+                    
+
+                    </div><!-- end.loopActividades -->
+
+
+
+
+                    <!--div class="col-12 col-md-12 col-lg-4 "-->
+                    <div class="col-12 col-md-12 col-lg-4 col-xl-4">
+
+
+                      <div class="AddOnTripSummary__container__jBFXq" id="sumary">
+                        <div class="AddOnTripSummary__childContainer__FaaaI">
+                           <div class="TripSummary__container__IKaD1">
+                              <div class="TripSummary__header__jm6-s">
+                                 <h3 class="TripSummary__tripSummaryTitle__+gUss">Tu Paquete</h3>
+                                 <h4 class="TripOverview__tripSummaryDates__SpUJf"><span>{{start}} - {{end}}</span> 
+                                </h4>
+                                 <p class="TripOverview__tripSummaryDetails__WAByO">{{cabana.nombre}} - {{ubicacion.nombre}}<br>
+                                  {{adultos}} Adultos                           
+                                  {% if ninos == 1 %} - {{ninos}} Niño {% endif %}
+                                  {% if ninos > 1 %} - {{ninos}} Niños {% endif %}</p>
+                              </div>
+                              <div class="TripSummary__body__r5nyk ">
+                                 <dl>
+
+                                    <details>
+                                        <summary class="LineItem__tripSummaryItem__+xfgv" > 
+                                            <strong class="LineItem__tripSummaryItemName__6xWJY">Noches del Paquete</strong>
+                                
+                                             <dd class="LineItem__tripSummaryItemValue__EtrwN" style="text-decoration:line-through;"> 
+                                                                         ${{total|number_format}}.00
+                                             </dd>
+    
+    
+                                        </summary>
+                                     <!--br-->
+
+
+                                        {% for key, dia in dias %}
+                                        <div class="LineItem__tripSummaryItem__+xfgvd">
+                                        <dt class="LineItem__tripSummaryItemName__6xWJY"><div>{{dia}}</div></dt>
+                                        <p class="LineItem__tripSummaryItemValue__EtrwN" style="text-decoration:line-through;">${{precios[key]|number_format}}.00</p>
+                                        </div>
+                                        {% endfor %}
+
+
+                                    </details>    
+                    
+                                    <div id="contPaquete">
+
+                                    </div>
+                                    
+                                    <div class="LineItem__tripSummaryItem__+xfgv LineItem__bold__Mb2BL LineItem__withMarginTop__n1H+i">
+                                       <dt class="LineItem__tripSummaryItemName__6xWJY">
+                                          <div >Costo Paquete</div>
+                                       </dt>
+                                       <p class="LineItem__tripSummaryItemValue__EtrwN">  $   {{ total_paquete|number_format(2, '.', ',') }}</p>
+                                    </div>
+
+
+                                     <div class="LineItem__tripSummaryItem__+xfgv LineItem__bold__Mb2BL LineItem__withMarginTop__n1H+i">
+                                       <dt class="LineItem__tripSummaryItemName__6xWJY">
+                                          <div >Servicios Agregados</div>
+                                       </dt>
+        
+                                    </div>
+                                    
+                                   <div id="contExtras">
+
+                                    </div> 
+          
+                                    <div class="LineItem__tripSummaryItem__+xfgv LineItem__bold__Mb2BL LineItem__withMarginTop__n1H+i">
+                                       <dt class="LineItem__tripSummaryItemName__6xWJY">
+                                          <div >Sub Total</div>
+                                       </dt>
+                                       <p class="LineItem__tripSummaryItemValue__EtrwN" id="car_subtotal"></p>
+                                    </div>
+
+                                    <div class="LineItem__tripSummaryItem__+xfgv LineItem__bold__Mb2BL LineItem__withMarginTop__n1H+i">
+                                      <dt class="LineItem__tripSummaryItemName__6xWJY">
+                                         <div class="">Impuestos</div>
+                                      </dt>
+                                      <p class="LineItem__tripSummaryItemValue__EtrwN" id="car_impuestos"></p>
+                                   </div>
+
+                                    <div class="LineItem__tripSummaryItem__+xfgv LineItem__bold__Mb2BL LineItem__withMarginTop__n1H+i">
+                                      <dt class="LineItem__tripSummaryItemName__6xWJY">
+                                         <div class="">Total</div>
+                                      </dt>
+                                      <dd class="LineItem__tripSummaryItemValue__EtrwN" id="car_total"></dd>
+                                   </div>
+
+
+                                 </dl>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="AddOnTripSummary__buttonContainer__t+wGk">
+                           <button class="AddOnTripSummary__button__cA3Cn" type="submit">
+                              <div>Siguiente</div>
+                              <img alt="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNyAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzU3N18zMjMpIj4KPHBhdGggZD0iTTE2LjAzMDMgOC41MzAzM0MxNi4zMjMyIDguMjM3NDQgMTYuMzIzMiA3Ljc2MjU2IDE2LjAzMDMgNy40Njk2N0wxMS4yNTc0IDIuNjk2N0MxMC45NjQ1IDIuNDAzODEgMTAuNDg5NiAyLjQwMzgxIDEwLjE5NjcgMi42OTY3QzkuOTAzODEgMi45ODk1OSA5LjkwMzgxIDMuNDY0NDcgMTAuMTk2NyAzLjc1NzM2TDE0LjQzOTMgOEwxMC4xOTY3IDEyLjI0MjZDOS45MDM4MSAxMi41MzU1IDkuOTAzODEgMTMuMDEwNCAxMC4xOTY3IDEzLjMwMzNDMTAuNDg5NiAxMy41OTYyIDEwLjk2NDUgMTMuNTk2MiAxMS4yNTc0IDEzLjMwMzNMMTYuMDMwMyA4LjUzMDMzWk0xLjUgOC43NUgxNS41VjcuMjVIMS41VjguNzVaIiBmaWxsPSIjRjZGNEYyIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfNTc3XzMyMyI+CjxyZWN0IHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuNSkiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K">
+                           </button>
+                           <div class="BookingBanner__container__Ip53C">
+                              <div class="BookingBanner__descriptionContainer__36xV8">
+                                 <div class="BookingBanner__description__-nGV1" style="color: rgb(246, 244, 242);">
+                                    <p></p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                    </div>
+
+                    <div class="col-12">
+                      <blockquote>* Precios sin IVA.</blockuote>
+                    </div>                  
+
+                  </div><!-- end.row -->
+                </div><!-- end.container -->
+              </div><!-- end.extrasCt -->
+
+
+        </section>
+        
+        
+        </div>
+        <div class="actions clearfix">
+          <ul role="menu" aria-label="Pagination">
+            <li aria-disabled="false">
+              <a href="{{'packs-cabanas'|page}}">Atrás</a>
+            </li>
+            <li aria-hidden="false" aria-disabled="false">
+              <button type="submit" class="btnpr btnpr__primary btnpr__primary--border" id="servicios" >
+                <i class="fa fa-chevron-right"></i><span>Siguiente</span>
+              </button>
+            </li>
+          </ul><!-- end.ul -->
+        </div><!-- end.actions -->
+      </div><!-- end.wizard -->
+
+      {{ form_close() }}
+  </div><!-- end.reservaCt
+   -->
+</article><!-- end.bg-gen -->
+
+<script>
+  $(function() {
+    $("#cantidad-ct-4").on("change input paste", function() {
+      // console.log($(this).val()); 
+    });
+});
+</script>
+
+<script type="text/javascript">
+
+/**seccion nueva amenidades */
+
+fechasSeleccionadas = {};
+// console.log(as);
+serviciosExtra.forEach(extra => {
+
+if(extra.tipo == 'amenidades' ){
+   // extrasInput('#extras-days-max-'+serviciosExtra.id, '#extras-days-min-'+serviciosExtra.id, '#dias-ds-'+serviciosExtra.id);
+   // extrasInput('#extras-cant-max-'+serviciosExtra.id, '#extras-cant-min-'+serviciosExtra.id, '#cantidad-ct-'+serviciosExtra.id);
+    //extrasInput('#extras-days-max-'+serviciosExtra.id, '#extras-days-min-'+serviciosExtra.id, '#dias-ds-'+serviciosExtra.id);
+    fechasSeleccionadas[extra.id] = {};
+    const checkboxes = document.getElementsByName('fecha-ct-'+extra.id+'[]');
+    const agregarButton = document.getElementById(extra.slug);
+/**/
+
+
+
+
+    $.each(serviciosGuardados, function(index, value) {
+      let x = {};
+      fechasSeleccionadas[index] = value;
+
+  }); 
+
+  if (!(extra.id in fechasSeleccionadas)) {
+      fechasSeleccionadas[extra.id] = {}; // Crear un objeto vacío si no existe
+  }
+      checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+          if (this.checked) {
+              fechasSeleccionadas[extra.id][this.value] = this.value;
+              if (agregarButton.checked) {
+                  actionAct(extra,'addCant');
+              }
+          console.log(`Checkbox con valor ${this.value} marcado.`);
+          // Realiza aquí cualquier acción que necesites
+          } else {
+              if (agregarButton.checked) {
+                  actionAct(extra,'removeCant');
+              }
+
+              if (Object.keys(fechasSeleccionadas[extra.id]).length == 1 && agregarButton.checked) {
+                  addCar(extra);
+                  agregarButton.checked = false;
+                              }
+             
+              delete fechasSeleccionadas[extra.id][this.value];
+
+         // console.log(`Checkbox con valor ${this.value} desmarcado.`);
+          // Realiza aquí cualquier acción que necesites
+          }
+
+       //   console.log(fechasSeleccionadas); // Mostrar el objeto actualizado en la consola
+          actualizarVisibilidadBoton(extra.id,this.value); // Actualizar visibilidad del botón
+
+      });
+      
+      });
+  }
+});
+
+function actualizarVisibilidadBoton(id,key) {
+  const agregarButton = document.getElementById('btnAmeni'+id);
+
+  //const agregarButton = document.getElementById('botonAmidades'+extra.id)
+
+
+  if (Object.keys(fechasSeleccionadas[id]).length > 0) {
+      agregarButton.style.display = 'block';
+  } else {
+      agregarButton.style.display = 'none';
+  }
+}
+
+/* fin seccion amenidades */
+
+let posicion = 0;
+window.addEventListener('scroll', (e) => {
+    let _sumary = document.getElementById("sumary");
+
+posicion = window.scrollY;
+//console.log(posicion);
+ if($(window).width() > 1701){
+
+if(posicion > 150){
+    _sumary.style.top = '210px';
+
+}
+if(posicion > 170){
+    _sumary.style.top = '170px';
+
+}
+if(posicion > 190){
+    _sumary.style.top = '130px';
+
+}
+if(posicion > 210){
+    _sumary.style.top = '90px';
+
+}if(posicion > 230){
+    _sumary.style.top = '50px';
+
+}
+if(posicion > 250){
+    _sumary.style.top = '10px';
+
+}
+if(posicion  <150){
+    _sumary.style.top = '250px';
+
+}}}
+);
+
+$(window).resize(function(){
+
+
+let _sumary = document.getElementById("sumary");
+
+if($(window).width() < 1700){
+ // console.log($(window).width());
+  _sumary.classList.remove("AddOnTripSummary__container__jBFXq");
+  _sumary.classList.add("TripSummary__tripSummaryContainer__tfg6M");
+  
+}else if($(window).width() > 1701){
+
+
+  //console.log($(window).width());
+  _sumary.classList.remove("TripSummary__tripSummaryContainer__tfg6M");
+  _sumary.classList.add("AddOnTripSummary__container__jBFXq");
+
+}
+
+});
+
+window.onload = function () {
+    let _sumary = document.getElementById("sumary");
+
+if($(window).width() < 1700){
+  //console.log($(window).width());
+  _sumary.classList.remove("AddOnTripSummary__container__jBFXq");
+  _sumary.classList.add("TripSummary__tripSummaryContainer__tfg6M");
+  
+}else if($(window).width() > 1701){
+
+
+  //console.log($(window).width());
+  _sumary.classList.remove("TripSummary__tripSummaryContainer__tfg6M");
+  _sumary.classList.add("AddOnTripSummary__container__jBFXq");
+
+}
+
+  let objetivo = document.getElementById('car_total'); 
+  let objetivo2 = document.getElementById('car_subtotal');  
+  let objetivoIva = document.getElementById('car_impuestos');  
+  const contentPaquete = document.getElementById('contPaquete');
+  const contentExtras = document.getElementById('contExtras');
+//console.log(serviciosGuardados);
+
+Object.keys(serviciosGuardados).forEach(e => {
+  //let extra = serviciosExtra.find( serv => serv.id == e);
+  let extra = serviciosExtra.find( serv => serv.id == e);
+    let checkbox =document.getElementById(extra.slug);
+  
+  if(checkbox.checked) {
+            checks[extra.slug] = '1';
+          
+            let it ;
+            let div = document.createElement("div");
+          
+            div.setAttribute("class", "LineItem__tripSummaryItem__+xfgvd");
+          
+            div.setAttribute("id", "car_item_"+extra.slug);
+
+            if(extra.ubicacion_id == ubicacion && extra.disponible == 1 ){
+           //   console.log(extra);
+
+                if(extra.tipo == "kit"  || extra.tipo == "extended" || extra.tipo == "amenidades" ){
+
+                  price = extra.precio_sab;
+
+                    it = '<dt class="LineItem__tripSummaryItemName__6xWJY" id="car_item_label_'+ extra.slug+'">'+ extra.nombre+'</dt>'
+                          +' <p class="LineItem__tripSummaryItemValue__EtrwN" style="text-decoration:line-through;" id="car_item_price_'+ extra.slug+'">'+parseInt(price).toLocaleString('en-US', {  style: 'currency',  currency: 'USD',})+'</p>';
+                  }
+                  else {
+                   let data = serviciosGuardados[e];
+                    let cantht =document.getElementById("cantidad-ct-"+extra.id);
+                    let daysht =document.getElementById("dias-ds-"+extra.id);
+                    cantht.value = data.cantidad;
+                    daysht.value = data.dias;
+
+
+                    let cant =data.cantidad;
+                    let days =data.dias;
+             //       console.log('dias: '+days)
+                    if(days == undefined || days == '')
+                       days = 1;
+                     //  console.log('dias: '+days)
+
+                    //days = parseInt(days.value);
+                    //cant = parseInt(cant.value);
+
+                    price = (cant * days)*extra.precio_sab;
+                //    console.log(price);
+
+                  it = '<dt class="LineItem__tripSummaryItemName__6xWJY" id="car_item_label_'+ extra.slug+'">'+extra.nombre+'</dt>'
+                      +' <p class="LineItem__tripSummaryItemValue__EtrwN" style="text-decoration:line-through;" id="car_item_price_'+ extra.slug+'">'+parseInt(price).toLocaleString('en-US', {  style: 'currency',  currency: 'USD',})+'</p>';
+
+                }
+
+                div.innerHTML = it;
+                contentPaquete.appendChild(div);
+
+         //       subtotal = parseInt(subtotal) + parseInt(price);
+                total = subtotal*1.16;
+                iva = subtotal*.16;
+          }
+        }
+  });
+        
+          objetivoIva.innerHTML = parseInt(iva).toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });
+        
+        
+          objetivo2.innerHTML = parseInt(subtotal).toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });
+        
+          objetivo.innerHTML = total.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });
+  
+}
+
+function addCar(i) {
+    if (typeof i != 'object')
+            item = JSON.parse(i);
+    else
+        item = i;
+
+
+  let slug = item.slug;
+  let article = item.nombre;
+  let price = item.precio_sab;
+  let objetivo = document.getElementById('car_total'); 
+  let objetivo2 = document.getElementById('car_subtotal'); 
+  let objetivoIva = document.getElementById('car_impuestos'); 
+
+
+  const contentExtras = document.getElementById('contExtras');
+
+  if(checks[slug] == '0'){
+
+      checks[slug] = '1';
+      let it ;
+      let div = document.createElement("div");
+      div.setAttribute("class", "LineItem__tripSummaryItem__+xfgvd");
+      div.setAttribute("id", "car_item_"+slug);
+
+      if(item.tipo == 'kit' || item.tipo == 'extended'){
+         it = '<dt class="LineItem__tripSummaryItemName__6xWJY" id="car_item_label_'+ item.slug+'">'+ article+'</dt>'
+              +' <p class="LineItem__tripSummaryItemValue__EtrwN" id="car_item_price_'+ item.slug+'">'+parseInt(price).toLocaleString('en-US', {  style: 'currency',  currency: 'USD',})+'</p>';
+       // extras.push(item.nombre);
+        
+      }
+      else if(item.tipo == 'amenidades'  ){
+
+        let cant = document.getElementById("cantidad-ct-"+item.id).value;
+        let days = Object.keys(fechasSeleccionadas[item.id]).length; //document.getElementById("dias-ds-"+item.id).value;
+        // let fechas = document.getElementById("fechas-ds-"+item.id).value;
+        price = (cant * days)*price;
+
+        it = '<dt class="LineItem__tripSummaryItemName__6xWJY" id="car_item_label_'+ item.slug+'">'+ article+'</dt>'
+            +' <p class="LineItem__tripSummaryItemValue__EtrwN" id="car_item_price_'+ item.slug+'">'+parseInt(price).toLocaleString('en-US', {  style: 'currency',  currency: 'USD',})+'</p>';
+        // extras.push(item.nombre);
+
+        }
+      else{
+             
+        let cant = document.getElementById("cantidad-ct-"+item.id).value;
+        let days = document.getElementById("dias-ds-"+item.id).value;
+      //  console.log('add dias: '+days)
+
+        if(days == undefined || days == '')
+          days = 1;
+     //     console.log('add dias: '+days)
+
+        days = parseInt(days);
+         cant = parseInt(cant);
+         
+     //    console.log(days);
+     //    console.log(cant);
+
+        price = (cant * days)*price;
+        console.log(price);
+
+         it = '<dt class="LineItem__tripSummaryItemName__6xWJY" id="car_item_label_'+ item.slug+'">'+article+'</dt>'
+              +' <p class="LineItem__tripSummaryItemValue__EtrwN" id="car_item_price_'+ item.slug+'">'+parseInt(price).toLocaleString('en-US', {  style: 'currency',  currency: 'USD',})+'</p>';
+              
+        //extras.push(item.nombre);
+
+
+      }
+
+
+      div.innerHTML = it;
+      contentExtras.appendChild(div);
+
+      subtotal = parseInt(subtotal) + parseInt(price);
+      total = subtotal*1.16;
+      iva = subtotal*.16;
+
+      objetivo.innerHTML = total.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });
+        
+      objetivo2.innerHTML = subtotal.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });
+      
+      objetivoIva.innerHTML = iva.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });objetivoIva
+
+  }else{
+      checks[slug] = '0';
+
+      let div = document.getElementById("car_item_"+slug);
+      contentExtras.removeChild(div)
+
+      if(item.tipo == 'kit' || item.tipo == 'extended'){
+            subtotal = parseInt(subtotal) - parseInt(price);
+            total = subtotal*1.16;
+            iva = subtotal*.16;
+
+      }
+      else if(item.tipo == 'amenidades'  ){
+
+            let cant = document.getElementById("cantidad-ct-"+item.id).value;
+            let days = Object.keys(fechasSeleccionadas[item.id]).length; //document.getElementById("dias-ds-"+item.id).value;
+            // let fechas = document.getElementById("fechas-ds-"+item.id).value;
+            price = (cant * days)*price;
+
+            subtotal = parseInt(subtotal) - parseInt(price);
+            total = subtotal*1.16;
+            iva = subtotal*.16;
+
+            //  it = '<dt class="LineItem__tripSummaryItemName__6xWJY" id="car_item_label_'+ item.slug+'">'+ article+'</dt>'
+            //    +' <p class="LineItem__tripSummaryItemValue__EtrwN" id="car_item_price_'+ item.slug+'">'+parseInt(price).toLocaleString('en-US', {  style: 'currency',  currency: 'USD',})+'</p>';
+            // extras.push(item.nombre);
+
+            }
+
+      else{
+             
+        let cant = document.getElementById("cantidad-ct-"+item.id).value;
+        let days = document.getElementById("dias-ds-"+item.id).value;
+
+        if(days == undefined || days == '')
+          days = 1;
+
+         days = parseInt(days);
+         cant = parseInt(cant);
+      
+         
+        price = (cant * days)*price;
+
+        subtotal = parseInt(subtotal) - parseInt(price);
+            total = subtotal*1.16;
+          iva = subtotal*.16;
+
+        
+        
+      }
+      
+      objetivo.innerHTML = total.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });
+        
+      objetivo2.innerHTML = subtotal.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });
+      
+      objetivoIva.innerHTML = iva.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });objetivoIva
+
+
+  }
+
+
+}
+
+function actionAct(i,action){
+    if (typeof i != 'object')
+            item = JSON.parse(i);
+    else
+        item = i;
+  //console.log(item);
+
+  let checkbox = document.getElementById(item.slug);
+ // console.log(checkbox);
+
+  if(checkbox.checked) {
+        let cant = document.getElementById("cantidad-ct-"+item.id).value;
+        let days = document.getElementById("dias-ds-"+item.id).value;
+        let price = item.precio_sab;
+        let objetivo = document.getElementById('car_total'); 
+        let objetivo2 = document.getElementById('car_subtotal'); 
+        let objetivoIva = document.getElementById('car_impuestos'); 
+
+        if(days == undefined || days == '')
+          days = 1;
+         // console.log(days);
+        //  console.log(cant);
+        //  console.log(action);
+
+        switch(action) {
+            case 'addCant':
+                cant = parseInt(cant) +1;
+                //days = parseInt(days);.
+                subtotal = parseInt(subtotal) + parseInt(price);
+                break;
+            case 'removeCant':
+                if(cant > 1){
+                  cant = parseInt(cant) - 1;
+                 //days = parseInt(days);.
+                 subtotal = parseInt(subtotal) - parseInt(price); 
+                }             
+                break;
+            case 'addDay':
+                  cant = parseInt(cant);
+                  days = parseInt(days) + 1;   
+                  subtotal = parseInt(subtotal) +( parseInt(price)*parseInt(days));              
+
+                break;
+            case 'removeDay':
+                if(days > 1){
+                  cant = parseInt(cant);
+                  days = parseInt(days) - 1;   
+                  subtotal = parseInt(subtotal) +( parseInt(price)*parseInt(days));   
+                }                           
+              break;
+          }
+                price = (cant * days)*price;
+                total = subtotal*1.16
+                iva = subtotal*.16;
+
+
+      let div = document.getElementById("car_item_price_"+item.slug);
+                div.innerHTML = parseInt(price).toLocaleString('en-US', {
+                  style: 'currency',
+                  currency: 'USD'});
+
+      objetivo.innerHTML = total.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });
+        
+      objetivo2.innerHTML = subtotal.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });
+    
+      objetivoIva.innerHTML = iva.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'});//total.toLocaleString('es', { style: 'currency', currency: 'USD' });
+      
+
+
+    } else {
+      console.log('Ahora está desmarcado');
+    }
+
+}
+
+
+
+
+   $(document).ready(function() {
+
+
+
+        $(".description-container").each(function() {
+            var description = $(this).find(".expandable-description");
+            var link = $(this).find(".read-more-link");
+    
+            // Si la descripción rebasa la altura máxima, mostrar el enlace
+            if (description[0].scrollHeight > description.innerHeight()+1) {
+                link.show();
+            } else {
+                link.hide();
+            }
+    
+            // Manejar el clic en el enlace
+            link.click(function() {
+                description.toggleClass("expanded");
+                if (description.hasClass("expanded")) {
+                    link.text("Leer menos");
+                } else {
+                    link.text("Leer más");
+                }
+            });
+        });
+        
+    });
+    
+    
+</script>

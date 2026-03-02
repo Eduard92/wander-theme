@@ -1,0 +1,93 @@
+title = "Consulta de reservacion"
+url = "/reservacion/:id"
+layout = "layout"
+is_hidden = 0
+canonical_url = "https://wandercabins.mx/reservacion"
+robot_index = "noindex"
+robot_follow = "nofollow"
+[miReserva]
+[session]
+security = "all"
+==
+{% if reserva %}
+<article class="bg-gen">
+  <div class="reservaCt">
+    <div class="descFullPage">
+      <img src="{{ 'assets/img/logos/logo-wander-black-text.svg'|theme }}" alt="Wander">
+      <h2>DETALLES DE RESERVACIÓN</h2>
+    </div>
+    <div class="payContent">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 col-lg-6">
+          <h4>{{reserva.user.name}}<br>
+          <small>{{reserva.user.email}}  +{{reserva.user.codigo_telefonico}} {{reserva.user.telefono}}</small><br><br>
+          Cabaña {{reserva.cabana.nombre}} en {{reserva.ubicacion.nombre}}, {{reserva.noches}} noche(s).<br></h4>
+            <div class="payContent__box" style="text-align=left;">
+              <p><small>Número de reservación: </small>{{reserva.id}}<br>
+              <small>Estatus: </small>{{reserva.estatus}}<br>
+              <small>Reservado el: </small>{{reserva.created_at|date("d/m/Y H:m")}}hrs.<br>
+              <br>
+              <small>Check-in: </small>{{reserva.inicio|date("d/m/Y")}} 16:00hrs.<br>
+              <small>Check-out: </small>{{reserva.fin|date("d/m/Y")}} 12:00hrs.<br>
+              <small>Adultos: </small>{{reserva.adultos}}<br>
+              <small>Niños: </small>{{reserva.ninos}}<br>
+              <small>Acceso a mascotas: </small>{% if reserva.mascotas == 0 %}NO{% else %}SI{% endif %}<br>
+              <br>
+              <small>Total pagado: </small>${{reserva.costo_total|number_format(2, '.', ',') }} <small>MXN.</small><br><br>
+              <small>Cupón de Descuento: </small>{% if reserva.cupon %}{{reserva.cupon.cupon}} <br> 
+                  <small>% de Descuento: </small> {{reserva.cupon.descuento}} % <br> 
+                  <small>Monto de Descuento: </small> ${{reserva.descuento}}<br>{% else %}No Aplico{% endif %}<br>
+              <small>Clave de acceso: </small>{{reserva.cabana.clave_acceso}}<br><br>
+               Nuestro equipo se pondra en contacto contigo un dia antes de tu reserva para mas detalles sobre tu llegada y experiencia.<br>
+              </p>
+            </div>
+            {% if reserva.servicios %}
+                <h4>Servicios extra:<br/>
+                    {% for servicio in reserva.servicios %}
+                        {% if servicio.servicio.tipo == 'kit' %}
+                            <small>{{servicio.servicio.nombre}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% elseif servicio.servicio.tipo == 'extended' %}
+                            <small>{{servicio.servicio.nombre}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% elseif servicio.servicio.tipo == 'actividad' %}
+                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} por {{servicio.dias}} día(s) ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% elseif servicio.servicio.tipo == 'alimentos' %}
+                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} por {{servicio.dias}} día(s) ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% elseif servicio.servicio.tipo == 'amenidades' %}
+                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} la noche {{servicio.fecha}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% else  %}
+                            <small>{{servicio.cantidad}} {{servicio.servicio.nombre}} ${{servicio.costo|number_format(2, '.', ',') }} <small>MXN.</small></small><br/>
+                        {% endif %}
+                    {% endfor %}
+                </h4>
+                <br>
+            {% endif %}
+            <h4>Huéspedes:<br/>
+            {% for huesped in reserva.huespedes %}
+                <small>{{huesped.nombre}} - {{huesped.edad}} años</small><br/>
+            {% endfor %}
+            </h4>
+          </div><!-- end.col-* -->
+        </div><!-- end.row -->
+      </div><!-- end.container -->
+    </div><!-- end.payContent -->
+  </div><!-- end.reservaCt -->
+</article><!-- end.bg-gen -->
+{% else %}
+<article class="bg-gen">
+  <div class="reservaCt">
+    <div class="descFullPage">
+      <img src="{{ 'assets/img/logos/logo-wander-black-text.svg'|theme }}" alt="Wander">
+      <h2>Ocurrio un error </h2>
+    </div>
+       <div class="payContent">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 col-lg-6">
+            <h4>No se encontro la reserva.</h4><br>
+          </div>
+        </div>
+     </div>
+  </div>
+</article>
+{% endif %}
